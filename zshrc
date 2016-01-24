@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Oh-my-zsh theme
-ZSH_THEME="steeef"
+ZSH_THEME="dracula"
 
 # Aliases
 alias ls="ls --color=auto"
