@@ -74,3 +74,6 @@ if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh ~/.ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
+
+echo "Configuring Dracula Theme"
+ln -s ~/.dotfiles/dracula-theme/zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
