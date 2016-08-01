@@ -29,7 +29,7 @@
   email = gufranco@users.noreply.github.com
 
   # GPG signing key
-	signingkey = D424F9E0
+  signingkey = D424F9E0
 
 [core]
   # Global ignore
