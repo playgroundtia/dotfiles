@@ -44,6 +44,9 @@
   # Default text editor
   editor = vim -f
 
+  # Uh, well... you know. Windows sucks :(
+  longpaths = true
+
 [color]
   ui = auto
 
@@ -85,6 +88,9 @@
 
   # Commit shortcut
   ci = commit
+
+  # Signed commit shortcut
+  cis = commit -S
 
   # Commit shortcut
   co = checkout
@@ -148,3 +154,7 @@
 
   # Backup isn't enough <3
   backup = !tar -cvzf ../git_backup.tgz *
+
+[commit]
+  # Sign commits using GPG key
+  gpgsign = true
