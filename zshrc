@@ -88,6 +88,9 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # RVM path
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Haxe path
+export HAXE_STD_PATH="/usr/local/lib/haxe/std"
+
 # GPG - Link pinentry and agent together
 if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
   source ~/.gnupg/.gpg-agent-info
