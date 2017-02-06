@@ -28,9 +28,6 @@
   # E-mail
   email = gufranco@users.noreply.github.com
 
-  # GPG signing key
-  signingkey = D424F9E0
-
 [core]
   # Global ignore
   excludesfile = ~/.gitglobalignore
@@ -157,7 +154,3 @@
 
   # Backup isn't enough <3
   backup = !tar -cvzf ../git_backup.tgz *
-
-[commit]
-  # Sign commits using GPG key
-  gpgsign = true
