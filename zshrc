@@ -30,7 +30,6 @@ if [[ `uname` == "Linux" ]]; then
 
   # Aliases
   alias f5="sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
-  alias makerware="env LC_ALL=\"en_US.UTF-8\" makerware"
 else
   # Configurations
 
@@ -75,26 +74,9 @@ HIST_STAMPS="dd/mm/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Oh-my-zsh plugins
-plugins=(git rails ruby node rvm vagrant brew gem github npm osx ssh-agent)
+plugins=(git node vagrant brew npm osx)
 
 source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
-
-# SSH key
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-
-# RVM path
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Haxe path
-export HAXE_STD_PATH="/usr/local/lib/haxe/std"
-
-# GPG - Link pinentry and agent together
-if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
