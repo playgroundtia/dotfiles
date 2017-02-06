@@ -28,10 +28,10 @@
  */
 {
   // Esquema de cores para Sublime
-  "theme": "Soda Dark.sublime-theme",
+  //"theme": "Soda Dark.sublime-theme",
 
   // Esquema de cores para texto
-  "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+  //"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 
   // Altera a tecla que faz o autocomplete para tab
   "auto_complete_commit_on_tab": true,
