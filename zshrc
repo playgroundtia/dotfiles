@@ -31,8 +31,6 @@ if [[ `uname` == "Linux" ]]; then
   # Aliases
   alias f5="sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
 else
-  # Configurations
-
   # Aliases
   alias f5="brew update && brew upgrade && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
   alias cpu="top -o cpu"
@@ -74,7 +72,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Oh-my-zsh plugins
-plugins=(git node vagrant brew npm osx)
+plugins=(git node vagrant npm osx)
 
 source $ZSH/oh-my-zsh.sh
 

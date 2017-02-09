@@ -1,9 +1,0 @@
-#
-# Guepardo Labs
-#
-# Web server
-Host guepardolabs.com-web
-  HostName 54.207.92.26
-  User ubuntu
-  IdentityFile "~/.ssh/keys/guepardolabs.com.pem"
-  ServerAliveInterval 30
