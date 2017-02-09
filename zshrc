@@ -5,15 +5,11 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 
 # Aliases
-alias ls="ls --color=auto"
 alias la="ls -aF"
 alias ld="ls -ld"
 alias ll="ls -la"
-alias l.="ls -d .* --color=auto"
+alias l.="ls -d .*"
 alias cd..="cd .."
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
 alias bc="bc -l"
 alias sha1="openssl sha1"
 alias mkdir="mkdir -pv"
