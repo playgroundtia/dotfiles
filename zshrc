@@ -28,7 +28,7 @@ if [[ `uname` == "Linux" ]]; then
   alias f5="sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
 else
   # Aliases
-  alias f5="brew update && brew upgrade && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
+  alias f5="brew update && brew upgrade && brew cu && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
   alias cpu="top -o cpu"
   alias mem="top -o rsize"
 fi
