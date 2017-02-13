@@ -18,6 +18,7 @@ alias ping="ping -c 5"
 alias fastping="ping -c 100 -s.2"
 alias ports="netstat -tulanp"
 alias wget="wget -c"
+alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Specific aliases and configurations
 if [[ `uname` == "Linux" ]]; then
