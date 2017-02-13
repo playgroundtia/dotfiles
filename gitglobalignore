@@ -1,4 +1,4 @@
-# Mac OS Files
+# macOS 
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -7,11 +7,11 @@ Icon
 .Spotlight-V100
 .Trashes
 
-# Windows Files
+# Windows
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-# Linux Files
+# Linux
 *~
