@@ -1,6 +1,6 @@
 # @gufranco does dotfiles
 
-![LeePaceCelebrate](http://i.giphy.com/Vc5x1pG5RFH3O.gif)
+![DROP THE MIC](http://gifs.joelglovier.com/boom/mic-drop-2.gif)
 
 These are my dotfiles. There are many like them, but these are mine. My dotfiles
 are my best friend. They are my life. I must master them as I must master my
