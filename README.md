@@ -1,3 +1,13 @@
-```
+# @gufranco does dotfiles
+
+These are my dotfiles. There are many like them, but these are mine. My dotfiles
+are my best friend. They are my life. I must master them as I must master my
+life. My dotfiles, without me, are useless. Without my dotfiles, I am useless.
+
+## Stupid simple installation one-liner
+
+```shell
 curl -L https://raw.githubusercontent.com/gufranco/dotfiles/master/install.sh | sh
 ```
+
+![LeePaceCelebrate](http://i.giphy.com/Vc5x1pG5RFH3O.gif)
