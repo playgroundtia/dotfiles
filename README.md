@@ -1,6 +1,6 @@
 # @gufranco does dotfiles
 
-![thumbs up](thumbs-up/thumbs-up.gif)
+![LeePaceCelebrate](http://i.giphy.com/Vc5x1pG5RFH3O.gif)
 
 These are my dotfiles. There are many like them, but these are mine. My dotfiles
 are my best friend. They are my life. I must master them as I must master my
