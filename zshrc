@@ -75,3 +75,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
+
+# Homebrew's sbin
+export PATH="/usr/local/sbin:$PATH"
