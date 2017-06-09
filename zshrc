@@ -26,10 +26,20 @@ if [[ `uname` == "Linux" ]]; then
   TERM=xterm-256color
 
   # Aliases
-  alias f5="sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
+  alias f5="sudo apt-get -y update && \
+            sudo apt-get -y upgrade && \
+            sudo apt-get -y dist-upgrade && \
+            sudo apt-get -y autoremove && \
+            cd ~/.dotfiles && \
+            git pull-sub && \
+            source ~/.zshrc"
 else
   # Aliases
-  alias f5="brew update && brew upgrade && brew cu && cd ~/.dotfiles && git pull-sub && source ~/.zshrc"
+  alias f5="brew update && \
+            brew upgrade && \
+            cd ~/.dotfiles && \
+            git pull-sub && \
+            source ~/.zshrc"
   alias cpu="top -o cpu"
   alias mem="top -o rsize"
 fi
@@ -75,6 +85,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
-
-# Homebrew's sbin
-export PATH="/usr/local/sbin:$PATH"
