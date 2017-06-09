@@ -37,6 +37,8 @@ else
   # Aliases
   alias f5="brew update && \
             brew upgrade && \
+            brew cleanup && \
+            brew cask cleanup && \
             cd ~/.dotfiles && \
             git pull-sub && \
             source ~/.zshrc"
