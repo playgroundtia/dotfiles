@@ -18,7 +18,6 @@ alias ping="ping -c 5"
 alias fastping="ping -c 100 -s.2"
 alias ports="netstat -tulanp"
 alias wget="wget -c"
-alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Specific aliases and configurations
 if [[ `uname` == "Linux" ]]; then
@@ -33,11 +32,14 @@ if [[ `uname` == "Linux" ]]; then
             cd ~/.dotfiles && \
             git pull-sub && \
             source ~/.zshrc"
+  alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 else
   # Aliases
   alias f5="brew update && \
             brew upgrade && \
             brew cleanup && \
+            brew prune && \
+            brew linkapps && \
             brew cask cleanup && \
             cd ~/.dotfiles && \
             git pull-sub && \
