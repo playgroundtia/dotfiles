@@ -39,7 +39,6 @@ else
             brew upgrade && \
             brew cleanup && \
             brew prune && \
-            brew linkapps && \
             brew cask cleanup && \
             cd ~/.dotfiles && \
             git pull-sub && \
