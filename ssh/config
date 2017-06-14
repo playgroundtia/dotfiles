@@ -5,8 +5,8 @@ Host *
 
 Host dev42
  User vagrant
- IdentityFile ~/Workspace/TeraVoz/devbox/keys/private
+ IdentityFile ~/workspace/devbox/keys/private
 
 Host 192.168.33.42
  User vagrant
- IdentityFile ~/Workspace/TeraVoz/devbox/keys/private
+ IdentityFile ~/workspace/devbox/keys/private
