@@ -45,6 +45,8 @@ else
             source ~/.zshrc"
   alias cpu="top -o cpu"
   alias mem="top -o rsize"
+
+  export PATH="/usr/local/opt/curl/bin:$PATH"
 fi
 
 # Uncomment the following line to use case-sensitive completion.
