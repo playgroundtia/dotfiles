@@ -78,7 +78,7 @@ cab Q q
 " Enable pathogen as submodule
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-" Run pathogen
+" Infect!
 execute pathogen#infect()
 
 
