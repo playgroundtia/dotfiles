@@ -1,6 +1,4 @@
 Host *
-  AddKeysToAgent yes
-  UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
 
 Host dev42
@@ -10,3 +8,6 @@ Host dev42
 Host 192.168.33.42
  User vagrant
  IdentityFile ~/workspace/devbox/keys/private
+
+Host teravoz-staging
+ IdentityFile ~/.ssh/teravoz-staging.pem
