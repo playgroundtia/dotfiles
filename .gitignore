@@ -1,4 +1,5 @@
 ssh/id_rsa
 ssh/id_rsa.pub
+ssh/*.pem
 ssh/known_hosts
 ssh/environment-*
