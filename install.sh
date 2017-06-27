@@ -21,31 +21,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-echo "Installing zsh"
-if [[ `uname` == "Linux" ]]; then
-  apt-get install -y zsh
+echo "Installing packages"
+if [ `uname` == "Linux" ]; then
+  add-apt-repository ppa:webupd8team/sublime-text-3
+  apt-get update
+
+  apt-get install zsh git vim sublime-text-installer
 else
-  brew install zsh
+  brew update
+  brew tap caskroom/cask
+
+  brew install zsh git vim
+  brew cask install sublime-text
 fi
 chsh -s `which zsh`
-
-echo "Installing Git"
-if [[ `uname` == "Linux" ]]; then
-  apt-get install -y git
-else
-  brew install git
-fi
 
 echo "Installing dotfiles"
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 
-
-echo "Installing vim"
-if [[ `uname` == "Linux" ]]; then
-  apt-get install -y vim
-else
-  brew install vim
-fi
 
 echo "Configuring vim"
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
@@ -58,20 +51,11 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
 fi
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 
-echo "Installing Sublime Text 3"
-if [[ `uname` == "Linux" ]]; then
-  add-apt-repository ppa:webupd8team/sublime-text-3
-  apt-get update
-  apt-get install -y sublime-text-installer
-else
-  brew cask install sublime-text
-fi
 echo "Configuring Sublime Text 3"
-if [ -f ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings ] || [ -h ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings ]; then
-  mv ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings.old
+if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] || [ -h ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ]; then
+  mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings.old
 fi
-ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-2/Packages/User/Preferences.sublime-settings
-
+ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
 echo "Configuring Git"
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
@@ -84,7 +68,6 @@ if [ -f ~/.gitglobalignore ] || [ -h ~/.gitglobalignore ]; then
 fi
 ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
-
 echo "Configuring oh-my-zsh"
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc ~/.zshrc-old
@@ -95,3 +78,9 @@ if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
   mv ~/.oh-my-zsh ~/.oh-my-zsh-old
 fi
 ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
+
+echo "Configuring ssh"
+if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
+  mv ~/.ssh ~/.ssh-old
+fi
+ln -s ~/.dotfiles/ssh ~/.ssh
