@@ -30,6 +30,7 @@ if [ `uname` == "Linux" ]; then
 else
   brew update
   brew tap caskroom/cask
+  brew tap buo/cask-upgrade
 
   brew install zsh git vim
   brew cask install sublime-text
