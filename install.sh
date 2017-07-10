@@ -82,6 +82,7 @@ else
   brew cask install iterm2
   brew cask install keka
   brew cask install mipony
+  brew cask install opera
   brew cask install reflector
   brew cask install screenflick
   brew cask install screenflow
