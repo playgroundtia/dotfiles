@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 
 echo "Installing packages"
-if [ `uname` == "Linux" ]; then
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
@@ -47,7 +47,7 @@ if [ `uname` == "Linux" ]; then
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   sudo apt-get -y update
   sudo apt-get -y install docker-ce
-else
+elif [ "$(uname)" == "Darwin" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew update
 
