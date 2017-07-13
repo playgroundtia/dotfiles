@@ -94,6 +94,8 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew cask install utorrent
   brew cask install vagrant
   brew cask install virtualbox
+else
+  exit 1
 fi
 chsh -s `which zsh`
 
