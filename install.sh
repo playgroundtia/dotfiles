@@ -33,9 +33,14 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y install zsh
 
   # Sublime Text 3
-  sudo apt-get -y update
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
+  sudo apt-get -y update
   sudo apt-get -y install sublime-text-installer
+
+  # Touchpad Indicator
+  sudo add-apt-repository ppa:atareao/atareao
+  sudo apt-get -y update
+  sudo apt-get -y install touchpad-indicator
 
   # Docker Engine
   sudo apt-get -y update
