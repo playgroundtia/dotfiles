@@ -37,7 +37,7 @@ else
   # Aliases
   alias f5="brew update && \
             brew upgrade && \
-            brew cu && \
+            brew cu --all --yes && \
             brew cleanup && \
             brew prune && \
             brew cask cleanup && \
