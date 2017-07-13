@@ -22,31 +22,108 @@
 # THE SOFTWARE.
 
 echo "Installing packages"
-if [ `uname` == "Linux" ]; then
-  add-apt-repository ppa:webupd8team/sublime-text-3
-  apt-get update
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  sudo apt-get -y update
+  sudo apt-get -y upgrade
+  sudo apt-get -y dist-upgrade
+  sudo apt-get -y autoremove
 
-  apt-get install zsh git vim sublime-text-installer
-else
+  sudo apt-get -y install git
+  sudo apt-get -y install vim
+
+  sudo apt-get -y install zsh
+  chsh -s `which zsh`
+
+  # Netstat
+  sudo apt-get -y install net-tools
+
+  # Sublime Text 3
+  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+  sudo apt-get -y update
+  sudo apt-get -y install sublime-text-installer
+
+  # Touchpad Indicator
+  sudo add-apt-repository ppa:atareao/atareao
+  sudo apt-get -y update
+  sudo apt-get -y install touchpad-indicator
+
+  # Docker Engine
+  sudo apt-get -y update
+  sudo apt-get -y remove docker docker-engine
+  sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
+  sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+  sudo apt-get -y install curl
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt-get -y update
+  sudo apt-get -y install docker-ce
+elif [ "$(uname)" == "Darwin" ]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew update
+
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install zsh git vim
+  brew install bash
+  brew install curl
+  brew install git
+  brew install node
+  brew install ruby
+  brew install vim
+  brew install wget
+  brew install yarn
+
+  brew install zsh
+  chsh -s `which zsh`
+
+  brew cask install bartender
+  brew cask install brave
+  brew cask install burn
+  brew cask install caffeine
+  brew cask install cakebrew
+  brew cask install cleanmymac
+  brew cask install cloud
+  brew cask install coconutbattery
+  brew cask install daisydisk
+  brew cask install dash
+  brew cask install folx
+  brew cask install google-chrome
+  brew cask install imageoptim
+  brew cask install istat-menus
+  brew cask install itau
+  brew cask install iterm2
+  brew cask install keka
+  brew cask install mipony
+  brew cask install opera
+  brew cask install reflector
+  brew cask install screenflick
+  brew cask install screenflow
+  brew cask install sizeup
+  brew cask install sketch
+  brew cask install skype
+  brew cask install spotify
   brew cask install sublime-text
+  brew cask install utorrent
+  brew cask install vagrant
+  brew cask install virtualbox
+else
+  echo "Your OS isn't supported"
+  exit 1
 fi
-chsh -s `which zsh`
 
-echo "Installing dotfiles"
+echo "Cloning dotfiles"
+if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
+  mv ~/.dotfiles ~/.dotfiles-old
+fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
-
+cd ~/.dotfiles
+git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 echo "Configuring vim"
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim ~/.vim-old
 fi
 ln -s ~/.dotfiles/vim ~/.vim
-
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc ~/.vimrc-old
 fi
@@ -63,7 +140,6 @@ if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
 fi
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
-
 if [ -f ~/.gitglobalignore ] || [ -h ~/.gitglobalignore ]; then
   mv ~/.gitglobalignore ~/.gitglobalignore-old
 fi
@@ -74,7 +150,6 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc ~/.zshrc-old
 fi
 ln -s ~/.dotfiles/zshrc ~/.zshrc
-
 if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
   mv ~/.oh-my-zsh ~/.oh-my-zsh-old
 fi
