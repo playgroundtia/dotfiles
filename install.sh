@@ -30,7 +30,9 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
   sudo apt-get -y install git
   sudo apt-get -y install vim
+
   sudo apt-get -y install zsh
+  chsh -s `which zsh`
 
   # Sublime Text 3
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
@@ -67,7 +69,9 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew install vim
   brew install wget
   brew install yarn
+
   brew install zsh
+  chsh -s `which zsh`
 
   brew cask install bartender
   brew cask install brave
@@ -100,15 +104,16 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew cask install vagrant
   brew cask install virtualbox
 else
+  echo "Your OS isn't supported"
   exit 1
 fi
-chsh -s `which zsh`
 
 echo "Cloning dotfiles"
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles ~/.dotfiles-old
 fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
+git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 echo "Configuring vim"
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
