@@ -34,6 +34,9 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y install zsh
   chsh -s `which zsh`
 
+  # Netstat
+  sudo apt-get -y install net-tools
+
   # Sublime Text 3
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
   sudo apt-get -y update
