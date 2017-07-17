@@ -116,6 +116,7 @@ if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles ~/.dotfiles-old
 fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 echo "Configuring vim"
