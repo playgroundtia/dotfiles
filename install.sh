@@ -126,6 +126,11 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew cask install utorrent
   brew cask install vagrant
   brew cask install virtualbox
+
+  # Ouch! I think we sould clean up the mess we made! :)
+  brew cleanup
+  brew prune
+  brew cask cleanup
 else
   echo "Your OS isn't supported"
   exit 1
