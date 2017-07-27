@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  # Upgrade installed packages
+  # Install, update and upgrade basic packages
   sudo apt-get -y update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
@@ -44,17 +44,6 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y update
   sudo apt-get -y install sublime-text-installer
 
-  # Install Docker
-  sudo apt-get -y update
-  sudo apt-get -y remove docker docker-engine
-  sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
-  sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
-  sudo apt-get -y install curl
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  sudo apt-get -y update
-  sudo apt-get -y install docker-ce
-
   # Install Google Chrome
   sudo apt-get -y remove chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -67,29 +56,70 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y update
   sudo apt-get -y install oracle-java8-installer oracle-java8-set-default
 
+  # Install Docker
+  sudo apt-get -y update
+  sudo apt-get -y remove docker docker-engine
+  sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
+  sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+  sudo apt-get -y install curl
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt-get -y update
+  sudo apt-get -y install docker-ce
+
+  # Install Flatpack
+  sudo add-apt-repository ppa:alexlarsson/flatpak
+  sudo apt -y update
+  sudo apt -y install flatpak
+
   # Ouch! I think we sould clean up the mess we made! :)
   sudo apt-get -y autoremove
 elif [ "$(uname)" == "Darwin" ]; then
+  # Install, update and upgrade basic packages
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew doctor
   brew update
 
+  # Install Brew Cask
   brew tap caskroom/cask
+
+  # Install Brew Cask Upgrade
   brew tap buo/cask-upgrade
 
+  # Install Ansible
   brew install ansible
+
+  # Install Bash
   brew install bash
+
+  # Install Curl
   brew install curl
+
+  # Install Git
   brew install git
+
+  # Install Htop
   brew install htop
+
+  # Install Maven
   brew install maven
+
+  # Install Node.js
   brew install node
-  brew install ruby
-  brew install vim
-  brew install wget
+
+  # Install Yarn Package Manager
   brew install yarn
 
-  # Zsh
+  # Install Ruby
+  brew install ruby
+
+  # Install Vim
+  brew install vim
+
+  # Install Wget
+  brew install wget
+
+  # Install Zsh
   brew install zsh
 
   brew cask install arduino
@@ -190,7 +220,7 @@ if [ -f ~/.gitglobalignore ] || [ -h ~/.gitglobalignore ]; then
 fi
 ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
-# Configuring oh-my-zsh
+# Configuring Oh-My-Zsh
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
