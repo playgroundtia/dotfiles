@@ -21,26 +21,30 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-echo "Installing packages"
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  # Upgrade installed packages
   sudo apt-get -y update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
-  sudo apt-get -y autoremove
 
+  # Install Git
   sudo apt-get -y install git
+
+  # Install Vim
   sudo apt-get -y install vim
+
+  # Install Zsh
   sudo apt-get -y install zsh
 
-  # Netstat
+  # Install Netstat
   sudo apt-get -y install net-tools
 
-  # Sublime Text 3
+  # Install Sublime Text 3
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
   sudo apt-get -y update
   sudo apt-get -y install sublime-text-installer
 
-  # Docker Engine
+  # Install Docker
   sudo apt-get -y update
   sudo apt-get -y remove docker docker-engine
   sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
@@ -50,8 +54,24 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   sudo apt-get -y update
   sudo apt-get -y install docker-ce
+
+  # Install Google Chrome
+  sudo apt-get -y remove chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  sudo apt-get -y update
+  sudo apt-get -y install google-chrome-stable
+
+  # Install Oracle JDK 8
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo apt-get -y update
+  sudo apt-get -y install oracle-java8-installer oracle-java8-set-default
+
+  # Ouch! I think we sould clean up the mess we made! :)
+  sudo apt-get -y autoremove
 elif [ "$(uname)" == "Darwin" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew doctor
   brew update
 
   brew tap caskroom/cask
@@ -68,6 +88,8 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew install vim
   brew install wget
   brew install yarn
+
+  # Zsh
   brew install zsh
 
   brew cask install arduino
@@ -124,12 +146,17 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew cask install visual-studio-code
   brew cask install vlc
   brew cask install x-lite
+
+  # Ouch! I think we sould clean up the mess we made! :)
+  brew cleanup
+  brew prune
+  brew cask cleanup
 else
   echo "Your OS isn't supported"
   exit 1
 fi
 
-echo "Cloning dotfiles"
+# Cloning dotfiles
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
@@ -137,7 +164,7 @@ git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
-echo "Configuring vim"
+# Configuring Vim
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
 fi
@@ -147,13 +174,13 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
 fi
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 
-echo "Configuring Sublime Text 3"
+# Configuring Sublime Text 3
 if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] || [ -h ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ]; then
   mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings /tmp/Preferences.sublime-settings-old
 fi
 ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
-echo "Configuring Git"
+# Configuring Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig /tmp/gitconfig-old
 fi
@@ -163,7 +190,7 @@ if [ -f ~/.gitglobalignore ] || [ -h ~/.gitglobalignore ]; then
 fi
 ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
-echo "Configuring Zsh"
+# Configuring oh-my-zsh
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
@@ -174,7 +201,7 @@ fi
 ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
 chsh -s `which zsh`
 
-echo "Configuring SSH"
+# Configuring SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
