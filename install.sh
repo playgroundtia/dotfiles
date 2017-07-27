@@ -30,9 +30,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
   sudo apt-get -y install git
   sudo apt-get -y install vim
-
   sudo apt-get -y install zsh
-  chsh -s `which zsh`
 
   # Netstat
   sudo apt-get -y install net-tools
@@ -41,11 +39,6 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
   sudo apt-get -y update
   sudo apt-get -y install sublime-text-installer
-
-  # Touchpad Indicator
-  sudo add-apt-repository ppa:atareao/atareao
-  sudo apt-get -y update
-  sudo apt-get -y install touchpad-indicator
 
   # Docker Engine
   sudo apt-get -y update
@@ -64,48 +57,73 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
+  brew install ansible
   brew install bash
   brew install curl
   brew install git
+  brew install htop
+  brew install maven
   brew install node
   brew install ruby
   brew install vim
   brew install wget
   brew install yarn
-
   brew install zsh
-  chsh -s `which zsh`
 
+  brew cask install arduino
+  brew cask install atom
   brew cask install bartender
   brew cask install brave
   brew cask install burn
   brew cask install caffeine
   brew cask install cakebrew
   brew cask install cleanmymac
-  brew cask install cloud
+  brew cask install cloudapp
   brew cask install coconutbattery
+  brew cask install cyberduck
   brew cask install daisydisk
   brew cask install dash
+  brew cask install dropbox
+  brew cask install eclipse-java
+  brew cask install electrum
+  brew cask install filezilla
+  brew cask install firefox
+  brew cask install flixtools
   brew cask install folx
+  brew cask install gemini
   brew cask install google-chrome
+  brew cask install handbrake
   brew cask install imageoptim
   brew cask install istat-menus
   brew cask install itau
   brew cask install iterm2
+  brew cask install java
   brew cask install keka
+  brew cask install keybase
+  brew cask install licecap
+  brew cask install mgba
   brew cask install mipony
   brew cask install opera
+  brew cask install plex-media-server
+  brew cask install printrun
   brew cask install reflector
+  brew cask install retroarch
   brew cask install screenflick
   brew cask install screenflow
+  brew cask install sequel-pro
   brew cask install sizeup
   brew cask install sketch
   brew cask install skype
+  brew cask install slack
   brew cask install spotify
   brew cask install sublime-text
+  brew cask install transmission
   brew cask install utorrent
   brew cask install vagrant
   brew cask install virtualbox
+  brew cask install visual-studio-code
+  brew cask install vlc
+  brew cask install x-lite
 else
   echo "Your OS isn't supported"
   exit 1
@@ -113,7 +131,7 @@ fi
 
 echo "Cloning dotfiles"
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
-  mv ~/.dotfiles ~/.dotfiles-old
+  mv ~/.dotfiles /tmp/dotfiles-old
 fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
@@ -121,42 +139,43 @@ git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 echo "Configuring vim"
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
-  mv ~/.vim ~/.vim-old
+  mv ~/.vim /tmp/vim-old
 fi
 ln -s ~/.dotfiles/vim ~/.vim
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
-  mv ~/.vimrc ~/.vimrc-old
+  mv ~/.vimrc /tmp/vimrc-old
 fi
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 
 echo "Configuring Sublime Text 3"
 if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] || [ -h ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ]; then
-  mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings.old
+  mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings /tmp/Preferences.sublime-settings-old
 fi
 ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
 echo "Configuring Git"
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
-  mv ~/.gitconfig ~/.gitconfig-old
+  mv ~/.gitconfig /tmp/gitconfig-old
 fi
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 if [ -f ~/.gitglobalignore ] || [ -h ~/.gitglobalignore ]; then
-  mv ~/.gitglobalignore ~/.gitglobalignore-old
+  mv ~/.gitglobalignore /tmp/gitglobalignore-old
 fi
 ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
-echo "Configuring oh-my-zsh"
+echo "Configuring Zsh"
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-  mv ~/.zshrc ~/.zshrc-old
+  mv ~/.zshrc /tmp/zshrc-old
 fi
 ln -s ~/.dotfiles/zshrc ~/.zshrc
 if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
-  mv ~/.oh-my-zsh ~/.oh-my-zsh-old
+  mv ~/.oh-my-zsh /tmp/oh-my-zsh-old
 fi
 ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
+chsh -s `which zsh`
 
-echo "Configuring ssh"
+echo "Configuring SSH"
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
-  mv ~/.ssh ~/.ssh-old
+  mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
