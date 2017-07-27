@@ -72,6 +72,12 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt -y update
   sudo apt -y install flatpak
 
+  # Install NVM
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+  # Install Node.js
+  nvm install --lts
+
   # Ouch! I think we sould clean up the mess we made! :)
   sudo apt-get -y autoremove
 elif [ "$(uname)" == "Darwin" ]; then
@@ -104,8 +110,11 @@ elif [ "$(uname)" == "Darwin" ]; then
   # Install Maven
   brew install maven
 
+  # Install NVM
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
   # Install Node.js
-  brew install node
+  nvm install --lts
 
   # Install Yarn Package Manager
   brew install yarn
