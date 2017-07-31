@@ -78,6 +78,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # Install Node.js
   nvm install --lts
 
+  # Install RVM
+  gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+  # Install Ruby
+  sudo apt-get -y update
+  sudo apt-get -y install gawk libssl-dev zlib1g-dev libyaml-dev libsqlite3-dev libgdbm-dev libncurses5-dev libtool bison libffi-dev libreadline6-dev
+  rvm install ruby --latest
+
   # Ouch! I think we sould clean up the mess we made! :)
   sudo apt-get -y autoremove
 elif [ "$(uname)" == "Darwin" ]; then
