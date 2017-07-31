@@ -85,7 +85,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Oh-my-zsh plugins
-plugins=(git node yarn npm debian osx ssh-agent)
+plugins=(ubuntu osx ssh-agent git nvm node yarn rvm ruby npm sublime postgres redis-cli vagrant docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
