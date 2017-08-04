@@ -113,7 +113,6 @@
                               ".hg",
                               "CVS",
                               "_build",
-                              "dist",
                               "build",
                               "$RECYCLE.BIN"],
 
