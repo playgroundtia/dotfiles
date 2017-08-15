@@ -3,3 +3,5 @@ ssh/id_rsa.pub
 ssh/*.pem
 ssh/known_hosts
 ssh/environment-*
+mutt/cache/*
+!mutt/cache/.gitkeep
