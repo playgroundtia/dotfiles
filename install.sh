@@ -201,6 +201,7 @@ elif [ "$(uname)" == "Darwin" ]; then
   brew cask install skype
   brew cask install slack
   brew cask install spotify
+  brew cask install steam
   brew cask install sublime-text
   brew cask install transmission
   brew cask install utorrent
