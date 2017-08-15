@@ -87,6 +87,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   sudo apt-get -y install gawk libssl-dev zlib1g-dev libyaml-dev libsqlite3-dev libgdbm-dev libncurses5-dev libtool bison libffi-dev libreadline6-dev
   rvm install ruby --latest
 
+  # Install Firefox
+  sudo apt-get -y install firefox
+
+  # Install Lynx
+  sudo apt-get -y install lynx
+
+  # Install Mutt
+  sudo apt-get -y install mutt
+
   # Ouch! I think we sould clean up the mess we made! :)
   sudo apt-get -y autoremove
 elif [ "$(uname)" == "Darwin" ]; then
@@ -139,6 +148,12 @@ elif [ "$(uname)" == "Darwin" ]; then
 
   # Install Zsh
   brew install zsh
+
+  # Install Lynx
+  brew install lynx
+
+  # Install Mutt
+  brew install mutt
 
   brew cask install arduino
   brew cask install atom
@@ -254,3 +269,19 @@ if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
+
+# Configuring Mutt
+if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
+  mv ~/.muttrc /tmp/muttrc-old
+fi
+ln -s ~/.dotfiles/muttrc ~/.muttrc
+if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
+  mv ~/.mutt /tmp/mutt-old
+fi
+ln -s ~/.dotfiles/mutt ~/.mutt
+
+# Configuring Mailcap
+if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
+  mv ~/.mailcap /tmp/mailcap-old
+fi
+ln -s ~/.dotfiles/mailcap ~/.mailcap
