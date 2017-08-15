@@ -102,10 +102,12 @@
                             "Thumbs.db",
                             "ehthumbs.db",
                             "Desktop.ini",
-                            "*.sass-cache"],
+                            "*.sass-cache",
+                            ".gitkeep"],
 
   // Pastas ignoradas
-  "folder_exclude_patterns": [".git",
+  "folder_exclude_patterns": ["node_modules",
+                              ".git",
                               ".svn",
                               ".vagrant",
                               ".idea",
