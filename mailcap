@@ -1,2 +1,1 @@
-text/html; firefox %s >/dev/null 2>&1; needsterminal
 text/html; lynx -dump -width=78 -nolist %s | sed 's/^   //'; copiousoutput; needsterminal; nametemplate=%s.html
