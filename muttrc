@@ -83,8 +83,22 @@ set ssl_verify_dates = yes
 set ssl_verify_host = yes
 # unset ssl_usesystemcerts
 
-# Don't beep, please!
-set nobeep
+# Index view
+set date_format = "%d/%m/%y"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Pager view
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
 
 # Theme
 source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-16.muttrc
