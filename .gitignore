@@ -1,4 +1,4 @@
-# Ignore everything, but the folder
+# Ignore everything, but the folder the folder
 !.gitkeep
 
 # SSH
@@ -10,6 +10,5 @@ ssh/environment-*
 
 # Mutt
 password
-password.gpg
-mutt/com.gmail.gustavocfranco/cache/*
-mutt/br.com.teravoz.gustavo.franco/cache/*
+mutt/accounts/com.gmail.gustavocfranco/cache/*
+mutt/accounts/br.com.teravoz.gustavo.franco/cache/*
