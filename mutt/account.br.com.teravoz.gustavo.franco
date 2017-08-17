@@ -1,3 +1,5 @@
+# -*- muttrc -*-
+
 # E-mail config
 set realname = "Gustavo Franco"
 set from = "gustavo.franco@teravoz.com.br"
@@ -16,12 +18,13 @@ set smtp_url = "smtps://gustavo.franco@teravoz.com.br@smtp.gmail.com:465/"
 # Encrypted IMAP/SMTP passwords
 source "gpg -d ~/.mutt/br.com.teravoz.gustavo.franco/password.gpg |"
 
-# IMAP folders
+# IMAP config
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash = "+[Gmail]/Trash"
 set record = "+[Gmail]/Sent Mail"
+set imap_list_subscribed = yes
 
 # Do not duplicate sent emails
 set copy = no
@@ -29,7 +32,14 @@ set copy = no
 # Security
 set ssl_force_tls = yes
 set ssl_starttls = yes
-set imap_list_subscribed = yes
+# set ssl_use_sslv2 = no
+set ssl_use_sslv3 = no
+set ssl_use_tlsv1 = no
+set ssl_use_tlsv1_1 = no
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
+# unset ssl_usesystemcerts
 set certificate_file = "~/.mutt/br.com.teravoz.gustavo.franco/certificates"
 
 # Cache

@@ -1,3 +1,5 @@
+# -*- muttrc -*-
+
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
 #folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
@@ -17,7 +19,7 @@ macro index <f5> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.b
 bind index G imap-fetch-mail
 
 # Editor config
-set editor = "vim -u NONE -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw'"
+set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 set charset = "utf-8"
 set record = ""
 
@@ -34,3 +36,7 @@ set text_flowed = yes
 
 # Put signatures on top of the message
 set sig_on_top = yes
+
+# Don't save local copies of sent mails
+unset record
+
