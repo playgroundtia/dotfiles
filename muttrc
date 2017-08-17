@@ -15,9 +15,6 @@ macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.c
 #macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
 macro index <f5> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.br.com.teravoz.gustavo.franco<enter><change-folder>!<enter>'
 
-# Fetch mail shortcut
-bind index G imap-fetch-mail
-
 # Editor config
 set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 set charset = "utf-8"
@@ -88,8 +85,8 @@ set date_format = "%d/%m/%y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
 set sort = threads
 set sort_aux = reverse-last-date-received
-set uncollapse_jump
-set sort_re
+set uncollapse_jump = yes
+set sort_re = yes
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # Index key bindings
@@ -103,9 +100,9 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 # Pager view
 set pager_index_lines = 10
 set pager_context = 3
-set pager_stop
-set menu_scroll
-set tilde
+set pager_stop = yes
+set menu_scroll = yes
+set tilde = yes
 unset markers
 
 # Pager key bindings
