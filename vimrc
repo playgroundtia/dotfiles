@@ -119,3 +119,7 @@ set lazyredraw
 
 " Appear all time
 set laststatus=2
+
+" Mutt config
+setl tw=72
+setl fo=aw

@@ -28,3 +28,9 @@ auto_view text/html
 
 # Hide warning "GPGME: CMS protocol not available"
 set crypt_use_gpgme = no
+
+# Avoid weird line breaks
+set text_flowed = yes
+
+# Put signatures on top of the message
+set sig_on_top = yes
