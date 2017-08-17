@@ -17,7 +17,7 @@ macro index <f5> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.b
 bind index G imap-fetch-mail
 
 # Editor config
-set editor = "vim -f"
+set editor = "vim -u NONE -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw'"
 set charset = "utf-8"
 set record = ""
 
