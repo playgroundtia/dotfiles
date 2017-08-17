@@ -1,10 +1,15 @@
+# Ignore everything, but the folder
+!.gitkeep
+
+# SSH
 ssh/id_rsa
 ssh/id_rsa.pub
 ssh/*.pem
 ssh/known_hosts
 ssh/environment-*
 
+# Mutt
+password
+password.gpg
 mutt/com.gmail.gustavocfranco/cache/*
-!mutt/com.gmail.gustavocfranco/cache/.gitkeep
 mutt/br.com.teravoz.gustavo.franco/cache/*
-!mutt/br.com.teravoz.gustavo.franco/cache/.gitkeep
