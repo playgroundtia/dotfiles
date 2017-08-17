@@ -3,5 +3,8 @@ ssh/id_rsa.pub
 ssh/*.pem
 ssh/known_hosts
 ssh/environment-*
-mutt/cache/*
-!mutt/cache/.gitkeep
+
+mutt/com.gmail.gustavocfranco/cache/*
+!mutt/com.gmail.gustavocfranco/cache/.gitkeep
+mutt/br.com.teravoz.gustavo.franco/cache/*
+!mutt/br.com.teravoz.gustavo.franco/cache/.gitkeep

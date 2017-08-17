@@ -1,0 +1,30 @@
+# Folder hooks
+folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
+#folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
+#folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
+folder-hook 'account.br.com.teravoz.gustavo.franco' 'source ~/.mutt/account.br.com.teravoz.gustavo.franco'
+
+# Default account
+source ~/.mutt/account.com.gmail.gustavocfranco
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
+#macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
+#macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
+macro index <f5> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.br.com.teravoz.gustavo.franco<enter><change-folder>!<enter>'
+
+# Fetch mail shortcut
+bind index G imap-fetch-mail
+
+# Editor config
+set editor = "vim -f"
+set charset = "utf-8"
+set record = ""
+
+# Sanely handle multi-part messages (prefer text part, but yield to
+# mailcap-configured rendering for html-only)
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+
+# Hide warning "GPGME: CMS protocol not available"
+set crypt_use_gpgme = no
