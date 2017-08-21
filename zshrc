@@ -29,6 +29,7 @@ if [[ `uname` == "Linux" ]]; then
             sudo apt-get -y upgrade && \
             sudo apt-get -y dist-upgrade && \
             sudo apt-get -y autoremove && \
+            sudo apt-get -y clean all && \
             cd ~/.dotfiles && \
             git pull-sub && \
             source ~/.zshrc"
