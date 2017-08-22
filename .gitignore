@@ -10,3 +10,8 @@ environment-*
 password
 mutt/accounts/com.gmail.gustavocfranco/cache/*
 mutt/accounts/br.com.teravoz.gustavo.franco/cache/*
+
+# GPG
+gnupg/private-keys-v1.d/
+gnupg/pubring.kbx
+gnupg/trustdb.gpg
