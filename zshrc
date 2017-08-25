@@ -18,6 +18,10 @@ alias ping="ping -c 5"
 alias fastping="ping -c 100 -s.2"
 alias ports="netstat -tulanp"
 alias wget="wget -c"
+alias less="less -R"
+alias more="more -R"
+alias grep="grep --color"
+alias path="echo $PATH | tr ':' '\n' | nl"
 
 # Specific aliases and configurations
 if [[ `uname` == "Linux" ]]; then
@@ -33,7 +37,6 @@ if [[ `uname` == "Linux" ]]; then
             cd ~/.dotfiles && \
             git pull-sub && \
             source ~/.zshrc"
-  alias docker-ip="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 else
   # Aliases
   alias f5="brew update && \
@@ -86,7 +89,21 @@ HIST_STAMPS="dd/mm/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Oh-my-zsh plugins
-plugins=(ubuntu osx ssh-agent nvm node yarn rvm ruby npm sublime postgres redis-cli vagrant docker docker-compose)
+plugins=(
+  docker
+  docker-compose
+  node
+  npm
+  nvm
+  osx
+  postgres
+  redis-cli
+  ssh-agent
+  sublime
+  ubuntu
+  vagrant
+  yarn
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,6 +113,3 @@ export LANG=pt_BR.UTF-8
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
