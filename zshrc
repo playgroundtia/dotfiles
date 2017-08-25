@@ -5,54 +5,64 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 
 # Aliases
+alias .....="cd ../../../../"
+alias ....="cd ../../../../"
+alias ...="cd ../../../"
+alias ..="cd .."
+alias .4="cd ../../../../"
+alias .5="cd ../../../../.."
+alias bc="bc -l"
+alias cd..="cd .."
+alias cd..='cd ..'
+alias egrep="egrep --color=auto"
+alias fastping="ping -c 100 -s.2"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
+alias l.="ls -d .* --color=auto"
 alias la="ls -aF"
 alias ld="ls -ld"
-alias ll="ls -la"
-alias l.="ls -d .*"
-alias cd..="cd .."
-alias bc="bc -l"
-alias sha1="openssl sha1"
-alias mkdir="mkdir -pv"
-alias mount="mount |column -t"
-alias ping="ping -c 5"
-alias fastping="ping -c 100 -s.2"
-alias ports="netstat -tulanp"
-alias wget="wget -c"
 alias less="less -R"
+alias ll="ls -la"
+alias ls="ls --color=auto"
+alias mkdir="mkdir -pv"
 alias more="more -R"
-alias grep="grep --color"
+alias mount="mount |column -t"
 alias path="echo $PATH | tr ':' '\n' | nl"
+alias ping="ping -c 5"
+alias ports="netstat -tulanp"
+alias sha1="openssl sha1"
+alias wget="wget -c"
+alias zgrep="zgrep --color=auto"
 
-# Specific aliases and configurations
-if [[ `uname` == "Linux" ]]; then
-  # Configurations
-  TERM=xterm-256color
+# Specific aliases
+case "$(uname)" in
+  Linux)
+    # Configurations
+    TERM=xterm-256color
 
-  # Aliases
-  alias f5="sudo apt-get -y update && \
-            sudo apt-get -y upgrade && \
-            sudo apt-get -y dist-upgrade && \
-            sudo apt-get -y autoremove && \
-            sudo apt-get -y clean all && \
-            cd ~/.dotfiles && \
-            git pull-sub && \
-            source ~/.zshrc"
-else
-  # Aliases
-  alias f5="brew update && \
-            brew upgrade && \
-            brew cu --all --yes && \
-            brew cleanup && \
-            brew prune && \
-            brew cask cleanup && \
-            cd ~/.dotfiles && \
-            git pull-sub && \
-            source ~/.zshrc"
-  alias cpu="top -o cpu"
-  alias mem="top -o rsize"
+    alias f5="sudo apt-get -y update && \
+              sudo apt-get -y upgrade && \
+              sudo apt-get -y dist-upgrade && \
+              sudo apt-get -y autoremove && \
+              sudo apt-get -y clean all && \
+              cd ~/.dotfiles && \
+              git pull-sub && \
+              source ~/.zshrc"
+    ;;
+  Darwin)
+    alias f5="brew update && \
+              brew upgrade && \
+              brew cu --all --yes && \
+              brew cleanup && \
+              brew prune && \
+              brew cask cleanup && \
+              cd ~/.dotfiles && \
+              git pull-sub && \
+              source ~/.zshrc"
 
-  export PATH="/usr/local/opt/curl/bin:$PATH"
-fi
+    export PATH="/usr/local/opt/curl/bin:$PATH"
+    ;;
+esac
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
