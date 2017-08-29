@@ -202,6 +202,15 @@ else
   brew install yarn
 fi
 
+# Install Skype
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install wget
+  wget https://repo.skype.com/latest/skypeforlinux-64.deb -P /tmp
+  sudo dpkg -i /tmp/skypeforlinux-64.deb
+else
+  brew cask install skype
+fi
+
 # Install macOS ~exclusive~ apps
 if [[ `uname` == "Darwin" ]]; then
   brew install ansible
@@ -224,23 +233,12 @@ if [[ `uname` == "Darwin" ]]; then
   brew cask install itau
   brew cask install iterm2
   brew cask install keka
-  brew cask install keybase
-  brew cask install mipony
-  brew cask install plex-media-server
-  brew cask install printrun
-  brew cask install reflector
-  brew cask install retroarch
-  brew cask install screenflick
-  brew cask install screenflow
-  brew cask install sequel-pro
   brew cask install sizeup
   brew cask install sketch
-  brew cask install skype
   brew cask install slack
   brew cask install spotify
   brew cask install steam
   brew cask install transmission
-  brew cask install utorrent
   brew cask install vagrant
   brew cask install virtualbox
   brew cask install vlc
