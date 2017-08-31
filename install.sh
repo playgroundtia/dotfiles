@@ -125,11 +125,11 @@ if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] ||
 fi
 ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
-# Intall Mutt
+# Intall NeoMutt
 if [[ `uname` == "Linux" ]]; then
-  sudo apt-get -y install lynx mutt gnupg-agent
+  sudo apt-get -y install lynx mutt gnupg-agent fortune
 else
-  brew cask install lynx mutt gpg
+  brew cask install lynx mutt gpg fortune
 fi
 if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
   mv ~/.muttrc /tmp/muttrc-old

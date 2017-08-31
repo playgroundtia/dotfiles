@@ -2,8 +2,6 @@
 
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
-#folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
-#folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
 folder-hook 'account.br.com.teravoz.gustavo.franco' 'source ~/.mutt/account.br.com.teravoz.gustavo.franco'
 
 # Default account
@@ -11,9 +9,7 @@ source ~/.mutt/account.com.gmail.gustavocfranco
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
-#macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
-#macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
-macro index <f5> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.br.com.teravoz.gustavo.franco<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.br.com.teravoz.gustavo.franco<enter><change-folder>!<enter>'
 
 # Editor config
 set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
@@ -71,14 +67,14 @@ set mail_check = 60
 # Security
 set ssl_force_tls = yes
 set ssl_starttls = yes
-# set ssl_use_sslv2 = no
+set ssl_use_sslv2 = no
 set ssl_use_sslv3 = no
 set ssl_use_tlsv1 = no
 set ssl_use_tlsv1_1 = no
 set ssl_use_tlsv1_2 = yes
 set ssl_verify_dates = yes
 set ssl_verify_host = yes
-# unset ssl_usesystemcerts
+unset ssl_usesystemcerts
 
 # Index view
 set date_format = "%d/%m/%y"
@@ -89,14 +85,6 @@ set uncollapse_jump = yes
 set sort_re = yes
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
-# Index key bindings
-bind index gg first-entry
-bind index G last-entry
-bind index R group-reply
-bind index <tab> sync-mailbox
-bind index <space> collapse-thread
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-
 # Pager view
 set pager_index_lines = 10
 set pager_context = 3
@@ -104,13 +92,6 @@ set pager_stop = yes
 set menu_scroll = yes
 set tilde = yes
 unset markers
-
-# Pager key bindings
-bind pager k previous-line
-bind pager j next-line
-bind pager gg top
-bind pager G bottom
-bind pager R group-reply
 
 # Theme
 source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-16.muttrc

@@ -9,11 +9,7 @@ set envelope_from = yes
 # IMAP / SMTP
 set imap_user = "gustavocfranco@gmail.com"
 set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
-
-# Unencrypted IMAP/SMTP passwords
-# set imap_pass = ""
-# set smtp_pass = ""
-# source "~/.mutt/accounts/com.gmail.gustavocfranco/password"
+set smtp_authenticators = "gssapi:login"
 
 # Encrypted IMAP/SMTP passwords
 source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
