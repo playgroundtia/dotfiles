@@ -19,7 +19,11 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
   # Default text editor
-  editor = vim -f
+  #
+  # editor = vim -f
+  # editor = subl -n -w
+  # editor = atom --wait
+  editor = vim -fgit
 
   # Uh, well... you know. Windows sucks :(
   longpaths = true
@@ -78,8 +82,8 @@
   # Checkout master
   cm = checkout master
 
-  # Checkout homologation
-  ch = checkout homologation
+  # Checkout staging
+  cs = checkout staging
 
   # Checkout development
   cd = checkout development
@@ -87,8 +91,8 @@
   # Push master
   pm = push -u origin master
 
-  # Push homologation
-  ph = push -u origin homologation
+  # Push staging
+  ps = push -u origin staging
 
   # Push development
   pd = push -u origin development
