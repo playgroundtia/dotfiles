@@ -2,8 +2,8 @@
   # Name
   name = Gustavo Franco
 
-  # E-mail
-  email = gufranco@users.noreply.github.com
+  # Require setting user.name and email per-repo
+  useConfigOnly = true
 
 [core]
   # Global ignore
