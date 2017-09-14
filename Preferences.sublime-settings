@@ -1,9 +1,9 @@
 {
   // Esquema de cores para Sublime
-  //"theme": "Soda Dark.sublime-theme",
+  "theme": "Afterglow.sublime-theme",
 
   // Esquema de cores para texto
-  //"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+  "color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
 
   // Altera a tecla que faz o autocomplete para tab
   "auto_complete_commit_on_tab": true,
@@ -67,54 +67,63 @@
   "fade_fold_buttons": false,
 
   // Exibe onde começa e termina a identação
-  "indent_guide_options": ["draw_normal", "draw_active"],
+  "indent_guide_options": [
+    "draw_normal",
+    "draw_active"
+  ],
 
   // Marca palavras semelhantes da palavra selecionada
   "find_selected_text": true,
 
   // Arquivos binários
-  "binary_file_patterns": ["*.psd",
-                           "*.jpg",
-                           "*.jpeg",
-                           "*.png",
-                           "*.gif",
-                           "*.ttf",
-                           "*.tga",
-                           "*.dds",
-                           "*.ico",
-                           "*.eot",
-                           "*.pdf",
-                           "*.swf",
-                           "*.jar",
-                           "*.zip"],
+  "binary_file_patterns": [
+    "*.psd",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.ttf",
+    "*.tga",
+    "*.dds",
+    "*.ico",
+    "*.eot",
+    "*.pdf",
+    "*.swf",
+    "*.jar",
+    "*.zip"
+  ],
 
   // Arquivos ignorados
-  "file_exclude_patterns": ["*.lib",
-                            ".DS_Store",
-                            "*~",
-                            "*.class",
-                            "*.db",
-                            "*.tmp",
-                            "*.out",
-                            "*.lock",
-                            "*.swp",
-                            "*.so",
-                            "Thumbs.db",
-                            "ehthumbs.db",
-                            "Desktop.ini",
-                            "*.sass-cache",
-                            ".gitkeep"],
+  "file_exclude_patterns": [
+    "*.lib",
+    ".DS_Store",
+    "*~",
+    "*.class",
+    "*.db",
+    "*.tmp",
+    "*.out",
+    "*.lock",
+    "*.swp",
+    "*.so",
+    "Thumbs.db",
+    "ehthumbs.db",
+    "Desktop.ini",
+    "*.sass-cache",
+    ".gitkeep"
+  ],
 
   // Pastas ignoradas
-  "folder_exclude_patterns": ["node_modules",
-                              ".git",
-                              ".svn",
-                              ".vagrant",
-                              ".idea",
-                              "nbproject",
-                              ".hg",
-                              "CVS",
-                              "$RECYCLE.BIN"],
+  "folder_exclude_patterns": [
+    "node_modules",
+    ".git",
+    ".svn",
+    ".vagrant",
+    ".idea",
+    "nbproject",
+    ".hg",
+    "CVS",
+    "$RECYCLE.BIN"
+  ],
 
   // Espaçamento superior da linha
   "line_padding_top": 1,
