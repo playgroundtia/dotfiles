@@ -123,6 +123,10 @@ fi
 apm install afterglow-ui
 apm install afterglow-syntax
 apm install editorconfig
+apm install atom-ide-ui
+apm install ide-json
+apm install ide-rust
+apm install ide-vue
 
 # Install Sublime Text 3
 if [[ `uname` == "Linux" ]]; then
