@@ -29,12 +29,8 @@
   // Esconde o mapa do arquivo
   "new_window_settings": {"show_minimap": false},
 
-  /*
-   * Exibe guia nas colunas com recomendação PEP8
-   * Docstrings: 72
-   * Código: 79
-   */
-  "rulers": [72, 79],
+  // Exibe guia nas colunas
+  "rulers": [79],
 
   // Salva o arquivo atual quando a aba não esta em foco
   "save_on_focus_lost": true,
