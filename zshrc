@@ -41,7 +41,7 @@ case "$(uname)" in
   Darwin)
     alias f5="brew update && \
               brew upgrade && \
-              brew cu --all --yes && \
+              brew cu --all --yes --cleanup && \
               brew cleanup && \
               brew prune && \
               brew cask cleanup && \
