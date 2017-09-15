@@ -112,6 +112,18 @@ ln -s ~/.dotfiles/gnupg ~/.gnupg
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
 
+# Install Atom
+if [[ `uname` == "Linux" ]]; then
+  sudo add-apt-repository ppa:webupd8team/atom
+  sudo apt-get -y update
+  sudo apt-get -y install atom
+else
+  brew cask install atom
+fi
+apm install afterglow-ui
+apm install afterglow-syntax
+apm install editorconfig
+
 # Install Sublime Text 3
 if [[ `uname` == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
@@ -124,31 +136,6 @@ if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] ||
   mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings /tmp/Preferences.sublime-settings-old
 fi
 ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
-
-# Intall NeoMutt
-if [[ `uname` == "Linux" ]]; then
-  sudo apt-get -y install lynx mutt gnupg-agent fortune
-else
-  brew cask install lynx mutt gpg fortune
-fi
-if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
-  mv ~/.muttrc /tmp/muttrc-old
-fi
-ln -s ~/.dotfiles/muttrc ~/.muttrc
-if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
-  mv ~/.mutt /tmp/mutt-old
-fi
-ln -s ~/.dotfiles/mutt ~/.mutt
-if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
-  mv ~/.mailcap /tmp/mailcap-old
-fi
-ln -s ~/.dotfiles/mailcap ~/.mailcap
-
-# Install SSH
-if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
-  mv ~/.ssh /tmp/ssh-old
-fi
-ln -s ~/.dotfiles/ssh ~/.ssh
 
 # Install Google Chrome
 if [[ `uname` == "Linux" ]]; then
