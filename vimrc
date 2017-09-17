@@ -88,6 +88,10 @@ execute pathogen#infect()
 " Map Control-n to toggle NERDTree
 map <C-\> :NERDTreeToggle<CR>
 
+" Open NERDTree in new tabs and windows if no command line args set
+autocmd VimEnter * if !argc() | NERDTree | endif
+autocmd BufEnter * if !argc() | NERDTreeMirror | endif
+
 " Open automatically when vim starts up but no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
