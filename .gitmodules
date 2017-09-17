@@ -20,5 +20,5 @@
 	path = vim/bundle/editorconfig-vim
   url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "vim/bundle/vim-minimap"]
-  path = vim/bundle/vim-minimap
-  url = https://github.com/severin-lemaignan/vim-minimap.git
+	path = vim/bundle/vim-minimap
+	url = https://github.com/severin-lemaignan/vim-minimap.git
