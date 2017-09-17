@@ -206,7 +206,7 @@ fi
 if [[ `uname` == "Darwin" ]]; then
   wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip -P /tmp
   unzip /tmp/ubuntu-font-family-0.83.zip
-  sudo cp ubuntu-font-family-0.83/*.ttf /Library/Fonts
+  sudo cp /tmp/ubuntu-font-family-0.83/*.ttf /Library/Fonts
 fi
 
 # Install macOS ~exclusive~ apps
