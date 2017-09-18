@@ -118,17 +118,36 @@ if [[ `uname` == "Linux" ]]; then
 else
   brew cask install atom
 fi
-
 apm install afterglow-syntax
 apm install afterglow-ui
+apm install atom-alignment
+apm install atom-beautify
 apm install atom-ide-ui
+apm install auto-detect-indentation
+apm install autoclose-html
+apm install autocomplete-paths
+apm install color-picker
 apm install editorconfig
+apm install emmet
+apm install expose
 apm install file-icons
+apm install git-blame
+apm install git-time-machine
+apm install hey-pane
+apm install highlight-selected
+apm install highlight-selected
 apm install ide-json
 apm install ide-vue
+apm install linter
 apm install minimap
 apm install minimap-highlight-selected
-
+apm install open-recent
+apm install pane-layout-plus
+apm install pigments
+apm install project-manager
+apm install sort-lines
+apm install todo-show
+apm install zentabs
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
   mv ~/.atom/config.cson /tmp/config.cson-old
 fi
