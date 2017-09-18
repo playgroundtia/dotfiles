@@ -41,6 +41,7 @@
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "f61cbfe1-ffd8-488d-b817-3bfad348d4ee"
+  linter: {}
   minimap:
     plugins:
       "highlight-selected": true

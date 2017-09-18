@@ -139,6 +139,7 @@ apm install highlight-selected
 apm install intentions
 apm install linter
 apm install linter-eslint
+apm install linter-shellcheck
 apm install linter-ui-default
 apm install minimap
 apm install minimap-highlight-selected
