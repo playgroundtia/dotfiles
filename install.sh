@@ -26,18 +26,15 @@ if [[ `uname` == "Linux" ]]; then
   sudo apt-get -y update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
+
+  sudo apt-get -y install curl git wget
 else
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew doctor
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
-fi
 
-# Install basic dependencies
-if [[ `uname` == "Linux" ]]; then
-  sudo apt-get -y install curl
-else
-  brew install curl
+  brew install curl git wget
 fi
 
 # Installing dotfiles
@@ -52,6 +49,7 @@ fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 git remote set-url origin git@github.com:gufranco/dotfiles.git
+git config user.email "gufranco@users.noreply.github.com"
 
 # Install Git
 if [[ `uname` == "Linux" ]]; then
@@ -128,12 +126,14 @@ apm install ide-json
 apm install ide-vue
 apm install minimap
 apm install minimap-highlight-selected
+apm install file-icons
 
 # Install Sublime Text 3
 if [[ `uname` == "Linux" ]]; then
-  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   sudo apt-get -y update
-  sudo apt-get -y install sublime-text-installer
+  sudo apt-get -y install sublime-text
 else
   brew cask install sublime-text
 fi
@@ -203,31 +203,58 @@ else
   brew cask install skype
 fi
 
-# Install Ubuntu font
+# Install Ubuntu Font (Ubuntu already has it, duh)
 if [[ `uname` == "Darwin" ]]; then
   wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip -P /tmp
   unzip /tmp/ubuntu-font-family-0.83.zip
   sudo cp /tmp/ubuntu-font-family-0.83/*.ttf /Library/Fonts
 fi
 
+# Install VLC
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install vlc
+else
+  brew cask install vlc
+fi
+
+# Install FileZilla
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install filezilla
+else
+  brew cask install filezilla
+fi
+
+# Install Vagrant / VirtualBox
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install virtualbox vagrant
+else
+  brew cask install virtualbox vagrant
+fi
+
+# Install Transmission
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install transmission
+else
+  brew cask install transmission
+fi
+
+# Install Arduino
+if [[ `uname` == "Linux" ]]; then
+  sudo apt-get -y install arduino
+else
+  brew cask install arduino
+fi
+
 # Install macOS ~exclusive~ apps
 if [[ `uname` == "Darwin" ]]; then
-  brew install ansible
-  brew install maven
-  brew install yarn
   brew cask install amphetamine
-  brew cask install arduino
   brew cask install bartender
   brew cask install cleanmymac
   brew cask install cloudapp
   brew cask install coconutbattery
   brew cask install cyberduck
-  brew cask install eclipse-java
-  brew cask install filezilla
   brew cask install flixtools
   brew cask install folx
-  brew cask install handbrake
-  brew cask install imageoptim
   brew cask install istat-menus
   brew cask install itau
   brew cask install iterm2
@@ -237,10 +264,6 @@ if [[ `uname` == "Darwin" ]]; then
   brew cask install slack
   brew cask install spotify
   brew cask install steam
-  brew cask install transmission
-  brew cask install vagrant
-  brew cask install virtualbox
-  brew cask install vlc
   brew cask install x-lite
 fi
 
