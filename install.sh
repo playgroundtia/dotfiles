@@ -120,13 +120,14 @@ if [[ `uname` == "Linux" ]]; then
 else
   brew cask install atom
 fi
-apm install afterglow-ui
 apm install afterglow-syntax
-apm install editorconfig
+apm install afterglow-ui
 apm install atom-ide-ui
+apm install editorconfig
 apm install ide-json
-apm install ide-rust
 apm install ide-vue
+apm install minimap
+apm install minimap-highlight-selected
 
 # Install Sublime Text 3
 if [[ `uname` == "Linux" ]]; then
