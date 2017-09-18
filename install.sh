@@ -118,15 +118,37 @@ if [[ `uname` == "Linux" ]]; then
 else
   brew cask install atom
 fi
+
 apm install afterglow-syntax
 apm install afterglow-ui
 apm install atom-ide-ui
 apm install editorconfig
+apm install file-icons
 apm install ide-json
 apm install ide-vue
 apm install minimap
 apm install minimap-highlight-selected
-apm install file-icons
+
+if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
+  mv ~/.atom/config.cson /tmp/config.cson-old
+fi
+ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+if [ -f ~/.atom/init.coffee ] || [ -h ~/.atom/init.coffee ]; then
+  mv ~/.atom/init.coffee /tmp/init.coffee-old
+fi
+ln -s ~/.dotfiles/atom/init.coffee ~/.atom/init.coffee
+if [ -f ~/.atom/keymap.cson ] || [ -h ~/.atom/keymap.cson ]; then
+  mv ~/.atom/keymap.cson /tmp/keymap.cson-old
+fi
+ln -s ~/.dotfiles/atom/keymap.cson ~/.atom/keymap.cson
+if [ -f ~/.atom/snippets.cson ] || [ -h ~/.atom/snippets.cson ]; then
+  mv ~/.atom/snippets.cson /tmp/snippets.cson-old
+fi
+ln -s ~/.dotfiles/atom/snippets.cson ~/.atom/snippets.cson
+if [ -f ~/.atom/styles.less ] || [ -h ~/.atom/styles.less ]; then
+  mv ~/.atom/styles.less /tmp/styles.less-old
+fi
+ln -s ~/.dotfiles/atom/styles.less ~/.atom/styles.less
 
 # Install Sublime Text 3
 if [[ `uname` == "Linux" ]]; then

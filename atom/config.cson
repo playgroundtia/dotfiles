@@ -1,0 +1,49 @@
+"*":
+  core:
+    ignoredNames: [
+      "._*"
+      ".DS_Store"
+      ".git"
+      ".gitkeep"
+      ".hg"
+      ".svn"
+      "*.class"
+      "*.db"
+      "*.lib"
+      "*.lock"
+      "*.out"
+      "*.sass-cache"
+      "*.so"
+      "*.swp"
+      "*.tmp"
+      "*~"
+      "Desktop.ini"
+      "ehthumbs.db"
+      "Thumbs.db"
+      "node_modules"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "afterglow-ui"
+      "afterglow-syntax"
+    ]
+    warnOnLargeFileLimit: 5
+  editor:
+    fontFamily: "Ubuntu Mono"
+    fontSize: 16
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+    zoomFontWhenCtrlScrolling: false
+  "exception-reporting":
+    userId: "f61cbfe1-ffd8-488d-b817-3bfad348d4ee"
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
