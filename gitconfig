@@ -23,7 +23,7 @@
   # editor = vim -f
   # editor = subl -n -w
   # editor = atom --wait
-  editor = vim -f
+  editor = atom --wait
 
   # Uh, well... you know. Windows sucks :(
   longpaths = true
