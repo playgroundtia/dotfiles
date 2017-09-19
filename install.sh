@@ -142,11 +142,13 @@ apm install afterglow-syntax
 apm install afterglow-ui
 apm install atom-alignment
 apm install atom-beautify
+apm install atom-ide-ui
 apm install auto-detect-indentation
 apm install autoclose-html
 apm install autocomplete-paths
 apm install busy-signal
 apm install color-picker
+apm install duplicate-removal
 apm install editorconfig
 apm install emmet
 apm install expose
@@ -155,8 +157,11 @@ apm install git-blame
 apm install git-time-machine
 apm install hey-pane
 apm install highlight-selected
-apm install highlight-selected
+apm install ide-json
+apm install ide-rust
+apm install ide-vue
 apm install intentions
+apm install language-git
 apm install linter
 apm install linter-eslint
 apm install linter-shellcheck
