@@ -2,6 +2,8 @@
   "atom-ide-ui":
     use:
       "atom-ide-diagnostics-ui": false
+  autosave:
+    enabled: true
   core:
     ignoredNames: [
       "._*"
@@ -9,7 +11,9 @@
       ".git"
       ".gitkeep"
       ".hg"
+      ".idea"
       ".svn"
+      ".vagrant"
       "*.class"
       "*.db"
       "*.lib"
@@ -20,10 +24,13 @@
       "*.swp"
       "*.tmp"
       "*~"
+      "$RECYCLE.BIN"
+      "CVS"
       "Desktop.ini"
       "ehthumbs.db"
-      "Thumbs.db"
+      "nbproject"
       "node_modules"
+      "Thumbs.db"
     ]
     telemetryConsent: "limited"
     themes: [
