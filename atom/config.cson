@@ -42,6 +42,8 @@
   "exception-reporting":
     userId: "f61cbfe1-ffd8-488d-b817-3bfad348d4ee"
   linter: {}
+  "linter-ui-default":
+    showPanel: true
   minimap:
     plugins:
       "highlight-selected": true
@@ -51,3 +53,6 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+  zentabs:
+    maximumOpenedTabs: 10
+    neverCloseUnsaved: true
