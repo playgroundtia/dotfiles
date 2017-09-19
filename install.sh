@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # The MIT License (MIT)
 #
 # Copyright (c) 2014 Gustavo Franco
@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 
 # Updates, upgrades, basic packages, etc...
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y update
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
@@ -38,7 +38,7 @@ else
 fi
 
 # Installing dotfiles
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install git
 else
   brew install git
@@ -47,12 +47,12 @@ if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+cd ~/.dotfiles || exit
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 git config user.email "gufranco@users.noreply.github.com"
 
 # Install Git
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install git
 else
   brew install git
@@ -67,7 +67,7 @@ fi
 ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
 # Install Vim
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install vim
 else
   brew install vim
@@ -82,7 +82,7 @@ fi
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 
 # Install Zsh
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install zsh
 else
   brew install zsh
@@ -95,10 +95,10 @@ if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
   mv ~/.oh-my-zsh /tmp/oh-my-zsh-old
 fi
 ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
-chsh -s `which zsh`
+sudo chsh -s "$(which zsh)"
 
 # Intall GPG
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install gnupg-agent
 else
   brew cask install gpg
@@ -110,13 +110,33 @@ ln -s ~/.dotfiles/gnupg ~/.gnupg
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
 
-# Install Atom
-if [[ `uname` == "Linux" ]]; then
+# Install NVM / Node.js LTS / Yarn
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install curl
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  nvm install --lts
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+else
+  brew install curl
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  nvm install --lts
+  brew install yarn
+fi
+
+# Install Atom (and dependencies)
+if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/atom
   sudo apt-get -y update
   sudo apt-get -y install atom
+
+  sudo yarn global add eslint
+  sudo apt-get -y install shellcheck
 else
   brew cask install atom
+
+  sudo yarn global add eslint
+  brew install shellcheck
 fi
 apm install afterglow-syntax
 apm install afterglow-ui
@@ -172,7 +192,7 @@ fi
 ln -s ~/.dotfiles/atom/styles.less ~/.atom/styles.less
 
 # Install Sublime Text 3
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   sudo apt-get -y update
@@ -186,7 +206,7 @@ fi
 ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
 # Install Google Chrome
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y remove chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
   sudo apt-get -y install wget
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -198,14 +218,14 @@ else
 fi
 
 # Install Firefox
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install firefox
 else
   brew cask install firefox
 fi
 
 # Install Oracle Java 8
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/java
   sudo apt-get -y update
   sudo apt-get -y install oracle-java8-installer oracle-java8-set-default
@@ -214,31 +234,17 @@ else
 fi
 
 # Install Docker (Linux only)
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y remove docker docker-engine
-  sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
+  sudo apt-get -y install linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   sudo apt-get -y update
   sudo apt-get -y install docker-ce
 fi
 
-# Install NVM / Node.js LTS / Yarn
-if [[ `uname` == "Linux" ]]; then
-  sudo apt-get -y install curl
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  nvm install --lts
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-else
-  brew install curl
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  nvm install --lts
-  brew install yarn
-fi
-
 # Install Skype
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install wget
   wget https://repo.skype.com/latest/skypeforlinux-64.deb -P /tmp
   sudo dpkg -i /tmp/skypeforlinux-64.deb
@@ -247,49 +253,49 @@ else
 fi
 
 # Install Ubuntu Font (Ubuntu already has it, duh)
-if [[ `uname` == "Darwin" ]]; then
+if [[ "$(uname)" == "Darwin" ]]; then
   wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip -P /tmp
   unzip /tmp/ubuntu-font-family-0.83.zip
   sudo cp /tmp/ubuntu-font-family-0.83/*.ttf /Library/Fonts
 fi
 
 # Install VLC
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install vlc
 else
   brew cask install vlc
 fi
 
 # Install FileZilla
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install filezilla
 else
   brew cask install filezilla
 fi
 
 # Install Vagrant / VirtualBox
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install virtualbox vagrant
 else
   brew cask install virtualbox vagrant
 fi
 
 # Install Transmission
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install transmission
 else
   brew cask install transmission
 fi
 
 # Install Arduino
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install arduino
 else
   brew cask install arduino
 fi
 
 # Install macOS ~exclusive~ apps
-if [[ `uname` == "Darwin" ]]; then
+if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install amphetamine
   brew cask install bartender
   brew cask install cleanmymac
@@ -311,7 +317,7 @@ if [[ `uname` == "Darwin" ]]; then
 fi
 
 # Clean the mess!
-if [[ `uname` == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y autoremove
   sudo apt-get -y clean all
 else
