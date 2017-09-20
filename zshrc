@@ -21,6 +21,7 @@ alias more="more -R"
 alias mount="mount |column -t"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
+alias rmsvn="find . -type d -name .svn -exec rm -rf {} \;"
 alias wget="wget -c"
 
 # Specific aliases
@@ -29,11 +30,11 @@ case "$(uname)" in
     # Configurations
     TERM=xterm-256color
 
-    alias f5="sudo apt-get -y update && \
-              sudo apt-get -y upgrade && \
-              sudo apt-get -y dist-upgrade && \
-              sudo apt-get -y autoremove && \
-              sudo apt-get -y clean all && \
+    alias f5="sudo apt-get update -y && \
+              sudo apt-get upgrade -y && \
+              sudo apt-get dist-upgrade -y && \
+              sudo apt-get autoremove -y && \
+              sudo apt-get clean all -y && \
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
@@ -89,18 +90,30 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Oh-my-zsh plugins
 plugins=(
+  brew
+  debian
   docker
   docker-compose
+  gem
+  git
+  github
+  gulp
+  heroku
+  man
   node
   npm
-  nvm
   osx
   postgres
+  rails
   redis-cli
+  rsync
+  ruby
   ssh-agent
   sublime
+  sudo
   ubuntu
   vagrant
+  xcode
   yarn
 )
 
@@ -108,7 +121,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
