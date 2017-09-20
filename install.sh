@@ -165,7 +165,6 @@ apm install ide-json
 apm install ide-rust
 apm install ide-vue
 apm install intentions
-apm install language-git
 apm install linter
 apm install linter-eslint
 apm install linter-shellcheck
