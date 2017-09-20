@@ -23,11 +23,11 @@
 
 # Updates, upgrades, basic packages, etc...
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y update
+  sudo apt-get update -y
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
 
-  sudo apt-get -y install curl git wget
+  sudo apt-get install -y curl git wget
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -43,7 +43,7 @@ fi
 
 # Installing dotfiles
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install git
+  sudo apt-get install -y git
 else
   brew install git
 fi
@@ -57,7 +57,7 @@ git config user.email "gufranco@users.noreply.github.com"
 
 # Install Git
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install git
+  sudo apt-get install -y git
 else
   brew install git
 fi
@@ -72,7 +72,7 @@ ln -s ~/.dotfiles/gitglobalignore ~/.gitglobalignore
 
 # Install Vim
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install vim
+  sudo apt-get install -y vim
 else
   brew install vim
 fi
@@ -87,7 +87,7 @@ ln -s ~/.dotfiles/vimrc ~/.vimrc
 
 # Install Zsh
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install zsh
+  sudo apt-get install -y zsh
 else
   brew install zsh
 fi
@@ -103,7 +103,7 @@ sudo chsh -s "$(which zsh)"
 
 # Intall GPG
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install gnupg-agent
+  sudo apt-get install -y gnupg-agent
 else
   brew cask install gpg
 fi
@@ -114,28 +114,26 @@ ln -s ~/.dotfiles/gnupg ~/.gnupg
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
 
-# Install NVM / Node.js LTS / Yarn
+# Install Node.js / Yarn
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install curl
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  nvm install --lts
+  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  sudo apt-get install -y nodejs build-essential
+
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 else
-  brew install curl
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  nvm install --lts
+  brew install node
   brew install yarn
 fi
 
 # Install Atom (and dependencies)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/atom
-  sudo apt-get -y update
-  sudo apt-get -y install atom
+  sudo apt-get update -y
+  sudo apt-get install -y atom
 
   sudo yarn global add eslint
-  sudo apt-get -y install shellcheck
+  sudo apt-get install -y shellcheck
 else
   brew cask install atom
 
@@ -203,8 +201,8 @@ ln -s ~/.dotfiles/atom/styles.less ~/.atom/styles.less
 if [[ "$(uname)" == "Linux" ]]; then
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-  sudo apt-get -y update
-  sudo apt-get -y install sublime-text
+  sudo apt-get update -y
+  sudo apt-get install -y sublime-text
 else
   brew cask install sublime-text
 fi
@@ -215,19 +213,19 @@ ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages
 
 # Install Google Chrome
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y remove chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
-  sudo apt-get -y install wget
+  sudo apt-get remove -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
+  sudo apt-get install -y wget
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  sudo apt-get -y update
-  sudo apt-get -y install google-chrome-stable
+  sudo apt-get update -y
+  sudo apt-get install -y google-chrome-stable
 else
   brew cask install google-chrome
 fi
 
 # Install Firefox
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install firefox
+  sudo apt-get install -y firefox
 else
   brew cask install firefox
 fi
@@ -235,25 +233,25 @@ fi
 # Install Oracle Java 8
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/java
-  sudo apt-get -y update
-  sudo apt-get -y install oracle-java8-installer oracle-java8-set-default
+  sudo apt-get update -y
+  sudo apt-get install -y oracle-java8-installer oracle-java8-set-default
 else
   brew cask install java
 fi
 
 # Install Docker (Linux only)
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y remove docker docker-engine
-  sudo apt-get -y install linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
+  sudo apt-get remove -y docker docker-engine
+  sudo apt-get install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  sudo apt-get -y update
-  sudo apt-get -y install docker-ce
+  sudo apt-get update -y
+  sudo apt-get install -y docker-ce
 fi
 
 # Install Skype
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install wget
+  sudo apt-get install -y wget
   wget https://repo.skype.com/latest/skypeforlinux-64.deb -P /tmp
   sudo dpkg -i /tmp/skypeforlinux-64.deb
 else
@@ -269,35 +267,35 @@ fi
 
 # Install VLC
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install vlc
+  sudo apt-get install -y vlc
 else
   brew cask install vlc
 fi
 
 # Install FileZilla
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install filezilla
+  sudo apt-get install -y filezilla
 else
   brew cask install filezilla
 fi
 
 # Install Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install virtualbox vagrant
+  sudo apt-get install -y virtualbox vagrant
 else
   brew cask install virtualbox vagrant
 fi
 
 # Install Transmission
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install transmission
+  sudo apt-get install -y transmission
 else
   brew cask install transmission
 fi
 
 # Install Arduino
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install arduino
+  sudo apt-get install -y arduino
 else
   brew cask install arduino
 fi
@@ -326,8 +324,8 @@ fi
 
 # Clean the mess!
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y autoremove
-  sudo apt-get -y clean all
+  sudo apt-get autoremove -y
+  sudo apt-get clean all -y
 else
   brew cleanup
   brew prune
