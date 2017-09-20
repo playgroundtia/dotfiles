@@ -2,6 +2,8 @@
   "atom-ide-ui":
     use:
       "atom-ide-diagnostics-ui": false
+  "auto-update-packages":
+    intervalMinutes: 1520
   autosave:
     enabled: true
   core:
@@ -44,13 +46,11 @@
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
-    tabType: "soft"
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "f61cbfe1-ffd8-488d-b817-3bfad348d4ee"
   linter: {}
-  "linter-ui-default":
-    showPanel: true
+  "linter-ui-default": {}
   minimap:
     plugins:
       "highlight-selected": true
