@@ -197,20 +197,6 @@ if [ -f ~/.atom/styles.less ] || [ -h ~/.atom/styles.less ]; then
 fi
 ln -s ~/.dotfiles/atom/styles.less ~/.atom/styles.less
 
-# Install Sublime Text 3
-if [[ "$(uname)" == "Linux" ]]; then
-  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-  sudo apt-get update -y
-  sudo apt-get install -y sublime-text
-else
-  brew cask install sublime-text
-fi
-if [ -f ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ] || [ -h ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings ]; then
-  mv ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings /tmp/Preferences.sublime-settings-old
-fi
-ln -s ~/.dotfiles/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
-
 # Install Google Chrome
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get remove -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
