@@ -29,6 +29,10 @@ if [[ "$(uname)" == "Linux" ]]; then
 
   sudo apt-get -y install curl git wget
 else
+  xcode-select -p || exit 1
+  sudo xcodebuild -license accept
+  sudo xcode-select --install
+
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew doctor
   brew tap caskroom/cask
