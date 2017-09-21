@@ -50,16 +50,22 @@
   "exception-reporting":
     userId: "f61cbfe1-ffd8-488d-b817-3bfad348d4ee"
   linter: {}
-  "linter-ui-default": {}
+  "linter-eslint":
+    fixOnSave: true
+  "linter-ui-default":
+    showPanel: true
   minimap:
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    scrollSyncType: "Vertical + Horizontal"
   "tree-view":
     hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
-  zentabs:
-    maximumOpenedTabs: 10
-    neverCloseUnsaved: true
