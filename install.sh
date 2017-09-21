@@ -175,7 +175,6 @@ apm install pigments
 apm install project-manager
 apm install sort-lines
 apm install todo-show
-apm install zentabs
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
   mv ~/.atom/config.cson /tmp/config.cson-old
 fi
