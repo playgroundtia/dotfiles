@@ -56,6 +56,8 @@
     showPanel: true
   minimap:
     plugins:
+      bookmarks: true
+      bookmarksDecorationsZIndex: 0
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
   "split-diff":
