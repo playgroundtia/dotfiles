@@ -1,7 +1,4 @@
 "*":
-  "atom-clock":
-    dateFormat: "MMMM D, dddd, H:mm"
-    locale: "pt-br"
   "atom-ide-ui":
     use:
       "atom-ide-diagnostics-ui": false
