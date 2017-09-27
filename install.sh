@@ -160,6 +160,7 @@ apm install highlight-selected
 apm install ide-json
 apm install ide-vue
 apm install intentions
+apm install language-asterisk
 apm install linter
 apm install linter-eslint
 apm install linter-shellcheck
