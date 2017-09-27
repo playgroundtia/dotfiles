@@ -144,6 +144,7 @@ apm install afterglow-syntax
 apm install afterglow-ui
 apm install atom-alignment
 apm install atom-beautify
+apm install atom-clock
 apm install atom-ide-ui
 apm install auto-detect-indentation
 apm install autoclose-html
@@ -164,11 +165,13 @@ apm install linter-eslint
 apm install linter-shellcheck
 apm install linter-ui-default
 apm install minimap
+apm install minimap-bookmarks
 apm install minimap-highlight-selected
 apm install open-recent
 apm install pane-layout-plus
 apm install pigments
 apm install project-manager
+apm install rest-client
 apm install sort-lines
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
   mv ~/.atom/config.cson /tmp/config.cson-old
