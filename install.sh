@@ -311,7 +311,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install slack
   brew cask install spotify
   brew cask install steam
-  brew cask install x-lite
 fi
 
 # Clean the mess!
