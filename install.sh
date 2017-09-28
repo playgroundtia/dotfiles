@@ -172,6 +172,7 @@ apm install linter-markdown
 apm install linter-shellcheck
 apm install linter-ui-default
 apm install markdown-pdf
+apm install markdown-preview-plus
 apm install minimap
 apm install minimap-bookmarks
 apm install minimap-highlight-selected

@@ -7,6 +7,9 @@
   autosave:
     enabled: true
   core:
+    disabledPackages: [
+      "markdown-preview"
+    ]
     ignoredNames: [
       "._*"
       ".DS_Store"
