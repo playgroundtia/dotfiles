@@ -146,26 +146,17 @@ apm install afterglow-syntax
 apm install afterglow-ui
 apm install atom-alignment
 apm install atom-beautify
-apm install atom-ide-ui
 apm install auto-detect-indentation
-apm install autoclose-html
-apm install autocomplete-ansible
 apm install autocomplete-paths
 apm install busy-signal
-apm install document-outline
 apm install duplicate-removal
 apm install editorconfig
 apm install emmet
 apm install file-icons
-apm install gist
 apm install git-blame
 apm install git-time-machine
 apm install highlight-selected
-apm install ide-json
-apm install ide-vue
-apm install imdone-atom
 apm install intentions
-apm install language-ansible
 apm install language-asterisk
 apm install linter
 apm install linter-ansible-syntax
@@ -179,9 +170,7 @@ apm install minimap
 apm install minimap-bookmarks
 apm install minimap-highlight-selected
 apm install open-recent
-apm install pane-layout-plus
 apm install pigments
-apm install project-manager
 apm install rest-client
 apm install sort-lines
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
