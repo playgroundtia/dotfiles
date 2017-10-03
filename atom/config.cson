@@ -74,3 +74,6 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+  zentabs:
+    maximumOpenedTabs: 10
+    neverCloseUnsaved: true
