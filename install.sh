@@ -121,8 +121,6 @@ if [[ "$(uname)" == "Linux" ]]; then
 
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt-get update -y
-  sudo apt-get install -y yarn
 else
   brew install node
   brew install yarn
@@ -199,7 +197,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get remove -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
   sudo apt-get install -y wget
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
   sudo apt-get update -y
   sudo apt-get install -y google-chrome-stable
 else
