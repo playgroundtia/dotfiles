@@ -1,0 +1,100 @@
+# -*- muttrc -*-
+
+# Folder hooks
+folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
+folder-hook 'account.br.com.teravoz.gustavo.franco' 'source ~/.mutt/account.br.com.teravoz.gustavo.franco'
+
+# Default account
+source ~/.mutt/account.com.gmail.gustavocfranco
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.br.com.teravoz.gustavo.franco<enter><change-folder>!<enter>'
+
+# Editor config
+set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
+set charset = "utf-8"
+set record = ""
+
+# Tell mutt which MIME types to auto-view
+auto_view application/msword
+auto_view application/octet-stream
+auto_view application/RTF
+auto_view application/x-gunzip
+auto_view application/x-gzip
+auto_view application/x-perl
+auto_view application/x-sh
+auto_view application/x-tar-gz
+auto_view application/x-tcl
+auto_view application/x-zip-compressed
+auto_view application/zip
+auto_view image/tiff
+auto_view text/html
+auto_view text/x-vcard
+
+# Sanely handle multi-part messages
+alternative_order text/enriched text/plain text text/html
+
+# Ignore all headers
+ignore *
+
+# Unignore some headers
+unignore From: To: CC: Date: Subject:
+
+# Order the visible header lines
+unhdr_order *
+hdr_order From: To: CC: Date: Subject:
+
+# Hide warning "GPGME: CMS protocol not available"
+set crypt_use_gpgme = no
+
+# Avoid weird line breaks
+set text_flowed = yes
+
+# Put signatures on top of the message
+set sig_on_top = yes
+
+# Don't save local copies of sent mails
+unset record
+
+# IMAP configs
+set imap_idle = yes
+set imap_keepalive = 60
+set imap_list_subscribed = yes
+set imap_passive = no
+set mail_check = 60
+
+# Security
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set ssl_use_sslv2 = no
+set ssl_use_sslv3 = no
+set ssl_use_tlsv1 = no
+set ssl_use_tlsv1_1 = no
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
+unset ssl_usesystemcerts
+
+# Index view
+set date_format = "%d/%m/%y"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump = yes
+set sort_re = yes
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Pager view
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop = yes
+set menu_scroll = yes
+set tilde = yes
+unset markers
+
+# Theme
+source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-16.muttrc
+
+# Display version on startup
+push <show-version>

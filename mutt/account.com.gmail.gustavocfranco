@@ -1,0 +1,35 @@
+# -*- muttrc -*-
+
+# E-mail config
+set realname = "Gustavo Franco"
+set from = "gustavocfranco@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+# IMAP / SMTP
+set imap_user = "gustavocfranco@gmail.com"
+set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
+set smtp_authenticators = "gssapi:login"
+
+# Encrypted IMAP/SMTP passwords
+source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
+
+# IMAP folders
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+set record = "+[Gmail]/Sent Mail"
+
+# Do not duplicate sent emails
+set copy = no
+
+# Certificates
+set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"
+
+# Cache
+set header_cache = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/headers"
+set message_cachedir = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/bodies"
+
+# Signature
+set signature = "~/.mutt/signatures/personal"

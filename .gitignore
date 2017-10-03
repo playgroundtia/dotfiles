@@ -1,7 +1,15 @@
+# Ignore everything, but the folder the folder
+!.gitkeep
+
 # SSH
 *.pem
 known_hosts
 environment-*
+
+# Mutt
+password
+mutt/accounts/com.gmail.gustavocfranco/cache/*
+mutt/accounts/br.com.teravoz.gustavo.franco/cache/*
 
 # GPG
 gnupg/private-keys-v1.d/
