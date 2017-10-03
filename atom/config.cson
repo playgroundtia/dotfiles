@@ -9,6 +9,7 @@
   core:
     disabledPackages: [
       "markdown-preview"
+      "spell-check"
     ]
     ignoredNames: [
       "._*"
