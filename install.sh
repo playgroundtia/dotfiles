@@ -138,6 +138,7 @@ if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
+chmod 400 ~/.ssh/id_rsa
 
 # Install Node.js / Yarn
 if [[ "$(uname)" == "Linux" ]]; then
