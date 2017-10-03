@@ -121,6 +121,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get install -y yarn
 else
   brew install node
   brew install yarn
@@ -171,6 +172,7 @@ apm install open-recent
 apm install pigments
 apm install rest-client
 apm install sort-lines
+apm install zentabs
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then
   mv ~/.atom/config.cson /tmp/config.cson-old
 fi
@@ -197,7 +199,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get remove -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
   sudo apt-get install -y wget
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
   sudo apt-get update -y
   sudo apt-get install -y google-chrome-stable
 else
@@ -281,6 +283,23 @@ else
   brew cask install arduino
 fi
 
+# Install Spotify
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+  sudo apt-get update -y
+  sudo apt-get install -y spotify-client
+else
+  brew cask install spotify
+fi
+
+# Install Steam
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get install -y steam
+else
+  brew cask install steam
+fi
+
 # Install macOS ~exclusive~ apps
 if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install amphetamine
@@ -298,8 +317,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install sizeup
   brew cask install sketch
   brew cask install slack
-  brew cask install spotify
-  brew cask install steam
 fi
 
 # Clean the mess!
