@@ -10,6 +10,7 @@
     disabledPackages: [
       "markdown-preview"
       "spell-check"
+      "whitespace"
     ]
     ignoredNames: [
       "._*"
