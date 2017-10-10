@@ -1,5 +1,8 @@
 Host *
   IdentityFile ~/.ssh/id_rsa
+  LogLevel INFO
+  ServerAliveInterval 120
+  StrictHostKeyChecking ask
 
 Host dev42
   User vagrant
