@@ -1,9 +1,14 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "80674afc-6339-47a5-b117-98c61272a093"
   "atom-ide-ui":
     use:
       "atom-ide-diagnostics-ui": false
   "auto-update-packages":
     intervalMinutes: 1520
+  "autocomplete-paths":
+    enableHtmlSupport: true
   autosave:
     enabled: true
   core:
@@ -57,8 +62,7 @@
   linter: {}
   "linter-eslint":
     fixOnSave: true
-  "linter-ui-default":
-    showPanel: true
+  "linter-ui-default": {}
   minimap:
     plugins:
       bookmarks: true
