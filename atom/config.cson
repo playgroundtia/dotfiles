@@ -12,6 +12,7 @@
   autosave:
     enabled: true
   core:
+    closeDeletedFileTabs: true
     disabledPackages: [
       "markdown-preview"
       "spell-check"

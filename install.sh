@@ -175,6 +175,7 @@ apm install atom-ide-ui
 apm install auto-detect-indentation
 apm install autocomplete-paths
 apm install busy-signal
+apm install docker
 apm install dockerletion
 apm install document-outline
 apm install duplicate-removal
