@@ -16,6 +16,7 @@
       "markdown-preview"
       "spell-check"
       "whitespace"
+      "language-gfm"
     ]
     ignoredNames: [
       "._*"
@@ -50,6 +51,8 @@
       "afterglow-syntax"
     ]
     warnOnLargeFileLimit: 5
+  "document-outline":
+    showByDefault: false
   editor:
     fontFamily: "Ubuntu Mono"
     fontSize: 16
@@ -62,13 +65,32 @@
   linter: {}
   "linter-eslint":
     fixOnSave: true
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 250
   minimap:
     plugins:
       bookmarks: true
       bookmarksDecorationsZIndex: 0
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+      "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
+      "minimap-autohider": true
+      "minimap-autohiderDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+      selection: true
+      selectionDecorationsZIndex: 0
+  "minimap-autohider":
+    TransitionDuration: 250
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
