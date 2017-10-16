@@ -11,6 +11,9 @@
     enableHtmlSupport: true
   autosave:
     enabled: true
+  "autoupdate-packages":
+    frequency: 12
+    lastUpdateTimestamp: 1508158004762
   core:
     closeDeletedFileTabs: true
     disabledPackages: [

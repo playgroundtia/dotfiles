@@ -174,6 +174,7 @@ apm install atom-beautify
 apm install atom-ide-ui
 apm install auto-detect-indentation
 apm install autocomplete-paths
+apm install autoupdate-packages
 apm install busy-signal
 apm install clipboard-plus
 apm install docker
