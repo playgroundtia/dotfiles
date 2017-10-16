@@ -185,7 +185,6 @@ apm install file-icons
 apm install git-blame
 apm install git-time-machine
 apm install highlight-selected
-apm install https://github.com/ansballard/minimap-autohider.git
 apm install ide-cpp
 apm install ide-go
 apm install ide-json
