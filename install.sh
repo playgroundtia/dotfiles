@@ -171,8 +171,11 @@ apm install afterglow-syntax
 apm install afterglow-ui
 apm install atom-alignment
 apm install atom-beautify
+apm install atom-clock
 apm install atom-ide-ui
 apm install auto-detect-indentation
+apm install autocomplete-json
+apm install autocomplete-modules
 apm install autocomplete-paths
 apm install autoupdate-packages
 apm install busy-signal
@@ -218,6 +221,7 @@ apm install minimap-selection
 apm install open-recent
 apm install pigments
 apm install rest-client
+apm install scroll-through-time
 apm install sort-lines
 apm install zentabs
 if [ -f ~/.atom/config.cson ] || [ -h ~/.atom/config.cson ]; then

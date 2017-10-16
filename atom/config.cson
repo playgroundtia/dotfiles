@@ -2,6 +2,10 @@
   "atom-beautify":
     general:
       _analyticsUserId: "80674afc-6339-47a5-b117-98c61272a093"
+  "atom-clock":
+    dateFormat: "dddd, DD [de] MMMM [de] YYYY, HH:mm"
+    locale: "pt-br"
+    showTooltip: true
   "atom-ide-ui":
     use:
       "atom-ide-diagnostics-ui": false
@@ -71,6 +75,7 @@
     fixOnSave: true
   "linter-ui-default":
     panelHeight: 250
+    showPanel: true
   minimap:
     plugins:
       bookmarks: true
