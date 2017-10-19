@@ -173,6 +173,7 @@ apm install atom-alignment
 apm install atom-beautify
 apm install atom-clock
 apm install atom-ide-ui
+apm install atom-typescript
 apm install auto-detect-indentation
 apm install autoclose-html
 apm install autocomplete-ansible
@@ -212,7 +213,6 @@ apm install language-dotenv
 apm install language-gitignore
 apm install language-markdown
 apm install language-rust
-apm install language-typescript
 apm install linter
 apm install linter-ansible-syntax
 apm install linter-docker
