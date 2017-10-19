@@ -17,7 +17,7 @@
     enabled: true
   "autoupdate-packages":
     frequency: 12
-    lastUpdateTimestamp: 1508339986406
+    lastUpdateTimestamp: 1508158004762
   core:
     closeDeletedFileTabs: true
     disabledPackages: [
@@ -106,10 +106,6 @@
     leftEditorColor: "red"
     rightEditorColor: "green"
     scrollSyncType: "Vertical + Horizontal"
-  "sync-settings":
-    _lastBackupHash: "3e7deaf63ee385b8967a14a28ba877148ae9d55d"
-    gistId: "50783fdfc7e8895e16e13ab4f67462a5"
-    personalAccessToken: "67bb576ed8e64328c3b889e8544fe6531c5689ca"
   "tree-view":
     hideIgnoredNames: true
     hideVcsIgnoredFiles: true
