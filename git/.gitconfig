@@ -7,7 +7,7 @@
 
 [core]
   # Global ignore
-  excludesfile = ~/.gitglobalignore
+  excludesfile = ~/.dotfiles/git/.gitignore_global
 
   # Don't convert line break to CRLF. Keep CR
   autocrlf = input
@@ -19,14 +19,13 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
   # Default text editor
-  #
-  # editor = vim -f
-  # editor = subl -n -w
-  # editor = atom --wait
-  editor = vim -f
+  editor = vim -f -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set cursorline' -c 'set number' -c 'set mouse=a'
 
   # Uh, well... you know. Windows sucks :(
   longpaths = true
+
+[commit]
+  template = ~/.dotfiles/git/.gitmessage
 
 [color]
   ui = auto
@@ -133,5 +132,5 @@
   # Branchs hier
   hier = log --all --graph --decorate --oneline --simplify-by-decoration
 
-  # Backup isn't enough <3
-  backup = !tar -cvzf ../git_backup.tgz *
+  # Create a package <3
+  package = !tar --exclude=".git" -cvzf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tgz *
