@@ -91,10 +91,6 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
-  mv ~/.oh-my-zsh /tmp/oh-my-zsh-old
-fi
-ln -s ~/.dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 sudo chsh -s "$(which zsh)"
 
 # Intall GPG

@@ -1,5 +1,5 @@
 # Oh-my-zsh installation
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 
 # Oh-my-zsh theme
 ZSH_THEME="awesomepanda"
