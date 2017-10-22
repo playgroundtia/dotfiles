@@ -79,7 +79,7 @@ ln -s ~/.dotfiles/vim ~/.vim
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
-ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
 # Install Zsh
 if [[ "$(uname)" == "Linux" ]]; then
@@ -90,11 +90,11 @@ fi
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
-ln -s ~/.dotfiles/zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
   mv ~/.oh-my-zsh /tmp/oh-my-zsh-old
 fi
-ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
+ln -s ~/.dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 sudo chsh -s "$(which zsh)"
 
 # Intall GPG
