@@ -163,7 +163,7 @@ apm install sync-settings
 
 # Install Google Chrome
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get remove -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
+  sudo apt-get purge -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
   sudo apt-get install -y wget
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -191,7 +191,7 @@ fi
 
 # Install Docker (Linux only)
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get remove -y docker docker-engine
+  sudo apt-get purge -y docker docker-engine
   sudo apt-get install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
