@@ -106,25 +106,6 @@ ln -s ~/.dotfiles/gnupg ~/.gnupg
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
 
-# Intall NeoMutt
-if [[ `uname` == "Linux" ]]; then
-  sudo apt-get -y install lynx mutt gnupg-agent
-else
-  brew cask install lynx mutt gpg
-fi
-if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
-  mv ~/.muttrc /tmp/muttrc-old
-fi
-ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
-if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
-  mv ~/.mutt /tmp/mutt-old
-fi
-ln -s ~/.dotfiles/mutt ~/.mutt
-if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
-  mv ~/.mailcap /tmp/mailcap-old
-fi
-ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
-
 # Install SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
