@@ -17,6 +17,11 @@ Host teravoz-staging
   User ubuntu
   IdentityFile ~/.ssh/teravoz-staging.pem
 
+Host teravoz-newstaging
+  HostName 52.67.250.120
+  User ubuntu
+  IdentityFile ~/.ssh/teravoz-staging.pem
+
 Host teravoz-production-madre
   HostName madre001.teravoz.com.br
   User ubuntu
