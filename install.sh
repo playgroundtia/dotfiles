@@ -5,7 +5,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y upgrade
   sudo apt-get -y dist-upgrade
 
-  sudo apt-get install -y curl git wget
+  sudo apt-get install -y curl git wget zsh vim gnupg-agent
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -16,10 +16,10 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install curl git wget
+  brew install curl git wget zsh vim gpg
 fi
 
-# Installing dotfiles
+# Install dotfiles
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y git
 else
@@ -39,12 +39,7 @@ if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
 fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
-# Install Vim
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y vim
-else
-  brew install vim
-fi
+# Configure Vim
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
 fi
@@ -54,24 +49,14 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
 fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
-# Install Zsh
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y zsh
-else
-  brew install zsh
-fi
+# Configure Zsh
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 sudo chsh -s "$(which zsh)"
 
-# Intall GPG
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y gnupg-agent
-else
-  brew cask install gpg
-fi
+# Configure GPG
 if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
@@ -79,7 +64,7 @@ ln -s ~/.dotfiles/gnupg ~/.gnupg
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
 gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
 
-# Install SSH
+# Configure SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
