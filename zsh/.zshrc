@@ -90,7 +90,6 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Oh-my-zsh plugins
 plugins=(
-  brew
   debian
   docker
   docker-compose
