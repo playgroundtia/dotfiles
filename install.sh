@@ -1,26 +1,4 @@
 #!/bin/bash
-# The MIT License (MIT)
-#
-# Copyright (c) 2014 Gustavo Franco
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-
 # Updates, upgrades, basic packages, etc...
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get update -y
@@ -55,12 +33,7 @@ cd ~/.dotfiles || exit
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 git config user.email "gufranco@users.noreply.github.com"
 
-# Install Git
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y git
-else
-  brew install git
-fi
+# Configure Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig /tmp/gitconfig-old
 fi
@@ -152,13 +125,6 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y google-chrome-stable
 else
   brew cask install google-chrome
-fi
-
-# Install Firefox
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y firefox
-else
-  brew cask install firefox
 fi
 
 # Install Oracle Java 8
