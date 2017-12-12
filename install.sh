@@ -2,8 +2,8 @@
 # Updates, upgrades, basic packages, etc...
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get update -y
-  sudo apt-get -y upgrade
-  sudo apt-get -y dist-upgrade
+  sudo apt-get upgrade -y
+  sudo apt-get dist-upgrade -y
 
   sudo apt-get install -y curl git wget zsh vim gnupg-agent
 else
