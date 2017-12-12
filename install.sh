@@ -20,11 +20,6 @@ else
 fi
 
 # Install dotfiles
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y git
-else
-  brew install git
-fi
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
