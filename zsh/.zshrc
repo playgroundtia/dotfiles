@@ -46,6 +46,8 @@ case "$(uname)" in
               brew cleanup && \
               brew prune && \
               brew cask cleanup && \
+              mas upgrade && \
+              sudo softwareupdate -i -a && \
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
@@ -108,7 +110,6 @@ plugins=(
   rsync
   ruby
   ssh-agent
-  sublime
   sudo
   ubuntu
   vagrant
