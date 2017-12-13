@@ -17,7 +17,7 @@ else
   brew tap buo/cask-upgrade
   brew tap caskroom/fonts
 
-  brew install curl git wget zsh vim gpg
+  brew install mas curl git wget zsh vim gpg
 fi
 
 # Install dotfiles
@@ -196,19 +196,31 @@ fi
 
 # Install macOS ~exclusive~ apps
 if [[ "$(uname)" == "Darwin" ]]; then
-  # brew cask install bartender
+  # Amphetamine
+  mas install 937984704
+
+  # Twitter
+  mas install 409789998
+
+  # Airmail 3
+  mas install 918858936
+
+  # Valentina Studio
+  mas install 604825918
+
+  brew cask install bartender
   brew cask install cleanmymac
   brew cask install cloudapp
   brew cask install coconutbattery
-  # brew cask install cyberduck
+  brew cask install cyberduck
   brew cask install flixtools
   brew cask install folx
-  # brew cask install istat-menus
+  brew cask install istat-menus
   brew cask install itau
   brew cask install iterm2
   brew cask install keka
   brew cask install sizeup
-  # brew cask install slack
+  brew cask install slack
 fi
 
 # Clean the mess!
