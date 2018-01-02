@@ -92,6 +92,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Oh-my-zsh plugins
 plugins=(
+  asdf
   debian
   docker
   docker-compose
@@ -121,3 +122,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
+
+# Asdf
+source ~/.asdf/asdf.sh
+source ~/.asdf/completions/asdf.bash
+
