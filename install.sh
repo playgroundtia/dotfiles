@@ -59,8 +59,8 @@ if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
-gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.public
-gpg --import ~/.gnupg/keys/com.gmail.gustavocfranco.private
+gpg --import ~/.gnupg/keys/personal.public
+gpg --import ~/.gnupg/keys/personal.private
 
 # Configure SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
