@@ -175,8 +175,10 @@ else
   brew cask install skype
 fi
 
-# Install Ubuntu Font (Ubuntu already has it, duh)
-if [[ "$(uname)" == "Darwin" ]]; then
+# Install fonts
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get install -y ttf-mscorefonts-installer
+else
   brew cask install font-ubuntu
 fi
 
