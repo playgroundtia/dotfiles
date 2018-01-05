@@ -79,6 +79,15 @@ else
   brew cask install iterm2
 fi
 
+# Install RescueTime
+if [[ "$(uname)" == "Linux" ]]; then
+  wget https://www.rescuetime.com/installers/rescuetime_current_amd64.deb -P /tmp
+  sudo apt-get install -y gtk2-engines-pixbuf
+  sudo dpkg -i /tmp/rescuetime_current_amd64.deb
+else
+  brew cask install rescuetime
+fi
+
 # Install ASDF
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
