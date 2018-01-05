@@ -27,9 +27,6 @@ alias wget="wget -c"
 # Specific aliases
 case "$(uname)" in
   Linux)
-    # Configurations
-    TERM=xterm-256color
-
     alias f5="sudo apt-get update -y && \
               sudo apt-get upgrade -y && \
               sudo apt-get dist-upgrade -y && \
@@ -38,6 +35,11 @@ case "$(uname)" in
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
+
+    # Tilix
+    if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+      source /etc/profile.d/vte.sh
+    fi
     ;;
   Darwin)
     alias f5="brew update && \
@@ -126,4 +128,3 @@ export LANG=pt_BR.UTF-8
 # Asdf
 source ~/.asdf/asdf.sh
 source ~/.asdf/completions/asdf.bash
-

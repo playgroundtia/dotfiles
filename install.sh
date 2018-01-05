@@ -69,6 +69,16 @@ fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
 
+# Install terminal
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo add-apt-repository ppa:webupd8team/terminix
+  sudo apt update
+  sudo apt install -y tilix
+  sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+else
+  brew cask install iterm2
+fi
+
 # Install ASDF
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
@@ -254,7 +264,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install folx
   brew cask install istat-menus
   brew cask install itau
-  brew cask install iterm2
   brew cask install keka
   brew cask install sizeup
   brew cask install slack
