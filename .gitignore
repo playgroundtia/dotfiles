@@ -6,5 +6,5 @@ ssh/*
 
 # GPG
 gnupg/*
-!*.public
-!*.private
+!gnupg/gpg-agent.conf
+!gnupg/keys/*

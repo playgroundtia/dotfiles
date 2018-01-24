@@ -31,6 +31,9 @@
   # Sign all commits by default
   gpgsign = true
 
+[gpg]
+  program = gpg
+
 [color]
   ui = auto
 
