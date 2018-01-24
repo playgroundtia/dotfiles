@@ -19,6 +19,8 @@ else
   brew tap caskroom/fonts
 
   brew install mas curl git wget zsh vim gpg
+  brew install macvim --with-override-system-vim
+  brew link --overwrite macvim
 fi
 
 # Configure Zsh
@@ -76,16 +78,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y tilix
   sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 else
-  brew cask install iterm2
-fi
-
-# Install RescueTime
-if [[ "$(uname)" == "Linux" ]]; then
-  wget https://www.rescuetime.com/installers/rescuetime_current_amd64.deb -P /tmp
-  sudo apt-get install -y gtk2-engines-pixbuf
-  sudo dpkg -i /tmp/rescuetime_current_amd64.deb
-else
-  brew cask install rescuetime
+  brew cask install iterm2 --language=pt-BR
 fi
 
 # Install ASDF
@@ -95,18 +88,20 @@ else
   brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
 fi
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
+source ~/.asdf/asdf.sh
+source ~/.asdf/completions/asdf.bash
 
 # Install Ruby / Bundler
-zsh -c "asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git"
-zsh -c "asdf install ruby 2.5.0"
-zsh -c "asdf global ruby 2.5.0"
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby 2.5.0
+asdf global ruby 2.5.0
 gem install bundler
 
 # Install Node.js
-zsh -c "asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-zsh -c "asdf install nodejs 9.3.0"
-zsh -c "asdf global nodejs 9.3.0"
+asdf install nodejs 9.3.0
+asdf global nodejs 9.3.0
 
 # Install Yarn
 if [[ "$(uname)" == "Linux" ]]; then
@@ -128,7 +123,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo yarn global add eslint --ignore-optional
   sudo apt-get install -y shellcheck
 else
-  brew cask install atom
+  brew cask install atom --language=pt-BR
 
   sudo yarn global add eslint --ignore-optional
   brew install shellcheck
@@ -143,37 +138,14 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get update
   sudo apt-get install -y google-chrome-stable
 else
-  brew cask install google-chrome
+  brew cask install google-chrome --language=pt-BR
 fi
 
 # Install Firefox
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y firefox
 else
-  brew cask install firefox
-fi
-
-# Install Brave
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo snap install brave
-else
-  brew cask install brave
-fi
-
-# Install Mailspring
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo snap install mailspring
-else
-  brew cask install mailspring
-fi
-
-# Install Oracle Java 8
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo add-apt-repository ppa:webupd8team/java
-  sudo apt-get update
-  sudo apt-get install -y oracle-java8-installer oracle-java8-set-default
-else
-  brew cask install java
+  brew cask install firefox --language=pt-BR
 fi
 
 # Install Docker (Linux only)
@@ -191,7 +163,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   wget https://repo.skype.com/latest/skypeforlinux-64.deb -P /tmp
   sudo dpkg -i /tmp/skypeforlinux-64.deb
 else
-  brew cask install skype
+  brew cask install skype --language=pt-BR
 fi
 
 # Install fonts
@@ -205,49 +177,51 @@ fi
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y vlc
 else
-  brew cask install vlc
+  brew cask install vlc --language=pt-BR
 fi
 
 # Install FileZilla
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y filezilla
 else
-  brew cask install filezilla
+  brew cask install filezilla --language=pt-BR
 fi
 
 # Install Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y virtualbox vagrant
 else
-  brew cask install virtualbox vagrant
+  brew cask install virtualbox vagrant --language=pt-BR
 fi
 
 # Install Transmission
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y transmission
 else
-  brew cask install transmission
+  brew cask install transmission --language=pt-BR
 fi
 
-# Install Arduino
+# Install Arduino / Java
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y arduino
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo apt-get update
+  sudo apt-get install -y oracle-java8-installer oracle-java8-set-default arduino
 else
-  brew cask install arduino
+  brew cask install java arduino --language=pt-BR
 fi
 
 # Install Spotify
 if [[ "$(uname)" == "Linux" ]]; then
   sudo snap install spotify
 else
-  brew cask install spotify
+  brew cask install spotify --language=pt-BR
 fi
 
-# Install Steam
+# Install Slack
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y steam
+  sudo snap install slack --clasic
 else
-  brew cask install steam
+  brew cask install slack --language=pt-BR
 fi
 
 # Install macOS ~exclusive~ apps
@@ -264,18 +238,18 @@ if [[ "$(uname)" == "Darwin" ]]; then
   # Valentina Studio
   mas install 604825918
 
-  brew cask install bartender
-  brew cask install cleanmymac
-  brew cask install cloudapp
-  brew cask install coconutbattery
-  brew cask install cyberduck
-  brew cask install flixtools
-  brew cask install folx
-  brew cask install istat-menus
-  brew cask install itau
-  brew cask install keka
-  brew cask install sizeup
-  brew cask install slack
+  # Clean My Drive 2
+  mas install 523620159
+
+  brew cask install cleanmymac --language=pt-BR
+  brew cask install cloudapp --language=pt-BR
+  brew cask install coconutbattery --language=pt-BR
+  brew cask install cyberduck --language=pt-BR
+  brew cask install flixtools --language=pt-BR
+  brew cask install folx --language=pt-BR
+  brew cask install itau --language=pt-BR
+  brew cask install sizeup --language=pt-BR
+  brew cask install the-unarchiver --language=pt-BR
 fi
 
 # Clean the mess!
