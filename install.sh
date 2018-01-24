@@ -18,9 +18,7 @@ else
   brew tap buo/cask-upgrade
   brew tap caskroom/fonts
 
-  brew install mas curl git wget zsh vim gpg
-  brew install macvim --with-override-system-vim
-  brew link --overwrite macvim
+  brew install mas curl git wget zsh vim gnupg pinentry-mac
 fi
 
 # Configure Zsh
