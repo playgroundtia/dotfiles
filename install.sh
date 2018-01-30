@@ -22,14 +22,6 @@ else
   brew install mas curl git wget zsh vim gnupg pinentry-mac
 fi
 
-# Configure Zsh
-if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-  mv ~/.zshrc /tmp/zshrc-old
-fi
-ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-echo "$(which zsh)" | sudo tee /etc/shells
-chsh -s "$(which zsh)"
-
 # Install dotfiles
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
@@ -38,6 +30,14 @@ git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles || exit
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 git config user.email "gufranco@users.noreply.github.com"
+
+# Configure Zsh
+if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+  mv ~/.zshrc /tmp/zshrc-old
+fi
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+echo "$(which zsh)" | sudo tee /etc/shells
+chsh -s "$(which zsh)"
 
 # Configure Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
@@ -60,6 +60,7 @@ if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
+chmod 700 ~/.gnupg
 gpg --import ~/.gnupg/keys/personal.public
 gpg --import ~/.gnupg/keys/personal.private
 
