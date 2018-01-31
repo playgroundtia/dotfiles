@@ -199,14 +199,18 @@ fi
 
 # Install Spotify
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo snap install spotify
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+  sudo apt-get update
+  sudo apt-get install -y spotify-client
 else
   brew cask install spotify --language=pt-BR
 fi
 
 # Install Slack
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo snap install slack --classic
+  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.5-amd64.deb -P /tmp
+  sudo dpkg -i /tmp/slack-desktop-3.0.5-amd64.deb
 else
   brew cask install slack --language=pt-BR
 fi
