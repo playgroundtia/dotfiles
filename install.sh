@@ -215,6 +215,13 @@ else
   brew cask install slack --language=pt-BR
 fi
 
+# Install Steam
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get install -y steam
+else
+  brew cask install steam --language=pt-BR
+fi
+
 # Install macOS ~exclusive~ drivers
 if [[ "$(uname)" == "Darwin" ]]; then
   brew tap mengbo/ch340g-ch34g-ch34x-mac-os-x-driver https://github.com/mengbo/ch340g-ch34g-ch34x-mac-os-x-driver
