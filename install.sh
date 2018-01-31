@@ -16,18 +16,9 @@ else
   brew doctor
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
-  brew tap caskroom/fonts
 
   brew install mas curl git wget zsh vim gnupg pinentry-mac
 fi
-
-# Configure Zsh
-if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-  mv ~/.zshrc /tmp/zshrc-old
-fi
-ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-echo "$(which zsh)" | sudo tee /etc/shells
-chsh -s "$(which zsh)"
 
 # Install dotfiles
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
@@ -37,6 +28,14 @@ git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles || exit
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 git config user.email "gufranco@users.noreply.github.com"
+
+# Configure Zsh
+if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+  mv ~/.zshrc /tmp/zshrc-old
+fi
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+echo "$(which zsh)" | sudo tee /etc/shells
+chsh -s "$(which zsh)"
 
 # Configure Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
@@ -79,37 +78,24 @@ else
   brew cask install iterm2 --language=pt-BR
 fi
 
-# Install ASDF
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev
-else
-  brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
-fi
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
-source ~/.asdf/asdf.sh
-source ~/.asdf/completions/asdf.bash
-
 # Install Ruby / Bundler
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf install ruby 2.5.0
-asdf global ruby 2.5.0
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get install -y ruby
+else
+  brew install ruby
+fi
 gem install bundler
 
-# Install Node.js
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-asdf install nodejs 9.3.0
-asdf global nodejs 9.3.0
-
-# Install Yarn
+# Install Node.js / Yarn
 if [[ "$(uname)" == "Linux" ]]; then
+  curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt-get remove -y cmdtest
   sudo apt-get update
-  sudo apt-get install -y yarn
+  sudo apt-get install -y build-essential nodejs yarn
 else
-  brew install yarn --without-node
+  brew install nodejs yarn
 fi
 
 # Install Atom (and dependencies)
@@ -168,6 +154,7 @@ fi
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get install -y ttf-mscorefonts-installer
 else
+  brew tap caskroom/fonts
   brew cask install font-ubuntu
 fi
 
@@ -220,6 +207,12 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo snap install slack --clasic
 else
   brew cask install slack --language=pt-BR
+fi
+
+# Install macOS ~exclusive~ drivers
+if [[ "$(uname)" == "Darwin" ]]; then
+  brew tap mengbo/ch340g-ch34g-ch34x-mac-os-x-driver https://github.com/mengbo/ch340g-ch34g-ch34x-mac-os-x-driver
+  brew cask install wch-ch34x-usb-serial-driver
 fi
 
 # Install macOS ~exclusive~ apps
