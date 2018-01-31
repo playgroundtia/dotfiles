@@ -6,6 +6,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get upgrade -y
   sudo apt-get dist-upgrade -y
 
+  sudo apt-get purge -y apport
   sudo apt-get install -y curl git wget zsh vim gnupg-agent
 else
   xcode-select -p || exit 1
@@ -58,6 +59,7 @@ if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
+chmod 700 ~/.gnupg
 gpg --import ~/.gnupg/keys/personal.public
 gpg --import ~/.gnupg/keys/personal.private
 
@@ -204,7 +206,7 @@ fi
 
 # Install Slack
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo snap install slack --clasic
+  sudo snap install slack --classic
 else
   brew cask install slack --language=pt-BR
 fi
