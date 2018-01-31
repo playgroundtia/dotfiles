@@ -222,6 +222,29 @@ else
   brew cask install steam --language=pt-BR
 fi
 
+# Install Robomongo
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -P /tmp
+  sudo tar -xzf /tmp/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -C /opt
+  sudo rm -rf /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++*
+  sudo ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t /usr/bin/robo3t
+
+  sudo wget http://mongodb-tools.com/img/robomongo.png -P /opt/robo3t-1.1.1-linux-x86_64-c93c6b0
+  touch ~/.local/share/applications/robomongo.desktop
+  echo "[Desktop Entry]" >> ~/.local/share/applications/robomongo.desktop
+  echo "Encoding=UTF-8" >> ~/.local/share/applications/robomongo.desktop
+  echo "Name=Robo3T" >> ~/.local/share/applications/robomongo.desktop
+  echo "Comment=Launch Robo3T" >> ~/.local/share/applications/robomongo.desktop
+  echo "Icon=/opt/robo3t-1.1.1-linux-x86_64-c93c6b0/robomongo.png" >> ~/.local/share/applications/robomongo.desktop
+  echo "Exec=/usr/bin/robo3t" >> ~/.local/share/applications/robomongo.desktop
+  echo "Terminal=false" >> ~/.local/share/applications/robomongo.desktop
+  echo "Type=Application" >> ~/.local/share/applications/robomongo.desktop
+  echo "Categories=Developer;" >> ~/.local/share/applications/robomongo.desktop
+  echo "StartupNotify=true" >> ~/.local/share/applications/robomongo.desktop
+else
+  brew cask install robo-3t --language=pt-BR
+fi
+
 # Install macOS ~exclusive~ drivers
 if [[ "$(uname)" == "Darwin" ]]; then
   brew tap mengbo/ch340g-ch34g-ch34x-mac-os-x-driver https://github.com/mengbo/ch340g-ch34g-ch34x-mac-os-x-driver
