@@ -55,6 +55,8 @@ case "$(uname)" in
               source ~/.zshrc"
 
     export PATH="/usr/local/opt/curl/bin:$PATH"
+    export PATH="/usr/local/opt/icu4c/bin:$PATH"
+    export PATH="/usr/local/opt/icu4c/sbin:$PATH"
     ;;
 esac
 
@@ -124,7 +126,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Language environment
 export LANG=pt_BR.UTF-8
-
-# Asdf
-source ~/.asdf/asdf.sh
-source ~/.asdf/completions/asdf.bash
