@@ -222,7 +222,7 @@ else
   brew cask install steam --language=pt-BR
 fi
 
-# Install Robomongo
+# Install Robo3T
 if [[ "$(uname)" == "Linux" ]]; then
   sudo wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -P /tmp
   sudo tar -xzf /tmp/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -C /opt
