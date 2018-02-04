@@ -247,8 +247,13 @@ fi
 
 # Install macOS ~exclusive~ drivers
 if [[ "$(uname)" == "Darwin" ]]; then
-  brew tap mengbo/ch340g-ch34g-ch34x-mac-os-x-driver https://github.com/mengbo/ch340g-ch34g-ch34x-mac-os-x-driver
+  brew tap caskroom/drivers
+
+  # NodeMCU 0.9
   brew cask install wch-ch34x-usb-serial-driver
+
+  # NodeMCU 1.0
+  brew cask install silicon-labs-vcp-driver
 fi
 
 # Install macOS ~exclusive~ apps
