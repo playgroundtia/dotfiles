@@ -57,6 +57,7 @@ case "$(uname)" in
     export PATH="/usr/local/opt/curl/bin:$PATH"
     export PATH="/usr/local/opt/icu4c/bin:$PATH"
     export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
     ;;
 esac
 
