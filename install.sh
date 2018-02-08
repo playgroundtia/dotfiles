@@ -245,6 +245,13 @@ else
   brew cask install robo-3t --language=pt-BR
 fi
 
+# Install AWS CLI
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get install -y awscli
+else
+  brew install awscli
+fi
+
 # Install macOS ~exclusive~ drivers
 if [[ "$(uname)" == "Darwin" ]]; then
   brew tap caskroom/drivers
