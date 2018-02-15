@@ -7,7 +7,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get dist-upgrade -y
 
   sudo apt-get purge -y apport
-  sudo apt-get install -y curl git wget zsh vim gnupg-agent
+  sudo apt-get install -y curl git wget zsh vim
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -18,7 +18,7 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install mas curl git wget zsh vim gnupg pinentry-mac
+  brew install mas curl git wget zsh vim
 fi
 
 # Install dotfiles
@@ -36,7 +36,8 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 echo "$(which zsh)" | sudo tee /etc/shells
-chsh -s "$(which zsh)"
+sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
+sudo chsh $USER -s "$(which zsh)"
 
 # Configure Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
@@ -53,15 +54,6 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
-
-# Configure GPG
-if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
-  mv ~/.gnupg /tmp/gnupg-old
-fi
-ln -s ~/.dotfiles/gnupg ~/.gnupg
-chmod 700 ~/.gnupg
-gpg --import ~/.gnupg/keys/personal.public
-gpg --import ~/.gnupg/keys/personal.private
 
 # Configure SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
@@ -118,7 +110,7 @@ apm install sync-settings
 
 # Install Chrome
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get purge -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg-extra
+  sudo apt-get purge -y chromium-*
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
   sudo apt-get update
