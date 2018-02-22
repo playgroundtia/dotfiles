@@ -28,7 +28,6 @@ alias wget="wget -c"
 case "$(uname)" in
   Linux)
     alias f5="sudo apt-get update -y && \
-              sudo apt-get upgrade -y && \
               sudo apt-get dist-upgrade -y && \
               sudo apt-get autoremove -y && \
               sudo apt-get clean all -y && \
@@ -97,7 +96,6 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Oh-my-zsh plugins
 plugins=(
-  asdf
   debian
   docker
   docker-compose
@@ -105,15 +103,10 @@ plugins=(
   git
   github
   gulp
-  heroku
   man
   node
   npm
   osx
-  postgres
-  rails
-  redis-cli
-  rsync
   ruby
   ssh-agent
   sudo
