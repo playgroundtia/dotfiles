@@ -60,7 +60,7 @@ case "$(uname)" in
     ;;
 esac
 
-# Time stamp shown in the history command output.
+# Time stamp shown in the history command output
 HIST_STAMPS="dd/mm/yyyy"
 
 # Oh-my-zsh plugins
