@@ -2,12 +2,12 @@
 
 # Updates, upgrades, basic packages, etc...
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get update
-  sudo apt-get upgrade -y
-  sudo apt-get dist-upgrade -y
+  sudo apt update
+  sudo apt upgrade -y
+  sudo apt dist-upgrade -y
 
-  sudo apt-get purge -y apport
-  sudo apt-get install -y curl git wget zsh vim
+  sudo apt purge -y apport
+  sudo apt install -y curl git wget zsh vim
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -74,7 +74,7 @@ fi
 
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y ruby
+  sudo apt install -y ruby
 else
   brew install ruby
 fi
@@ -85,9 +85,9 @@ if [[ "$(uname)" == "Linux" ]]; then
   curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt-get purge -y cmdtest
-  sudo apt-get update
-  sudo apt-get install -y build-essential nodejs yarn
+  sudo apt purge -y cmdtest
+  sudo apt update
+  sudo apt install -y build-essential nodejs yarn
 else
   brew install nodejs yarn
 fi
@@ -95,11 +95,11 @@ fi
 # Install Atom (and dependencies)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/atom
-  sudo apt-get update
-  sudo apt-get install -y atom
+  sudo apt update
+  sudo apt install -y atom
 
   sudo yarn global add eslint --ignore-optional
-  sudo apt-get install -y shellcheck
+  sudo apt install -y shellcheck
 else
   brew cask install atom --language=pt-BR
 
@@ -110,30 +110,30 @@ apm install sync-settings
 
 # Install Chrome
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get purge -y chromium-*
+  sudo apt purge -y chromium-*
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-  sudo apt-get update
-  sudo apt-get install -y google-chrome-stable
+  sudo apt update
+  sudo apt install -y google-chrome-stable
 else
   brew cask install google-chrome --language=pt-BR
 fi
 
 # Install Firefox
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y firefox
+  sudo apt install -y firefox
 else
   brew cask install firefox --language=pt-BR
 fi
 
 # Install Docker (Linux only)
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get purge -y docker docker-engine
-  sudo apt-get install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
+  sudo apt purge -y docker docker-engine
+  sudo apt install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  sudo apt-get update
-  sudo apt-get install -y docker-ce
+  sudo apt update
+  sudo apt install -y docker-ce
 fi
 
 # Install Skype
@@ -146,7 +146,7 @@ fi
 
 # Install fonts
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y ttf-mscorefonts-installer
+  sudo apt install -y ttf-mscorefonts-installer
 else
   brew tap caskroom/fonts
   brew cask install font-ubuntu
@@ -154,28 +154,28 @@ fi
 
 # Install VLC
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y vlc
+  sudo apt install -y vlc
 else
   brew cask install vlc --language=pt-BR
 fi
 
 # Install FileZilla
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y filezilla
+  sudo apt install -y filezilla
 else
   brew cask install filezilla --language=pt-BR
 fi
 
 # Install Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y virtualbox vagrant
+  sudo apt install -y virtualbox vagrant
 else
   brew cask install virtualbox vagrant --language=pt-BR
 fi
 
 # Install Transmission
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y transmission
+  sudo apt install -y transmission
 else
   brew cask install transmission --language=pt-BR
 fi
@@ -183,8 +183,8 @@ fi
 # Install Arduino / Java
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/java
-  sudo apt-get update
-  sudo apt-get install -y oracle-java8-installer oracle-java8-set-default arduino
+  sudo apt update
+  sudo apt install -y oracle-java8-installer oracle-java8-set-default arduino
 else
   brew cask install java arduino --language=pt-BR
 fi
@@ -193,8 +193,8 @@ fi
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
   echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-  sudo apt-get update
-  sudo apt-get install -y spotify-client
+  sudo apt update
+  sudo apt install -y spotify-client
 else
   brew cask install spotify --language=pt-BR
 fi
@@ -209,7 +209,7 @@ fi
 
 # Install Steam
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y steam
+  sudo apt install -y steam
 else
   brew cask install steam --language=pt-BR
 fi
@@ -239,7 +239,7 @@ fi
 
 # Install AWS CLI
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get install -y awscli
+  sudo apt install -y awscli
 else
   brew install awscli
 fi
@@ -286,8 +286,8 @@ fi
 
 # Clean the mess!
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get autoremove -y
-  sudo apt-get clean all -y
+  sudo apt autoremove -y
+  sudo apt clean all -y
 else
   brew cleanup
   brew prune

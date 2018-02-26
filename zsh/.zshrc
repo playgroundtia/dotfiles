@@ -27,10 +27,10 @@ alias wget="wget -c"
 # Specific configs
 case "$(uname)" in
   Linux)
-    alias f5="sudo apt-get update -y && \
-              sudo apt-get dist-upgrade -y && \
-              sudo apt-get autoremove -y && \
-              sudo apt-get clean all -y && \
+    alias f5="sudo apt update -y && \
+              sudo apt dist-upgrade -y && \
+              sudo apt autoremove -y && \
+              sudo apt clean all -y && \
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
