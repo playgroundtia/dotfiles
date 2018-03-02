@@ -4,7 +4,7 @@ Host *
   ServerAliveInterval 120
   StrictHostKeyChecking ask
 
-Host teravoz-staging
-  HostName 18.231.59.29
-  User ubuntu
-  IdentityFile ~/.ssh/staging.pem
+Host linte-bastion
+  HostName 52.71.104.238
+  User ec2-user
+  IdentityFile ~/.ssh/linte-bastion.pem
