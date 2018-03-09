@@ -5,13 +5,8 @@ export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 
 # Aliases
-alias .....="cd ../../../../"
-alias ....="cd ../../../../"
-alias ...="cd ../../../"
-alias ..="cd .."
 alias bc="bc -l"
 alias cd..="cd .."
-alias fastping="ping -c 100 -s.2"
 alias la="ls -aF"
 alias ld="ls -ld"
 alias less="less -R"
@@ -21,7 +16,6 @@ alias more="more -R"
 alias mount="mount |column -t"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
-alias rmsvn="find . -type d -name .svn -exec rm -rf {} \;"
 alias wget="wget -c"
 
 # Specific configs
@@ -34,6 +28,7 @@ case "$(uname)" in
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
+    alias reset_usb="sudo usbmuxd -u -U usbmux"
 
     # Tilix
     if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
