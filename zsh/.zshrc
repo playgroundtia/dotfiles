@@ -16,7 +16,7 @@ alias more="more -R"
 alias mount="mount |column -t"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
-alias wget="wget -c"
+alias wget="wget -c -N"
 
 # Specific configs
 case "$(uname)" in
