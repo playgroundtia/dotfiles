@@ -168,9 +168,14 @@ fi
 
 # Install Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt install -y virtualbox vagrant
+  sudo apt-get purge -y virtualbox
+  sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+  wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+  wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+  sudo apt-get update
+  sudo apt-get install -y dkms virtualbox virtualbox-ext-pack
 else
-  brew cask install virtualbox vagrant --language=pt-BR
+  brew cask install virtualbox virtualbox-extension-pack vagrant --language=pt-BR
 fi
 
 # Install Transmission
