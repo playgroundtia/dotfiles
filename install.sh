@@ -3,7 +3,6 @@
 # Updates, upgrades, basic packages, etc...
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt update
-  sudo apt upgrade -y
   sudo apt dist-upgrade -y
 
   sudo apt purge -y apport
@@ -108,11 +107,11 @@ else
 fi
 apm install sync-settings
 
-# Install Chrome
+# Install Google Chrome
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt purge -y chromium-*
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+  echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
   sudo apt update
   sudo apt install -y google-chrome-stable
 else
@@ -197,7 +196,7 @@ fi
 # Install Spotify
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
   sudo apt update
   sudo apt install -y spotify-client
 else
