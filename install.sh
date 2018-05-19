@@ -6,7 +6,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt dist-upgrade -y
 
   sudo apt purge -y apport
-  sudo apt install -y curl git wget zsh vim
+  sudo apt install -y curl git wget zsh vim exfat-fuse exfat-utils
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
