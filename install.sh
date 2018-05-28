@@ -61,12 +61,9 @@ fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
 
-# Install terminal
+# Install terminal (Tilix / iTerm2)
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo add-apt-repository ppa:webupd8team/terminix
-  sudo apt update
   sudo apt install -y tilix
-  sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 else
   brew cask install iterm2 --language=pt-BR
 fi
@@ -74,19 +71,20 @@ fi
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y ruby
+  sudo gem install bundler
 else
   brew install ruby
+  gem install bundler
 fi
-gem install bundler
 
 # Install Node.js / Yarn
 if [[ "$(uname)" == "Linux" ]]; then
-  curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt purge -y cmdtest
+  sudo apt purge -y cmdtest nodejs
   sudo apt update
-  sudo apt install -y build-essential nodejs yarn
+  sudo apt install -y gcc g++ make build-essential nodejs yarn
 else
   brew install nodejs yarn
 fi
@@ -135,17 +133,9 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y docker-ce
 fi
 
-# Install Skype
-if [[ "$(uname)" == "Linux" ]]; then
-  wget https://repo.skype.com/latest/skypeforlinux-64.deb -P /tmp
-  sudo dpkg -i /tmp/skypeforlinux-64.deb
-else
-  brew cask install skype --language=pt-BR
-fi
-
 # Install fonts
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt install -y ttf-mscorefonts-installer
+  sudo DEBIAN_FRONTEND=noninteractive apt install -y ttf-mscorefonts-installer
 else
   brew tap caskroom/fonts
   brew cask install font-ubuntu
@@ -172,7 +162,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
   wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
   sudo apt-get update
-  sudo apt-get install -y dkms virtualbox virtualbox-ext-pack
+  sudo apt-get install -y dkms virtualbox virtualbox-ext-pack vagrant
 else
   brew cask install virtualbox virtualbox-extension-pack vagrant --language=pt-BR
 fi
@@ -184,15 +174,6 @@ else
   brew cask install transmission --language=pt-BR
 fi
 
-# Install Arduino / Java
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo add-apt-repository ppa:webupd8team/java
-  sudo apt update
-  sudo apt install -y oracle-java8-installer oracle-java8-set-default arduino
-else
-  brew cask install java arduino --language=pt-BR
-fi
-
 # Install Spotify
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
@@ -201,14 +182,6 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y spotify-client
 else
   brew cask install spotify --language=pt-BR
-fi
-
-# Install Slack
-if [[ "$(uname)" == "Linux" ]]; then
-  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.5-amd64.deb -P /tmp
-  sudo dpkg -i /tmp/slack-desktop-3.0.5-amd64.deb
-else
-  brew cask install slack --language=pt-BR
 fi
 
 # Install Steam
