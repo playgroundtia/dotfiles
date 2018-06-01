@@ -158,7 +158,7 @@ fi
 # Install Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get purge -y virtualbox
-  sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+  sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
   wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
   wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
   sudo apt-get update
