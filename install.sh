@@ -252,13 +252,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
   brew cask install cleanmymac --language=pt-BR
   brew cask install cloudapp --language=pt-BR
   brew cask install coconutbattery --language=pt-BR
-  brew cask install cyberduck --language=pt-BR
   brew cask install flixtools --language=pt-BR
   brew cask install folx --language=pt-BR
-  brew cask install google-backup-and-sync --language=pt-BR
   brew cask install itau --language=pt-BR
   brew cask install sizeup --language=pt-BR
-  brew cask install the-unarchiver --language=pt-BR
 fi
 
 # Clean the mess!
