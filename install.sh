@@ -81,7 +81,7 @@ fi
 if [[ "$(uname)" == "Linux" ]]; then
   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt purge -y cmdtest nodejs
   sudo apt update
   sudo apt install -y gcc g++ make build-essential nodejs yarn
@@ -125,7 +125,7 @@ fi
 
 # Install Docker (Linux only)
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt purge -y docker docker-engine
+  sudo apt purge -y docker docker-engine docker.io
   sudo apt install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -177,7 +177,7 @@ fi
 # Install Spotify
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
   sudo apt update
   sudo apt install -y spotify-client
 else
