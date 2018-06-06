@@ -70,3 +70,56 @@ cab wQ wq
 cab WQ wq
 cab W w
 cab Q q
+
+
+"
+" Pathogen
+"
+" Enable pathogen as submodule
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+" Infect!
+execute pathogen#infect()
+
+
+"
+" NERDTree
+"
+" Map Control-n to toggle NERDTree
+map <C-\> :NERDTreeToggle<CR>
+
+" Open NERDTree in new tabs and windows if no command line args set
+autocmd VimEnter * if !argc() | NERDTree | endif
+autocmd BufEnter * if !argc() | NERDTreeMirror | endif
+
+" Open automatically when vim starts up but no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close vim when NERDTree is the only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Show hidden files by default
+let NERDTreeShowHidden = 1
+
+" Minimal UI
+let NERDTreeMinimalUI = 1
+
+" Dir arrows
+let NERDTreeDirArrows = 1
+
+
+"
+" Airline
+"
+" Start airline
+let g:airline#extensions#tabline#enabled = 1
+
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
+
+" Don't redraw while executing macros
+set lazyredraw
+
+" Appear all time
+set laststatus=2
