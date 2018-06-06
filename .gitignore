@@ -8,7 +8,8 @@ ssh/*
 !ssh/id_rsa.pub
 
 # Mutt
-password
+mutt/accounts/*/certificates
+mutt/accounts/*/password
 mutt/accounts/*/cache/*
 
 # GPG
