@@ -28,7 +28,6 @@ case "$(uname)" in
               cd ~/.dotfiles && \
               git pull-sub && \
               source ~/.zshrc"
-    alias reset_usb="sudo usbmuxd -u -U usbmux"
 
     # Tilix
     if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
@@ -42,6 +41,7 @@ case "$(uname)" in
               brew cleanup && \
               brew prune && \
               brew cask cleanup && \
+              brew linkapps && \
               mas upgrade && \
               sudo softwareupdate -i -a && \
               cd ~/.dotfiles && \
