@@ -6,6 +6,9 @@ if (&t_Co > 2 || has("gui_running"))
   " Enable syntax highlighting
   syntax on
 
+  " Color scheme
+  " colorscheme monokai
+
   " Enable last used search pattern highlighting
   set hlsearch
 

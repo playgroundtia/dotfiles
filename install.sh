@@ -6,7 +6,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt dist-upgrade -y
 
   sudo apt purge -y apport
-  sudo apt install -y curl git wget zsh vim exfat-fuse exfat-utils
+  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -17,7 +17,7 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install mas curl git wget zsh vim
+  brew install mas curl git wget zsh vim macvim gpg
 fi
 
 # Install dotfiles
@@ -67,6 +67,25 @@ if [[ "$(uname)" == "Linux" ]]; then
 else
   brew cask install iterm2 --language=pt-BR
 fi
+
+# Intall NeoMutt
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install lynx neomutt
+else
+  brew install neomutt/homebrew-neomutt/neomutt lynx
+fi
+if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
+  mv ~/.muttrc /tmp/muttrc-old
+fi
+ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
+if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
+  mv ~/.mutt /tmp/mutt-old
+fi
+ln -s ~/.dotfiles/mutt ~/.mutt
+if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
+  mv ~/.mailcap /tmp/mailcap-old
+fi
+ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
