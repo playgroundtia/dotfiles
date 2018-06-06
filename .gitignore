@@ -9,7 +9,6 @@ ssh/*
 
 # Mutt
 mutt/accounts/*/certificates
-mutt/accounts/*/password
 mutt/accounts/*/cache/*
 
 # GPG
