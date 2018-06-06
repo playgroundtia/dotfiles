@@ -1,8 +1,15 @@
+# Ignore everything, but the folder the folder
+!.gitkeep
+
 # SSH
 ssh/*
 !ssh/config
 !ssh/id_rsa
 !ssh/id_rsa.pub
+
+# Mutt
+password
+mutt/accounts/*/cache/*
 
 # GPG
 gnupg/*
