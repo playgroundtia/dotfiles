@@ -15,17 +15,23 @@ set charset = "utf-8"
 set record = ""
 
 # Sidebar
-set sidebar_visible = yes
-set sidebar_width = 25
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-set mail_check_stats = yes
-mailboxes =INBOX \
-          =[Gmail]/Sent\ Mail \
-          =[Gmail]/Drafts \
-          =[Gmail]/Spam \
-          =[Gmail]/Trash
+# set sidebar_visible = yes
+# set sidebar_width = 25
+# set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+# set mail_check_stats = yes
+# mailboxes =INBOX \
+#           =[Gmail]/Sent\ Mail \
+#           =[Gmail]/Drafts \
+#           =[Gmail]/Spam \
+#           =[Gmail]/Trash
 
-# Tell mutt which MIME types to auto-view
+# Sidebar aliases
+# bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
+# bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
+# bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
+# bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+
+# Tell Mutt which MIME types to auto-view
 auto_view application/msword
 auto_view application/octet-stream
 auto_view application/RTF
@@ -114,18 +120,3 @@ set sleep_time = 0
 # Shut the fuck up, Mutt
 set beep = no
 set wait_key = no
-
-# Gmail aliases
-bind editor <space> noop
-macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
-macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-
-# Sidebar aliases
-bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
-bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
-bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
-bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar

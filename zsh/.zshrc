@@ -18,7 +18,6 @@ alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
 alias wget="wget -c -N"
 alias mutt="neomutt"
-alias neomutt="cd ~/Desktop && neomutt"
 
 # Specific configs
 case "$(uname)" in
