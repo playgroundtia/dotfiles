@@ -70,9 +70,9 @@ fi
 
 # Intall NeoMutt
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install lynx neomutt
+  sudo apt-get -y install lynx neomutt urlview
 else
-  brew install neomutt/homebrew-neomutt/neomutt lynx
+  brew install neomutt/homebrew-neomutt/neomutt lynx urlview
 fi
 if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
   mv ~/.muttrc /tmp/muttrc-old
