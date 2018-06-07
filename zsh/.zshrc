@@ -43,7 +43,6 @@ case "$(uname)" in
               brew cleanup && \
               brew prune && \
               brew cask cleanup && \
-              brew linkapps && \
               mas upgrade && \
               sudo softwareupdate -i -a && \
               cd ~/.dotfiles && \
@@ -54,6 +53,7 @@ case "$(uname)" in
     export PATH="/usr/local/opt/icu4c/bin:$PATH"
     export PATH="/usr/local/opt/icu4c/sbin:$PATH"
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+    export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
     ;;
 esac
 
