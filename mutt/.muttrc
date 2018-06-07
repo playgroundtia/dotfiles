@@ -14,16 +14,18 @@ set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswap
 set charset = "utf-8"
 set record = ""
 
+# Status bar
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
 # Sidebar
-# set sidebar_visible = yes
-# set sidebar_width = 25
-# set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-# set mail_check_stats = yes
-# mailboxes =INBOX \
-#           =[Gmail]/Sent\ Mail \
-#           =[Gmail]/Drafts \
-#           =[Gmail]/Spam \
-#           =[Gmail]/Trash
+set sidebar_visible = yes
+set sidebar_width = 35
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats = yes
+set sidebar_sort_method = 'name'
+set sidebar_new_mail_only = no
+set imap_check_subscribed = yes
 
 # Sidebar aliases
 # bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
@@ -108,8 +110,11 @@ set menu_scroll = yes
 set tilde = yes
 unset markers
 
+# Do not duplicate sent emails
+set copy = no
+
 # Theme
-source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-256.muttrc
 
 # Display version on startup
 push <show-version>

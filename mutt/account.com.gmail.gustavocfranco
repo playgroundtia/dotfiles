@@ -23,9 +23,6 @@ set postponed = "+[Gmail]/Drafts"
 set trash = "+[Gmail]/Trash"
 set record = "+[Gmail]/Sent Mail"
 
-# Do not duplicate sent emails
-set copy = no
-
 # Certificates
 set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"
 
