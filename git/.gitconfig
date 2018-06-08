@@ -5,6 +5,9 @@
   # Require setting user.name and email per-repo
   useConfigOnly = true
 
+  # GPG key ID
+  signingkey = 61D32924C3587EA4
+
 [core]
   # Global ignore
   excludesfile = ~/.dotfiles/git/.gitignore_global
@@ -23,6 +26,10 @@
 
   # Uh, well... you know. Windows sucks :(
   longpaths = true
+
+[commit]
+  # Sign all commits by default
+  # gpgsign = true
 
 [color]
   ui = auto

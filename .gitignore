@@ -12,6 +12,5 @@ mutt/accounts/*/certificates
 mutt/accounts/*/cache/*
 
 # GPG
-gnupg/*
-!gnupg/gpg-agent.conf
-!gnupg/keys/*
+gnupg/pubring.kbx
+gnupg/trustdb.gpg

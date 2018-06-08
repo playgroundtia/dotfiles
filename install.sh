@@ -17,7 +17,7 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install mas curl git wget zsh vim macvim gpg
+  brew install mas curl git wget zsh vim macvim gpg pinentry-mac
 fi
 
 # Install dotfiles
@@ -53,6 +53,16 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
+
+# Configure GPG
+if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
+  mv ~/.gnupg /tmp/gnupg-old
+fi
+ln -s ~/.dotfiles/gnupg ~/.gnupg
+chmod 700 ~/.gnupg
+chmod 400 ~/.gnupg/keys/*
+gpg --import ~/.gnupg/keys/personal.public
+gpg --import ~/.gnupg/keys/personal.private
 
 # Configure SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
