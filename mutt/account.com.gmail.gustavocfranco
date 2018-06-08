@@ -14,7 +14,7 @@ set smtp_authenticators = "gssapi:login"
 # Encrypted IMAP/SMTP passwords
 # set imap_pass=""
 # set smtp_pass=""
-# source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
+source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
 
 # IMAP folders
 set folder = "imaps://imap.gmail.com:993"

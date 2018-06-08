@@ -14,3 +14,6 @@ mutt/accounts/*/cache/*
 # GPG
 gnupg/pubring.kbx
 gnupg/trustdb.gpg
+gnupg/gpg-agent.conf
+gnupg/private-keys-v1.d/
+gnupg/random_seed

@@ -59,6 +59,11 @@ if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
+if [[ "$(uname)" == "Linux" ]]; then
+  echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
+else
+  echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+fi
 chmod 700 ~/.gnupg
 chmod 400 ~/.gnupg/keys/*
 gpg --import ~/.gnupg/keys/personal.public
