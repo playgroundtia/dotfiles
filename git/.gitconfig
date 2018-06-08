@@ -29,7 +29,7 @@
 
 [commit]
   # Sign all commits by default
-  # gpgsign = true
+  gpgsign = true
 
 [color]
   ui = auto
