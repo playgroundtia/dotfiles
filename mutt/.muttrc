@@ -9,6 +9,9 @@ source ~/.mutt/account.com.gmail.gustavocfranco
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
 
+# Enable escape keys
+set meta_key = yes
+
 # Editor config
 set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 set charset = "utf-8"
@@ -28,10 +31,10 @@ set sidebar_new_mail_only = no
 set imap_check_subscribed = yes
 
 # Sidebar aliases
-# bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
-# bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
-# bind index,pager \CI sidebar-open                 # Ctrl-o to open selected folder
-# bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+bind index,pager \eP sidebar-prev                 # Esc-P to select previous folder
+bind index,pager \eN sidebar-next                 # Esc-N to select next folder
+bind index,pager \eO sidebar-open                 # Esc-I to open selected folder
+bind index,pager \eB sidebar-toggle-visible       # Esc-B to toggle visibility of the sidebar
 
 # Tell Mutt which MIME types to auto-view
 auto_view application/msword
@@ -125,3 +128,4 @@ set sleep_time = 0
 # Shut the fuck up, Mutt
 set beep = no
 set wait_key = no
+
