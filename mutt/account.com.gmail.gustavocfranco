@@ -19,9 +19,9 @@ set smtp_authenticators = "gssapi:login"
 # IMAP folders
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set trash = "+[Gmail]/Trash"
-set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Rascunhos"
+set trash = "+[Gmail]/Lixeira"
+set record = "+[Gmail]/E-mails enviados"
 
 # Certificates
 set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"

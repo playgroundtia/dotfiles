@@ -15,7 +15,6 @@ set meta_key = yes
 # Editor config
 set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 set charset = "utf-8"
-set record = ""
 
 # Status bar
 set status_chars  = " *%A"
@@ -30,11 +29,12 @@ set sidebar_sort_method = 'name'
 set sidebar_new_mail_only = no
 set imap_check_subscribed = yes
 
-# Sidebar aliases
+# Aliases
 bind index,pager \eP sidebar-prev                 # Esc-P to select previous folder
 bind index,pager \eN sidebar-next                 # Esc-N to select next folder
 bind index,pager \eO sidebar-open                 # Esc-I to open selected folder
 bind index,pager \eB sidebar-toggle-visible       # Esc-B to toggle visibility of the sidebar
+bind index D purge-message                        # D to purge an e-mail
 
 # Tell Mutt which MIME types to auto-view
 auto_view application/msword
@@ -75,7 +75,7 @@ set text_flowed = yes
 set sig_on_top = yes
 
 # Dont save local copies of sent mails
-unset record
+set record = no
 
 # IMAP configs
 set imap_idle = yes
@@ -94,7 +94,7 @@ set ssl_use_tlsv1_1 = no
 set ssl_use_tlsv1_2 = yes
 set ssl_verify_dates = yes
 set ssl_verify_host = yes
-# unset ssl_usesystemcerts
+# set ssl_usesystemcerts = no
 
 # Index view
 set date_format = "%d/%m/%y"
@@ -111,7 +111,7 @@ set pager_context = 3
 set pager_stop = yes
 set menu_scroll = yes
 set tilde = yes
-unset markers
+set markers = no
 
 # Do not duplicate sent emails
 set copy = no
@@ -129,3 +129,5 @@ set sleep_time = 0
 set beep = no
 set wait_key = no
 
+# Set the color of the progress bar
+color progress white red
