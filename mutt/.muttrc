@@ -30,11 +30,11 @@ set sidebar_new_mail_only = no
 set imap_check_subscribed = yes
 
 # Aliases
-bind index,pager \eP sidebar-prev                 # Esc-P to select previous folder
-bind index,pager \eN sidebar-next                 # Esc-N to select next folder
-bind index,pager \eO sidebar-open                 # Esc-I to open selected folder
-bind index,pager \eB sidebar-toggle-visible       # Esc-B to toggle visibility of the sidebar
-bind index D purge-message                        # D to purge an e-mail
+bind index,pager K sidebar-prev                 # K to select previous folder
+bind index,pager J sidebar-next                 # J to select next folder
+bind index,pager L sidebar-open                 # L to open selected folder
+bind index,pager H sidebar-toggle-visible       # H to toggle visibility of the sidebar
+bind index,pager D purge-message                # D to purge an e-mail
 
 # Tell Mutt which MIME types to auto-view
 auto_view application/msword

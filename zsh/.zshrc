@@ -7,6 +7,7 @@ ZSH_THEME="awesomepanda"
 # Aliases
 alias bc="bc -l"
 alias cd..="cd .."
+alias gpgrestart="gpgconf --kill gpg-agent"
 alias la="ls -aF"
 alias ld="ls -ld"
 alias less="less -R"
@@ -14,10 +15,10 @@ alias ll="ls -la"
 alias mkdir="mkdir -pv"
 alias more="more -R"
 alias mount="mount |column -t"
+alias mutt="neomutt"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
 alias wget="wget -c -N"
-alias mutt="neomutt"
 
 # Specific configs
 case "$(uname)" in
