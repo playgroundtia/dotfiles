@@ -1,6 +1,3 @@
-# Ignore everything, but the folder the folder
-!.gitkeep
-
 # SSH
 ssh/*
 !ssh/config
@@ -9,7 +6,9 @@ ssh/*
 
 # Mutt
 mutt/accounts/*/certificates
-mutt/accounts/*/cache/*
+mutt/accounts/*/cache/headers
+mutt/accounts/*/cache/bodies/*
+!mutt/accounts/*/cache/bodies/.gitkeep
 
 # GPG
 gnupg/pubring.kbx
