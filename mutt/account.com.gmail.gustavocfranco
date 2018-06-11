@@ -12,9 +12,16 @@ set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
 set smtp_authenticators = "gssapi:login"
 
 # Encrypted IMAP/SMTP passwords
-# set imap_pass=""
-# set smtp_pass=""
+# set imap_pass = ""
+# set smtp_pass = ""
 source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
+
+# Security
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
 
 # IMAP folders
 set folder = "imaps://imap.gmail.com:993"

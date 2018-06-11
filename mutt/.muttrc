@@ -2,12 +2,16 @@
 
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
+# folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
+# folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
 
 # Default account
 source ~/.mutt/account.com.gmail.gustavocfranco
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
+# macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
+# macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
 # Enable escape keys
 set meta_key = yes
@@ -83,18 +87,6 @@ set imap_keepalive = 60
 set imap_list_subscribed = yes
 set imap_passive = no
 set mail_check = 60
-
-# Security
-set ssl_force_tls = yes
-set ssl_starttls = yes
-# set ssl_use_sslv2 = no
-set ssl_use_sslv3 = no
-set ssl_use_tlsv1 = no
-set ssl_use_tlsv1_1 = no
-set ssl_use_tlsv1_2 = yes
-set ssl_verify_dates = yes
-set ssl_verify_host = yes
-# set ssl_usesystemcerts = no
 
 # Index view
 set date_format = "%d/%m/%y"
