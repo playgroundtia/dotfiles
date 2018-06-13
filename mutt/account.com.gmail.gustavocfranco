@@ -3,15 +3,13 @@
 # E-mail config
 set realname = "Gustavo Franco"
 set from = "gustavocfranco@gmail.com"
-set use_from = yes
-set envelope_from = yes
 
 # IMAP / SMTP
 set imap_user = "gustavocfranco@gmail.com"
+set imap_passive = no
 set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
-set smtp_authenticators = "gssapi:login"
 
-# Encrypted IMAP/SMTP passwords
+# Passwords
 # set imap_pass = ""
 # set smtp_pass = ""
 source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"

@@ -2,7 +2,7 @@
 
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
-# folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
+folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
 # folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
 
 # Default account
@@ -10,7 +10,7 @@ source ~/.mutt/account.com.gmail.gustavocfranco
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
-# macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
 # macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
 # Enable escape keys
@@ -34,10 +34,10 @@ set sidebar_new_mail_only = no
 set imap_check_subscribed = yes
 
 # Aliases
-bind index,pager K sidebar-prev                 # K to select previous folder
-bind index,pager J sidebar-next                 # J to select next folder
-bind index,pager L sidebar-open                 # L to open selected folder
 bind index,pager H sidebar-toggle-visible       # H to toggle visibility of the sidebar
+bind index,pager J sidebar-next                 # J to select next folder
+bind index,pager K sidebar-prev                 # K to select previous folder
+bind index,pager L sidebar-open                 # L to open selected folder
 bind index,pager D purge-message                # D to purge an e-mail
 
 # Tell Mutt which MIME types to auto-view
@@ -85,7 +85,6 @@ set record = no
 set imap_idle = yes
 set imap_keepalive = 60
 set imap_list_subscribed = yes
-set imap_passive = no
 set mail_check = 60
 
 # Index view
@@ -107,6 +106,10 @@ set markers = no
 
 # Do not duplicate sent emails
 set copy = no
+
+# From header
+set use_from = yes
+set envelope_from = yes
 
 # Theme
 source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-256.muttrc
