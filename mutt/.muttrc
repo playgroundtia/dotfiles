@@ -3,7 +3,7 @@
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
 folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
-# folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
+folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
 
 # Default account
 source ~/.mutt/account.com.gmail.gustavocfranco
@@ -11,27 +11,27 @@ source ~/.mutt/account.com.gmail.gustavocfranco
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
 macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
-# macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
 # Enable escape keys
 set meta_key = yes
 
 # Editor config
-set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 set charset = "utf-8"
+set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
 
 # Status bar
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
 # Sidebar
+set imap_check_subscribed = yes
+set mail_check_stats = yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_new_mail_only = no
+set sidebar_sort_method = 'name'
 set sidebar_visible = yes
 set sidebar_width = 35
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-set mail_check_stats = yes
-set sidebar_sort_method = 'name'
-set sidebar_new_mail_only = no
-set imap_check_subscribed = yes
 
 # Aliases
 bind index,pager H sidebar-toggle-visible       # H to toggle visibility of the sidebar
@@ -90,19 +90,19 @@ set mail_check = 60
 # Index view
 set date_format = "%d/%m/%y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 set sort = threads
 set sort_aux = reverse-last-date-received
-set uncollapse_jump = yes
 set sort_re = yes
-set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set uncollapse_jump = yes
 
 # Pager view
-set pager_index_lines = 10
-set pager_context = 3
-set pager_stop = yes
-set menu_scroll = yes
-set tilde = yes
 set markers = no
+set menu_scroll = yes
+set pager_context = 3
+set pager_index_lines = 10
+set pager_stop = yes
+set tilde = yes
 
 # Do not duplicate sent emails
 set copy = no
