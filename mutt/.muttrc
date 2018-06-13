@@ -13,9 +13,6 @@ macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.c
 macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
 macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
-# Enable escape keys
-set meta_key = yes
-
 # Editor config
 set charset = "utf-8"
 set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'"
