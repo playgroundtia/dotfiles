@@ -65,12 +65,14 @@ plugins=(
   docker
   docker-compose
   gem
+  gi
   git
   github
   gpg-agent
   gulp
   man
   node
+  iterm2
   npm
   osx
   ruby
