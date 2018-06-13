@@ -67,6 +67,7 @@ plugins=(
   gem
   git
   github
+  gpg-agent
   gulp
   man
   node
