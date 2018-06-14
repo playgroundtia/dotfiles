@@ -2,16 +2,16 @@
 
 # Folder hooks
 folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
-# folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
-# folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
+folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
+folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
 
 # Default account
 source ~/.mutt/account.com.gmail.gustavocfranco
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
-# macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
-# macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
 # Editor config
 set charset = "utf-8"
@@ -22,8 +22,6 @@ set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
 # Sidebar
-set imap_check_subscribed = yes
-set mail_check_stats = yes
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set sidebar_new_mail_only = no
 set sidebar_sort_method = 'name'
@@ -78,12 +76,6 @@ set sig_on_top = yes
 # Dont save local copies of sent mails
 set record = no
 
-# IMAP configs
-set imap_idle = yes
-set imap_keepalive = 60
-set imap_list_subscribed = yes
-set mail_check = 60
-
 # Index view
 set date_format = "%d/%m/%y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
@@ -107,6 +99,10 @@ set copy = no
 # From header
 set use_from = yes
 set envelope_from = yes
+
+# Mail check
+set mail_check = 300
+set mail_check_stats = yes
 
 # Theme
 source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-256.muttrc
