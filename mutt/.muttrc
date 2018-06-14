@@ -95,7 +95,7 @@ set mail_check = 300
 set mail_check_stats = yes
 
 # Theme
-source ~/.mutt/themes/solarized/mutt-colors-solarized-dark-256.muttrc
+source ~/.mutt/theme/mutt-colors-solarized-dark-256.muttrc
 
 # Display version on startup
 push <show-version>
