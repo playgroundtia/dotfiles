@@ -5,10 +5,10 @@ ssh/*
 !ssh/id_rsa.pub
 
 # Mutt
-mutt/accounts/*/certificates
-mutt/accounts/*/cache/headers
-mutt/accounts/*/cache/bodies/*
-!mutt/accounts/*/cache/bodies/.gitkeep
+mutt/account/certificates
+mutt/account/cache/headers
+mutt/account/cache/bodies/*
+!mutt/account/cache/bodies/.gitkeep
 
 # GPG
 gnupg/pubring.kbx

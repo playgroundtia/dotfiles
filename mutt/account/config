@@ -1,8 +1,5 @@
 # -*- muttrc -*-
 
-# Reset
-source "~/.mutt/reset"
-
 # E-mail config
 set realname = "Gustavo Franco"
 set from = "gustavocfranco@gmail.com"
@@ -17,7 +14,7 @@ set imap_user = "gustavocfranco@gmail.com"
 set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
 
 # Password
-source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
+source "gpg -d ~/.mutt/account/password.gpg |"
 
 # Security
 set ssl_force_tls = yes
@@ -34,11 +31,11 @@ set trash = "+[Gmail]/Lixeira"
 set record = "+[Gmail]/E-mails enviados"
 
 # Certificates
-set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"
+set certificate_file = "~/.mutt/account/certificates"
 
 # Cache
-set header_cache = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/headers"
-set message_cachedir = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/bodies"
+set header_cache = "~/.mutt/account/cache/headers"
+set message_cachedir = "~/.mutt/account/cache/bodies"
 
 # Signature
-set signature = "~/.mutt/signatures/personal"
+set signature = "~/.mutt/signature"
