@@ -1,5 +1,8 @@
 # -*- muttrc -*-
 
+# Reset
+source "~/.mutt/reset"
+
 # E-mail config
 set realname = "Gustavo Franco"
 set from = "gustavocfranco@gmail.com"

@@ -1,0 +1,26 @@
+# -*- muttrc -*-
+
+set certificate_file = ""
+set folder = ""
+set from = ""
+set header_cache = ""
+set imap_check_subscribed = no
+set imap_idle = no
+set imap_keepalive = 300
+set imap_list_subscribed = no
+set imap_passive = yes
+set imap_user = ""
+set message_cachedir = ""
+set postponed = ""
+set realname = ""
+set record = ""
+set signature = ""
+set smtp_url = ""
+set spoolfile = ""
+set ssl_force_tls = no
+set ssl_starttls = yes
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
+set trash = ""
+unmailboxes *
