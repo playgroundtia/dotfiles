@@ -11,6 +11,7 @@ set imap_keepalive = 60
 set imap_list_subscribed = yes
 set imap_passive = no
 set imap_user = "gustavocfranco@gmail.com"
+set smtp_authenticators = "gssapi:login"
 set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
 
 # Password

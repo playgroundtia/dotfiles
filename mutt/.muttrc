@@ -111,4 +111,4 @@ set wait_key = no
 color progress white red
 
 # Display notification when a new email arrives
-set new_mail_command = "notify-send --icon=\"$HOME/.mutt/mutt.png\" 'New Email' '%n new messages, %u unread.' &"
+# set new_mail_command = "notify-send --icon=\"$HOME/.mutt/mutt.png\" 'New Email' '%n new messages, %u unread.' &"
