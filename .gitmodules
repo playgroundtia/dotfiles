@@ -40,3 +40,6 @@
 [submodule "vim/bundle/vim-multiple-cursors"]
 	path = vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "vim/bundle/vim-minimap"]
+	path = vim/bundle/vim-minimap
+	url = https://github.com/severin-lemaignan/vim-minimap

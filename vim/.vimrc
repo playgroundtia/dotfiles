@@ -94,7 +94,7 @@ autocmd BufEnter * if !argc() | NERDTreeMirror | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim when NERDTree is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Show hidden files by default
 let NERDTreeShowHidden = 1
 " Minimal UI
