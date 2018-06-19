@@ -16,3 +16,4 @@ gnupg/trustdb.gpg
 gnupg/gpg-agent.conf
 gnupg/private-keys-v1.d/
 gnupg/random_seed
+gnupg/tofu.db
