@@ -147,3 +147,8 @@ let g:NERDTrimTrailingWhitespace = 1
 " Vim-javascript
 "
 let g:javascript_plugin_jsdoc = 1
+
+"
+" Vim-jsx
+"
+let g:jsx_ext_required = 1
