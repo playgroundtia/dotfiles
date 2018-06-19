@@ -20,7 +20,6 @@ source "gpg -d ~/.mutt/account/password.gpg |"
 # Security
 set ssl_force_tls = yes
 set ssl_starttls = yes
-set ssl_use_sslv2 = no
 set ssl_use_sslv3 = no
 set ssl_use_tlsv1 = no
 set ssl_use_tlsv1_1 = no
