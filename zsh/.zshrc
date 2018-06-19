@@ -19,6 +19,7 @@ alias mutt="neomutt"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
 alias wget="wget -c -N"
+alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
 
 # Specific configs
 case "$(uname)" in
