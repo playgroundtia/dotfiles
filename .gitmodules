@@ -36,10 +36,13 @@
 	url = https://github.com/mxw/vim-jsx
 [submodule "vim/bundle/vim-sensible"]
 	path = vim/bundle/vim-sensible
-	url = git://github.com/tpope/vim-sensible.git
+	url = http://github.com/tpope/vim-sensible.git
 [submodule "vim/bundle/vim-multiple-cursors"]
 	path = vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
 [submodule "vim/bundle/vim-minimap"]
 	path = vim/bundle/vim-minimap
 	url = https://github.com/severin-lemaignan/vim-minimap
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = http://github.com/airblade/vim-gitgutter.git
