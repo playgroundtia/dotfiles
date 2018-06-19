@@ -74,55 +74,76 @@ cab WQ wq
 cab W w
 cab Q q
 
-
 "
 " Pathogen
 "
 " Enable pathogen as submodule
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-
 " Infect!
 execute pathogen#infect()
-
 
 "
 " NERDTree
 "
 " Map Control-n to toggle NERDTree
 map <C-\> :NERDTreeToggle<CR>
-
 " Open NERDTree in new tabs and windows if no command line args set
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd BufEnter * if !argc() | NERDTreeMirror | endif
-
 " Open automatically when vim starts up but no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " Close vim when NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " Show hidden files by default
 let NERDTreeShowHidden = 1
-
 " Minimal UI
 let NERDTreeMinimalUI = 1
-
 " Dir arrows
 let NERDTreeDirArrows = 1
-
 
 "
 " Airline
 "
 " Start airline
 let g:airline#extensions#tabline#enabled = 1
-
 " Use powerline fonts
 let g:airline_powerline_fonts = 1
-
 " Don't redraw while executing macros
 set lazyredraw
-
 " Appear all time
 set laststatus=2
+
+"
+" Syntastic
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"
+" NERDCommenter
+"
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+"
+" Vim-javascript
+"
+let g:javascript_plugin_jsdoc = 1
