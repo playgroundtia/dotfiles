@@ -6,7 +6,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt dist-upgrade -y
 
   sudo apt purge -y apport
-  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent
+  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent neofetch
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -17,7 +17,7 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install mas curl git wget zsh vim macvim gpg pinentry-mac
+  brew install mas curl git wget zsh vim macvim gpg pinentry-mac neofetch
 fi
 
 # Install dotfiles
