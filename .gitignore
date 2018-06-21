@@ -20,3 +20,4 @@ gnupg/tofu.db
 
 # Tmux plugins
 tmux/plugins/tmux-*
+tmux/sidebar/
