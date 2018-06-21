@@ -17,3 +17,6 @@ gnupg/gpg-agent.conf
 gnupg/private-keys-v1.d/
 gnupg/random_seed
 gnupg/tofu.db
+
+# Tmux plugins
+tmux/plugins/tmux-*

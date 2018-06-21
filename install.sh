@@ -102,16 +102,20 @@ if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
 fi
 ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
-# Install tmux
+# Install Tmux
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install tmux
+  sudo apt-get -y install tmux xsel
 else
-  brew install tmux
+  brew install tmux reattach-to-user-namespace
 fi
 if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
   mv ~/.tmux.conf /tmp/tmux.conf-old
 fi
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+if [ -f ~/.tmux ] || [ -h ~/.tmux ]; then
+  mv ~/.tmux /tmp/tmux-old
+fi
+ln -s ~/.dotfiles/tmux ~/.tmux
 
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
