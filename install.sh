@@ -87,6 +87,9 @@ chmod 400 ~/.ssh/id_rsa
 # Install terminal (Tilix / iTerm2)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y tilix
+
+  mkdir -p ~/.config/tilix/schemes
+  ln -s ~/.dotfiles/themes/Tilix/Dracula.json ~/.config/tilix/schemes/Dracula.json
 else
   brew cask install iterm2 --language=pt-BR
 fi
