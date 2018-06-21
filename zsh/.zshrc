@@ -71,14 +71,15 @@ plugins=(
   github
   gpg-agent
   gulp
+  iterm2
   man
   node
-  iterm2
   npm
   osx
   ruby
   ssh-agent
   sudo
+  tmux
   ubuntu
   vagrant
   xcode
