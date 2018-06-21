@@ -7,7 +7,7 @@ if (&t_Co > 2 || has("gui_running"))
   syntax on
 
   " Color scheme
-  colorscheme afterglow
+  colorscheme dracula
 
   " Enable last used search pattern highlighting
   set hlsearch

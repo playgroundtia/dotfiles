@@ -20,3 +20,4 @@ gnupg/tofu.db
 
 # Tmux plugins
 tmux/sidebar/
+tmux/resurrect/

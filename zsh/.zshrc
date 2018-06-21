@@ -2,7 +2,7 @@
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 
 # Oh-my-zsh theme
-ZSH_THEME="awesomepanda"
+ZSH_THEME="dracula"
 
 # Aliases
 alias bc="bc -l"

@@ -1,5 +1,0 @@
-pane	0	0	:~/.dotfiles	1	:*	0	:/home/gufranco/.dotfiles	1	zsh	:
-pane	0	0	:~/.dotfiles	1	:*	1	:/home/gufranco	0	zsh	:
-pane	0	0	:~/.dotfiles	1	:*	2	:/home/gufranco	0	neomutt	:neomutt
-window	0	0	1	:*	2b07,212x42,0,0{106x42,0,0[106x21,0,0,0,106x20,0,22,5],105x42,107,0,2}
-state	0	
