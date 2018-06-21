@@ -32,6 +32,7 @@ endif
 
 " Enable mouse support
 set mouse=a
+set ttymouse=xterm2
 
 " Enable line numbers
 set number
