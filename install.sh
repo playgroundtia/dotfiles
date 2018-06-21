@@ -24,8 +24,8 @@ fi
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
-git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles || exit
+git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
+cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 git config user.email "gufranco@users.noreply.github.com"
 
@@ -38,6 +38,13 @@ ln -s ~/.dotfiles/themes/zsh/dracula.zsh-theme ~/.dotfiles/zsh/.oh-my-zsh/themes
 echo "$(which zsh)" | sudo tee /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"
+
+# Install Powerline Fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts || exit 1
+./install.sh
+cd ..
+rm -rf fonts
 
 # Configure Git
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
