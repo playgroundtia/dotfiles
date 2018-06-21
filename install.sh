@@ -102,6 +102,17 @@ if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
 fi
 ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
+# Install tmux
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install tmux
+else
+  brew install tmux
+fi
+if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
+  mv ~/.tmux.conf /tmp/tmux.conf-old
+fi
+ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y ruby
