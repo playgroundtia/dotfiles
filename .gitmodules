@@ -61,9 +61,6 @@
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "tmux/plugins/tmux-sidebar"]
-	path = tmux/plugins/tmux-sidebar
-	url = https://github.com/tmux-plugins/tmux-sidebar
 [submodule "tmux/plugins/tmux-pain-control"]
 	path = tmux/plugins/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control
