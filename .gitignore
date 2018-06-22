@@ -11,12 +11,13 @@ mutt/account/cache/bodies/*
 !mutt/account/cache/bodies/.gitkeep
 
 # GPG
-gnupg/pubring.kbx
-gnupg/trustdb.gpg
+gnupg/crls.d/
 gnupg/gpg-agent.conf
 gnupg/private-keys-v1.d/
+gnupg/pubring.kbx
 gnupg/random_seed
 gnupg/tofu.db
+gnupg/trustdb.gpg
 
 # Tmux plugins
 tmux/sidebar/
