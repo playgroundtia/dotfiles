@@ -30,6 +30,7 @@ case "$(uname)" in
               sudo apt clean all -y && \
               cd ~/.dotfiles && \
               git pull-sub && \
+              git submodule update --recursive --remote && \
               source ~/.zshrc"
 
     # Tilix
@@ -48,6 +49,7 @@ case "$(uname)" in
               sudo softwareupdate -i -a && \
               cd ~/.dotfiles && \
               git pull-sub && \
+              git submodule update --recursive --remote && \
               source ~/.zshrc"
 
     export PATH="/usr/local/opt/curl/bin:$PATH"
