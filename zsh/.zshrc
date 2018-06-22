@@ -21,6 +21,27 @@ alias ping="ping -c 5"
 alias wget="wget -c -N"
 alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
 
+# Transfer.sh
+transfer() {
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+    return 1;
+  fi
+
+  tmpfile=$( mktemp -t transferXXX );
+
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
+  else
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile;
+  fi;
+
+  cat $tmpfile | awk '{$1=$1};1';
+  xsel -b < $tmpfile;
+  rm -f $tmpfile;
+}
+
 # Specific configs
 case "$(uname)" in
   Linux)
