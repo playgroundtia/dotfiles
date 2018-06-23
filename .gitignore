@@ -22,3 +22,6 @@ gnupg/trustdb.gpg
 # Tmux plugins
 tmux/sidebar/
 tmux/resurrect/
+
+# Vim
+vim/.netrwhist
