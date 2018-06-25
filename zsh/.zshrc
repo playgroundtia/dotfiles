@@ -1,8 +1,8 @@
 # Oh-my-zsh installation
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 
-# Oh-my-zsh theme
 ZSH_THEME="dracula"
+DISABLE_AUTO_UPDATE="true"
 
 # Aliases
 alias bc="bc -l"
@@ -62,6 +62,12 @@ case "$(uname)" in
     if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
       source /etc/profile.d/vte.sh
     fi
+
+    if [[ -n $SSH_CONNECTION ]]; then
+      export EDITOR='vim'
+    else
+      export EDITOR='mvim'
+    fi
     ;;
   Darwin)
     alias f5="brew update && \
@@ -82,6 +88,12 @@ case "$(uname)" in
     export PATH="/usr/local/opt/icu4c/sbin:$PATH"
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
     export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+    if [[ -n $SSH_CONNECTION ]]; then
+      export EDITOR='vim'
+    else
+      export EDITOR='gvim'
+    fi
     ;;
 esac
 
