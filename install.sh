@@ -6,7 +6,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt dist-upgrade -y
 
   sudo apt purge -y apport
-  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent neofetch
+  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent neofetch clang
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
