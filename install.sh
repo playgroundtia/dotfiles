@@ -149,6 +149,14 @@ else
   brew install nodejs yarn
 fi
 
+# Install PlatformIO
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt install -y python3
+else
+  brew install python
+fi
+sudo python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
+
 # Install Atom (and dependencies)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/atom
