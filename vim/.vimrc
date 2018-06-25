@@ -153,8 +153,3 @@ let g:javascript_plugin_jsdoc = 1
 " Vim-jsx
 "
 let g:jsx_ext_required = 1
-
-"
-" Minimap
-"
-au BufReadPost,BufNewFile * Minimap
