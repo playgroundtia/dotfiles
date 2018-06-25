@@ -5,7 +5,7 @@ source ~/.mutt/account/config
 
 # Editor config
 set charset = "utf-8"
-set editor = "vim -u NONE -c 'set nocompatible' -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'  -c 'set ttymouse=xterm2' -c 'colorscheme dracula'"
+set editor = "vim -u NONE -c 'set nocompatible' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'  -c 'set ttymouse=xterm2'"
 
 # Status bar
 set status_chars  = " *%A"
