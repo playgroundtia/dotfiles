@@ -151,11 +151,11 @@ fi
 
 # Install PlatformIO
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt install -y python3
+  sudo apt install -y python
 else
-  brew install python
+  brew install python2.7
 fi
-sudo python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
+sudo python2.7 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
 
 # Install Atom (and dependencies)
 if [[ "$(uname)" == "Linux" ]]; then
