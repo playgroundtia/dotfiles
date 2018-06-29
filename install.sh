@@ -27,7 +27,6 @@ fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
 cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
-git config user.email "gufranco@users.noreply.github.com"
 
 # Configure Zsh
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
@@ -94,7 +93,7 @@ else
   brew cask install iterm2 --language=pt-BR
 fi
 
-# Intall NeoMutt
+# Install NeoMutt
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install lynx neomutt urlview
 else
@@ -131,10 +130,10 @@ ln -s ~/.dotfiles/tmux ~/.tmux
 # Install Ruby / Bundler
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y ruby
-  sudo gem install bundler
+  sudo gem install bundler rails
 else
   brew install ruby
-  gem install bundler
+  gem install bundler rails
 fi
 
 # Install Node.js / Yarn
