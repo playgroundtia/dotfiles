@@ -1,7 +1,7 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
-" Check color support
+" Check color support or gui support
 if (&t_Co > 2 || has("gui_running"))
   " Enable syntax highlighting
   syntax on
@@ -28,6 +28,11 @@ if (&t_Co > 2 || has("gui_running"))
   " Enable trailing whitespace hightlighting
   highlight WhitespaceEOL ctermbg=DarkRed
   match WhitespaceEOL /\s\+$/
+
+  " If gvim or mvim is running, set a font
+  if has('gui_running')
+    set guifont=Ubuntu Mono:h16
+  endif
 endif
 
 " Enable mouse support
