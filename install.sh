@@ -4,9 +4,8 @@
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt update
   sudo apt dist-upgrade -y
-
   sudo apt purge -y apport
-  sudo apt install -y curl git wget zsh vim vim-gnome exfat-fuse exfat-utils gnupg-agent neofetch clang
+  sudo apt install -y curl git wget exfat-fuse exfat-utils
 else
   xcode-select -p || exit 1
   sudo xcodebuild -license accept
@@ -17,10 +16,10 @@ else
   brew tap caskroom/cask
   brew tap buo/cask-upgrade
 
-  brew install mas curl git wget zsh vim macvim gpg pinentry-mac neofetch
+  brew install mas curl git wget
 fi
 
-# Install dotfiles
+# Dotfiles
 if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
@@ -28,7 +27,12 @@ git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --dep
 cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
-# Configure Zsh
+# Zsh
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install zsh
+else
+  brew install zsh
+fi
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
@@ -38,20 +42,23 @@ echo "$(which zsh)" | sudo tee /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"
 
-# Install Powerline Fonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts || exit 1
-./install.sh
-cd ..
-rm -rf fonts
-
-# Configure Git
+# Git
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install git
+else
+  brew install git
+fi
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig /tmp/gitconfig-old
 fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
-# Configure Vim
+# Vim
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install vim vim-gnome
+else
+  brew install vim macvim
+fi
 if [ -f ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
 fi
@@ -61,7 +68,12 @@ if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
 fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
-# Configure GPG
+# GPG
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt install -y gnupg-agent
+else
+  brew install gpg
+fi
 if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
@@ -76,14 +88,14 @@ chmod 400 ~/.gnupg/keys/*
 gpg --import ~/.gnupg/keys/personal.public
 gpg --import ~/.gnupg/keys/personal.private
 
-# Configure SSH
+# SSH
 if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
 
-# Install terminal (Tilix / iTerm2)
+# Terminal (Tilix / iTerm2)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y tilix
 
@@ -93,7 +105,7 @@ else
   brew cask install iterm2 --language=pt-BR
 fi
 
-# Install NeoMutt
+# NeoMutt
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install lynx neomutt urlview
 else
@@ -112,7 +124,7 @@ if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
 fi
 ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
-# Install Tmux
+# Tmux
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get -y install tmux xsel
 else
@@ -127,7 +139,7 @@ if [ -f ~/.tmux ] || [ -h ~/.tmux ]; then
 fi
 ln -s ~/.dotfiles/tmux ~/.tmux
 
-# Install Ruby / Bundler
+# Ruby / Bundler / Rails
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y ruby
   sudo gem install bundler rails
@@ -136,7 +148,7 @@ else
   gem install bundler rails
 fi
 
-# Install Node.js / Yarn
+# Node.js / Yarn
 if [[ "$(uname)" == "Linux" ]]; then
   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -148,15 +160,15 @@ else
   brew install nodejs yarn
 fi
 
-# Install PlatformIO
+# PlatformIO
 if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt install -y python
+  sudo apt install -y python clang
 else
   brew install python2.7
 fi
 sudo python2.7 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
 
-# Install Atom (and dependencies)
+# Atom (and dependencies)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo add-apt-repository ppa:webupd8team/atom
   sudo apt update
@@ -172,7 +184,7 @@ else
 fi
 apm install sync-settings
 
-# Install Google Chrome
+# Google Chrome
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt purge -y chromium-*
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -183,14 +195,14 @@ else
   brew cask install google-chrome --language=pt-BR
 fi
 
-# Install Firefox
+# Firefox
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y firefox
 else
   brew cask install firefox --language=pt-BR
 fi
 
-# Install Docker (Linux only)
+# Docker (Linux only)
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt purge -y docker docker-engine docker.io
   sudo apt install -y linux-image-extra-"$(uname -r)" linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common
@@ -200,29 +212,36 @@ if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y docker-ce
 fi
 
-# Install fonts
+# Fonts
 if [[ "$(uname)" == "Linux" ]]; then
+  sudo apt-get -y install git
   sudo DEBIAN_FRONTEND=noninteractive apt install -y ttf-mscorefonts-installer
 else
+  brew install git
   brew tap caskroom/fonts
   brew cask install font-ubuntu
 fi
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts || exit 1
+./install.sh
+cd ..
+rm -rf fonts
 
-# Install VLC
+# VLC
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y vlc
 else
   brew cask install vlc --language=pt-BR
 fi
 
-# Install FileZilla
+# FileZilla
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y filezilla
 else
   brew cask install filezilla --language=pt-BR
 fi
 
-# Install Vagrant / VirtualBox
+# Vagrant / VirtualBox
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-get purge -y virtualbox
   sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
@@ -234,14 +253,14 @@ else
   brew cask install virtualbox virtualbox-extension-pack vagrant --language=pt-BR
 fi
 
-# Install Transmission
+# Transmission
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y transmission
 else
   brew cask install transmission --language=pt-BR
 fi
 
-# Install Spotify
+# Spotify
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
   echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -251,14 +270,14 @@ else
   brew cask install spotify --language=pt-BR
 fi
 
-# Install Steam
+# Steam
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y steam
 else
   brew cask install steam --language=pt-BR
 fi
 
-# Install Robo3T
+# Robo3T
 if [[ "$(uname)" == "Linux" ]]; then
   sudo wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -P /tmp
   sudo tar -xzf /tmp/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -C /opt
@@ -281,34 +300,25 @@ else
   brew cask install robo-3t --language=pt-BR
 fi
 
-# Install AWS CLI
+# AWS CLI
 if [[ "$(uname)" == "Linux" ]]; then
   sudo apt install -y awscli
 else
   brew install awscli
 fi
 
-# Install macOS ~exclusive~ drivers
+# macOS ~exclusive~ drivers and apps
 if [[ "$(uname)" == "Darwin" ]]; then
   brew tap caskroom/drivers
 
-  # NodeMCU 0.9
+  # NodeMCU 0.9 driver
   brew cask install wch-ch34x-usb-serial-driver
 
-  # NodeMCU 1.0
+  # NodeMCU 1.0 driver
   brew cask install silicon-labs-vcp-driver
-fi
 
-# Install macOS ~exclusive~ apps
-if [[ "$(uname)" == "Darwin" ]]; then
   # Amphetamine
   mas install 937984704
-
-  # Twitter
-  mas install 409789998
-
-  # Airmail 3
-  mas install 918858936
 
   # Valentina Studio
   mas install 604825918
@@ -317,7 +327,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   mas install 523620159
 
   brew cask install cleanmymac --language=pt-BR
-  brew cask install cloudapp --language=pt-BR
   brew cask install coconutbattery --language=pt-BR
   brew cask install flixtools --language=pt-BR
   brew cask install folx --language=pt-BR
