@@ -7,7 +7,7 @@ DISABLE_AUTO_UPDATE="true"
 # Aliases
 alias bc="bc -l"
 alias cd..="cd .."
-alias gpgrestart="gpgconf --kill gpg-agent"
+alias dd="dd status=progress"
 alias la="ls -aF"
 alias ld="ls -ld"
 alias less="less -R"
@@ -18,8 +18,12 @@ alias mount="mount |column -t"
 alias mutt="neomutt"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
-alias wget="wget -c -N"
 alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
+alias wget="wget -c -N"
+
+# Remove duplicates and useless commands from command history
+export HISTCONTROL=ignoredups
+export HISTIGNORE="cd:ls:[bf]g:clear:exit"
 
 # Transfer.sh
 transfer() {
