@@ -1,9 +1,3 @@
-# Oh-my-zsh installation
-export ZSH=~/.dotfiles/zsh/.oh-my-zsh
-
-ZSH_THEME="dracula"
-DISABLE_AUTO_UPDATE="true"
-
 # Aliases
 alias bc="bc -l"
 alias cd..="cd .."
@@ -24,6 +18,13 @@ alias wget="wget -c -N"
 # Remove duplicates and useless commands from command history
 export HISTCONTROL=ignoredups
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+
+# Tmux
+if [ -z "$TMUX" ]; then
+  tmux new-session -s $$;
+else
+  export TERM="screen-256color"
+fi
 
 # Transfer.sh
 transfer() {
@@ -67,6 +68,7 @@ case "$(uname)" in
       source /etc/profile.d/vte.sh
     fi
 
+    # Vim
     if [[ -n $SSH_CONNECTION ]]; then
       export EDITOR='vim'
     else
@@ -93,6 +95,7 @@ case "$(uname)" in
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
     export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
 
+    # Vim
     if [[ -n $SSH_CONNECTION ]]; then
       export EDITOR='vim'
     else
@@ -101,35 +104,11 @@ case "$(uname)" in
     ;;
 esac
 
-# Time stamp shown in the history command output
-HIST_STAMPS="dd/mm/yyyy"
-
-# Oh-my-zsh plugins
-plugins=(
-  docker
-  docker-compose
-  gem
-  gi
-  git
-  github
-  gpg-agent
-  gulp
-  iterm2
-  man
-  node
-  npm
-  osx
-  ruby
-  ssh-agent
-  sudo
-  tmux
-  ubuntu
-  vagrant
-  xcode
-  yarn
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# Language environment
+# Oh-my-zsh
+export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 export LANG=pt_BR.UTF-8
+ZSH_THEME="dracula"
+DISABLE_AUTO_UPDATE="true"
+HIST_STAMPS="dd/mm/yyyy"
+plugins=(docker docker-compose gem gi git github gpg-agent gulp iterm2 man node npm osx ruby ssh-agent sudo tmux ubuntu vagrant xcode yarn)
+source $ZSH/oh-my-zsh.sh
