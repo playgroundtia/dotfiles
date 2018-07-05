@@ -31,7 +31,7 @@ if (&t_Co > 2 || has("gui_running"))
 
   " If gvim or mvim is running, set a font
   if has('gui_running')
-    set guifont=Ubuntu Mono:h16
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
   endif
 endif
 
