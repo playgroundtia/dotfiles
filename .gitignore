@@ -5,10 +5,10 @@ ssh/*
 !ssh/id_rsa.pub
 
 # Mutt
-mutt/account/certificates
-mutt/account/cache/headers
-mutt/account/cache/bodies/*
-!mutt/account/cache/bodies/.gitkeep
+mutt/accounts/*/certificates
+mutt/accounts/*/cache/headers
+mutt/accounts/*/cache/bodies/*
+!mutt/accounts/*/cache/bodies/.gitkeep
 
 # GPG
 gnupg/crls.d/
@@ -19,8 +19,7 @@ gnupg/random_seed
 gnupg/tofu.db
 gnupg/trustdb.gpg
 
-# Tmux plugins
-tmux/sidebar/
+# Tmux
 tmux/resurrect/
 
 # Vim

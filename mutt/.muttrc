@@ -1,7 +1,17 @@
 # -*- muttrc -*-
 
-# Account
-source ~/.mutt/account/config
+# Folder hooks
+folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
+folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
+folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
+
+# Default account
+source ~/.mutt/account.com.gmail.gustavocfranco
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
 
 # Editor config
 set charset = "utf-8"
@@ -23,6 +33,7 @@ bind index,pager H sidebar-toggle-visible       # H to toggle visibility of the 
 bind index,pager J sidebar-next                 # J to select next folder
 bind index,pager K sidebar-prev                 # K to select previous folder
 bind index,pager L sidebar-open                 # L to open selected folder
+bind index,pager G imap-fetch-mail              # Fetch new mails
 
 # Tell Mutt which MIME types to auto-view
 auto_view application/msword
@@ -110,4 +121,4 @@ set wait_key = no
 color progress white red
 
 # Display notification when a new email arrives
-# set new_mail_command = "notify-send --icon=\"$HOME/.mutt/mutt.png\" 'New Email' '%n new messages, %u unread.' &"
+set new_mail_command = "notify-send --icon=\"$HOME/.mutt/mutt.png\" 'New Email' '%n new messages, %u unread.' &"
