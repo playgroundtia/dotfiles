@@ -213,15 +213,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 fi
 
 # Fonts
-if [[ "$(uname)" == "Linux" ]]; then
-  sudo apt-get -y install git
-  sudo DEBIAN_FRONTEND=noninteractive apt install -y ttf-mscorefonts-installer
-else
-  brew install git
-  brew tap caskroom/fonts
-  brew cask install font-ubuntu
-fi
-git clone https://github.com/powerline/fonts.git --depth=1
+git clone https://github.com/ryanoasis/nerd-fonts.git --depth=1 fonts
 cd fonts || exit 1
 ./install.sh
 cd ..

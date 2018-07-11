@@ -1,9 +1,6 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
-" Color scheme
-colorscheme dracula
-
 " Enable last used search pattern highlighting
 set hlsearch
 
@@ -16,9 +13,6 @@ set colorcolumn=80
 " Enable trailing whitespace hightlighting
 highlight WhitespaceEOL ctermbg=DarkRed
 match WhitespaceEOL /\s\+$/
-
-" Set a font
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 
 " Enable mouse support
 set mouse=a
@@ -66,12 +60,49 @@ cab W w
 cab Q q
 
 "
-" Pathogen
+" Plug
 "
-" Enable pathogen as submodule
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-" Infect!
-execute pathogen#infect()
+call plug#begin()
+" Basic
+Plug 'tpope/vim-sensible'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
+" Appearance
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ryanoasis/vim-devicons'
+" Highlighters
+Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+" Linters
+Plug 'scrooloose/nerdtree'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'vim-syntastic/syntastic'
+" Helpers
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'scrooloose/nerdcommenter'
+" Auto complete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+call plug#end()
+
+"
+" GUI
+"
+colorscheme dracula
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+
+"
+" Deoplete
+"
+let g:deoplete#enable_at_startup = 1
 
 "
 " NERDTree
@@ -104,18 +135,7 @@ let g:airline_powerline_fonts = 1
 set lazyredraw
 " Appear all time
 set laststatus=2
-let g:airline_theme='dracula'
-
-"
-" Syntastic
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:airline_theme='dracula'
 
 "
 " NERDCommenter
@@ -134,6 +154,8 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
 
 "
 " Vim-javascript
