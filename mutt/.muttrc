@@ -1,17 +1,17 @@
 # -*- muttrc -*-
 
 # Folder hooks
-folder-hook 'account.com.gmail.gustavocfranco' 'source ~/.mutt/account.com.gmail.gustavocfranco'
-folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/account.com.icloud.gufranco'
-folder-hook 'account.com.live.gufranco' 'source ~/.mutt/account.com.live.gufranco'
+folder-hook 'account.com.gmail.gustavocfranco' '~/.mutt/accounts/com.gmail.gustavocfranco/config'
+folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/accounts/com.icloud.gufranco/config'
+folder-hook 'account.com.live.gufranco' 'source ~/.mutt/accounts/com.live.gufranco/config'
 
 # Default account
-source ~/.mutt/account.com.gmail.gustavocfranco
+source ~/.mutt/accounts/com.gmail.gustavocfranco/config
 
 # Macros for switching accounts
-macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.gmail.gustavocfranco<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.icloud.gufranco<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/account.com.live.gufranco<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.gmail.gustavocfranco/config<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>'
 
 # Editor config
 set charset = "utf-8"
