@@ -119,6 +119,7 @@ let g:airline_powerline_fonts = 1
 set lazyredraw
 " Appear all time
 set laststatus=2
+let g:airline_theme='dracula'
 
 "
 " Syntastic
