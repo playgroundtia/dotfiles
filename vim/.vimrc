@@ -1,39 +1,24 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
-" Check color support or gui support
-if (&t_Co > 2 || has("gui_running"))
-  " Enable syntax highlighting
-  syntax on
+" Color scheme
+colorscheme dracula
 
-  " Color scheme
-  colorscheme dracula
+" Enable last used search pattern highlighting
+set hlsearch
 
-  " Enable last used search pattern highlighting
-  set hlsearch
+" Enable cursor line highlighting
+set cursorline
 
-  " Enable cursor line highlighting
-  set cursorline
+" Enable overlength line highlighting
+set colorcolumn=80
 
-  " Enable support for 256 colors
-  set t_Co=256
+" Enable trailing whitespace hightlighting
+highlight WhitespaceEOL ctermbg=DarkRed
+match WhitespaceEOL /\s\+$/
 
-  " Enable overlength line highlighting
-  if exists('+colorcolumn')
-    set colorcolumn=80
-  else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-  endif
-
-  " Enable trailing whitespace hightlighting
-  highlight WhitespaceEOL ctermbg=DarkRed
-  match WhitespaceEOL /\s\+$/
-
-  " If gvim or mvim is running, set a font
-  if has('gui_running')
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-  endif
-endif
+" Set a font
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 
 " Enable mouse support
 set mouse=a
