@@ -1,6 +1,40 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
+"
+" Plug
+"
+call plug#begin()
+" Basic
+Plug 'tpope/vim-sensible'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
+" Appearance
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ryanoasis/vim-devicons'
+" Highlighters
+Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+" Linters
+Plug 'vim-syntastic/syntastic'
+" Helpers
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Auto complete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+call plug#end()
+
 " Enable last used search pattern highlighting
 set hlsearch
 
@@ -60,40 +94,6 @@ cab W w
 cab Q q
 
 "
-" Plug
-"
-call plug#begin()
-" Basic
-Plug 'tpope/vim-sensible'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
-" Appearance
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'ryanoasis/vim-devicons'
-" Highlighters
-Plug 'ap/vim-css-color'
-Plug 'elzr/vim-json'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-" Linters
-Plug 'scrooloose/nerdtree'
-Plug 'severin-lemaignan/vim-minimap'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'vim-syntastic/syntastic'
-" Helpers
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'scrooloose/nerdcommenter'
-" Auto complete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-call plug#end()
-
-"
 " GUI
 "
 colorscheme dracula
@@ -135,7 +135,7 @@ let g:airline_powerline_fonts = 1
 set lazyredraw
 " Appear all time
 set laststatus=2
-" let g:airline_theme='dracula'
+let g:airline_theme='dracula'
 
 "
 " NERDCommenter
