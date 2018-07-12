@@ -54,13 +54,9 @@ auto_view text/x-vcard
 # Sanely handle multi-part messages
 alternative_order text/enriched text/plain text text/html
 
-# Ignore all headers
+# Headers
 ignore *
-
-# Unignore some headers
 unignore From: To: CC: Date: Subject:
-
-# Order the visible header lines
 unhdr_order *
 hdr_order From: To: CC: Date: Subject:
 
