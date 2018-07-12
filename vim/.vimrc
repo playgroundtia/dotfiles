@@ -97,6 +97,7 @@ cab Q q
 " GUI
 "
 colorscheme dracula
+let g:airline_theme = 'dracula'
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 
 "
@@ -135,7 +136,6 @@ let g:airline_powerline_fonts = 1
 set lazyredraw
 " Appear all time
 set laststatus=2
-let g:airline_theme='dracula'
 
 "
 " NERDCommenter
