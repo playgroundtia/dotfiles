@@ -8,7 +8,7 @@ alias less="less -R"
 alias ll="ls -la"
 alias mkdir="mkdir -pv"
 alias more="more -R"
-alias mount="mount |column -t"
+alias mount="mount | column -t"
 alias mutt="neomutt"
 alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
@@ -58,21 +58,18 @@ case "$(uname)" in
               sudo apt dist-upgrade -y && \
               sudo apt autoremove -y && \
               sudo apt clean all -y && \
+              \
               cd ~/.dotfiles && \
               git pull-sub && \
               git submodule update --recursive --remote && \
+              \
+              vim +PlugUpdate +qall
+              \
               source ~/.zshrc"
 
     # Tilix
     if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
       source /etc/profile.d/vte.sh
-    fi
-
-    # Vim
-    if [[ -n $SSH_CONNECTION ]]; then
-      export EDITOR='vim'
-    else
-      export EDITOR='mvim'
     fi
     ;;
   Darwin)
@@ -82,11 +79,17 @@ case "$(uname)" in
               brew cleanup && \
               brew prune && \
               brew cask cleanup && \
+              \
               mas upgrade && \
+              \
               sudo softwareupdate -i -a && \
+              \
               cd ~/.dotfiles && \
               git pull-sub && \
               git submodule update --recursive --remote && \
+              \
+              vim +PlugUpdate +qall
+              \
               source ~/.zshrc"
 
     export PATH="/usr/local/opt/curl/bin:$PATH"
@@ -94,19 +97,13 @@ case "$(uname)" in
     export PATH="/usr/local/opt/icu4c/sbin:$PATH"
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
     export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
-
-    # Vim
-    if [[ -n $SSH_CONNECTION ]]; then
-      export EDITOR='vim'
-    else
-      export EDITOR='gvim'
-    fi
     ;;
 esac
 
 # Oh-my-zsh
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 export LANG=pt_BR.UTF-8
+export EDITOR='vim'
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
