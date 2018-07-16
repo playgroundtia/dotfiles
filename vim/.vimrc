@@ -29,10 +29,19 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Auto complete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " JavaScript
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add pm2 tern --ignore-optional' }
+else
+  if v:version > 800
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    " JavaScript
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add pm2 tern --ignore-optional' }
+  endif
+endif
 call plug#end()
 
 " Enable last used search pattern highlighting
@@ -98,12 +107,14 @@ cab Q q
 "
 colorscheme dracula
 let g:airline_theme = 'dracula'
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+set guifont=Hack\ 12
 
 "
 " Deoplete
 "
-let g:deoplete#enable_at_startup = 1
+if has('nvim') || v:version > 800
+  let g:deoplete#enable_at_startup = 1
+endif
 
 "
 " NERDTree
