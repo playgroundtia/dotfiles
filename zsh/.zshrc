@@ -104,5 +104,5 @@ export EDITOR='vim'
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
-plugins=(docker docker-compose gem gi git github gpg-agent gulp iterm2 man node npm osx ruby ssh-agent sudo tmux ubuntu vagrant xcode yarn)
+plugins=(docker docker-compose git gpg-agent iterm2 node npm osx ssh-agent sudo tmux ubuntu yarn)
 source $ZSH/oh-my-zsh.sh
