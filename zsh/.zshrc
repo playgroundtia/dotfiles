@@ -63,6 +63,8 @@ case "$(uname)" in
               git pull-sub && \
               git submodule update --recursive --remote && \
               \
+              sudo yarn global upgrade \
+              \
               vim +PlugUpdate +qall
               \
               source ~/.zshrc"
@@ -87,6 +89,8 @@ case "$(uname)" in
               cd ~/.dotfiles && \
               git pull-sub && \
               git submodule update --recursive --remote && \
+              \
+              sudo yarn global upgrade \
               \
               vim +PlugUpdate +qall
               \
