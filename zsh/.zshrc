@@ -65,7 +65,7 @@ case "$(uname)" in
               \
               sudo yarn global upgrade \
               \
-              vim +PlugUpdate +qall
+              vim +PlugUpdate +qall \
               \
               source ~/.zshrc"
 
@@ -92,19 +92,12 @@ case "$(uname)" in
               \
               sudo yarn global upgrade \
               \
-              vim +PlugUpdate +qall
+              vim +PlugUpdate +qall \
               \
               source ~/.zshrc"
-
-    export PATH="/usr/local/opt/curl/bin:$PATH"
-    export PATH="/usr/local/opt/icu4c/bin:$PATH"
-    export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-    export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
     ;;
 esac
 
-# Oh-my-zsh
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 export LANG=pt_BR.UTF-8
 export EDITOR='vim'
