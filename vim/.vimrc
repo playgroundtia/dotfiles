@@ -1,9 +1,7 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
-"
 " Plug
-"
 call plug#begin()
 " Basic
 Plug 'tpope/vim-sensible'
@@ -28,19 +26,13 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Auto complete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if v:version >= 800
+  Plug 'Shougo/deoplete.nvim', { 'do': 'sudo apt update && sudo apt install -y python3-pip && pip3 install neovim' }
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
   " JavaScript
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add pm2 tern --ignore-optional' }
-else
-  if v:version > 800
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-    " JavaScript
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add pm2 tern --ignore-optional' }
-  endif
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add tern --ignore-optional' }
+  let g:deoplete#enable_at_startup = 1
 endif
 call plug#end()
 
@@ -102,78 +94,50 @@ cab WQ wq
 cab W w
 cab Q q
 
-"
 " GUI
-"
 colorscheme dracula
 let g:airline_theme = 'dracula'
 set guifont=Hack\ 12
 
-"
-" Deoplete
-"
-if has('nvim') || v:version > 800
-  let g:deoplete#enable_at_startup = 1
-endif
-
-"
 " NERDTree
-"
-" Map Control-n to toggle NERDTree
 map <C-\> :NERDTreeToggle<CR>
-" Open NERDTree in new tabs and windows if no command line args set
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd BufEnter * if !argc() | NERDTreeMirror | endif
-" Open automatically when vim starts up but no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Close vim when NERDTree is the only window left
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Show hidden files by default
 let NERDTreeShowHidden = 1
-" Minimal UI
 let NERDTreeMinimalUI = 1
-" Dir arrows
 let NERDTreeDirArrows = 1
 
-"
 " Airline
-"
-" Start airline
 let g:airline#extensions#tabline#enabled = 1
-" Use powerline fonts
 let g:airline_powerline_fonts = 1
-" Don't redraw while executing macros
 set lazyredraw
-" Appear all time
 set laststatus=2
 
-"
 " NERDCommenter
-"
-" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-"
 " Vim-javascript
-"
 let g:javascript_plugin_jsdoc = 1
 
-"
 " Vim-jsx
-"
 let g:jsx_ext_required = 1
+let g:javascript_plugin_ngdoc = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
