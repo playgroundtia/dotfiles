@@ -65,7 +65,7 @@ case "$(uname)" in
               \
               sudo yarn global upgrade \
               \
-              vim +PlugUpdate +qall \
+              vim +PlugUpgrade +PlugUpdate +qall \
               \
               source ~/.zshrc"
 
@@ -92,7 +92,7 @@ case "$(uname)" in
               \
               sudo yarn global upgrade \
               \
-              vim +PlugUpdate +qall \
+              vim +PlugUpgrade +PlugUpdate +qall \
               \
               source ~/.zshrc"
     ;;
