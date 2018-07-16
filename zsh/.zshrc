@@ -63,9 +63,9 @@ case "$(uname)" in
               git pull-sub && \
               git submodule update --recursive --remote && \
               \
-              sudo yarn global upgrade \
+              sudo yarn global upgrade && \
               \
-              vim +PlugUpgrade +PlugUpdate +qall \
+              vim +PlugUpgrade +PlugUpdate +qall && \
               \
               source ~/.zshrc"
 
@@ -90,9 +90,9 @@ case "$(uname)" in
               git pull-sub && \
               git submodule update --recursive --remote && \
               \
-              sudo yarn global upgrade \
+              sudo yarn global upgrade && \
               \
-              vim +PlugUpgrade +PlugUpdate +qall \
+              vim +PlugUpgrade +PlugUpdate +qall && \
               \
               source ~/.zshrc"
     ;;
