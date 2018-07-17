@@ -10,8 +10,8 @@ source ~/.mutt/accounts/com.gmail.gustavocfranco/config
 
 # Macros for switching accounts
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.gmail.gustavocfranco/config<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>'
 
 # Editor config
 set charset = "utf-8"
