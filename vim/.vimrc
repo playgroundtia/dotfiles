@@ -10,6 +10,7 @@ Plug 'tmux-plugins/vim-tmux'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
@@ -18,17 +19,20 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 " Linters
 Plug 'vim-syntastic/syntastic'
-" Helpers
-Plug 'airblade/vim-gitgutter'
-Plug 'brooth/far.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdcommenter'
+" File management
 Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ctrlpvim/ctrlp.vim'
+" Git
+Plug 'airblade/vim-gitgutter'
+" Editing
+Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+
+" Helpers
+Plug 'brooth/far.vim'
+Plug 'ervandew/supertab'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
