@@ -25,3 +25,4 @@ tmux/resurrect/
 # Vim
 vim/.netrwhist
 vim/plugged/
+.tern-port
