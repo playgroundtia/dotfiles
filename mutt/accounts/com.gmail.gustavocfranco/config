@@ -8,7 +8,7 @@ set realname = "Gustavo Franco"
 set from = "gustavocfranco@gmail.com"
 
 # IMAP / SMTP
-set imap_check_subscribed = yes
+# set imap_check_subscribed = yes
 set imap_idle = yes
 set imap_keepalive = 60
 set imap_list_subscribed = yes
@@ -31,11 +31,33 @@ set ssl_verify_dates = yes
 set ssl_verify_host = yes
 
 # Folders
-set folder = "imaps://imap.gmail.com:993"
+set folder = "imaps://imap.gmail.com:993/"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Rascunhos"
 set trash = "+[Gmail]/Lixeira"
 set record = "+[Gmail]/E-mails enviados"
+mailboxes +INBOX \
+          +canal-3 \
+          +Financeiro/Condomínio \
+          +Financeiro/Contador \
+          +Financeiro/Digio \
+          +Financeiro/Energia \
+          +Financeiro/Gás \
+          +Financeiro/Imobiliária \
+          +Financeiro/Internet \
+          +Financeiro/Itaú \
+          +Financeiro/Next \
+          +Financeiro/PayPal \
+          +Financeiro/Porto\ Seguro \
+          +GitHub \
+          +[Gmail]/Com\ estrela \
+          +[Gmail]/E-mails\ enviados \
+          +[Gmail]/Importante \
+          +[Gmail]/Lixeira \
+          +[Gmail]/Rascunhos \
+          +[Gmail]/Spam \
+          +[Gmail]/Todos\ os\ e-mails \
+          +tech-hal
 
 # Certificates
 set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"
