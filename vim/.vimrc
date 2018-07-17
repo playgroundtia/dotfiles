@@ -3,9 +3,8 @@ set nocompatible
 
 " Plug
 call plug#begin()
-" Basic
+" Compatibility
 Plug 'tpope/vim-sensible'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Appearance
@@ -14,13 +13,16 @@ Plug 'ryanoasis/vim-devicons'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
 " Linters
 Plug 'vim-syntastic/syntastic'
 " Helpers
+Plug 'airblade/vim-gitgutter'
+Plug 'brooth/far.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -85,6 +87,9 @@ set backupdir=/tmp
 
 " Auto reload files when they change
 set autoread
+
+" Reduce from 4000 to 100
+set updatetime=100
 
 " Shortcuts
 cab W! w!
