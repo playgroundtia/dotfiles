@@ -23,7 +23,6 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -100,7 +99,7 @@ cab Q q
 " GUI
 colorscheme dracula
 let g:airline_theme = 'dracula'
-set guifont=Hack\ 12
+set guifont=Hack\ 10
 
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
