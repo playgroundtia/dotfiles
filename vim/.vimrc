@@ -1,4 +1,4 @@
-" Use Vim settings, rather than Vi settings
+" Use Vim settings
 set nocompatible
 
 " Plug
@@ -93,18 +93,8 @@ set backupdir=/tmp
 " Auto reload files when they change
 set autoread
 
-" Reduce from 4000 to 100
+" Set update interval
 set updatetime=100
-
-" Shortcuts
-cab W! w!
-cab Q! q!
-cab Wq wq
-cab Wa wa
-cab wQ wq
-cab WQ wq
-cab W w
-cab Q q
 
 " GUI
 colorscheme dracula
@@ -147,7 +137,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:jsx_ext_required = 1
 let g:javascript_plugin_ngdoc = 1
 
-" Syntasticq
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
