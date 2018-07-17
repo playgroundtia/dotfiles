@@ -16,6 +16,7 @@ Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
 " Linters
 Plug 'vim-syntastic/syntastic'
 " Helpers
@@ -26,8 +27,10 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-airline/vim-airline'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-if v:version >= 800
-  Plug 'Shougo/deoplete.nvim', { 'do': 'sudo apt update && sudo apt install -y python3-pip && pip3 install neovim' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+elseif (v:version >= 800) && has("python3")
+  Plug 'Shougo/deoplete.nvim', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y python3-pip; else brew update && brew install python3; fi; pip3 install neovim' }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   " JavaScript
@@ -106,9 +109,11 @@ autocmd BufEnter * if !argc() | NERDTreeMirror | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeShowHidden = 1
-let NERDTreeMinimalUI = 1
+let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeDirArrows = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden = 1
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
