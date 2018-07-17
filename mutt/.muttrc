@@ -97,7 +97,7 @@ set use_from = yes
 set envelope_from = yes
 
 # Mail check
-set mail_check = 300
+set mail_check = 60
 set mail_check_stats = yes
 
 # Theme
