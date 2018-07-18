@@ -14,9 +14,7 @@ Plug 'vim-airline/vim-airline'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
+Plug 'sheerun/vim-polyglot'
 " Linters
 Plug 'vim-syntastic/syntastic'
 " File management
@@ -27,9 +25,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 " Editing
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
-
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'ervandew/supertab'
@@ -149,3 +147,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" CtrlP
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git'
