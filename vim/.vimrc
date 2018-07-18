@@ -9,6 +9,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 " Highlighters
@@ -105,10 +106,6 @@ set guifont=Hack\ 10
 
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
-autocmd VimEnter * if !argc() | NERDTree | endif
-autocmd BufEnter * if !argc() | NERDTreeMirror | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeDirArrows = 1
