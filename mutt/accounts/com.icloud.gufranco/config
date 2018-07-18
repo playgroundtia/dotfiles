@@ -8,7 +8,7 @@ set realname = "Gustavo Franco"
 set from = "gufranco@icloud.com"
 
 # IMAP / SMTP
-set imap_check_subscribed = yes
+# set imap_check_subscribed = yes
 set imap_idle = yes
 set imap_keepalive = 60
 set imap_list_subscribed = yes
