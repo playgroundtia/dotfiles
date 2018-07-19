@@ -31,70 +31,76 @@ case "$(uname)" in
     sudo apt dist-upgrade -y
 
     # Purge
-    sudo apt purge -y apport \
-                      docker \
-                      docker-engine \
-                      docker.io \
-                      cmdtest \
-                      nodejs \
-                      chromium-* \
-                      virtualbox
+    sudo apt purge -y \
+      apport \
+      docker \
+      docker-engine \
+      docker.io \
+      cmdtest \
+      nodejs \
+      chromium-* \
+      virtualbox
 
     # Install
-    sudo apt install -y curl \
-                        git \
-                        wget \
-                        exfat-fuse \
-                        exfat-utils \
-                        zsh \
-                        vim \
-                        vim-gnome \
-                        gnupg-agent \
-                        tilix \
-                        lynx \
-                        neomutt \
-                        urlview \
-                        tmux \
-                        xsel \
-                        filezilla \
-                        transmission \
-                        vlc \
-                        steam \
-                        linux-image-extra-"$(uname -r)" \
-                        linux-image-extra-virtual \
-                        apt-transport-https \
-                        ca-certificates \
-                        software-properties-common \
-                        docker-ce \
-                        gcc \
-                        g++ \
-                        make \
-                        build-essential \
-                        nodejs \
-                        yarn \
-                        awscli \
-                        spotify-client \
-                        google-chrome-stable \
-                        dkms \
-                        virtualbox \
-                        virtualbox-ext-pack \
-                        vagrant \
-                        atom \
-                        shellcheck \
-                        ruby
+    sudo apt install -y \
+      curl \
+      git \
+      wget \
+      exfat-fuse \
+      exfat-utils \
+      zsh \
+      vim \
+      vim-gnome \
+      gnupg-agent \
+      tilix \
+      lynx \
+      neomutt \
+      urlview \
+      tmux \
+      xsel \
+      filezilla \
+      transmission \
+      vlc \
+      steam \
+      linux-image-extra-"$(uname -r)" \
+      linux-image-extra-virtual \
+      apt-transport-https \
+      ca-certificates \
+      software-properties-common \
+      docker-ce \
+      gcc \
+      g++ \
+      make \
+      build-essential \
+      nodejs \
+      yarn \
+      awscli \
+      spotify-client \
+      google-chrome-stable \
+      dkms \
+      virtualbox \
+      virtualbox-ext-pack \
+      vagrant \
+      atom \
+      shellcheck \
+      ruby
 
     # Tilix
     mkdir -p ~/.config/tilix/schemes
     ln -s ~/.dotfiles/themes/Tilix/Dracula.json ~/.config/tilix/schemes/Dracula.json
 
     # Atom packages
-    apm install sync-settings
+    apm install \
+      sync-settings
 
     # Ruby packages
-    sudo gem install bundler rails
+    sudo gem install \
+      bundler \
+      rails
 
     # Node.js packages
-    sudo yarn global add eslint --ignore-optional
+    sudo yarn global add \
+      eslint --ignore-optional
 
     # Nerd fonts
     git clone https://github.com/ryanoasis/nerd-fonts.git --depth=1 /tmp/fonts
@@ -102,8 +108,8 @@ case "$(uname)" in
     ./install.sh
     cd ..
     rm -rf fonts
-    ;;
 
+    ;;
   Darwin)
     # xCode
     xcode-select -p || exit 1
@@ -115,61 +121,68 @@ case "$(uname)" in
     brew doctor
 
     # Taps
-    brew tap caskroom/cask \
-             buo/cask-upgrade \
-             caskroom/drivers \
-             caskroom/fonts
+    brew tap \
+      caskroom/cask \
+      buo/cask-upgrade \
+      caskroom/drivers \
+      caskroom/fonts
 
     # Bottles
-    brew install mas \
-                 curl \
-                 git \
-                 wget \
-                 zsh \
-                 vim \
-                 macvim \
-                 gpg \
-                 neomutt/homebrew-neomutt/neomutt \
-                 lynx \
-                 urlview \
-                 tmux \
-                 reattach-to-user-namespace \
-                 nodejs \
-                 yarn \
-                 awscli \
-                 shellcheck \
-                 ruby
+    brew install \
+      mas \
+      curl \
+      git \
+      wget \
+      zsh \
+      vim \
+      macvim \
+      gpg \
+      neomutt/homebrew-neomutt/neomutt \
+      lynx \
+      urlview \
+      tmux \
+      reattach-to-user-namespace \
+      nodejs \
+      yarn \
+      awscli \
+      shellcheck \
+      ruby
 
     # Dmg packages
-    brew cask install iterm2 \
-                      filezilla \
-                      transmission \
-                      vlc \
-                      steam \
-                      wch-ch34x-usb-serial-driver \
-                      silicon-labs-vcp-driver \
-                      cleanmymac \
-                      coconutbattery \
-                      flixtools \
-                      folx \
-                      itau \
-                      sizeup \
-                      spotify \
-                      google-chrome \
-                      virtualbox \
-                      virtualbox-extension-pack \
-                      vagrant \
-                      atom \
-                      font-hack-nerd-font
+    brew cask install \
+      iterm2 \
+      filezilla \
+      transmission \
+      vlc \
+      steam \
+      wch-ch34x-usb-serial-driver \
+      silicon-labs-vcp-driver \
+      cleanmymac \
+      coconutbattery \
+      flixtools \
+      folx \
+      itau \
+      sizeup \
+      spotify \
+      google-chrome \
+      virtualbox \
+      virtualbox-extension-pack \
+      vagrant \
+      atom \
+      font-hack-nerd-font
 
     # Atom packages
-    apm install sync-settings
+    apm install \
+      sync-settings
 
     # Ruby packages
-    gem install bundler rails
+    gem install \
+      bundler \
+      rails
 
     # Node.js packages
-    sudo yarn global add eslint --ignore-optional
+    sudo yarn global add \
+      eslint --ignore-optional
 
     #
     # App Store
@@ -180,10 +193,12 @@ case "$(uname)" in
     mas install 604825918
     # Clean My Drive 2
     mas install 523620159
+
     ;;
   *)
     echo "Invalid system."
     exit 1
+
     ;;
 esac
 
