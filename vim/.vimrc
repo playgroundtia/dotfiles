@@ -19,7 +19,7 @@ Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'sheerun/vim-polyglot'
 " Linters
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 " File management
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -53,9 +53,10 @@ call plug#end()
 """"""""""""""
 " Vim settings
 """"""""""""""
-" Theme
-colorscheme dracula
-let g:airline_theme = 'dracula'
+" Faster vim
+set lazyredraw
+" Always display status line
+set laststatus=2
 " Enable last used search pattern highlighting
 set hlsearch
 " Enable cursor line highlighting
@@ -101,6 +102,12 @@ set novisualbell
 set t_vb=
 set tm=500
 
+"""""""
+" Theme
+"""""""
+colorscheme dracula
+let g:airline_theme = 'dracula'
+
 """""
 " GUI
 """""
@@ -111,10 +118,10 @@ if has('gui_running')
   set guioptions-=m
   " Remove toolbar
   set guioptions-=T
-  " Remove right-hand scroll bar
+  " Remove right scrollbar
   set guioptions-=R
   set guioptions-=r
-  " Remove left-hand scroll bar
+  " Remove left scrollbar
   set guioptions-=L
   set guioptions-=l
 endif
@@ -133,8 +140,7 @@ let NERDTreeShowHidden = 1
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-set lazyredraw
-set laststatus=2
+let g:airline#extensions#ale#enabled = 1
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -144,13 +150,9 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" Ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 0
 " CtrlP
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git'
