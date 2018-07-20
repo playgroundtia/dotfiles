@@ -135,7 +135,6 @@ case "$(uname)" in
       wget \
       zsh \
       vim \
-      macvim \
       gpg \
       neomutt/homebrew-neomutt/neomutt \
       lynx \
@@ -169,6 +168,7 @@ case "$(uname)" in
       virtualbox-extension-pack \
       vagrant \
       atom \
+      macvim \
       font-hack-nerd-font
 
     # Atom packages
