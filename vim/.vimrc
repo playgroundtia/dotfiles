@@ -124,6 +124,9 @@ if has('gui_running')
   " Remove left scrollbar
   set guioptions-=L
   set guioptions-=l
+  " Maximize window
+  set lines=999
+  set columns=999
 endif
 
 """""""""""""""""""
