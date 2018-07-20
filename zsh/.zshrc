@@ -70,6 +70,8 @@ case "$(uname)" in
               \
               vim +PlugUpgrade +PlugUpdate +qall && \
               \
+              bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
+              \
               source ~/.zshrc"
 
     # Tilix
@@ -96,6 +98,8 @@ case "$(uname)" in
               sudo yarn global upgrade && \
               \
               vim +PlugUpgrade +PlugUpdate +qall && \
+              \
+              bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
               \
               source ~/.zshrc"
     ;;

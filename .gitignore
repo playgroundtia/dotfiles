@@ -21,6 +21,8 @@ gnupg/trustdb.gpg
 
 # Tmux
 tmux/resurrect/
+tmux/plugins/*
+!tmux/plugins/tpm
 
 # Vim
 vim/.netrwhist
