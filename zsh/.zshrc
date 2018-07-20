@@ -43,11 +43,14 @@ transfer() {
   fi;
 
   cat $tmpfile;
-  if [[ "$(uname)" == "Linux" ]]; then
-    xsel -b < $tmpfile
-  else
-    cat $tmpfile | pbcopy
-  fi
+  case "$(uname)" in
+    Linux)
+      xsel -b < $tmpfile
+      ;;
+    Darwin)
+      cat $tmpfile | pbcopy
+      ;;
+  esac
   rm -f $tmpfile
 }
 
