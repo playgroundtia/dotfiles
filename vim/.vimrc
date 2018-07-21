@@ -113,7 +113,7 @@ let g:airline_theme = 'dracula'
 """""
 if has('gui_running')
   " Font
-  set guifont=Hack\ 10
+  set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
   " Remove menu bar
   set guioptions-=m
   " Remove toolbar
