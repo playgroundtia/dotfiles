@@ -169,7 +169,8 @@ case "$(uname)" in
       vagrant \
       atom \
       macvim \
-      font-hack-nerd-font
+      font-hack-nerd-font \
+      applepi-baker
 
     # Atom packages
     apm install \
