@@ -16,7 +16,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 " Highlighters
 Plug 'ap/vim-css-color'
-Plug 'elzr/vim-json'
 Plug 'sheerun/vim-polyglot'
 " Linters
 Plug 'w0rp/ale'
@@ -34,6 +33,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'ervandew/supertab'
+Plug 'severin-lemaignan/vim-minimap'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
@@ -113,7 +113,13 @@ let g:airline_theme = 'dracula'
 """""
 if has('gui_running')
   " Font
-  set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
+  if has("gui_macvim")
+    " mVim
+    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
+  else
+    " gVim
+    set guifont=Hack\ 10
+  endif
   " Remove menu bar
   set guioptions-=m
   " Remove toolbar
