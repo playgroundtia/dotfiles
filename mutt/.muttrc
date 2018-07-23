@@ -19,7 +19,7 @@ set editor = "vim -u NONE -c 'set nocompatible' -c 'set tw=72 ft=mail noautoinde
 
 # Status bar
 set status_chars  = " *%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_format = "───[ Pasta: %f ]───[%r%m mensagens%?n? (%n novas)?%?d? (%d para deletar)?%?t? (%t marcadas)? ]───%>─%?p?( %p adiadas )?───"
 
 # Sidebar
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
@@ -115,6 +115,3 @@ set wait_key = no
 
 # Set the color of the progress bar
 color progress white red
-
-# Display notification when a new email arrives
-set new_mail_command = "notify-send --icon=\"$HOME/.mutt/mutt.png\" 'New Email' '%n new messages, %u unread.' &"
