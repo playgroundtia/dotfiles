@@ -46,6 +46,7 @@ transfer() {
   esac
   rm -f $tmpfile
 }
+
 # Display system path
 path() {
   echo $PATH | tr ":" "\n" | nl
@@ -103,22 +104,26 @@ case "$(uname)" in
               source ~/.zshrc"
     ;;
 esac
+
 # Remove duplicates and useless commands from command history
 export HISTCONTROL=ignoredups
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+
 # Tmux
 if [ -z "$TMUX" ]; then
   tmux new-session -s $$;
 else
   export TERM="screen-256color"
 fi
-# Oh-my-zsh path
-export ZSH=~/.dotfiles/zsh/.oh-my-zsh
+
 # Language
 export LANG=pt_BR.UTF-8
+
 # Editor
 export EDITOR='vim'
+
 # Oh-my-zsh
+export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
