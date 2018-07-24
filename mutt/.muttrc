@@ -1,17 +1,17 @@
 # -*- muttrc -*-
 
 # Folder hooks
-folder-hook 'account.com.gmail.gustavocfranco' '~/.mutt/accounts/com.gmail.gustavocfranco/config'
-folder-hook 'account.com.icloud.gufranco' 'source ~/.mutt/accounts/com.icloud.gufranco/config'
-folder-hook 'account.com.live.gufranco' 'source ~/.mutt/accounts/com.live.gufranco/config'
+folder-hook "account.com.gmail.gustavocfranco" "~/.mutt/accounts/com.gmail.gustavocfranco/config"
+folder-hook "account.com.icloud.gufranco" "source ~/.mutt/accounts/com.icloud.gufranco/config"
+folder-hook "account.com.live.gufranco" "source ~/.mutt/accounts/com.live.gufranco/config"
 
 # Default account
 source ~/.mutt/accounts/com.gmail.gustavocfranco/config
 
 # Macros for switching accounts
-macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.gmail.gustavocfranco/config<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>'
-macro index <f4> '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>'
+macro index <f2> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.gmail.gustavocfranco/config<enter><change-folder>!<enter>"
+macro index <f3> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>"
+macro index <f4> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>"
 
 # Editor config
 set charset = "utf-8"
@@ -24,7 +24,7 @@ set status_format = "───[ Pasta: %f ]───[%r%m mensagens%?n? (%n nova
 # Sidebar
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set sidebar_new_mail_only = no
-set sidebar_sort_method = 'name'
+set sidebar_sort_method = "name"
 set sidebar_visible = yes
 set sidebar_width = 35
 

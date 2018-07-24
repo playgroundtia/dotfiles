@@ -1,7 +1,7 @@
 # -*- muttrc -*-
 
-# Normalize
-source "~/.mutt/accounts/normalize"
+# Reset
+source "~/.mutt/scripts/reset"
 
 # E-mail config
 set realname = "Gustavo Franco"
