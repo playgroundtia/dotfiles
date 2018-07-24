@@ -1,4 +1,6 @@
+################################################################################
 # Aliases
+################################################################################
 alias bc="bc -l"
 alias cd..="cd .."
 alias dd="dd status=progress"
@@ -10,26 +12,17 @@ alias mkdir="mkdir -pv"
 alias more="more -R"
 alias mount="mount | column -t"
 alias mutt="neomutt"
-alias path="echo $PATH | tr ':' '\n' | nl"
 alias ping="ping -c 5"
 alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
 alias wget="wget -c -N"
 
-# Remove duplicates and useless commands from command history
-export HISTCONTROL=ignoredups
-export HISTIGNORE="cd:ls:[bf]g:clear:exit"
-
-# Tmux
-if [ -z "$TMUX" ]; then
-  tmux new-session -s $$;
-else
-  export TERM="screen-256color"
-fi
-
+################################################################################
+# Functions
+################################################################################
 # Transfer.sh
 transfer() {
   if [ $# -eq 0 ]; then
-    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+    echo -e "No arguments specified.";
     return 1;
   fi
 
@@ -53,8 +46,14 @@ transfer() {
   esac
   rm -f $tmpfile
 }
+# Display system path
+path() {
+  echo $PATH | tr ":" "\n" | nl
+}
 
-# Specific configs
+################################################################################
+# Settings
+################################################################################
 case "$(uname)" in
   Linux)
     alias f5="sudo apt update -y && \
@@ -104,10 +103,22 @@ case "$(uname)" in
               source ~/.zshrc"
     ;;
 esac
-
+# Remove duplicates and useless commands from command history
+export HISTCONTROL=ignoredups
+export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+# Tmux
+if [ -z "$TMUX" ]; then
+  tmux new-session -s $$;
+else
+  export TERM="screen-256color"
+fi
+# Oh-my-zsh path
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
+# Language
 export LANG=pt_BR.UTF-8
+# Editor
 export EDITOR='vim'
+# Oh-my-zsh
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
