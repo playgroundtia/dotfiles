@@ -1,9 +1,9 @@
 " Use Vim settings
 set nocompatible
 
-""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug-ins
-""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 " Compatibility
 Plug 'tpope/vim-sensible'
@@ -32,8 +32,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 " Helpers
 Plug 'brooth/far.vim'
-Plug 'ervandew/supertab'
-Plug 'severin-lemaignan/vim-minimap'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
@@ -50,9 +48,9 @@ if has('nvim') || ((v:version >= 800) && has("python3"))
 endif
 call plug#end()
 
-""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim settings
-""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Faster vim
 set lazyredraw
 " Always display status line
@@ -101,16 +99,18 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+" Set leader key to ,
+let mapleader = ","
 
-"""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
-"""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme dracula
 let g:airline_theme = 'dracula'
 
-"""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
-"""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   " Font
   if has("gui_macvim")
@@ -135,9 +135,9 @@ if has('gui_running')
   set columns=999
 endif
 
-"""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug-ins settings
-"""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 map <C-\> :NERDTreeToggle<CR>
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -164,4 +164,4 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
 " CtrlP
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
