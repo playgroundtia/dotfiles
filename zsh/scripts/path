@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path() {
+  echo $PATH | tr ":" "\n" | nl
+}

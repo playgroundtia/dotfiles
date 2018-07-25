@@ -1,0 +1,9 @@
+#!/bin/bash
+
+linte() {
+  MONGO_URL=mongodb://localhost:27017/linte_dev meteor --settings settings.json
+}
+
+linte-itau() {
+  MONGO_URL=mongodb://localhost:27017/linte_dev_itau meteor --settings settings.json
+}

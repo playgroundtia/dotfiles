@@ -1,9 +1,17 @@
 ################################################################################
+# Tmux
+################################################################################
+if [ -z "$TMUX" ]; then
+  tmux new-session -s $$;
+else
+  export TERM="screen-256color"
+fi
+
+################################################################################
 # Aliases
 ################################################################################
 alias bc="bc -l"
 alias cd..="cd .."
-alias dd="dd status=progress"
 alias la="ls -aF"
 alias ld="ls -ld"
 alias less="less -R"
@@ -17,44 +25,13 @@ alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
 alias wget="wget -c -N"
 
 ################################################################################
-# Functions
-################################################################################
-# Transfer.sh
-transfer() {
-  if [ $# -eq 0 ]; then
-    echo -e "No arguments specified.";
-    return 1;
-  fi
-
-  tmpfile=$( mktemp -t transferXXX );
-
-  if tty -s; then
-    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" | awk '{$1=$1};1' >> $tmpfile;
-  else
-    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" | awk '{$1=$1};1' >> $tmpfile;
-  fi;
-
-  cat $tmpfile;
-  case "$(uname)" in
-    Linux)
-      xsel -b < $tmpfile
-      ;;
-    Darwin)
-      cat $tmpfile | pbcopy
-      ;;
-  esac
-  rm -f $tmpfile
-}
-
-# Display system path
-path() {
-  echo $PATH | tr ":" "\n" | nl
-}
-
-################################################################################
 # Settings
 ################################################################################
+export EDITOR='vim'
+export HISTCONTROL=ignoredups
+export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+export LANG=pt_BR.UTF-8
+
 case "$(uname)" in
   Linux)
     alias f5="sudo apt update -y && \
@@ -105,27 +82,31 @@ case "$(uname)" in
     ;;
 esac
 
-# Remove duplicates and useless commands from command history
-export HISTCONTROL=ignoredups
-export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+################################################################################
+# Scripts
+################################################################################
+source ~/.dotfiles/zsh/scripts/*
 
-# Tmux
-if [ -z "$TMUX" ]; then
-  tmux new-session -s $$;
-else
-  export TERM="screen-256color"
-fi
-
-# Language
-export LANG=pt_BR.UTF-8
-
-# Editor
-export EDITOR='vim'
-
+################################################################################
 # Oh-my-zsh
+################################################################################
 export ZSH=~/.dotfiles/zsh/.oh-my-zsh
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
-plugins=(docker docker-compose git gpg-agent iterm2 node npm osx ssh-agent sudo tmux ubuntu yarn)
+plugins=(
+  docker
+  docker-compose
+  git
+  gpg-agent
+  iterm2
+  node
+  npm
+  osx
+  ssh-agent
+  sudo
+  tmux
+  ubuntu
+  yarn
+)
 source $ZSH/oh-my-zsh.sh
