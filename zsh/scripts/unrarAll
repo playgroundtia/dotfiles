@@ -1,0 +1,9 @@
+#!/bin/bash
+
+unrarAll() {
+  for file in *.rar
+  do
+    unrar x $file .
+    rm $file
+  done
+}
