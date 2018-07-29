@@ -126,48 +126,55 @@ case "$(uname)" in
 
     # Bottles
     brew install \
-      mas \
+      awscli \
       curl \
       git \
-      wget \
-      zsh \
-      vim \
       gpg \
-      neomutt/homebrew-neomutt/neomutt \
       lynx \
-      urlview \
-      tmux \
-      reattach-to-user-namespace \
+      mas \
+      neomutt/homebrew-neomutt/neomutt \
       nodejs \
-      yarn \
-      awscli \
+      reattach-to-user-namespace \
+      ruby \
       shellcheck \
-      ruby
+      tmux \
+      urlview \
+      vim \
+      wget \
+      yarn \
+      zsh
 
     # Casks
     brew cask install \
-      iterm2 \
+      applepi-baker \
+      atom \
+      authy \
+      cleanmymac \
+      cloudapp \
+      coconutbattery \
       filezilla \
+      firefox \
+      flixtools \
+      font-hack-nerd-font \
+      google-chrome \
+      itau \
+      iterm2 \
+      keka \
+      lastpass \
+      macvim \
+      plex-media-server \
+      robo-3t \
+      silicon-labs-vcp-driver \
+      sizeup \
+      spotify \
       transmission \
       vlc \
       steam \
       wch-ch34x-usb-serial-driver \
-      silicon-labs-vcp-driver \
-      cleanmymac \
-      coconutbattery \
-      flixtools \
       folx \
-      itau \
-      sizeup \
-      spotify \
-      google-chrome \
       virtualbox \
       virtualbox-extension-pack \
-      vagrant \
-      atom \
-      macvim \
-      font-hack-nerd-font \
-      applepi-baker
+      vagrant
 
     # Atom packages
     apm install \
