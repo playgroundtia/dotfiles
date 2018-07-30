@@ -104,10 +104,7 @@ case "$(uname)" in
 
     # Nerd fonts
     git clone https://github.com/ryanoasis/nerd-fonts.git --depth=1 /tmp/fonts
-    cd /tmp/fonts || exit 1
-    ./install.sh
-    cd ..
-    rm -rf fonts
+    ./tmp/fonts/install.sh
 
     ;;
   Darwin)
@@ -147,7 +144,7 @@ case "$(uname)" in
       shellcheck \
       ruby
 
-    # Dmg packages
+    # Casks
     brew cask install \
       iterm2 \
       filezilla \
@@ -183,7 +180,8 @@ case "$(uname)" in
 
     # Node.js packages
     sudo yarn global add \
-      eslint --ignore-optional
+      eslint \
+      --ignore-optional
 
     #
     # App Store
@@ -244,3 +242,6 @@ ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 # Tmux
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/tmux ~/.tmux
+
+# Finish
+sudo shutdown -r now
