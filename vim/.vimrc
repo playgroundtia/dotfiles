@@ -101,6 +101,14 @@ set t_vb=
 set tm=500
 " Set leader key to ,
 let mapleader = ","
+" Clipboard
+if has('unix')
+  map <leader>c :w !xsel -i -b<CR>
+  map <leader>p :r !xsel -p<CR>
+elseif has('macunix')
+  map <leader>c :w !pbcopy<CR>
+  map <leader>p :r !pbpaste<CR>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -165,3 +173,5 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
 " CtrlP
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
+" Vim Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
