@@ -7,18 +7,15 @@ function f5() {
       sudo apt dist-upgrade -y
       sudo apt autoremove -y
       sudo apt clean all -y
-
       cd ~/.dotfiles
       git pull-sub
       git submodule update --recursive --remote
-
       sudo yarn global upgrade
-
       vim +PlugUpgrade +PlugUpdate +qall
+      ~/.tmux/plugins/tpm/bin/update_plugins all
+      source ~/.zshrc
 
-      bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
-      source ~/.zshrc"
+      ;;
     Darwin)
       brew update
       brew upgrade
@@ -26,22 +23,16 @@ function f5() {
       brew cleanup
       brew prune
       brew cask cleanup
-
       mas upgrade
-
       sudo softwareupdate -i -a
-
       cd ~/.dotfiles
       git pull-sub
       git submodule update --recursive --remote
-
       sudo yarn global upgrade
-
       vim +PlugUpgrade +PlugUpdate +qall
+      ~/.tmux/plugins/tpm/bin/update_plugins all
+      source ~/.zshrc
 
-      bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
-      source ~/.zshrc"
       ;;
   esac
 }

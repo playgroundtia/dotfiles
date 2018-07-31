@@ -52,18 +52,8 @@ ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-  docker
-  docker-compose
-  git
   gpg-agent
-  iterm2
-  node
-  npm
-  osx
   ssh-agent
-  sudo
   tmux
-  ubuntu
-  yarn
 )
 source $ZSH/oh-my-zsh.sh
