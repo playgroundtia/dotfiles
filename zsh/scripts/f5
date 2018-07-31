@@ -1,0 +1,47 @@
+#!/bin/bash
+
+function f5() {
+  case "$(uname)" in
+    Linux)
+      sudo apt update -y
+      sudo apt dist-upgrade -y
+      sudo apt autoremove -y
+      sudo apt clean all -y
+
+      cd ~/.dotfiles
+      git pull-sub
+      git submodule update --recursive --remote
+
+      sudo yarn global upgrade
+
+      vim +PlugUpgrade +PlugUpdate +qall
+
+      bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+      source ~/.zshrc"
+    Darwin)
+      brew update
+      brew upgrade
+      brew cu --all --yes --cleanup
+      brew cleanup
+      brew prune
+      brew cask cleanup
+
+      mas upgrade
+
+      sudo softwareupdate -i -a
+
+      cd ~/.dotfiles
+      git pull-sub
+      git submodule update --recursive --remote
+
+      sudo yarn global upgrade
+
+      vim +PlugUpgrade +PlugUpdate +qall
+
+      bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+      source ~/.zshrc"
+      ;;
+  esac
+}

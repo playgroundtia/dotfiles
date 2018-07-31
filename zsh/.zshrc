@@ -32,55 +32,12 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
 export LANG=pt_BR.UTF-8
 
-case "$(uname)" in
-  Linux)
-    alias f5="sudo apt update -y && \
-              sudo apt dist-upgrade -y && \
-              sudo apt autoremove -y && \
-              sudo apt clean all -y && \
-              \
-              cd ~/.dotfiles && \
-              git pull-sub && \
-              git submodule update --recursive --remote && \
-              \
-              sudo yarn global upgrade && \
-              \
-              vim +PlugUpgrade +PlugUpdate +qall && \
-              \
-              bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
-              \
-              source ~/.zshrc"
-
-    # Tilix
-    if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-      source /etc/profile.d/vte.sh
-    fi
-    ;;
-  Darwin)
-    alias f5="brew update && \
-              brew upgrade && \
-              brew cu --all --yes --cleanup && \
-              brew cleanup && \
-              brew prune && \
-              brew cask cleanup && \
-              \
-              mas upgrade && \
-              \
-              sudo softwareupdate -i -a && \
-              \
-              cd ~/.dotfiles && \
-              git pull-sub && \
-              git submodule update --recursive --remote && \
-              \
-              sudo yarn global upgrade && \
-              \
-              vim +PlugUpgrade +PlugUpdate +qall && \
-              \
-              bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
-              \
-              source ~/.zshrc"
-    ;;
-esac
+if [[ "$(uname)" == "Linux" ]]; then
+  # Tilix
+  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+  fi
+fi
 
 ################################################################################
 # Scripts
