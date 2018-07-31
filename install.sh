@@ -242,6 +242,6 @@ ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 # Tmux
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/tmux ~/.tmux
-
+bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 # Finish
 sudo shutdown -r now
