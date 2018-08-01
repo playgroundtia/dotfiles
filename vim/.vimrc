@@ -102,12 +102,12 @@ set tm=500
 " Set leader key to ,
 let mapleader = ","
 " Clipboard
-if has('unix')
-  map <leader>c :w !xsel -i -b<CR>
-  map <leader>p :r !xsel -p<CR>
-elseif has('macunix')
+if has('macunix')
   map <leader>c :w !pbcopy<CR>
   map <leader>p :r !pbpaste<CR>
+else
+  map <leader>c :w !xsel -i -b<CR>
+  map <leader>p :r !xsel -p<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
