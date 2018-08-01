@@ -32,13 +32,6 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
 export LANG=pt_BR.UTF-8
 
-if [[ "$(uname)" == "Linux" ]]; then
-  # Tilix
-  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-    source /etc/profile.d/vte.sh
-  fi
-fi
-
 ################################################################################
 # Scripts
 ################################################################################
