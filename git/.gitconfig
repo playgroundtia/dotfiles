@@ -137,4 +137,4 @@
   hier = log --all --graph --decorate --oneline --simplify-by-decoration
 
   # Create a package <3
-  package = !tar --exclude=".git" -cvzf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tgz *
+  package = !tar --exclude=".git" --exclude="node_modules" -cvzf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tgz *
