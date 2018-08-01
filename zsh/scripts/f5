@@ -7,7 +7,7 @@ function f5() {
       sudo apt dist-upgrade -y
       sudo apt autoremove -y
       sudo apt clean all -y
-      cd ~/.dotfiles
+      cd ~/.dotfiles || exit 1
       git pull-sub
       git submodule update --recursive --remote
       sudo yarn global upgrade
@@ -25,7 +25,7 @@ function f5() {
       brew cask cleanup
       mas upgrade
       sudo softwareupdate -i -a
-      cd ~/.dotfiles
+      cd ~/.dotfiles || exit 1
       git pull-sub
       git submodule update --recursive --remote
       sudo yarn global upgrade
