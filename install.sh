@@ -81,7 +81,8 @@ case "$(uname)" in
       vagrant \
       atom \
       shellcheck \
-      ruby
+      ruby \
+      fonts-hack-ttf
 
     # Atom packages
     apm install \
@@ -92,8 +93,7 @@ case "$(uname)" in
       eslint --ignore-optional
 
     # Hack Nerd Font
-    mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts || exit 1
+    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
     curl -fLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo fc-cache -fv
 
