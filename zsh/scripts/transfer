@@ -1,6 +1,6 @@
 #!/bin/bash
 
-transfer() {
+function transfer() {
   if [ $# -eq 0 ]; then
     echo -e "No arguments specified.";
     return 1;

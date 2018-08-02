@@ -1,6 +1,6 @@
 #!/bin/bash
 
-unrarAll() {
+function unrarAll() {
   for file in *.rar
   do
     unrar x $file .

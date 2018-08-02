@@ -1,6 +1,6 @@
 #!/bin/bash
 
-syncMongo() {
+function syncMongo() {
   sudo docker stop linte_mongodb3.4
   sudo docker rm linte_mongodb3.4
   sudo rm -rf ~/Workspace/mongodb/linte/
