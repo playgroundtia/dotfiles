@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'sheerun/vim-polyglot'
+Plug 'ntpeters/vim-better-whitespace'
 " Linters
 Plug 'w0rp/ale'
 " File management
@@ -32,6 +33,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 " Helpers
 Plug 'brooth/far.vim'
+Plug 'easymotion/vim-easymotion'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
