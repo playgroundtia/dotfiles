@@ -40,7 +40,7 @@ if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   elseif (v:version >= 800) && has("python3")
-    Plug 'Shougo/deoplete.nvim', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y python3-pip; else brew update && brew install python3; fi; pip3 install neovim' }
+    Plug 'Shougo/deoplete.nvim', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y python3-pip; else brew update && brew reinstall python3; fi; pip3 install neovim' }
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
@@ -112,6 +112,8 @@ else
   map <leader>c :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
+" Unsets the "last search pattern" register by hitting return
+nnoremap <silent> <CR> :noh<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
