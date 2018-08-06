@@ -34,6 +34,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-repeat'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
