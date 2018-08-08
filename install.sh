@@ -228,9 +228,9 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   echo "pinentry-program /usr/local/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
 fi
 chmod 700 ~/.gnupg
-chmod 400 ~/.gnupg/keys/*
-gpg --import ~/.gnupg/keys/personal.public
-gpg --import ~/.gnupg/keys/personal.private
+# chmod 400 ~/.gnupg/keys/*
+# gpg --import ~/.gnupg/keys/personal.public
+# gpg --import ~/.gnupg/keys/personal.private
 
 # SSH
 ln -s ~/.dotfiles/ssh ~/.ssh

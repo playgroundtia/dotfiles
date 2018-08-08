@@ -9,7 +9,7 @@
   useConfigOnly = true
 
   # GPG key ID
-  signingkey = 61D32924C3587EA4
+  signingkey = F0D1290BDE08BBF6
 
 [core]
   # Global ignore
