@@ -35,6 +35,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
+Plug 'ervandew/supertab'
+Plug 'severin-lemaignan/vim-minimap'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
@@ -180,3 +182,5 @@ let g:ale_lint_on_enter = 0
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
 " Vim Indent Guides
 let g:indent_guides_enable_on_vim_startup = 1
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
