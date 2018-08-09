@@ -19,6 +19,7 @@ gnupg/random_seed
 gnupg/tofu.db
 gnupg/trustdb.gpg
 gnupg/openpgp-revocs.d/
+gnupg/sshcontrol
 
 # Tmux
 tmux/resurrect/
