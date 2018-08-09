@@ -165,7 +165,8 @@ case "$(uname)" in
       folx \
       virtualbox \
       virtualbox-extension-pack \
-      vagrant
+      vagrant \
+      docker
 
     # Atom packages
     apm install \
