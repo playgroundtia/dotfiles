@@ -166,7 +166,8 @@ case "$(uname)" in
       virtualbox \
       virtualbox-extension-pack \
       vagrant \
-      docker
+      docker \
+      --language=pt-BR
 
     # Atom packages
     apm install \
