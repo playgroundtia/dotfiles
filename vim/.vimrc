@@ -116,6 +116,8 @@ else
 endif
 " Unsets the "last search pattern" register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
+" Reduce how often you see the "Hit ENTER to continue"
+set shortmess=a
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
