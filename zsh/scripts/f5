@@ -7,17 +7,33 @@ function f5() {
       sudo apt dist-upgrade -y
       sudo apt autoremove -y
       sudo apt clean all -y
+
       cd ~/.dotfiles || exit 1
       git pull-sub
       git submodule update --recursive --remote
+
       sudo yarn global upgrade
+
       vim +PlugUpgrade +PlugUpdate +qall
-      ~/.tmux/plugins/tpm/bin/update_plugins all
+      rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
+
+      cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-better-mouse-mode && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-cpu && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-resurrect && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-continuum && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
+
       source ~/.zshrc
 
       ;;
     Darwin)
       brew update
+      brew cleanup
       brew upgrade
       brew cu --all --yes --cleanup
       brew cleanup
@@ -25,12 +41,27 @@ function f5() {
       brew cask cleanup
       mas upgrade
       sudo softwareupdate -i -a
+
       cd ~/.dotfiles || exit 1
       git pull-sub
       git submodule update --recursive --remote
+
       sudo yarn global upgrade
+
       vim +PlugUpgrade +PlugUpdate +qall
-      ~/.tmux/plugins/tpm/bin/update_plugins all
+      rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
+
+      cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-better-mouse-mode && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-cpu && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-resurrect && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-continuum && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
+      cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
+
       source ~/.zshrc
 
       ;;
