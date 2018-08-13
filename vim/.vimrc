@@ -11,7 +11,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 " Highlighters
@@ -52,6 +51,9 @@ if has('nvim') || ((v:version >= 800) && has("python3"))
   " JavaScript
   Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add tern --ignore-optional' }
 endif
+" iA Writer
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -119,6 +121,8 @@ endif
 nnoremap <silent> <CR> :noh<CR><CR>
 " Reduce how often you see the "Hit ENTER to continue"
 set shortmess=a
+" Use F5 to switch buffers
+:nnoremap <F5> :buffers<CR>:buffer<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
