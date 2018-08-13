@@ -31,6 +31,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'heavenshell/vim-jsdoc'
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
@@ -105,7 +106,7 @@ set novisualbell
 set t_vb=
 set tm=500
 " Set leader key to ,
-let mapleader = ","
+let mapleader = ','
 " Clipboard
 if has('macunix')
   map <leader>c :w !pbcopy<CR>
@@ -155,19 +156,33 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug-ins settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " NERDTree
-map <C-\> :NERDTreeToggle<CR>
+"
+" Leader-n to toggle NERDTree
+map <leader>n :NERDTreeToggle<CR>
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeDirArrows = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
+"
 " Airline
-let g:airline#extensions#tabline#enabled = 1
+"
+" Use powerline fonts
 let g:airline_powerline_fonts = 1
+"
+" Airline extensions
+"
+" Ale extension
 let g:airline#extensions#ale#enabled = 1
+" Tabs extension
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+"
 " NERDCommenter
+"
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
@@ -176,13 +191,33 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
+"
 " Ale
+"
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 1
+"
 " CtrlP
+"
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
+"
 " Vim Indent Guides
+"
 let g:indent_guides_enable_on_vim_startup = 1
+"
 " Supertab
+"
+" Use Tab instead of Ctrl-N / Ctrl-P
 let g:SuperTabDefaultCompletionType = "<c-n>"
+"
+" Minimap
+"
+" Toggle Minimap
+map <leader>m :MinimapToggle<CR>
+"
+" JsDoc
+"
+" Add JsDoc comment
+map <leader>j :JsDoc<CR>
