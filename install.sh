@@ -2,27 +2,32 @@
 
 case "$(uname)" in
   Linux)
+    # Basic packages
+    sudo apt install -y \
+      curl \
+      wget
+
     #
     # Repositories
     #
     # Docker
-    wget -q https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     # Node.js
-    wget -q https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
     # Yarn
-    wget -q https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     # Spotify
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
     # Chrome
-    wget -q https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
     # VirtualBox
     sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+    curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
     # Atom
     sudo add-apt-repository ppa:webupd8team/atom
 
