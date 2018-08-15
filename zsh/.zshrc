@@ -50,5 +50,6 @@ plugins=(
   gpg-agent
   ssh-agent
   tmux
+  vi-mode
 )
 source $ZSH/oh-my-zsh.sh
