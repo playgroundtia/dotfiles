@@ -28,8 +28,6 @@ function f5() {
       cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
       cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
 
-      source ~/.zshrc
-
       ;;
     Darwin)
       brew update
@@ -62,8 +60,9 @@ function f5() {
       cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
       cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
 
-      source ~/.zshrc
-
       ;;
   esac
+
+  source ~/.zshrc
+  cd ~
 }
