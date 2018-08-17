@@ -1,4 +1,6 @@
-" Use Vim settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Damn! :)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -25,18 +27,22 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 " Editing
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'heavenshell/vim-jsdoc'
+Plug 'tpope/vim-surround'
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
-Plug 'severin-lemaignan/vim-minimap'
+" iA Writer
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
 " Code completion
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
@@ -51,9 +57,6 @@ if has('nvim') || ((v:version >= 800) && has("python3"))
   " JavaScript
   Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add tern --ignore-optional' }
 endif
-" iA Writer
-Plug 'junegunn/goyo.vim'
-Plug 'amix/vim-zenroom2'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -117,12 +120,16 @@ else
   map <leader>c :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
-" Unsets the "last search pattern" register by hitting return
+" Unsets the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
-" Reduce how often you see the "Hit ENTER to continue"
+" Reduce how often you see the HIT ENTER TO CONTINUE
 set shortmess=a
 " Use F5 to switch buffers
-:nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <F5> :buffers<CR>:buffer<Space>
+" Use F6 to vertically split the current window and select a buffer
+nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
+" Use F7 to horizontally split the current window and select a buffer
+nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -158,12 +165,9 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug-ins settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
 " NERDTree
-"
-" Leader-n to toggle NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle NERDTree
 map <leader>n :NERDTreeToggle<CR>
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeAutoDeleteBuffer = 1
@@ -171,22 +175,19 @@ let NERDTreeDirArrows = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use powerline fonts
 let g:airline_powerline_fonts = 1
-"
-" Airline extensions
-"
-" Ale extension
-let g:airline#extensions#ale#enabled = 1
 " Tabs extension
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
@@ -195,33 +196,37 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
-"
+" Airline extension
+let g:airline#extensions#ale#enabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ignored folders
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
-"
-" Vim Indent Guides
-"
-let g:indent_guides_enable_on_vim_startup = 1
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Tab instead of Ctrl-N / Ctrl-P
 let g:SuperTabDefaultCompletionType = "<c-n>"
-"
-" Minimap
-"
-" Toggle Minimap
-map <leader>m :MinimapToggle<CR>
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
-"
-" Add JsDoc comment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle JsDoc
 map <leader>j :JsDoc<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Multiple Cursors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quit from multicursor mode
+let g:multi_cursor_quit_key = '<Esc>'
