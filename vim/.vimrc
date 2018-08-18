@@ -15,6 +15,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
+Plug 'jszakmeister/vim-togglecursor'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'sheerun/vim-polyglot'
