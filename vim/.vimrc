@@ -16,6 +16,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'jszakmeister/vim-togglecursor'
+Plug 'mhinz/vim-startify'
 " Highlighters
 Plug 'ap/vim-css-color'
 Plug 'sheerun/vim-polyglot'
@@ -42,7 +43,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags' }
-
 " iA Writer
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
@@ -172,11 +172,15 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 map <leader>n :NERDTreeToggle<CR>
+" Close vim if the only window left open is NERDTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Automatically remove a buffer when a file is being deleted via a context menu
 let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeDirArrows = 1
+" Disable display of the 'Bookmarks' label
 let NERDTreeMinimalUI = 1
+" Close the tree window after opening a file
 let NERDTreeQuitOnOpen = 1
+" Display hidden files by default
 let NERDTreeShowHidden = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -233,3 +237,9 @@ map <leader>j :JsDoc<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit from multicursor mode
 let g:multi_cursor_quit_key = '<Esc>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>t :TagbarToggle<CR>
+
