@@ -42,7 +42,7 @@ Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags' }
+Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags; fi;' }
 " iA Writer
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
