@@ -18,7 +18,7 @@ function f5() {
       brew cu --all --yes --cleanup
       brew cleanup
       brew prune
-      brew cask cleanup
+      brew cleanup
       mas upgrade
       sudo softwareupdate -i -a
 
