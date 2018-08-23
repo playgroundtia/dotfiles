@@ -13,36 +13,33 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'mhinz/vim-startify'
-" Highlighters
-Plug 'ap/vim-css-color'
-Plug 'sheerun/vim-polyglot'
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
 " Linters
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'do': 'sudo yarn global add eslint --ignore-global' }
 " File management
-Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim'
-" Git
 Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 " Editing
+Plug 'ap/vim-css-color'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'heavenshell/vim-jsdoc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'tpope/vim-surround'
 " Helpers
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-repeat'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags; fi;' }
+Plug 'tpope/vim-repeat'
 " iA Writer
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
@@ -117,10 +114,10 @@ set tm=500
 let mapleader = ','
 " Clipboard
 if has('macunix')
-  map <leader>c :w !pbcopy<CR>
+  map <leader>y :w !pbcopy<CR>
   map <leader>p :r !pbpaste<CR>
 else
-  map <leader>c :w !xsel -i -b<CR>
+  map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
 " Unsets the LAST SEARCH PATTERN register by hitting return
@@ -243,3 +240,8 @@ let g:multi_cursor_quit_key = '<Esc>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>t :TagbarToggle<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" JSX
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
