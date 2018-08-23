@@ -3,6 +3,7 @@
 case "$(uname)" in
   Linux)
     # Basic packages
+    sudo apt update
     sudo apt install -y \
       curl \
       wget
