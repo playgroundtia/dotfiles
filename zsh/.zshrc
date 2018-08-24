@@ -31,6 +31,7 @@ export EDITOR='vim'
 export HISTCONTROL=ignoredups
 export HISTIGNORE="cd:ls:[bf]g:clear:exit"
 export LANG=pt_BR.UTF-8
+set -o vi
 
 ################################################################################
 # Scripts
