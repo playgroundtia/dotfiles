@@ -72,9 +72,6 @@ set hlsearch
 set cursorline
 " Enable overlength line highlighting
 set colorcolumn=80
-" Enable trailing whitespace hightlighting
-highlight WhitespaceEOL ctermbg=DarkRed
-match WhitespaceEOL /\s\+$/
 " Enable mouse support
 set mouse=a
 set ttymouse=xterm2
@@ -101,8 +98,6 @@ set noswapfile
 set autoread
 " Set update interval
 set updatetime=100
-" :W sudo saves the file
-command W w !sudo tee % > /dev/null
 " Show matching brackets when text indicator is over them
 set showmatch
 " No annoying sound on errors
@@ -112,18 +107,24 @@ set t_vb=
 set tm=500
 " Set leader key to ,
 let mapleader = ','
-" Clipboard
-if has('macunix')
-  map <leader>y :w !pbcopy<CR>
-  map <leader>p :r !pbpaste<CR>
-else
-  map <leader>y :w !xsel -i -b<CR>
-  map <leader>p :r !xsel -p<CR>
-endif
-" Unsets the LAST SEARCH PATTERN register by hitting return
+" Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
 " Reduce how often you see the HIT ENTER TO CONTINUE
 set shortmess=a
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Aliases
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copy to / from external clipboard
+if has('macunix')
+  " mVim
+  map <leader>y :w !pbcopy<CR>
+  map <leader>p :r !pbpaste<CR>
+else
+  " gVim
+  map <leader>y :w !xsel -i -b<CR>
+  map <leader>p :r !xsel -p<CR>
+endif
 " Use F5 to switch buffers
 nnoremap <F5> :buffers<CR>:buffer<Space>
 " Use F6 to vertically split the current window and select a buffer
@@ -131,7 +132,7 @@ nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
 " Use F7 to horizontally split the current window and select a buffer
 nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 " Open with Atom
-nnoremap <leader>a :execute "silent !atom " . expand("%") . ":" . line(".") \| redraw!<CR>
+nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -217,7 +218,7 @@ let g:airline#extensions#ale#enabled = 1
 " CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignored folders
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|meteor|node_modules|demeteorized|build)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|node_modules)$'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
