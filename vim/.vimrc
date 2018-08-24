@@ -130,6 +130,8 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
 " Use F7 to horizontally split the current window and select a buffer
 nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
+" Open with Atom
+nnoremap <leader>a :execute "silent !atom " . expand("%") . ":" . line(".") \| redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
