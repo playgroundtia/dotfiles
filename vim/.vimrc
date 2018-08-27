@@ -13,8 +13,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim', { 'as': 'base16' }
 Plug 'jszakmeister/vim-togglecursor'
-Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 " Linters
@@ -34,11 +34,16 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
 " Helpers
+Plug 'mhinz/vim-startify'
+Plug 'artnez/vim-wipeout'
+Plug 'farmergreg/vim-lastplace'
 Plug 'brooth/far.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags; fi;' }
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 " iA Writer
 Plug 'junegunn/goyo.vim'
@@ -68,6 +73,8 @@ set lazyredraw
 set laststatus=2
 " Enable last used search pattern highlighting
 set hlsearch
+" Unset the LAST SEARCH PATTERN register by hitting return
+nnoremap <silent> <CR> :noh<CR><CR>
 " Enable cursor line highlighting
 set cursorline
 " Enable overlength line highlighting
@@ -85,10 +92,8 @@ filetype plugin indent on
 set history=100
 " Enable .viminfo
 set viminfo='20,\"50
-" Set utf-8 encoding
-set encoding=utf-8
+" Set default encoding and format
 set fileencoding=utf-8
-" Use two spaces as tab
 set tabstop=2 shiftwidth=2 expandtab
 " Turn backup off
 set nobackup
@@ -100,28 +105,30 @@ set autoread
 set updatetime=100
 " Show matching brackets when text indicator is over them
 set showmatch
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-" Set leader key to ,
-let mapleader = ','
-" Unset the LAST SEARCH PATTERN register by hitting return
-nnoremap <silent> <CR> :noh<CR><CR>
-" Reduce how often you see the HIT ENTER TO CONTINUE
-set shortmess=a
+" No annoying sounds
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+" Disable arrow keys
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+" Load .md files as Markdown
+autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+autocmd FileType markdown set tw=80
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set leader key to ,
+let mapleader = ','
 " Copy to / from external clipboard
 if has('macunix')
-  " mVim
+  " macOS
   map <leader>y :w !pbcopy<CR>
   map <leader>p :r !pbpaste<CR>
 else
-  " gVim
+  " Linux
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
@@ -152,19 +159,8 @@ if has('gui_running')
     " gVim
     set guifont=Hack\ 10
   endif
-  " Remove menu bar
-  set guioptions-=m
-  " Remove toolbar
-  set guioptions-=T
-  " Remove right scrollbar
-  set guioptions-=R
-  set guioptions-=r
-  " Remove left scrollbar
-  set guioptions-=L
-  set guioptions-=l
-  " Maximize window
-  set lines=999
-  set columns=999
+  " Remove menu
+  set guioptions=
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
