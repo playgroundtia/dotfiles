@@ -69,8 +69,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Faster vim
 set lazyredraw
-" Always display status line
-set laststatus=2
 " Enable last used search pattern highlighting
 set hlsearch
 " Unset the LAST SEARCH PATTERN register by hitting return
@@ -86,10 +84,6 @@ set ttymouse=xterm2
 set number
 " Enable case-insensitive search
 set ic
-" Enable specific configuration for filetypes
-filetype plugin indent on
-" Set history size
-set history=100
 " Enable .viminfo
 set viminfo='20,\"50
 " Set default encoding and format
