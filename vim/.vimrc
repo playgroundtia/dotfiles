@@ -45,6 +45,7 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y exuberant-ctags; else brew update && brew reinstall ctags; fi;' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
+Plug 'tmhedberg/matchit'
 " iA Writer
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
@@ -93,8 +94,6 @@ set tabstop=2 shiftwidth=2 expandtab
 set nobackup
 set nowb
 set noswapfile
-" Auto reload files when they change
-set autoread
 " Set update interval
 set updatetime=100
 " Show matching brackets when text indicator is over them
