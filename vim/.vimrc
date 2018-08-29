@@ -133,6 +133,10 @@ nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
 nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 " Open with Atom
 nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
+" Reload vimrc
+:nmap <Leader>s :source $MYVIMRC
+" Edit vimrc
+:nmap <Leader>v :e $MYVIMRC
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
