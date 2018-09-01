@@ -80,9 +80,9 @@ nnoremap <silent> <CR> :noh<CR><CR>
 set cursorline
 " Enable overlength line highlighting
 set colorcolumn=80
-" Enable mouse support
-set mouse=a
-set ttymouse=xterm2
+" Disable mouse
+set mouse=
+set ttymouse=
 " Enable line numbers
 set number
 " Enable case-insensitive search
@@ -111,6 +111,8 @@ map <Down> <Nop>
 " Load .md files as Markdown
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 autocmd FileType markdown set tw=80
+" Make foo-bar be considered one word
+set iskeyword+=-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
