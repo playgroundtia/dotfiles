@@ -17,6 +17,7 @@ Plug 'chriskempson/base16-vim', { 'as': 'base16' }
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Linters
 Plug 'w0rp/ale', { 'do': 'sudo yarn global add eslint --ignore-global' }
 " File management
@@ -25,6 +26,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
 " Editing
 Plug 'ap/vim-css-color'
 Plug 'editorconfig/editorconfig-vim'
@@ -134,9 +136,9 @@ nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 " Open with Atom
 nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
 " Reload vimrc
-:nmap <Leader>s :source $MYVIMRC
+:nmap <Leader>s :source $MYVIMRC<CR>
 " Edit vimrc
-:nmap <Leader>v :e $MYVIMRC
+:nmap <Leader>v :e $MYVIMRC<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -211,7 +213,12 @@ let g:airline#extensions#ale#enabled = 1
 " CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignored folders
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|node_modules)$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|node_modules)$',
+      \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
+      \ }
+" Don't cache results
+let g:ctrlp_use_caching = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
