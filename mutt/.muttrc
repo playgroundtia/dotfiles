@@ -15,7 +15,7 @@ macro index <f4> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/
 
 # Editor config
 set charset = "utf-8"
-set editor = "vim -u NONE -c 'set nocompatible' -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number' -c 'set mouse=a'  -c 'set ttymouse=xterm2'"
+set editor = "vim -u NONE -c 'set tw=72 ft=mail noautoindent' -c 'set fo=aw' -c 'set cursorline' -c 'set number'"
 
 # Status bar
 set status_chars  = " *%A"
