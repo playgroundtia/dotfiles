@@ -2,15 +2,17 @@
 
 case "$(uname)" in
   Linux)
+    ############################################################################
     # Basic packages
+    ############################################################################
     sudo apt update
     sudo apt install -y \
       curl \
       wget
 
-    #
+    ############################################################################
     # Repositories
-    #
+    ############################################################################
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -26,17 +28,21 @@ case "$(uname)" in
     curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
     # VirtualBox
-    sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     # Atom
     sudo add-apt-repository ppa:webupd8team/atom
 
+    ############################################################################
     # Update / upgrade
+    ############################################################################
     sudo apt update
     sudo apt dist-upgrade -y
 
+    ############################################################################
     # Purge
+    ############################################################################
     sudo apt purge -y \
       apport \
       docker \
@@ -47,7 +53,9 @@ case "$(uname)" in
       chromium-* \
       virtualbox
 
-    # Install
+    ############################################################################
+    # Install packages
+    ############################################################################
     sudo apt install -y \
       curl \
       git \
@@ -88,40 +96,43 @@ case "$(uname)" in
       atom \
       shellcheck \
       ruby \
-      fonts-hack-ttf
+      fonts-hack-ttf \
+      nautilus-dropbox
 
-    # Atom packages
-    apm install \
-      sync-settings
-
-    # Node.js packages
-    sudo yarn global add \
-      eslint --ignore-optional
-
+    ############################################################################
     # Hack Nerd Font
+    ############################################################################
     mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
     curl -fLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo fc-cache -fv
 
     ;;
   Darwin)
+    ############################################################################
     # xCode
+    ############################################################################
     xcode-select -p || exit 1
     sudo xcodebuild -license accept
     sudo xcode-select --install
 
+    ############################################################################
     # Homebrew
+    ############################################################################
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew doctor
 
+    ############################################################################
     # Taps
+    ############################################################################
     brew tap \
       caskroom/cask \
       buo/cask-upgrade \
       caskroom/drivers \
       caskroom/fonts
 
+    ############################################################################
     # Bottles
+    ############################################################################
     brew install \
       awscli \
       curl \
@@ -141,7 +152,9 @@ case "$(uname)" in
       yarn \
       zsh
 
+    ############################################################################
     # Casks
+    ############################################################################
     brew cask install \
       applepi-baker \
       atom \
@@ -173,20 +186,11 @@ case "$(uname)" in
       virtualbox-extension-pack \
       vagrant \
       docker \
-      --language=pt-BR
+      dropbox
 
-    # Atom packages
-    apm install \
-      sync-settings
-
-    # Node.js packages
-    sudo yarn global add \
-      eslint \
-      --ignore-optional
-
-    #
+    ############################################################################
     # App Store
-    #
+    ############################################################################
     # Amphetamine
     mas install 937984704
     # Valentina Studio
@@ -202,33 +206,66 @@ case "$(uname)" in
     ;;
 esac
 
-#
-# Settings
-#
-# Delete old files
-rm -rf ~/.dotfiles ~/.zshrc ~/.gitconfig ~/.vim ~/.vimrc ~/.gnupg ~/.ssh ~/.muttrc ~/.mutt ~/.mailcap ~/.tmux.conf ~/.tmux
+################################################################################
+# Atom packages
+################################################################################
+apm install \
+  sync-settings
 
-# Clone dotfiles
+################################################################################
+# Node.js packages
+################################################################################
+sudo yarn global add \
+  eslint --ignore-optional
+
+################################################################################
+# Dotfiles
+################################################################################
+if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
+  mv ~/.dotfiles /tmp/dotfiles-old
+fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
 cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
+################################################################################
 # Zsh
+################################################################################
+if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
+  mv ~/.zshrc /tmp/zshrc-old
+fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/themes/zsh/dracula.zsh-theme ~/.dotfiles/zsh/.oh-my-zsh/custom/themes/dracula.zsh-theme
 echo "$(which zsh)" | sudo tee /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"
 
+################################################################################
 # Git
+################################################################################
+if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
+  mv ~/.gitconfig /tmp/gitconfig-old
+fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
+################################################################################
 # Vim
+################################################################################
+if [ -f ~/.vim ] || [ -h ~/.vim ]; then
+  mv ~/.vim /tmp/vim-old
+fi
 ln -s ~/.dotfiles/vim ~/.vim
+if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
+  mv ~/.vimrc /tmp/vimrc-old
+fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
-vim +PlugUpgrade +PlugInstall +qall
 
+################################################################################
 # GPG
+################################################################################
+if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
+  mv ~/.gnupg /tmp/gnupg-old
+fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
 if [[ "$(uname)" == "Linux" ]]; then
   echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
@@ -240,22 +277,63 @@ chmod 400 ~/.gnupg/keys/*
 gpg --import ~/.gnupg/keys/personal.public
 gpg --import ~/.gnupg/keys/personal.private
 
+################################################################################
 # SSH
+################################################################################
+if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
+  mv ~/.ssh /tmp/ssh-old
+fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
 
+################################################################################
 # NeoMutt
+################################################################################
+if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
+  mv ~/.muttrc /tmp/muttrc-old
+fi
 ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
+if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
+  mv ~/.mutt /tmp/mutt-old
+fi
 ln -s ~/.dotfiles/mutt ~/.mutt
+if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
+  mv ~/.mailcap /tmp/mailcap-old
+fi
 ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
+################################################################################
 # Tmux
+################################################################################
+if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
+  mv ~/.tmux.conf /tmp/tmux.conf-old
+fi
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+if [ -f ~/.tmux ] || [ -h ~/.tmux ]; then
+  mv ~/.tmux /tmp/tmux-old
+fi
 ln -s ~/.dotfiles/tmux ~/.tmux
-bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
+################################################################################
 # Tilix
+################################################################################
 if [[ "$(uname)" == "Linux" ]]; then
   mkdir -p ~/.config/tilix/schemes
   ln -s ~/.dotfiles/themes/Tilix/Dracula.json ~/.config/tilix/schemes/Dracula.json
 fi
+
+################################################################################
+# Finish
+################################################################################
+case "$(uname)" in
+  Linux)
+    sudo apt autoremove -y
+    sudo apt clean all -y
+
+  ;;
+  Darwin)
+    brew cleanup
+    brew prune
+
+  ;;
+esac
