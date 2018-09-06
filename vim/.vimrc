@@ -211,7 +211,7 @@ let g:airline#extensions#ale#enabled = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore files and folders
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|node_modules)$',
+      \ 'dir':  '\v[\/](\.git|node_modules)$',
       \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
       \ }
 " Don't cache results
@@ -228,6 +228,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle JsDoc
 map <leader>j :JsDoc<CR>
+" Enable ECMASCript 6 support
+let g:jsdoc_enable_es6 = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Multiple Cursors
