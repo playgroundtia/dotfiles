@@ -116,11 +116,11 @@ let mapleader = ','
 if has('macunix')
   " macOS
   map <leader>y :w !pbcopy<CR>
-  map <leader>p :r !pbpaste \| sed 's/^ *//;s/ *$//'<CR>
+  map <leader>p :r !pbpaste \|ciassas <CR>
 else
   " Linux
   map <leader>y :w !xsel -i -b<CR>
-  map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
+  map <leader>p :r !xsel -p \| <CR>
 endif
 " Use F5 to switch buffers
 nnoremap <F5> :buffers<CR>:buffer<Space>
