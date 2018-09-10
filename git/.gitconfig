@@ -25,7 +25,7 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
   # Default text editor
-  editor = vim -f -u NONE -c 'set nobackup noswapfile nowritebackup' -c 'set cursorline' -c 'set number'
+  editor = vim -f -u NONE -c 'set nocompatible' -c 'set nobackup noswapfile nowritebackup' -c 'set cursorline' -c 'set number'
 
 [commit]
   # Sign all commits by default
