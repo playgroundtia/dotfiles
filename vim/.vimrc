@@ -34,6 +34,7 @@ Plug 'scrooloose/nerdtree'
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'takac/vim-hardtime'
+Plug 'tpope/vim-dadbod'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'jiangmiao/auto-pairs'
