@@ -216,7 +216,9 @@ apm install \
 # Node.js packages
 ################################################################################
 sudo yarn global add \
-  eslint --ignore-optional
+  prettier \
+  eslint \
+  --ignore-optional
 
 ################################################################################
 # Dotfiles

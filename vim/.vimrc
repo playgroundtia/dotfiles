@@ -20,7 +20,7 @@ Plug 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'w0rp/ale', { 'do': 'sudo yarn global add eslint --ignore-global' }
+Plug 'w0rp/ale', { 'do': 'sudo yarn global add prettier eslint --ignore-global' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
@@ -199,6 +199,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
 " Airline extension
 let g:airline#extensions#ale#enabled = 1
 
