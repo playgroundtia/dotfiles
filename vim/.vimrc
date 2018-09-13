@@ -33,7 +33,6 @@ Plug 'scrooloose/nerdtree'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-dadbod'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc'
@@ -243,6 +242,12 @@ let g:jsx_ext_required = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+" Jump to anywhere
+nmap s <Plug>(easymotion-overwin-f)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
 " Use EasyMotion to move to matched words
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -254,11 +259,3 @@ map  N <Plug>(easymotion-prev)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable at startup
 let g:deoplete#enable_at_startup = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Hardtime
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable at startup
-let g:hardtime_default_on = 1
-" Ignore NERDTree buffer
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
