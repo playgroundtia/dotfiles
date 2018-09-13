@@ -16,6 +16,7 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
+Plug 'sheerun/vim-polyglot'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -28,22 +29,21 @@ Plug 'w0rp/ale', { 'do': 'sudo yarn global add prettier eslint --ignore-global' 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-dadbod'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'artnez/vim-wipeout'
-Plug 'brooth/far.vim'
+Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
+Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'ntpeters/vim-better-whitespace'
