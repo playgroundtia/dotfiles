@@ -34,7 +34,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
 Plug 'jiangmiao/auto-pairs'
