@@ -212,6 +212,8 @@ let g:ctrlp_custom_ignore = {
       \ }
 " Don't cache results
 let g:ctrlp_use_caching = 0
+" Show hidden files
+let g:ctrlp_show_hidden = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
