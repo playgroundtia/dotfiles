@@ -34,6 +34,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
@@ -198,7 +199,10 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
-let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = {
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'python': ['pyflakes', 'flake8', 'pylint']
+  \ }
 " Airline extension
 let g:airline#extensions#ale#enabled = 1
 
@@ -207,9 +211,9 @@ let g:airline#extensions#ale#enabled = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore files and folders
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/](\.git|node_modules)$',
-      \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
-      \ }
+  \ 'dir':  '\v[\/](\.git|node_modules)$',
+  \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
+  \ }
 " Don't cache results
 let g:ctrlp_use_caching = 0
 " Show hidden files
@@ -261,3 +265,9 @@ map  N <Plug>(easymotion-prev)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable at startup
 let g:deoplete#enable_at_startup = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Carbon.now.sh
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default theme
+let g:carbon_now_sh_options = 't=dracula'
