@@ -5,7 +5,10 @@ Host *
   ServerAliveInterval 120
   StrictHostKeyChecking ask
 
-Host linte-bastion
-  HostName 52.71.104.238
-  User ec2-user
-  IdentityFile ~/.ssh/linte-bastion.pem
+Host sossego-stark
+  HostName stark.sossego.com.br
+  User soss
+
+Host sossego-batman
+  HostName batman.sossego.com.br
+  User soss
