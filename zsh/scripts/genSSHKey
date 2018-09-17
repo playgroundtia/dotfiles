@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function genSSHKey() {
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified.";
+    return 1;
+  fi
+
+  ssh-keygen -t rsa -b 4096 -C "$1"
+}
