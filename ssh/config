@@ -5,10 +5,15 @@ Host *
   ServerAliveInterval 120
   StrictHostKeyChecking ask
 
+################################################################################
+# Sossego
+################################################################################
+# Homologação
 Host sossego-stark
   HostName stark.sossego.com.br
   User soss
 
-Host sossego-batman
-  HostName batman.sossego.com.br
+# Produção
+Host sossego-iron
+  HostName iron.sossego.com.br
   User soss
