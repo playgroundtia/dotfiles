@@ -25,11 +25,14 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
   # Default text editor
-  editor = vim -f -u NONE -c 'set nocompatible' -c 'set nobackup noswapfile nowritebackup' -c 'set cursorline' -c 'set number'
+  editor = vim -f -u NONE -c 'set nocompatible' -c 'set nobackup noswapfile nowritebackup' -c 'set cursorline' -c 'set number' -c 'set colorcolumn=50,72'
 
 [commit]
   # Sign all commits by default
   gpgsign = true
+
+  # Template
+  template = ~/.dotfiles/git/.gitmessage
 
 [color]
   ui = auto
