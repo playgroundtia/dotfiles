@@ -89,7 +89,8 @@ case "$(uname)" in
       shellcheck \
       ruby \
       fonts-hack-ttf \
-      nautilus-dropbox
+      nautilus-dropbox \
+      asciinema
 
     ############################################################################
     # Hack Nerd Font
@@ -178,7 +179,8 @@ case "$(uname)" in
       virtualbox-extension-pack \
       vagrant \
       docker \
-      dropbox
+      dropbox \
+      asciinema
 
     ############################################################################
     # App Store
