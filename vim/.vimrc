@@ -269,5 +269,5 @@ let g:deoplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Carbon.now.sh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Default theme
-let g:carbon_now_sh_options = 't=dracula'
+" Query params
+let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
