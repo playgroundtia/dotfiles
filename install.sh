@@ -31,6 +31,8 @@ case "$(uname)" in
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
     sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+    # Atom
+    sudo add-apt-repository ppa:webupd8team/atom
 
     ############################################################################
     # Update / upgrade
@@ -91,6 +93,7 @@ case "$(uname)" in
       virtualbox \
       virtualbox-ext-pack \
       vagrant \
+      atom \
       shellcheck \
       ruby \
       fonts-hack-ttf \
@@ -154,6 +157,7 @@ case "$(uname)" in
     ############################################################################
     brew cask install \
       applepi-baker \
+      atom \
       authy \
       cleanmymac \
       cloudapp \
@@ -201,6 +205,12 @@ case "$(uname)" in
 
     ;;
 esac
+
+################################################################################
+# Atom packages
+################################################################################
+apm install \
+  sync-settings
 
 ################################################################################
 # Node.js packages
