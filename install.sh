@@ -3,14 +3,6 @@
 case "$(uname)" in
   Linux)
     ############################################################################
-    # Basic packages
-    ############################################################################
-    sudo apt update
-    sudo apt install -y \
-      curl \
-      wget
-
-    ############################################################################
     # Repositories
     ############################################################################
     # Docker
@@ -224,7 +216,7 @@ sudo yarn global add \
 ################################################################################
 # Dotfiles
 ################################################################################
-if [ -f ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
+if [ -d ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
@@ -254,7 +246,7 @@ ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 ################################################################################
 # Vim
 ################################################################################
-if [ -f ~/.vim ] || [ -h ~/.vim ]; then
+if [ -d ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
 fi
 ln -s ~/.dotfiles/vim ~/.vim
@@ -266,7 +258,7 @@ ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 ################################################################################
 # GPG
 ################################################################################
-if [ -f ~/.gnupg ] || [ -h ~/.gnupg ]; then
+if [ -d ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
@@ -283,7 +275,7 @@ gpg --import ~/.gnupg/keys/personal.private
 ################################################################################
 # SSH
 ################################################################################
-if [ -f ~/.ssh ] || [ -h ~/.ssh ]; then
+if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
@@ -296,7 +288,7 @@ if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
   mv ~/.muttrc /tmp/muttrc-old
 fi
 ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
-if [ -f ~/.mutt ] || [ -h ~/.mutt ]; then
+if [ -d ~/.mutt ] || [ -h ~/.mutt ]; then
   mv ~/.mutt /tmp/mutt-old
 fi
 ln -s ~/.dotfiles/mutt ~/.mutt
@@ -312,7 +304,7 @@ if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
   mv ~/.tmux.conf /tmp/tmux.conf-old
 fi
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
-if [ -f ~/.tmux ] || [ -h ~/.tmux ]; then
+if [ -d ~/.tmux ] || [ -h ~/.tmux ]; then
   mv ~/.tmux /tmp/tmux-old
 fi
 ln -s ~/.dotfiles/tmux ~/.tmux
