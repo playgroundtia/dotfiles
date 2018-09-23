@@ -218,6 +218,7 @@ apm install \
 sudo yarn global add \
   prettier \
   eslint \
+  fkill-cli \
   --ignore-optional
 
 ################################################################################
