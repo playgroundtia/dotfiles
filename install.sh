@@ -231,8 +231,8 @@ git remote set-url origin git@github.com:gufranco/dotfiles.git
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
+git clone --recursive https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh --depth=1
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/themes/zsh/dracula.zsh-theme ~/.dotfiles/zsh/.oh-my-zsh/custom/themes/dracula.zsh-theme
 echo "$(which zsh)" | sudo tee /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"

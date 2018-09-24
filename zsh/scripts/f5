@@ -25,16 +25,19 @@ function f5() {
       ;;
   esac
 
-  cd ~/.dotfiles || exit 1:44
-
+  # Dotfiles
+  cd ~/.dotfiles || exit 1
   git pull-sub
   git submodule update --recursive --remote
 
+  # Npm packages
   sudo yarn global upgrade
 
+  # Vim plugins
   vim +PlugUpgrade +PlugUpdate +qall
   rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
 
+  # Tmux plugins
   cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
@@ -46,6 +49,9 @@ function f5() {
   cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
 
+  # Oh-my-zsh
+  cd ~/.oh-my-zsh && git checkout master && git pull
   source ~/.zshrc
+
   cd $CURRENT_DIR
 }

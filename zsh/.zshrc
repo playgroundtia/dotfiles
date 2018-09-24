@@ -50,8 +50,8 @@ done
 ################################################################################
 # Oh-my-zsh
 ################################################################################
-export ZSH=~/.dotfiles/zsh/.oh-my-zsh
-ZSH_THEME="dracula"
+export ZSH=~/.oh-my-zsh
+ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
