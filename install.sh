@@ -233,7 +233,7 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 git clone --recursive https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh --depth=1
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-echo "$(which zsh)" | sudo tee /etc/shells
+echo "$(which zsh)" | sudo tee -a /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"
 
