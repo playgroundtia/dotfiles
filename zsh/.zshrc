@@ -23,6 +23,13 @@ alias mutt="neomutt"
 alias ping="ping -c 5"
 alias sendKeys="gpg --send-keys 0x61D32924C3587EA4"
 alias wget="wget -c -N"
+if [[ "$(uname)" == "Linux" ]]; then
+  alias docker-compose='docker run --rm \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v "$PWD:/rootfs/$PWD" \
+      -w="/rootfs/$PWD" \
+      docker/compose:1.22.0'
+fi
 
 ################################################################################
 # Settings
