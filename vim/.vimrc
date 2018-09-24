@@ -21,7 +21,7 @@ Plug 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'w0rp/ale', { 'do': 'sudo yarn global add prettier eslint --ignore-global' }
+Plug 'w0rp/ale',
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
@@ -30,6 +30,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
@@ -54,13 +55,13 @@ if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   elseif (v:version >= 800) && has("python3")
-    Plug 'Shougo/deoplete.nvim', { 'do': 'if [[ \"$(uname)\" == \"Linux\" ]]; then sudo apt update && sudo apt install -y python3-pip; else brew update && brew reinstall python3; fi; pip3 install neovim' }
+    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
   " JavaScript
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo yarn global add tern --ignore-optional' }
+  Plug 'carlitux/deoplete-ternjs'
 endif
 
 call plug#end()
@@ -195,14 +196,16 @@ let g:NERDToggleCheckAllLines = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Never lint on change
 let g:ale_lint_on_text_changed = 'never'
+" Lint on save
 let g:ale_lint_on_save = 1
+" Fix on save
 let g:ale_fix_on_save = 1
+" Lint on enter
 let g:ale_lint_on_enter = 1
-let g:ale_fixers = {
-  \ 'javascript': ['prettier', 'eslint'],
-  \ 'python': ['pyflakes', 'flake8', 'pylint']
-  \ }
+" Compatible fixers and linters
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
 " Airline extension
 let g:airline#extensions#ale#enabled = 1
 
