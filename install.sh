@@ -25,6 +25,8 @@ case "$(uname)" in
     sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     # Atom
     sudo add-apt-repository ppa:webupd8team/atom
+    # DBeaver
+    sudo add-apt-repository ppa:serge-rider/dbeaver-ce
 
     ############################################################################
     # Update / upgrade
@@ -90,7 +92,9 @@ case "$(uname)" in
       ruby \
       fonts-hack-ttf \
       nautilus-dropbox \
-      asciinema
+      asciinema \
+      python3-pip \
+      dbeaver-ce
 
     ############################################################################
     # Hack Nerd Font
@@ -143,7 +147,8 @@ case "$(uname)" in
       vim \
       wget \
       yarn \
-      zsh
+      zsh \
+      python3
 
     ############################################################################
     # Casks
@@ -180,7 +185,8 @@ case "$(uname)" in
       vagrant \
       docker \
       dropbox \
-      asciinema
+      asciinema \
+      dbeaver-community
 
     ############################################################################
     # App Store
@@ -213,7 +219,14 @@ sudo yarn global add \
   prettier \
   eslint \
   fkill-cli \
+  tern \
   --ignore-optional
+
+################################################################################
+# Python packages
+################################################################################
+pip3 install \
+  neovim
 
 ################################################################################
 # Dotfiles
