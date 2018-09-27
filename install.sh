@@ -7,7 +7,7 @@ case "$(uname)" in
     ############################################################################
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     # Node.js
     curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
     # Yarn
@@ -22,11 +22,14 @@ case "$(uname)" in
     # VirtualBox
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+    sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     # Atom
-    sudo add-apt-repository ppa:webupd8team/atom
+    sudo add-apt-repository -y ppa:webupd8team/atom
     # DBeaver
-    sudo add-apt-repository ppa:serge-rider/dbeaver-ce
+    sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
+    # Albert
+    curl -fsSL https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+    echo "deb [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/albert.list
 
     ############################################################################
     # Update / upgrade
@@ -94,7 +97,8 @@ case "$(uname)" in
       nautilus-dropbox \
       asciinema \
       python3-pip \
-      dbeaver-ce
+      dbeaver-ce \
+      albert
 
     ############################################################################
     # Hack Nerd Font
