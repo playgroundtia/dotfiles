@@ -190,6 +190,7 @@ case "$(uname)" in
       docker \
       dropbox \
       asciinema \
+      java \
       dbeaver-community
 
     ############################################################################
