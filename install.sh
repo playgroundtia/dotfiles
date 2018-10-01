@@ -233,7 +233,7 @@ pip3 install \
   neovim
 
 ################################################################################
-# Dotfiles
+# Clone dotfiles
 ################################################################################
 if [ -d ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
@@ -243,19 +243,19 @@ cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 ################################################################################
-# Zsh
+# Zsh config
 ################################################################################
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
-git clone --recursive https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh --depth=1
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 echo "$(which zsh)" | sudo tee -a /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
 sudo chsh $USER -s "$(which zsh)"
 
 ################################################################################
-# Git
+# Git config
 ################################################################################
 if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig /tmp/gitconfig-old
@@ -263,7 +263,7 @@ fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
 ################################################################################
-# Vim
+# Vim config
 ################################################################################
 if [ -d ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
@@ -275,7 +275,7 @@ fi
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
 ################################################################################
-# GPG
+# GPG config
 ################################################################################
 if [ -d ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
@@ -292,7 +292,7 @@ gpg --import ~/.gnupg/keys/personal.public
 gpg --import ~/.gnupg/keys/personal.private
 
 ################################################################################
-# SSH
+# SSH config
 ################################################################################
 if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
@@ -301,7 +301,7 @@ ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
 
 ################################################################################
-# NeoMutt
+# NeoMutt config
 ################################################################################
 if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
   mv ~/.muttrc /tmp/muttrc-old
@@ -317,7 +317,7 @@ fi
 ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
 ################################################################################
-# Tmux
+# Tmux config
 ################################################################################
 if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
   mv ~/.tmux.conf /tmp/tmux.conf-old
@@ -329,7 +329,7 @@ fi
 ln -s ~/.dotfiles/tmux ~/.tmux
 
 ################################################################################
-# Tilix
+# Tilix config
 ################################################################################
 if [[ "$(uname)" == "Linux" ]]; then
   mkdir -p ~/.config/tilix/schemes
