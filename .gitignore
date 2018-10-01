@@ -27,6 +27,9 @@ tmux/plugins/*
 !tmux/plugins/tpm
 
 # Vim
+.tern-port
+.undodir/
+Session.vim
+plug.vim
 vim/.netrwhist
 vim/plugged/
-.tern-port

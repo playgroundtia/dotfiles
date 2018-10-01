@@ -1,3 +1,9 @@
+" Install Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,22 +41,23 @@ Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
-Plug 'tpope/vim-dadbod', { 'on': 'DB' }
-Plug 'editorconfig/editorconfig-vim'
-Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
+Plug 'thaerkh/vim-workspace', { 'on': 'ToggleWorkspace' }
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-repeat'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
+Plug 'tpope/vim-dadbod', { 'on': 'DB' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 if has('nvim') || ((v:version >= 800) && has("python3"))
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -274,3 +281,9 @@ let g:deoplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Query params
 let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Workspace
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle workspace
+nnoremap <leader>w :ToggleWorkspace<CR>
