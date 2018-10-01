@@ -158,8 +158,12 @@ if has('gui_running')
     " gVim
     set guifont=Hack\ 10
   endif
+
   " Remove menu
   set guioptions=
+
+  " Maximize window
+  set lines=999 columns=999
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
