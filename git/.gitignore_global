@@ -36,3 +36,9 @@ $RECYCLE.BIN/
 .directory
 .Trash-*
 .nfs*
+
+# Vim
+.netrwhist
+.tern-port
+.undodir/
+Session.vim

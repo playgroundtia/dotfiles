@@ -40,7 +40,7 @@ Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'thaerkh/vim-workspace', { 'on': 'ToggleWorkspace' }
+Plug 'thaerkh/vim-workspace'
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
