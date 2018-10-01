@@ -16,7 +16,6 @@ Plug 'tmux-plugins/vim-tmux'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mhinz/vim-startify'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
