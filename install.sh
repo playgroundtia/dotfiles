@@ -96,7 +96,9 @@ case "$(uname)" in
       fonts-hack-ttf \
       nautilus-dropbox \
       asciinema \
+      python3.7 \
       python3-pip \
+      pylint \
       dbeaver-ce \
       albert
 
@@ -231,6 +233,10 @@ sudo yarn global add \
 # Python packages
 ################################################################################
 pip3 install \
+  pipenv \
+  flake8 \
+  autopep8 \
+  yapf \
   neovim
 
 ################################################################################

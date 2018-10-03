@@ -38,6 +38,12 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Integration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'thaerkh/vim-workspace'
@@ -215,7 +221,14 @@ let g:ale_fix_on_save = 1
 " Lint on enter
 let g:ale_lint_on_enter = 1
 " Compatible fixers and linters
-let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_linters = {
+  \ 'python': ['flake8', 'pylint']
+  \ }
+let g:ale_fixers = {
+  \ 'css': ['prettier'],
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'python': ['autopep8', 'yapf']
+  \ }
 " Airline extension
 let g:airline#extensions#ale#enabled = 1
 
@@ -290,3 +303,11 @@ let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle workspace
 nnoremap <leader>w :ToggleWorkspace<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gist
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Publish as private by default
+let g:gist_post_private = 1
+" Detect filetype from the filename
+let g:gist_detect_filetype = 1
