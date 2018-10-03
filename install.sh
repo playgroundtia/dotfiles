@@ -103,7 +103,7 @@ case "$(uname)" in
     ############################################################################
     # Hack Nerd Font
     ############################################################################
-    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts || exit 1
     curl -fLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo fc-cache -fv
 
@@ -251,9 +251,9 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
-echo "$(which zsh)" | sudo tee -a /etc/shells
+command -v zsh | sudo tee -a /etc/shells
 sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
-sudo chsh $USER -s "$(which zsh)"
+sudo chsh "$USER" -s "$(command -v zsh)"
 
 ################################################################################
 # Git config
