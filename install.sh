@@ -96,11 +96,14 @@ case "$(uname)" in
       fonts-hack-ttf \
       nautilus-dropbox \
       asciinema \
+      python-dev \
+      python3-dev \
       python3.7 \
       python3-pip \
       pylint \
       dbeaver-ce \
-      albert
+      albert \
+      cmake
 
     ############################################################################
     # Hack Nerd Font
