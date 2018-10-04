@@ -10,6 +10,7 @@ call plug#begin()
 " Compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-sensible'
+Plug 'rstacruz/vim-opinion'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 
@@ -46,7 +47,6 @@ Plug 'mattn/gist-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'thaerkh/vim-workspace'
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
@@ -59,6 +59,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'thaerkh/vim-workspace'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'tpope/vim-repeat'
@@ -81,10 +82,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Faster vim
-set lazyredraw
-" Enable last used search pattern highlighting
-set hlsearch
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
 " Enable cursor line highlighting
@@ -94,16 +91,8 @@ set colorcolumn=80
 " Disable mouse
 set mouse=
 set ttymouse=
-" Enable line numbers
-set number
-" Enable case-insensitive search
-set ic
-" Enable .viminfo
-set viminfo='20,\"50
 " Set default encoding and format
 set fileencoding=utf-8 tabstop=2 shiftwidth=2 expandtab
-" Turn backup off
-set nobackup nowb noswapfile
 " Set update interval
 set updatetime=100
 " Show matching brackets when text indicator is over them
