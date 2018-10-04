@@ -4,6 +4,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+" Detect OS
+let s:uname = system("uname")
+
 call plug#begin()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,11 +118,11 @@ autocmd FileType markdown set tw=80
 " Set leader key to ,
 let mapleader = ','
 " Copy to / from external clipboard
-if has('macunix')
+if s:uname == "Darwin"
   " macOS
   map <leader>y :w !pbcopy<CR>
   map <leader>p :r !pbpaste \| sed 's/^ *//;s/ *$//'<CR>
-else
+elseif s:uname == "Linux"
   " Linux
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
@@ -146,10 +149,10 @@ let g:airline_theme = 'dracula'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   " Font
-  if has("gui_macvim")
+  if s:uname == "Darwin"
     " mVim
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
-  else
+  elseif s:uname == "Linux"
     " gVim
     set guifont=Hack\ 10
   endif
