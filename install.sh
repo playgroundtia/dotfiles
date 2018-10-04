@@ -279,6 +279,7 @@ ln -s ~/.dotfiles/vim ~/.vim
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
+curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
 ################################################################################
@@ -339,8 +340,7 @@ ln -s ~/.dotfiles/tmux ~/.tmux
 # Tilix config
 ################################################################################
 if [[ "$(uname)" == "Linux" ]]; then
-  mkdir -p ~/.config/tilix/schemes
-  ln -s ~/.dotfiles/themes/Tilix/Dracula.json ~/.config/tilix/schemes/Dracula.json
+  curl -fLo "$HOME/.config/tilix/schemes/Dracula.json" --create-dirs https://raw.githubusercontent.com/krzysztofzuraw/dracula-tilix/master/Dracula.json
 fi
 
 ################################################################################
