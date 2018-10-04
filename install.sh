@@ -235,6 +235,7 @@ sudo yarn global add \
 pip3 install \
   pipenv \
   black \
+  vim-vint \
   neovim
 
 ################################################################################
