@@ -1,11 +1,17 @@
-" Install Plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Detect OS
-let s:uname = system("uname")
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:uname = system('uname')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  augroup plug
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+  augroup END
+endif
 
 call plug#begin()
 
@@ -29,7 +35,7 @@ Plug 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'w0rp/ale',
+Plug 'w0rp/ale'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
@@ -66,10 +72,10 @@ Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-if has('nvim') || ((v:version >= 800) && has("python3"))
+if has('nvim') || ((v:version >= 800) && has('python3'))
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  elseif (v:version >= 800) && has("python3")
+  elseif (v:version >= 800) && has('python3')
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
@@ -100,7 +106,7 @@ set ttymouse=
 " Enable line numbers
 set number
 " Enable case-insensitive search
-set ic
+set ignorecase
 " Enable .viminfo
 set viminfo='20,\"50
 " Set default encoding and format
@@ -113,15 +119,19 @@ set updatetime=100
 set showmatch
 " No annoying sounds
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+augroup mute_sounds
+  autocmd GUIEnter * set visualbell t_vb=
+augroup END
 " Disable arrow keys
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 " Load .md files as Markdown
-autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-autocmd FileType markdown set tw=80
+augroup markdown
+  autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+  autocmd FileType markdown set tw=80
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
@@ -129,11 +139,11 @@ autocmd FileType markdown set tw=80
 " Set leader key to ,
 let mapleader = ','
 " Copy to / from external clipboard
-if s:uname == "Darwin"
+if s:uname ==# 'Darwin'
   " macOS
   map <leader>y :w !pbcopy<CR>
   map <leader>p :r !pbpaste \| sed 's/^ *//;s/ *$//'<CR>
-elseif s:uname == "Linux"
+elseif s:uname ==# 'Linux'
   " Linux
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
@@ -160,17 +170,15 @@ let g:airline_theme = 'dracula'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   " Font
-  if s:uname == "Darwin"
+  if s:uname ==# 'Darwin'
     " mVim
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
-  elseif s:uname == "Linux"
+  elseif s:uname ==# 'Linux'
     " gVim
     set guifont=Hack\ 10
   endif
-
   " Remove menu
   set guioptions=
-
   " Maximize window
   set lines=999 columns=999
 endif
@@ -181,7 +189,9 @@ endif
 " Toggle NERDTree
 map <leader>n :NERDTreeToggle<CR>
 " Close vim if the only window left open is NERDTree
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup nerdtree
+  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 " Automatically remove a buffer when a file is being deleted via a context menu
 let NERDTreeAutoDeleteBuffer = 1
 " Disable display of the 'Bookmarks' label
@@ -215,6 +225,8 @@ let g:NERDToggleCheckAllLines = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable completion
+let g:ale_completion_enabled = 1
 " Never lint on change
 let g:ale_lint_on_text_changed = 'never'
 " Lint on save
@@ -223,14 +235,16 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 " Lint on enter
 let g:ale_lint_on_enter = 1
-" Compatible fixers and linters
+" Compatible linters
 let g:ale_linters = {
-  \ 'python': ['flake8', 'pylint']
+  \ 'javascript': ['eslint'],
+  \ 'vim': ['vint']
   \ }
+" Compatible fixers
 let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'javascript': ['prettier', 'eslint'],
-  \ 'python': ['autopep8', 'yapf']
+  \ 'python': ['black'],
   \ }
 " Airline extension
 let g:airline#extensions#ale#enabled = 1
@@ -252,7 +266,7 @@ let g:ctrlp_show_hidden = 1
 " Supertab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use Tab instead of Ctrl-N / Ctrl-P
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
