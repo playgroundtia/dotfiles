@@ -170,7 +170,8 @@ case "$(uname)" in
       wget \
       yarn \
       zsh \
-      python3
+      python3 \
+      cmake
 
     ############################################################################
     # Casks
@@ -251,7 +252,8 @@ sudo yarn global add \
 pip3 install \
   pipenv \
   black \
-  vim-vint
+  vim-vint \
+  --user
 
 ################################################################################
 # Clone dotfiles
