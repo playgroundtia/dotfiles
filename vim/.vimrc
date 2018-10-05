@@ -1,10 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Detect OS
+" Environment
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:uname = system('uname')
+let s:uname = substitute(system('uname'), '\n\+$', '', '')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
+" Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -19,6 +19,7 @@ call plug#begin()
 " Compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-sensible'
+Plug 'rstacruz/vim-opinion'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 
@@ -79,10 +80,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Faster vim
-set lazyredraw
-" Enable last used search pattern highlighting
-set hlsearch
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
 " Enable cursor line highlighting
@@ -92,34 +89,12 @@ set colorcolumn=80
 " Disable mouse
 set mouse=
 set ttymouse=
-" Enable line numbers
-set number
-" Enable case-insensitive search
-set ignorecase
-" Enable .viminfo
-set viminfo='20,\"50
-" Set default encoding and format
-set fileencoding=utf-8 tabstop=2 shiftwidth=2 expandtab
-" Turn backup off
-set nobackup nowb noswapfile
 " Set update interval
 set updatetime=100
-" Show matching brackets when text indicator is over them
-set showmatch
 " No annoying sounds
 set noerrorbells visualbell t_vb=
 augroup mute_sounds
   autocmd GUIEnter * set visualbell t_vb=
-augroup END
-" Disable arrow keys
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-" Load .md files as Markdown
-augroup markdown
-  autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-  autocmd FileType markdown set tw=80
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,11 +104,9 @@ augroup END
 let mapleader = ','
 " Copy to / from external clipboard
 if s:uname ==# 'Darwin'
-  " macOS
   map <leader>y :w !pbcopy<CR>
   map <leader>p :r !pbpaste \| sed 's/^ *//;s/ *$//'<CR>
 elseif s:uname ==# 'Linux'
-  " Linux
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
 endif
@@ -147,6 +120,11 @@ nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 nmap <Leader>s :source $MYVIMRC<CR>
 " Edit vimrc
 nmap <Leader>v :e $MYVIMRC<CR>
+" Disable arrow keys
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
@@ -160,12 +138,11 @@ let g:airline_theme = 'dracula'
 if has('gui_running')
   " Font
   if s:uname ==# 'Darwin'
-    " mVim
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
   elseif s:uname ==# 'Linux'
-    " gVim
     set guifont=Hack\ 10
   endif
+
   " Remove menu
   set guioptions=
   " Maximize window
