@@ -61,7 +61,6 @@ Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
 Plug 'jiangmiao/auto-pairs'
@@ -268,12 +267,6 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Deoplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable at startup
-let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Carbon.now.sh
