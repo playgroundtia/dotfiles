@@ -108,9 +108,22 @@ case "$(uname)" in
     ############################################################################
     # Hack Nerd Font
     ############################################################################
-    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts || exit 1
-    curl -fLo "Hack Regular Nerd Font Complete.ttf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/Hack Regular Nerd Font Complete.ttf" \
+      --create-dirs https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo fc-cache -fv
+
+    ############################################################################
+    # Tilix
+    ############################################################################
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/Dracula.json" \
+      --create-dirs https://raw.githubusercontent.com/krzysztofzuraw/dracula-tilix/master/Dracula.json
+
+    ############################################################################
+    # Docker
+    ############################################################################
+    sudo usermod -a -G docker "$USER"
 
     ;;
   Darwin)
@@ -238,8 +251,7 @@ sudo yarn global add \
 pip3 install \
   pipenv \
   black \
-  vim-vint \
-  neovim
+  vim-vint
 
 ################################################################################
 # Clone dotfiles
@@ -337,13 +349,6 @@ if [ -d ~/.tmux ] || [ -h ~/.tmux ]; then
   mv ~/.tmux /tmp/tmux-old
 fi
 ln -s ~/.dotfiles/tmux ~/.tmux
-
-################################################################################
-# Tilix config
-################################################################################
-if [[ "$(uname)" == "Linux" ]]; then
-  curl -fLo "$HOME/.config/tilix/schemes/Dracula.json" --create-dirs https://raw.githubusercontent.com/krzysztofzuraw/dracula-tilix/master/Dracula.json
-fi
 
 ################################################################################
 # Finish
