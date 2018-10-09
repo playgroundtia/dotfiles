@@ -8,7 +8,7 @@ function mongodb-start() {
     --restart unless-stopped \
     --env "MONGO_INITDB_ROOT_USERNAME=root" \
     --env "MONGO_INITDB_ROOT_PASSWORD=root" \
-    -v $HOME/Workspace/Databases/mongodb:/data/db \
+    -v "$HOME/Workspace/Databases/MongoDB:/data/db" \
     --publish 27017:27017 \
     -d mongo:4-xenial
 }
@@ -19,6 +19,7 @@ function mongodb-stop() {
 
 function mongodb-purge() {
   mongodb-stop
+  docker rm mongodb
 
   sudo rm -rf ~/Workspace/Databases/MongoDB
 }
