@@ -27,9 +27,6 @@ case "$(uname)" in
     sudo add-apt-repository -y ppa:webupd8team/atom
     # DBeaver
     sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
-    # Albert
-    curl -fsSL https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
-    echo "deb [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/albert.list
 
     ############################################################################
     # Update / upgrade
@@ -100,10 +97,9 @@ case "$(uname)" in
       python3-dev \
       python3.7 \
       python3-pip \
-      pylint \
       dbeaver-ce \
-      albert \
-      cmake
+      cmake \
+      corebird
 
     ############################################################################
     # Hack Nerd Font
