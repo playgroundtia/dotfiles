@@ -4,12 +4,13 @@ function mysql-start() {
   mkdir -p ~/Workspace/Databases/MySQL
 
   docker run \
+    --detach \
     --name mysql \
     --restart unless-stopped \
     --env "MYSQL_ROOT_PASSWORD=root" \
     -v "$HOME/Workspace/Databases/MySQL:/var/lib/mysql" \
     --publish 3306:3306 \
-    -d mysql:5.7
+    mysql:5.7
 }
 
 function mysql-stop() {
