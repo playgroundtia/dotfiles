@@ -30,8 +30,15 @@ function f5() {
   git pull-sub
   git submodule update --recursive --remote
 
-  # Npm packages
+  # JavaScript packages
   sudo yarn global upgrade
+
+  # Python packages
+  pip3 list --outdated --format=freeze | \
+    grep -v '^\-e' | \
+    cut -d = -f 1 | \
+    xargs -n1 pip3 install -U --user
+
 
   # Vim
   vim +PlugUpgrade +PlugUpdate +qall
