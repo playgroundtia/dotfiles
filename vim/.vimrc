@@ -101,7 +101,7 @@ augroup END
 " Aliases
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set leader key to ,
-let mapleader = ','
+let g:mapleader = ','
 " Copy to / from external clipboard
 if s:uname ==# 'Darwin'
   map <leader>y :w !pbcopy<CR>
@@ -159,13 +159,13 @@ augroup nerdtree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 " Automatically remove a buffer when a file is being deleted via a context menu
-let NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 " Disable display of the 'Bookmarks' label
-let NERDTreeMinimalUI = 1
+let g:NERDTreeMinimalUI = 1
 " Close the tree window after opening a file
-let NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
 " Display hidden files by default
-let NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
