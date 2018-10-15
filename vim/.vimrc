@@ -55,10 +55,17 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Workspaces, windows and buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
+Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
+Plug 'thaerkh/vim-workspace'
+Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -69,9 +76,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'thaerkh/vim-workspace'
 Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
