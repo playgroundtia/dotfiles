@@ -307,3 +307,9 @@ let g:gitgutter_sign_modified_removed = emoji#for('collision')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle WinResizerStartResize
 map <leader>r :WinResizerStartResize<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ZoomWin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle ZoomWin
+map <leader>z :ZoomWin<CR>
