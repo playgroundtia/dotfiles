@@ -217,6 +217,14 @@ case "$(uname)" in
       dbeaver-community
 
     ############################################################################
+    # iTerm 2
+    ############################################################################
+    curl -fLo \
+      "/tmp/Dracula.itermcolors" \
+      --create-dirs https://raw.githubusercontent.com/dracula/iterm/master/Dracula.itermcolors
+    open "/tmp/Dracula.itermcolors"
+
+    ############################################################################
     # App Store
     ############################################################################
     # Amphetamine
