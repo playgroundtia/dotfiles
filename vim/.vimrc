@@ -53,6 +53,7 @@ Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
+Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Workspaces, windows and buffers
@@ -63,22 +64,30 @@ Plug 'thaerkh/vim-workspace'
 Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editing
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'godlygeek/tabular'
+Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'svermeulen/vim-easyclip'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'godlygeek/tabular'
-Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
-Plug 'jiangmiao/auto-pairs'
-Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -141,10 +150,15 @@ let g:airline_theme = 'dracula'
 " GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  " Font
+  " mVim
   if s:uname ==# 'Darwin'
+    " Font
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
+    " Meta key
+    set macmeta
+  " gVim
   elseif s:uname ==# 'Linux'
+    " Font
     set guifont=Hack\ 10
   endif
 
@@ -313,3 +327,9 @@ map <leader>r :WinResizerStartResize<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle ZoomWin
 map <leader>z :ZoomWin<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Easyclip
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Place the cursor at the end
+let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
