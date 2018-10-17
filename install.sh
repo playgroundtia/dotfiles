@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 case "$(uname)" in
   Linux)
     ############################################################################
@@ -99,7 +105,8 @@ case "$(uname)" in
       python3-pip \
       dbeaver-ce \
       cmake \
-      corebird
+      corebird \
+      htop
 
     ############################################################################
     # Hack Nerd Font
@@ -167,7 +174,8 @@ case "$(uname)" in
       yarn \
       zsh \
       python3 \
-      cmake
+      cmake \
+      htop
 
     ############################################################################
     # Casks
