@@ -156,6 +156,9 @@ case "$(uname)" in
     # Bottles
     ############################################################################
     brew install \
+      coreutils \
+      moreutils \
+      findutils \
       awscli \
       curl \
       git \
