@@ -77,6 +77,8 @@ Plug 'tpope/vim-surround'
 " Clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'svermeulen/vim-easyclip'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/neoyank.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
