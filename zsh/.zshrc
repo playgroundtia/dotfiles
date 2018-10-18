@@ -10,18 +10,7 @@ fi
 ################################################################################
 # Aliases
 ################################################################################
-alias bc="bc -l"
-alias cd..="cd .."
-alias la="ls -aF"
-alias ld="ls -ld"
-alias less="less -R"
-alias ll="ls -la"
-alias mkdir="mkdir -pv"
-alias more="more -R"
-alias mount="mount | column -t"
-alias mutt="neomutt"
-alias ping="ping -c 5"
-alias wget="wget -c -N"
+source ~/.dotfiles/zsh/aliases
 
 ################################################################################
 # Settings
@@ -42,15 +31,7 @@ done
 ################################################################################
 # Path
 ################################################################################
-case "$(uname)" in
-  Linux)
-
-  ;;
-  Darwin)
-    # Coreutils
-    export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
-  ;;
-esac
+source ~/.dotfiles/zsh/path
 
 ################################################################################
 # Oh-my-zsh

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case "$(uname)" in
+  Linux)
+
+  ;;
+  Darwin)
+    # Coreutils
+    export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+  ;;
+esac
