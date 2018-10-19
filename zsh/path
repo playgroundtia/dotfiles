@@ -5,7 +5,11 @@ case "$(uname)" in
 
   ;;
   Darwin)
-    # Coreutils
-    export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+    # coreutils
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    # findutils
+    export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+    # Python
+    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
   ;;
 esac
