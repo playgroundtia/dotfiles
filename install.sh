@@ -373,7 +373,7 @@ ln -s ~/.dotfiles/tmux ~/.tmux
 if [ -f ~/.curlrc ] || [ -h ~/.curlrc ]; then
   mv ~/.curlrc /tmp/curlrc-old
 fi
-ln -s ~/.dotfiles/curl/.curlrc ~/.curlrc
+ln -s ~/.dotfiles/.curlrc ~/.curlrc
 
 ################################################################################
 # Wget config
@@ -381,7 +381,7 @@ ln -s ~/.dotfiles/curl/.curlrc ~/.curlrc
 if [ -f ~/.wgetrc ] || [ -h ~/.wgetrc ]; then
   mv ~/.wgetrc /tmp/wgetrc-old
 fi
-ln -s ~/.dotfiles/wget/.wgetrc ~/.wgetrc
+ln -s ~/.dotfiles/.wgetrc ~/.wgetrc
 
 ################################################################################
 # Finish
