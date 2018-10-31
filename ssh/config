@@ -17,3 +17,8 @@ Host sossego-stark
 Host sossego-iron
   HostName iron.sossego.com.br
   User soss
+
+# Produção
+Host sossego-batman
+  HostName batman.sossego.com.br
+  User soss
