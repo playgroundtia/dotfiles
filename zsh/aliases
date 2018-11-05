@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ################################################################################
 # Normalize
@@ -17,6 +17,13 @@ fi
 ################################################################################
 # General aliases
 ################################################################################
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
 # Typos
 alias cd..="cd .."
 alias mutt="neomutt"
@@ -48,6 +55,14 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 # Recursively delete `node_modules` folders
 alias cleanup-node='find . -type d -name "node_modules" -exec rm -rf "{}" +'
 
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
 ################################################################################
 # System specific aliases
 ################################################################################
@@ -62,6 +77,9 @@ case "$(uname)" in
 
   ;;
   Darwin)
+    # Clean up LaunchServices to remove duplicates in the “Open With” menu
+    alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
     # Canonical hex dump; some systems have this symlinked
     command -v hd > /dev/null || alias hd="hexdump -C"
 
@@ -88,8 +106,8 @@ case "$(uname)" in
     alias firefox='/Applications/Firefox.app/Contents/MacOS/Firefox'
 
     # Show/hide hidden files in Finder
-    alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-    alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+    alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+    alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 
     # Hide/show all desktop icons (useful when presenting)
     alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
