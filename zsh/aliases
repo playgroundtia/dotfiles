@@ -75,6 +75,9 @@ case "$(uname)" in
         -w="/rootfs/$PWD" \
         docker/compose:1.22.0'
 
+    # Lock the screen (when going AFK)
+    alias afk="gnome-screensaver-command --lock"
+
   ;;
   Darwin)
     # Clean up LaunchServices to remove duplicates in the “Open With” menu
