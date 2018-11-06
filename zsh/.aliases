@@ -63,6 +63,11 @@ alias path='echo -e ${PATH//:/\\n}'
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
 
+# Postman for CLI
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "${method}"="lwp-request -m '${method}'"
+done
+
 ################################################################################
 # System specific aliases
 ################################################################################

@@ -1,0 +1,247 @@
+#!/usr/bin/env bash
+
+################################################################################
+# System specific functions
+################################################################################
+case "$(uname)" in
+  Linux)
+    ############################################################################
+    # Open the current directory, otherwise open the given location
+    ############################################################################
+    function open() {
+      if [ $# -eq 0 ]; then
+        xdg-open . > /dev/null 2>&1;
+      else
+        xdg-open "$@" > /dev/null 2>&1;
+      fi;
+    }
+
+    ############################################################################
+    # Update and upgrade packages
+    ############################################################################
+    function upgrade() {
+      sudo apt update -y
+      sudo apt dist-upgrade -y
+      sudo apt autoremove -y
+      sudo apt clean all -y
+    }
+
+  ;;
+  Darwin)
+    ############################################################################
+    # Update and upgrade packages
+    ############################################################################
+    function upgrade() {
+      brew update
+      brew upgrade
+      brew cu --all --yes --cleanup
+      brew prune
+      brew cleanup
+      mas upgrade
+      sudo softwareupdate -i -a
+    }
+
+  ;;
+esac
+
+################################################################################
+# Update and upgrade everything
+################################################################################
+function f5() {
+  sudo -v
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+  # Update and upgrade packages
+  upgrade
+
+  cd ~/.dotfiles || exit 1
+  git pull-sub
+  git submodule update --recursive --remote
+
+  # JavaScript packages
+  sudo yarn global upgrade
+
+  # Python packages
+  pip3 list --outdated --format=freeze | \
+    grep -v '^\-e' | \
+    cut -d = -f 1 | \
+    xargs -n1 pip3 install -U --user
+
+  # Vim
+  vim +PlugUpgrade +PlugUpdate +qall
+  rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
+
+  # Tmux
+  cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-better-mouse-mode && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-cpu && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-resurrect && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-continuum && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
+
+  # Oh-my-zsh
+  cd ~/.oh-my-zsh || exit 1
+  git checkout master
+  git pull
+
+  # Reload shell
+  cd ~
+  source ~/.zshrc
+}
+
+################################################################################
+# Create SSH keys
+################################################################################
+function genSSHKey() {
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified.";
+    return 1;
+  fi
+
+  ssh-keygen -t rsa -b 4096 -C "$1"
+}
+
+################################################################################
+# Start an HTTP server from a directory, optionally specifying the port
+################################################################################
+function server() {
+  local port="${1:-8000}";
+  sleep 1 && open "http://localhost:${port}/" &
+
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+}
+
+################################################################################
+# Start MongoDB cotnainer
+################################################################################
+function mongodb-start() {
+  mkdir -p ~/Workspace/Databases/MongoDB
+
+  docker run \
+    --detach \
+    --name mongodb \
+    --restart unless-stopped \
+    --env "MONGO_INITDB_ROOT_USERNAME=root" \
+    --env "MONGO_INITDB_ROOT_PASSWORD=root" \
+    -v "$HOME/Workspace/Databases/MongoDB:/data/db" \
+    --publish 27017:27017 \
+    mongo:4-xenial
+}
+
+################################################################################
+# Stop MongoDB container
+################################################################################
+function mongodb-stop() {
+  docker stop mongodb
+}
+
+################################################################################
+# Purge MongoDB container
+################################################################################
+function mongodb-purge() {
+  mongodb-stop
+  docker rm mongodb
+
+  sudo rm -rf ~/Workspace/Databases/MongoDB
+}
+
+################################################################################
+# Start MySQL container
+################################################################################
+function mysql-start() {
+  mkdir -p ~/Workspace/Databases/MySQL
+
+  docker run \
+    --detach \
+    --name mysql \
+    --restart unless-stopped \
+    --env "MYSQL_ROOT_PASSWORD=root" \
+    -v "$HOME/Workspace/Databases/MySQL:/var/lib/mysql" \
+    --publish 3306:3306 \
+    mysql:5.7
+}
+
+################################################################################
+# Stop MySQL container
+################################################################################
+function mysql-stop() {
+  docker stop mysql
+}
+
+################################################################################
+# Purge MySQL container
+################################################################################
+function mysql-purge() {
+  mysql-stop
+  docker rm mysql
+
+  sudo rm -rf ~/Workspace/Databases/MySQL
+}
+
+################################################################################
+# Start PostgreSQL container
+################################################################################
+function postgresql-start() {
+  mkdir -p ~/Workspace/Databases/PostgreSQL
+
+  docker run \
+    --detach \
+    --name postgresql \
+    --restart unless-stopped \
+    --env "POSTGRES_USER=root" \
+    --env "POSTGRES_PASSWORD=root" \
+    -v "$HOME/Workspace/Databases/PostgreSQL:/var/lib/postgresql/data" \
+    --publish 5432:5432 \
+    postgres:10-alpine
+}
+
+################################################################################
+# Stop PostgreSQL container
+################################################################################
+function postgresql-stop() {
+  docker stop postgresql
+}
+
+################################################################################
+# Purge PostgreSQL container
+################################################################################
+function postgresql-purge() {
+  postgresql-stop
+  docker rm postgresql
+
+  sudo rm -rf ~/Workspace/Databases/PostgreSQL
+}
+
+################################################################################
+# Upload file to transfer.sh and copy url to clipboard
+################################################################################
+function transfer() {
+  if [ $# -eq 0 ]; then
+    echo -e "No arguments specified.";
+    return 1;
+  fi
+
+  tmpfile=$( mktemp -t transferXXX );
+
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" | awk '{$1=$1};1' >> $tmpfile;
+  else
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" | awk '{$1=$1};1' >> $tmpfile;
+  fi;
+
+  cat $tmpfile;
+  case "$(uname)" in
+    Linux)
+      xsel -b < $tmpfile
+      ;;
+    Darwin)
+      cat $tmpfile | pbcopy
+      ;;
+  esac
+  rm -f $tmpfile
+}

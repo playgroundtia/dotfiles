@@ -106,7 +106,8 @@ case "$(uname)" in
       dbeaver-ce \
       cmake \
       corebird \
-      htop
+      htop \
+      gnome-screensaver
 
     ############################################################################
     # Hack Nerd Font
@@ -382,6 +383,14 @@ if [ -f ~/.wgetrc ] || [ -h ~/.wgetrc ]; then
   mv ~/.wgetrc /tmp/wgetrc-old
 fi
 ln -s ~/.dotfiles/.wgetrc ~/.wgetrc
+
+################################################################################
+# Readline config
+################################################################################
+if [ -f ~/.inputrc ] || [ -h ~/.inputrc ]; then
+  mv ~/.inputrc /tmp/inputrc-old
+fi
+ln -s ~/.dotfiles/.inputrc ~/.inputrc
 
 ################################################################################
 # Finish

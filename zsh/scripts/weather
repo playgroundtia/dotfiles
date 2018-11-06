@@ -1,9 +1,0 @@
-#!/bin/bash
-
-function weather() {
-  clear
-  curl http://pt.wttr.in/Sao_Paulo
-  sleep 3600
-
-  weather
-}
