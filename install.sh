@@ -107,7 +107,8 @@ case "$(uname)" in
       cmake \
       corebird \
       htop \
-      gnome-screensaver
+      gnome-screensaver \
+      preload
 
     ############################################################################
     # Hack Nerd Font
