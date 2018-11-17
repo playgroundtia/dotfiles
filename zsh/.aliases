@@ -26,7 +26,6 @@ alias -- -="cd -"
 
 # Typos
 alias cd..="cd .."
-alias mutt="neomutt"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
@@ -94,8 +93,11 @@ case "$(uname)" in
     # macOS has no `md5sum`, so use `md5` as a fallback
     command -v md5sum > /dev/null || alias md5sum="md5"
 
-    # # macOS has no `sha1sum`, so use `shasum` as a fallback
+    # macOS has no `sha1sum`, so use `shasum` as a fallback
     command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+    # macOS has no `shred`, so use `gshred` as a fallback
+    command -v shred > /dev/null || alias shred="gshred"
 
 		# Recursively delete `.DS_Store` files
 		alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
