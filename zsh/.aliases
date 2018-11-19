@@ -67,6 +67,9 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "${method}"="lwp-request -m '${method}'"
 done
 
+# Shred file
+alias shred="shred -zvu -n 10"
+
 ################################################################################
 # System specific aliases
 ################################################################################
