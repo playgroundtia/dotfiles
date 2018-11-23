@@ -241,8 +241,9 @@ let g:ale_linters = {
   \ }
 " Compatible fixers
 let g:ale_fixers = {
+  \ 'html': ['prettier'],
   \ 'css': ['prettier'],
-  \ 'javascript': ['prettier', 'eslint'],
+  \ 'javascript': ['eslint'],
   \ 'python': ['black'],
   \ }
 " Airline extension
