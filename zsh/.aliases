@@ -70,6 +70,9 @@ done
 # Shred file
 alias shred="shred -zvu -n 10"
 
+# Midnight Commander
+alias mc="mc -S darkfar"
+
 ################################################################################
 # System specific aliases
 ################################################################################

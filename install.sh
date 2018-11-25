@@ -180,7 +180,8 @@ case "$(uname)" in
       zsh \
       python3 \
       cmake \
-      htop
+      htop \
+      mc
 
     ############################################################################
     # Casks
@@ -261,6 +262,7 @@ sudo yarn global add \
   eslint \
   fkill-cli \
   tern \
+  nodemon \
   --ignore-optional
 
 ################################################################################
