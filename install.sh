@@ -293,8 +293,12 @@ fi
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 command -v zsh | sudo tee -a /etc/shells
-sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
-sudo chsh "$USER" -s "$(command -v zsh)"
+if [[ "$(uname)" == "Linux" ]]; then
+  sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
+  sudo chsh "$USER" -s "$(command -v zsh)"
+elif [[ "$(uname)" == "Darwin" ]]; then
+  chsh -s "$(command -v zsh)"
+fi
 
 ################################################################################
 # Git config
