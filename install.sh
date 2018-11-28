@@ -29,8 +29,6 @@ case "$(uname)" in
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-    # Atom
-    sudo add-apt-repository -y ppa:webupd8team/atom
     # DBeaver
     sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
 
@@ -91,9 +89,7 @@ case "$(uname)" in
       google-chrome-stable \
       dkms \
       virtualbox \
-      virtualbox-ext-pack \
       vagrant \
-      atom \
       shellcheck \
       ruby \
       fonts-hack-ttf \
@@ -148,11 +144,10 @@ case "$(uname)" in
     ############################################################################
     # Taps
     ############################################################################
-    brew tap \
-      caskroom/cask \
-      buo/cask-upgrade \
-      caskroom/drivers \
-      caskroom/fonts
+    brew tap caskroom/cask
+    brew tap buo/cask-upgrade
+    brew tap caskroom/drivers
+    brew tap caskroom/fonts
 
     ############################################################################
     # Bottles
@@ -181,17 +176,14 @@ case "$(uname)" in
       python3 \
       cmake \
       htop \
-      mc
+      mc \
+      asciinema
 
     ############################################################################
     # Casks
     ############################################################################
     brew cask install \
-      applepi-baker \
-      atom \
       authy \
-      cleanmymac \
-      cloudapp \
       coconutbattery \
       filezilla \
       firefox \
@@ -201,7 +193,6 @@ case "$(uname)" in
       itau \
       iterm2 \
       keka \
-      lastpass \
       macvim \
       plex-media-server \
       robo-3t \
@@ -214,11 +205,9 @@ case "$(uname)" in
       wch-ch34x-usb-serial-driver \
       folx \
       virtualbox \
-      virtualbox-extension-pack \
       vagrant \
       docker \
       dropbox \
-      asciinema \
       java \
       dbeaver-community
 
@@ -247,12 +236,6 @@ case "$(uname)" in
 
     ;;
 esac
-
-################################################################################
-# Atom packages
-################################################################################
-apm install \
-  sync-settings
 
 ################################################################################
 # Node.js packages
@@ -404,13 +387,21 @@ ln -s ~/.dotfiles/.inputrc ~/.inputrc
 ################################################################################
 case "$(uname)" in
   Linux)
+    # Clean the mess
     sudo apt autoremove -y
     sudo apt clean all -y
 
+    # Reboot
+    sudo shutdown -r now
+
   ;;
   Darwin)
-    brew cleanup
+    # Clean the mess
+    brew cleanup -s
     brew prune
+
+    # Enable TRIM and reboot
+    sudo trimforce enable
 
   ;;
 esac
