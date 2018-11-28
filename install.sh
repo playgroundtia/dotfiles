@@ -229,6 +229,12 @@ case "$(uname)" in
     # Clean My Drive 2
     mas install 523620159
 
+    ############################################################################
+    # Hostname
+    ############################################################################
+    sudo scutil --set HostName macbook
+    sudo scutil --set LocalHostName macbook
+    sudo scutil --set ComputerName macbook
     ;;
   *)
     echo "Invalid system."
