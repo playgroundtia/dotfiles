@@ -36,7 +36,7 @@ case "$(uname)" in
       brew upgrade
       brew cu --all --yes --cleanup
       brew prune
-      brew cleanup
+      brew cleanup -s
       mas upgrade
       sudo softwareupdate -i -a
     }
