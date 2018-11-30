@@ -209,7 +209,8 @@ case "$(uname)" in
       docker \
       dropbox \
       java \
-      dbeaver-community
+      dbeaver-community \
+      soda-player
 
     ############################################################################
     # iTerm 2
