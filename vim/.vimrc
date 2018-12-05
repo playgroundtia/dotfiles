@@ -39,7 +39,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
 Plug 'sheerun/vim-polyglot'
-Plug 'Yggdroot/indentLine'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -224,8 +223,6 @@ let g:NERDToggleCheckAllLines = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable completion
-let g:ale_completion_enabled = 1
 " Never lint on change
 let g:ale_lint_on_text_changed = 'never'
 " Lint on save
@@ -236,14 +233,18 @@ let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 " Compatible linters
 let g:ale_linters = {
+  \ 'python': ['flake8', 'pylint'],
   \ 'javascript': ['eslint'],
-  \ 'vim': ['vint']
+  \ 'vue': ['eslint'],
+  \ 'vim': ['vint'],
   \ }
 " Compatible fixers
 let g:ale_fixers = {
   \ 'html': ['prettier'],
+  \ 'scss': ['prettier'],
   \ 'css': ['prettier'],
   \ 'javascript': ['eslint'],
+  \ 'vue': ['eslint'],
   \ 'python': ['black'],
   \ }
 " Airline extension
