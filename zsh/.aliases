@@ -88,6 +88,9 @@ case "$(uname)" in
     # Lock the screen (when going AFK)
     alias afk="gnome-screensaver-command --lock"
 
+    # Browsers
+    alias chrome="/opt/google/chrome/google-chrome"
+
   ;;
   Darwin)
     # Clean up LaunchServices to remove duplicates in the “Open With” menu
@@ -135,5 +138,6 @@ case "$(uname)" in
 
     # Lock the screen (when going AFK)
     alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
   ;;
 esac

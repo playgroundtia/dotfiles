@@ -269,6 +269,7 @@ case "$(uname)" in
     defaults write NSGlobalDomain AppleFontSmoothing -int 1
     # Enable HiDPI display modes
     sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
     ;;
   *)
     echo "Invalid system."
