@@ -104,7 +104,13 @@ case "$(uname)" in
       corebird \
       htop \
       gnome-screensaver \
-      preload
+      preload \
+      file
+
+    ############################################################################
+    # Linuxbrew
+    ############################################################################
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
     ############################################################################
     # Hack Nerd Font
@@ -139,7 +145,6 @@ case "$(uname)" in
     # Homebrew
     ############################################################################
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew doctor
 
     ############################################################################
     # Taps
@@ -236,6 +241,34 @@ case "$(uname)" in
     sudo scutil --set HostName macbook
     sudo scutil --set LocalHostName macbook
     sudo scutil --set ComputerName macbook
+
+    ############################################################################
+    # SSD
+    ############################################################################
+    # Disable hibernation (speeds up entering sleep mode)
+    sudo pmset -a hibernatemode 0
+    # Remove the sleep image file to save disk space
+    sudo rm /private/var/vm/sleepimage
+    # Create a zero-byte file instead and make sure it can't be rewritten
+    sudo touch /private/var/vm/sleepimage
+    sudo chflags uchg /private/var/vm/sleepimage
+
+    ############################################################################
+    # Screen
+    ############################################################################
+    # Require password immediately after sleep or screen saver begins
+    defaults write com.apple.screensaver askForPassword -int 1
+    defaults write com.apple.screensaver askForPasswordDelay -int 0
+    # Save screenshots to the desktop
+    defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+    # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+    defaults write com.apple.screencapture type -string "png"
+    # Disable shadow in screenshots
+    defaults write com.apple.screencapture disable-shadow -bool true
+    # Enable subpixel font rendering on non-Apple LCDs
+    defaults write NSGlobalDomain AppleFontSmoothing -int 1
+    # Enable HiDPI display modes
+    sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
     ;;
   *)
     echo "Invalid system."
@@ -308,7 +341,9 @@ ln -s ~/.dotfiles/vim ~/.vim
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
-curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo \
+  "$HOME/.vim/autoload/plug.vim" \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
 
 ################################################################################
