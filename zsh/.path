@@ -17,5 +17,7 @@ case "$(uname)" in
     export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
     # Python
     export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+    # Curl
+    export PATH="/usr/local/opt/curl/bin:$PATH"
   ;;
 esac
