@@ -1,5 +1,7 @@
+# top-most EditorConfig file
 root = true
 
+# Unix-style newlines with a newline ending every file
 [*]
 charset = utf-8
 end_of_line = lf
@@ -8,11 +10,22 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+# Git
 [.gitmessage]
 insert_final_newline = false
 
+# Markdown
 [*.md]
 trim_trailing_whitespace = false
 
+# Python
 [*.py]
 indent_size = 4
+
+# Makefile
+[Makefile]
+indent_style = tab
+
+# C / C++
+[*.{c,h,cpp,hpp}]
+indent_size = 2
