@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Ask for the administrator password upfront
 sudo -v
-
-# Keep-alive: update existing `sudo` time stamp
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 case "$(uname)" in
@@ -14,11 +11,6 @@ case "$(uname)" in
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    # Node.js
-    curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    # Yarn
-    curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     # Spotify
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -47,7 +39,6 @@ case "$(uname)" in
       docker-engine \
       docker.io \
       cmdtest \
-      nodejs \
       chromium-* \
       virtualbox
 
@@ -55,57 +46,62 @@ case "$(uname)" in
     # Install packages
     ############################################################################
     sudo apt install -y \
-      curl \
-      git \
-      wget \
-      exfat-fuse \
-      exfat-utils \
-      zsh \
-      vim \
-      vim-gnome \
-      gnupg-agent \
-      tilix \
-      lynx \
-      neomutt \
-      urlview \
-      tmux \
-      xsel \
-      filezilla \
-      transmission \
-      vlc \
-      steam \
       apt-transport-https \
-      ca-certificates \
-      software-properties-common \
-      docker-ce \
-      gcc \
-      g++ \
-      make \
-      build-essential \
-      nodejs \
-      yarn \
-      awscli \
-      spotify-client \
-      google-chrome-stable \
-      dkms \
-      virtualbox \
-      vagrant \
-      shellcheck \
-      ruby \
-      fonts-hack-ttf \
-      nautilus-dropbox \
       asciinema \
-      python-dev \
-      python3-dev \
-      python3.7 \
-      python3-pip \
-      dbeaver-ce \
+      autoconf \
+      automake \
+      awscli \
+      build-essential \
+      ca-certificates \
       cmake \
       corebird \
-      htop \
+      curl \
+      dbeaver-ce \
+      dirmngr \
+      dkms \
+      docker-ce \
+      exfat-fuse \
+      exfat-utils \
+      file \
+      filezilla \
+      fonts-hack-ttf \
+      g++ \
+      gcc \
+      git \
       gnome-screensaver \
+      gnupg-agent \
+      google-chrome-stable \
+      gpg \
+      htop \
+      libffi-dev \
+      libncurses-dev \
+      libreadline-dev \
+      libssl-dev \
+      libtool \
+      libxslt-dev \
+      libyaml-dev \
+      lynx \
+      make \
+      nautilus-dropbox \
+      neomutt \
       preload \
-      file
+      shellcheck \
+      software-properties-common \
+      spotify-client \
+      steam \
+      tilix \
+      tmux \
+      transmission \
+      unixodbc-dev \
+      urlview \
+      vagrant \
+      vim \
+      vim-gnome \
+      virtualbox \
+      vlc \
+      wget \
+      xsel \
+      zsh
 
     ############################################################################
     # Linuxbrew
@@ -168,7 +164,6 @@ case "$(uname)" in
       lynx \
       mas \
       neomutt/homebrew-neomutt/neomutt \
-      nodejs \
       reattach-to-user-namespace \
       ruby \
       shellcheck \
@@ -176,9 +171,7 @@ case "$(uname)" in
       urlview \
       vim \
       wget \
-      yarn \
       zsh \
-      python3 \
       cmake \
       htop \
       mc \
@@ -279,24 +272,51 @@ case "$(uname)" in
 esac
 
 ################################################################################
+# Asdf
+################################################################################
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.2
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+asdf update
+
+################################################################################
+# Asdf - Plugins
+################################################################################
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+################################################################################
+# Asdf - Install latest versions
+################################################################################
+asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+
+################################################################################
 # Node.js packages
 ################################################################################
-sudo yarn global add \
+npm install --global --no-optional \
   prettier \
   eslint \
   fkill-cli \
   tern \
-  nodemon \
-  --ignore-optional
+  nodemon
 
 ################################################################################
 # Python packages
 ################################################################################
-pip3 install \
+pip3 install --user \
   pipenv \
   black \
-  vim-vint \
-  --user
+  vim-vint
 
 ################################################################################
 # Clone dotfiles

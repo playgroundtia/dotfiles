@@ -58,8 +58,12 @@ function f5() {
   git pull-sub
   git submodule update --recursive --remote
 
+  # Asdf
+  asdf update
+  asdf plugin-update --all
+
   # JavaScript packages
-  sudo yarn global upgrade
+  npm update --global
 
   # Python packages
   pip3 list --outdated --format=freeze | \
@@ -229,19 +233,19 @@ function transfer() {
 
   if tty -s; then
     basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" | awk '{$1=$1};1' >> $tmpfile;
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" | awk '{$1=$1};1' >> "$tmpfile";
   else
-    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" | awk '{$1=$1};1' >> $tmpfile;
+    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" | awk '{$1=$1};1' >> "$tmpfile";
   fi;
 
-  cat $tmpfile;
+  cat "$tmpfile";
   case "$(uname)" in
     Linux)
-      xsel -b < $tmpfile
+      xsel -b < "$tmpfile"
       ;;
     Darwin)
-      cat $tmpfile | pbcopy
+      pbcopy < "$tmpfile"
       ;;
   esac
-  rm -f $tmpfile
+  rm -f "$tmpfile"
 }

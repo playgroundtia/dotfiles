@@ -21,3 +21,6 @@ case "$(uname)" in
     export PATH="/usr/local/opt/curl/bin:$PATH"
   ;;
 esac
+
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
