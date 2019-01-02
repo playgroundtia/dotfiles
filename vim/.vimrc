@@ -37,8 +37,11 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
-Plug 'ap/vim-css-color'
+Plug 'lilydjwg/colorizer'
 Plug 'sheerun/vim-polyglot'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'inside/vim-search-pulse'
+Plug 'RRethy/vim-illuminate'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -289,14 +292,9 @@ let g:jsx_ext_required = 0
 " Disable default mappings
 let g:EasyMotion_do_mapping = 0
 " Jump to anywhere
-nmap s <Plug>(easymotion-overwin-f)
+nmap f <Plug>(easymotion-overwin-f)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-" Use EasyMotion to move to matched words
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Carbon.now.sh
@@ -335,3 +333,21 @@ map <leader>z :ZoomWin<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Place the cursor at the end
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smooth scroll
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search pulse
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_search_pulse_duration = 200
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Illuminate
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi link illuminatedWord Visual
