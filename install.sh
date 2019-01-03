@@ -308,12 +308,13 @@ npm install --global --no-optional \
   eslint \
   fkill-cli \
   tern \
-  nodemon
+  nodemon \
+  yarn
 
 ################################################################################
 # Python packages
 ################################################################################
-pip3 install --user \
+pip3 install \
   pipenv \
   black \
   vim-vint
