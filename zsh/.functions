@@ -51,9 +51,10 @@ function f5() {
   sudo -v
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  # Update and upgrade packages
+  # Upgrade packages
   upgrade
 
+  # Update dotfiles and submodules
   cd ~/.dotfiles || exit 1
   git pull-sub
   git submodule update --recursive --remote
@@ -61,15 +62,24 @@ function f5() {
   # Asdf
   asdf update
   asdf plugin-update --all
+  asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+  asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+  asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+  asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+  asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+  asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+  asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+  asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
 
   # JavaScript packages
+  npm install --global npm
   npm update --global
 
   # Python packages
   pip3 list --outdated --format=freeze | \
     grep -v '^\-e' | \
     cut -d = -f 1 | \
-    xargs -n1 pip3 install -U --user
+    xargs -n1 pip3 install -U
 
   # Vim
   vim +PlugUpgrade +PlugUpdate +qall
@@ -93,7 +103,6 @@ function f5() {
   git pull
 
   # Reload shell
-  cd ~
   source ~/.zshrc
 }
 
@@ -120,7 +129,7 @@ function server() {
 }
 
 ################################################################################
-# Start MongoDB cotnainer
+# MongoDB
 ################################################################################
 function mongodb-start() {
   mkdir -p ~/Workspace/Databases/MongoDB
@@ -136,16 +145,10 @@ function mongodb-start() {
     mongo:4-xenial
 }
 
-################################################################################
-# Stop MongoDB container
-################################################################################
 function mongodb-stop() {
   docker stop mongodb
 }
 
-################################################################################
-# Purge MongoDB container
-################################################################################
 function mongodb-purge() {
   mongodb-stop
   docker rm mongodb
@@ -154,7 +157,7 @@ function mongodb-purge() {
 }
 
 ################################################################################
-# Start MySQL container
+# MySQL
 ################################################################################
 function mysql-start() {
   mkdir -p ~/Workspace/Databases/MySQL
@@ -169,16 +172,10 @@ function mysql-start() {
     mysql:5.7
 }
 
-################################################################################
-# Stop MySQL container
-################################################################################
 function mysql-stop() {
   docker stop mysql
 }
 
-################################################################################
-# Purge MySQL container
-################################################################################
 function mysql-purge() {
   mysql-stop
   docker rm mysql
@@ -187,7 +184,7 @@ function mysql-purge() {
 }
 
 ################################################################################
-# Start PostgreSQL container
+# PostgreSQL
 ################################################################################
 function postgresql-start() {
   mkdir -p ~/Workspace/Databases/PostgreSQL
@@ -203,16 +200,10 @@ function postgresql-start() {
     postgres:10-alpine
 }
 
-################################################################################
-# Stop PostgreSQL container
-################################################################################
 function postgresql-stop() {
   docker stop postgresql
 }
 
-################################################################################
-# Purge PostgreSQL container
-################################################################################
 function postgresql-purge() {
   postgresql-stop
   docker rm postgresql
