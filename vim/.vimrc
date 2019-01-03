@@ -8,6 +8,7 @@ let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
   augroup plug
     autocmd VimEnter * PlugInstall | source $MYVIMRC
   augroup END
@@ -53,7 +54,6 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-vinegar', { 'on': ['Explore', 'Lexplore'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
@@ -74,15 +74,12 @@ Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
-Plug 'thaerkh/vim-workspace'
-Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'godlygeek/tabular'
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
