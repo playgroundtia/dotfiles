@@ -59,17 +59,31 @@ function f5() {
   git pull-sub
   git submodule update --recursive --remote
 
-  # Asdf
+  # Update asdf
   asdf update
+
+  # Update asdf plugins
   asdf plugin-update --all
+
+  # Update Golang
   asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
   asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+  asdf reshim golang
+
+  # Update Python
   asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
   asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+  asdf reshim python
+
+  # Update Ruby
   asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
   asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+  asdf reshim ruby
+
+  # Update Node.js
   asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
   asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+  asdf reshim nodejs
 
   # JavaScript packages
   npm install --global npm

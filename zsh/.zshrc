@@ -39,6 +39,7 @@ ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
+  asdf
   gpg-agent
   ssh-agent
   tmux

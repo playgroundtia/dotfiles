@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 case "$(uname)" in
   Linux)
+    # Linuxbrew
     export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
     export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
     export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
@@ -13,14 +14,15 @@ case "$(uname)" in
   Darwin)
     # coreutils
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
     # findutils
     export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-    # Python
-    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
-    # Curl
+
+    # curl
     export PATH="/usr/local/opt/curl/bin:$PATH"
   ;;
 esac
 
+# Asdf
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
