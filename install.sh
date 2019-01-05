@@ -154,16 +154,22 @@ case "$(uname)" in
     # Bottles
     ############################################################################
     brew install \
-      coreutils \
-      moreutils \
-      findutils \
+      asciinema \
       awscli \
+      cmake \
+      coreutils \
       curl \
+      findutils \
       git \
       gpg \
+      htop \
       lynx \
       mas \
+      mc \
+      moreutils \
       neomutt/homebrew-neomutt/neomutt \
+      openssl \
+      readline \
       reattach-to-user-namespace \
       ruby \
       shellcheck \
@@ -171,11 +177,8 @@ case "$(uname)" in
       urlview \
       vim \
       wget \
-      zsh \
-      cmake \
-      htop \
-      mc \
-      asciinema
+      zlib \
+      zsh
 
     ############################################################################
     # Casks
@@ -293,12 +296,21 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 ################################################################################
 asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
 asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
-asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
-asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
 asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
 asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
 asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
 asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  brew reinstall -s python
+
+  export LDFLAGS="-L/usr/local/opt/zlib/lib"
+  export CPPFLAGS="-I/usr/local/opt/zlib/include"
+  export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+  export KEEP_BUILD_PATH=true
+fi
+asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
 
 ################################################################################
 # Node.js packages

@@ -20,6 +20,9 @@ case "$(uname)" in
 
     # curl
     export PATH="/usr/local/opt/curl/bin:$PATH"
+
+    # openssl
+    export PATH="/usr/local/opt/openssl/bin:$PATH"
   ;;
 esac
 

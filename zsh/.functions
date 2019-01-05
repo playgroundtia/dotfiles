@@ -71,6 +71,12 @@ function f5() {
   asdf reshim golang
 
   # Update Python
+  if [[ "$(uname)" == "Darwin" ]]; then
+    export LDFLAGS="-L/usr/local/opt/zlib/lib"
+    export CPPFLAGS="-I/usr/local/opt/zlib/include"
+    export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+    export KEEP_BUILD_PATH=true
+  fi
   asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
   asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
   asdf reshim python
