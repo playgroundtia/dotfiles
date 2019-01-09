@@ -16,30 +16,8 @@ case "$(uname)" in
       fi;
     }
 
-    ############################################################################
-    # Update and upgrade packages
-    ############################################################################
-    function upgrade() {
-      sudo apt update -y
-      sudo apt dist-upgrade -y
-      sudo apt autoremove -y
-      sudo apt clean all -y
-    }
-
   ;;
   Darwin)
-    ############################################################################
-    # Update and upgrade packages
-    ############################################################################
-    function upgrade() {
-      brew update
-      brew upgrade
-      brew cu --all --yes --cleanup
-      brew prune
-      brew cleanup -s
-      mas upgrade
-      sudo softwareupdate -i -a
-    }
 
   ;;
 esac
@@ -51,26 +29,47 @@ function f5() {
   sudo -v
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  # Upgrade packages
-  upgrade
+  ##############################################################################
+  # Update and upgrade system packages
+  ##############################################################################
+  if [[ "$(uname)" == "Linux" ]]; then
+    sudo apt update -y
+    sudo apt dist-upgrade -y
+    sudo apt autoremove -y
+    sudo apt clean all -y
+  elif [[ "$(uname)" == "Darwin" ]]; then
+    brew update
+    brew upgrade
+    brew cu --all --yes --cleanup
+    brew prune
+    brew cleanup -s
+    mas upgrade
+    sudo softwareupdate -i -a
+  fi
 
-  # Update dotfiles and submodules
+  ##############################################################################
+  # Dotfiles
+  ##############################################################################
   cd ~/.dotfiles || exit 1
   git pull-sub
   git submodule update --recursive --remote
 
-  # Update asdf
+  ##############################################################################
+  # Asdf
+  ##############################################################################
   asdf update
-
-  # Update asdf plugins
   asdf plugin-update --all
 
-  # Update Golang
+  ##############################################################################
+  # Golang
+  ##############################################################################
   asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
   asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
   asdf reshim golang
 
-  # Update Python
+  ##############################################################################
+  # Python
+  ##############################################################################
   if [[ "$(uname)" == "Darwin" ]]; then
     export LDFLAGS="-L/usr/local/opt/zlib/lib"
     export CPPFLAGS="-I/usr/local/opt/zlib/include"
@@ -79,33 +78,38 @@ function f5() {
   fi
   asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
   asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
-  asdf reshim python
-
-  # Update Ruby
-  asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
-  asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
-  asdf reshim ruby
-
-  # Update Node.js
-  asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-  asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-  asdf reshim nodejs
-
-  # JavaScript packages
-  npm install --global npm
-  npm update --global
-
-  # Python packages
   pip3 list --outdated --format=freeze | \
     grep -v '^\-e' | \
     cut -d = -f 1 | \
     xargs -n1 pip3 install -U
+  asdf reshim python
 
+  ##############################################################################
+  # Ruby
+  ##############################################################################
+  asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+  asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+  gem update --system
+  asdf reshim ruby
+
+  ##############################################################################
+  # Node.js
+  ##############################################################################
+  asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+  asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
+  npm install --global npm
+  npm update --global
+  asdf reshim nodejs
+
+  ##############################################################################
   # Vim
+  ##############################################################################
   vim +PlugUpgrade +PlugUpdate +qall
   rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
 
+  ##############################################################################
   # Tmux
+  ##############################################################################
   cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
@@ -117,12 +121,17 @@ function f5() {
   cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
 
+  ##############################################################################
   # Oh-my-zsh
+  ##############################################################################
   cd ~/.oh-my-zsh || exit 1
   git checkout master
   git pull
 
+  ##############################################################################
   # Reload shell
+  ##############################################################################
+  cd ~ || exit 1
   source ~/.zshrc
 }
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -171,7 +171,6 @@ case "$(uname)" in
       openssl \
       readline \
       reattach-to-user-namespace \
-      ruby \
       shellcheck \
       tmux \
       urlview \
@@ -330,6 +329,23 @@ pip3 install \
   pipenv \
   black \
   vim-vint
+
+################################################################################
+# Ruby packages
+################################################################################
+gem install \
+  rails \
+  bundler
+
+################################################################################
+# Bundler config
+################################################################################
+if [[ "$(uname)" == "Linux" ]]; then
+  cores=$(grep -c processor < /proc/cpuinfo)
+elif [[ "$(uname)" == "Darwin" ]]; then
+  cores=$(sysctl -n hw.ncpu)
+fi
+bundle config --global jobs $((cores - 1))
 
 ################################################################################
 # Clone dotfiles
