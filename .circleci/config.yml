@@ -8,6 +8,9 @@ jobs:
           name: Update apt
           command: apt-get update
       - run:
+          name: Fix sudo
+          command: apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+      - run:
           name: Install curl
           command: apt-get install -y curl
       - run:
