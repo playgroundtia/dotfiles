@@ -9,7 +9,7 @@ jobs:
           command: apt-get update
       - run:
           name: Fix sudo
-          command: apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+          command: apt-get install -y sudo
       - run:
           name: Install curl
           command: apt-get install -y curl
