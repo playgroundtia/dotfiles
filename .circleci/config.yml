@@ -9,7 +9,7 @@ jobs:
           command: apt-get update
       - run:
           name: Install curl
-          command: apt-get install curl
+          command: apt-get install -y curl
       - run:
           name: Install dotfiles
           command: curl -fsSL https://raw.githubusercontent.com/gufranco/dotfiles/master/install.sh | bash
