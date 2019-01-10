@@ -5,8 +5,5 @@ jobs:
       - image: ubuntu:18.04
     steps:
       - run:
-          name: Install essential packages
           command: |
-            apt-get update && \
-						apt-get install -y curl \
-						curl -fsSL https://raw.githubusercontent.com/gufranco/dotfiles/master/install.sh | bash
+            apt-get update && apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/gufranco/dotfiles/master/install.sh | bash
