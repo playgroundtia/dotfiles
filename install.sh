@@ -410,8 +410,8 @@ elif [[ "$(uname)" == "Darwin" ]]; then
 fi
 chmod 700 ~/.gnupg
 chmod 400 ~/.gnupg/keys/*
-gpg --import ~/.gnupg/keys/personal.public
-gpg --import ~/.gnupg/keys/personal.private
+# gpg --import ~/.gnupg/keys/personal.public
+# gpg --import ~/.gnupg/keys/personal.private
 
 ################################################################################
 # SSH config
