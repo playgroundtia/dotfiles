@@ -320,7 +320,8 @@ npm install --global --no-optional \
   fkill-cli \
   tern \
   nodemon \
-  yarn
+  yarn \
+  vtop
 
 ################################################################################
 # Python packages
