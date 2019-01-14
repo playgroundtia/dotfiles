@@ -79,7 +79,6 @@ Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 " Editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
-" Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
@@ -300,12 +299,6 @@ let g:EasyMotion_smartcase = 1
 let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Workspace
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle workspace
-nnoremap <leader>w :ToggleWorkspace<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gist
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Publish as private by default
@@ -318,12 +311,6 @@ let g:gist_detect_filetype = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle WinResizerStartResize
 map <leader>r :WinResizerStartResize<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ZoomWin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle ZoomWin
-map <leader>z :ZoomWin<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Easyclip
