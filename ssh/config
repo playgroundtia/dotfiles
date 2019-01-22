@@ -23,3 +23,7 @@ Host sossego-batman
 Host sossego-apis
   HostName apis.sossego.com.br
   User soss
+
+Host sossego-www
+  HostName www.sossego.com.br
+  User soss
