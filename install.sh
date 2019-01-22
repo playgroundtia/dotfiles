@@ -284,6 +284,8 @@ asdf update
 ################################################################################
 # Asdf - Plugins
 ################################################################################
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
@@ -293,13 +295,24 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 ################################################################################
 # Asdf - Install latest versions
 ################################################################################
+# Erlang
+asdf install erlang "$(asdf list-all "erlang" | grep -v "[a-z]" | tail -1)"
+asdf global erlang "$(asdf list-all "erlang" | grep -v "[a-z]" | tail -1)"
+# Elixir
+asdf install elixir "$(asdf list-all "elixir" | grep -v "[a-z]" | tail -1)"
+asdf global elixir "$(asdf list-all "elixir" | grep -v "[a-z]" | tail -1)"
+# Golang
 asdf install golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
 asdf global golang "$(asdf list-all "golang" | grep -v "[a-z]" | tail -1)"
+# Ruby
+ln -s ~/.dotfiles/asdf/.default-gems ~/.default-gems
 asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
 asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
+# Node.js
+ln -s ~/.dotfiles/asdf/.default-npm-packages ~/.default-npm-packages
 asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
 asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-
+# Python
 if [[ "$(uname)" == "Darwin" ]]; then
   brew reinstall -s python
 
@@ -312,31 +325,12 @@ asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
 asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
 
 ################################################################################
-# Node.js packages
-################################################################################
-npm install --global --no-optional \
-  prettier \
-  eslint \
-  fkill-cli \
-  tern \
-  nodemon \
-  yarn \
-  vtop
-
-################################################################################
 # Python packages
 ################################################################################
 pip3 install \
   pipenv \
   black \
   vim-vint
-
-################################################################################
-# Ruby packages
-################################################################################
-gem install \
-  rails \
-  bundler
 
 ################################################################################
 # Bundler config
