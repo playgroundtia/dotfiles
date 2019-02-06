@@ -73,6 +73,9 @@ alias shred="shred -zvu -n 10"
 # Midnight Commander
 alias mc="mc -S darkfar"
 
+# Mutt
+alias mutt="neomutt"
+
 ################################################################################
 # System specific aliases
 ################################################################################
