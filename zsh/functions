@@ -87,6 +87,7 @@ function f5() {
   ##############################################################################
   # Node.js
   ##############################################################################
+  bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
   asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
   yarn global upgrade

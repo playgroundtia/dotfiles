@@ -151,6 +151,10 @@ map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
+" Open with Atom
+nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
+" Open with Visual Studio Code
+nnoremap <leader>a :execute "!code " . expand("%") . ":" . line(".") \| redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme

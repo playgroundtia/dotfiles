@@ -23,6 +23,11 @@ case "$(uname)" in
     sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     # DBeaver
     sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
+    # Atom
+    sudo add-apt-repository ppa:webupd8team/atom
+    # Visual Studio Code
+    curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
 
     ############################################################################
     # Update / upgrade
@@ -48,12 +53,15 @@ case "$(uname)" in
     sudo apt install -y \
       apt-transport-https \
       asciinema \
+      atom \
       autoconf \
       automake \
       awscli \
       build-essential \
       ca-certificates \
       cmake \
+      code \
+      code-insiders \
       corebird \
       curl \
       dbeaver-ce \
@@ -183,34 +191,36 @@ case "$(uname)" in
     # Casks
     ############################################################################
     brew cask install \
+      atom \
       authy \
       coconutbattery \
+      dbeaver-community \
+      docker \
+      dropbox \
       filezilla \
       firefox \
       flixtools \
+      folx \
       font-hack-nerd-font \
       google-chrome \
       itau \
       iterm2 \
+      java \
       keka \
       macvim \
       plex-media-server \
       robo-3t \
       silicon-labs-vcp-driver \
       sizeup \
+      soda-player \
       spotify \
-      transmission \
-      vlc \
       steam \
-      wch-ch34x-usb-serial-driver \
-      folx \
-      virtualbox \
+      transmission \
       vagrant \
-      docker \
-      dropbox \
-      java \
-      dbeaver-community \
-      soda-player
+      virtualbox \
+      visual-studio-code \
+      vlc \
+      wch-ch34x-usb-serial-driver
 
     ############################################################################
     # iTerm 2
@@ -272,6 +282,12 @@ case "$(uname)" in
 
     ;;
 esac
+
+################################################################################
+# Atom packages
+################################################################################
+apm install \
+  sync-settings
 
 ################################################################################
 # Asdf
