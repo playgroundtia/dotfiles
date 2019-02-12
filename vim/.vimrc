@@ -154,7 +154,7 @@ map <Down> <Nop>
 " Open with Atom
 nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
 " Open with Visual Studio Code
-nnoremap <leader>a :execute "!code " . expand("%") . ":" . line(".") \| redraw!<CR>
+nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
