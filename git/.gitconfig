@@ -144,3 +144,6 @@
 
   # Create a package <3
   package = !tar --exclude=".git" --exclude="node_modules" -cvzf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tgz *
+
+  # Typo
+  typo = commit -m "Fix typo"
