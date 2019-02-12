@@ -51,6 +51,9 @@ alias ping="ping -c 5"
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
+# Pretty print a JSON
+alias jsonpp='python -m json.tool'
+
 # Recursively delete `node_modules` folders
 alias cleanup-node='find . -type d -name "node_modules" -exec rm -rf "{}" +'
 
