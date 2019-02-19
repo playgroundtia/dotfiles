@@ -11,6 +11,11 @@ case "$(uname)" in
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    # Node.js
+    curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    # Yarn
+    curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     # Spotify
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -44,6 +49,7 @@ case "$(uname)" in
       docker-engine \
       docker.io \
       cmdtest \
+      nodejs \
       chromium-* \
       virtualbox
 
@@ -92,7 +98,12 @@ case "$(uname)" in
       make \
       nautilus-dropbox \
       neomutt \
+      nodejs \
       preload \
+      python-dev \
+      python3-dev \
+      python3-pip \
+      python3.7 \
       shellcheck \
       software-properties-common \
       spotify-client \
@@ -109,12 +120,8 @@ case "$(uname)" in
       vlc \
       wget \
       xsel \
+      yarn \
       zsh
-
-    ############################################################################
-    # Linuxbrew
-    ############################################################################
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
     ############################################################################
     # Hack Nerd Font
@@ -176,14 +183,18 @@ case "$(uname)" in
       mc \
       moreutils \
       neomutt/homebrew-neomutt/neomutt \
+      nodejs \
       openssl \
+      python3 \
       readline \
       reattach-to-user-namespace \
+      ruby \
       shellcheck \
       tmux \
       urlview \
       vim \
       wget \
+      yarn \
       zlib \
       zsh
 
@@ -290,43 +301,16 @@ apm install \
   sync-settings
 
 ################################################################################
-# Asdf
+# Node.js packages
 ################################################################################
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.2
-source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
-asdf update
-
-################################################################################
-# Asdf - Plugins
-################################################################################
-asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-
-################################################################################
-# Asdf - Install latest versions
-################################################################################
-# Ruby
-ln -s ~/.dotfiles/asdf/.default-gems ~/.default-gems
-asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
-asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
-# Node.js
-ln -s ~/.dotfiles/asdf/.default-npm-packages ~/.default-npm-packages
-asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-# Python
-if [[ "$(uname)" == "Darwin" ]]; then
-  brew reinstall -s python
-
-  export LDFLAGS="-L/usr/local/opt/zlib/lib"
-  export CPPFLAGS="-I/usr/local/opt/zlib/include"
-  export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-  export KEEP_BUILD_PATH=true
-fi
-asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
-asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
+sudo yarn global add \
+  eslint \
+  fkill-cli \
+  nodemon \
+  prettier \
+  tern \
+  vtop \
+  --ignore-optional
 
 ################################################################################
 # Python packages
@@ -335,6 +319,13 @@ pip3 install \
   pipenv \
   black \
   vim-vint
+
+################################################################################
+# Ruby packages
+################################################################################
+sudo gem install \
+  rails \
+  bundler
 
 ################################################################################
 # Bundler config

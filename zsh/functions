@@ -54,44 +54,22 @@ function f5() {
   git submodule update --recursive --remote
 
   ##############################################################################
-  # Asdf
-  ##############################################################################
-  asdf update
-  asdf plugin-update --all
-
-  ##############################################################################
   # Python
   ##############################################################################
-  if [[ "$(uname)" == "Darwin" ]]; then
-    export LDFLAGS="-L/usr/local/opt/zlib/lib"
-    export CPPFLAGS="-I/usr/local/opt/zlib/include"
-    export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-    export KEEP_BUILD_PATH=true
-  fi
-  asdf install python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
-  asdf global python "$(asdf list-all "python" | grep -v "[a-z]" | tail -1)"
   pip3 list --outdated --format=freeze | \
     grep -v '^\-e' | \
     cut -d = -f 1 | \
     xargs -n1 pip3 install -U
-  asdf reshim python
 
   ##############################################################################
   # Ruby
   ##############################################################################
-  asdf install ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
-  asdf global ruby "$(asdf list-all "ruby" | grep -v "[a-z]" | tail -1)"
   gem update --system
-  asdf reshim ruby
 
   ##############################################################################
   # Node.js
   ##############################################################################
-  bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
-  asdf global nodejs "$(asdf list-all "nodejs" | grep -v "[a-z]" | tail -1)"
   yarn global upgrade
-  asdf reshim nodejs
 
   ##############################################################################
   # Vim
