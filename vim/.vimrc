@@ -40,7 +40,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'lilydjwg/colorizer'
 Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'inside/vim-search-pulse'
 Plug 'RRethy/vim-illuminate'
 
@@ -74,6 +73,8 @@ Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
+Plug 'thaerkh/vim-workspace'
+Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -323,17 +324,28 @@ map <leader>r :WinResizerStartResize<CR>
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smooth scroll
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search pulse
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Duration
 let g:vim_search_pulse_duration = 200
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Workspace
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle workspace
+nnoremap <leader>w :ToggleWorkspace<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WinResizer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle WinResizer
+map <leader>r :WinResizerStartResize<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ZoomWin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle ZoomWin
+map <leader>z :ZoomWin<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Illuminate
