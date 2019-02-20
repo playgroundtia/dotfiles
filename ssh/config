@@ -12,26 +12,3 @@ Host *
 Host personal-router
   HostName 192.168.1.1
   User root
-
-################################################################################
-# Sossego
-################################################################################
-Host sossego-stark
-  HostName stark.sossego.com.br
-  User soss
-
-Host sossego-iron
-  HostName iron.sossego.com.br
-  User soss
-
-Host sossego-batman
-  HostName batman.sossego.com.br
-  User soss
-
-Host sossego-apis
-  HostName apis.sossego.com.br
-  User soss
-
-Host sossego-www
-  HostName www.sossego.com.br
-  User soss
