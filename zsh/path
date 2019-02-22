@@ -16,5 +16,8 @@ case "$(uname)" in
 
     # openssl
     export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+    # Python
+    export PATH="$HOME/Library/Python/3.7/bin:$PATH"
   ;;
 esac

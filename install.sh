@@ -310,13 +310,14 @@ sudo yarn global add \
   nodemon \
   prettier \
   tern \
+  tsc \
   vtop \
   --ignore-optional
 
 ################################################################################
 # Python packages
 ################################################################################
-pip3 install \
+pip3 install --user \
   pipenv \
   black \
   vim-vint
