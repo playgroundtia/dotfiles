@@ -39,9 +39,16 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'lilydjwg/colorizer'
-Plug 'sheerun/vim-polyglot'
 Plug 'inside/vim-search-pulse'
 Plug 'RRethy/vim-illuminate'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Languages support
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'sheerun/vim-polyglot'
+Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Quramy/tsuquyomi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -158,14 +165,11 @@ nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<
 nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| redraw!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Theme
+" Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme dracula
 let g:airline_theme = 'dracula'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GUI
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   if s:uname ==# 'Darwin'
     " Fix for tender coorscheme
@@ -239,6 +243,7 @@ let g:ale_lint_on_enter = 1
 let g:ale_linters = {
   \ 'python': ['flake8', 'pylint'],
   \ 'javascript': ['eslint'],
+  \ 'typescript': ['tslint'],
   \ 'vue': ['eslint'],
   \ 'vim': ['vint'],
   \ }
@@ -248,6 +253,7 @@ let g:ale_fixers = {
   \ 'scss': ['prettier'],
   \ 'css': ['prettier'],
   \ 'javascript': ['eslint'],
+  \ 'typescript': ['tslint'],
   \ 'vue': ['eslint'],
   \ 'python': ['black'],
   \ }
@@ -351,3 +357,16 @@ map <leader>z :ZoomWin<CR>
 " Illuminate
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi link illuminatedWord Visual
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TypeScript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:typescript_indent_disable = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
