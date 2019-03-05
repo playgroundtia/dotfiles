@@ -33,6 +33,9 @@ case "$(uname)" in
     # Visual Studio Code
     curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+    # Terraform
+    curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
+    echo "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
 
     ############################################################################
     # Update / upgrade
@@ -109,6 +112,7 @@ case "$(uname)" in
       software-properties-common \
       spotify-client \
       steam \
+      terraform \
       tilix \
       tmux \
       transmission \
@@ -123,6 +127,14 @@ case "$(uname)" in
       xsel \
       yarn \
       zsh
+
+    ############################################################################
+    # Robo 3T
+    ############################################################################
+    wget https://download.robomongo.org/1.2.1/linux/robo3t-1.2.1-linux-x86_64-3e50a65.tar.gz -O /tmp/robo3t.tar.gz
+    sudo mkdir /opt/robo3t
+    tar -zxvf /tmp/robo3t.tar.gz -C /opt/robo3t
+    sudo chmod +x /opt/robo3t/robo3t
 
     ############################################################################
     # Hack Nerd Font
@@ -191,6 +203,7 @@ case "$(uname)" in
       reattach-to-user-namespace \
       ruby \
       shellcheck \
+      terraform \
       tmux \
       urlview \
       vim \
@@ -307,10 +320,14 @@ apm install \
 sudo yarn global add \
   eslint \
   fkill-cli \
+  gulp \
+  gulp-cli \
+  jest \
   nodemon \
   prettier \
   tern \
-  tsc \
+  ts-node \
+  typescript \
   vtop \
   --ignore-optional
 
