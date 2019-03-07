@@ -31,7 +31,7 @@ case "$(uname)" in
     # Atom
     sudo add-apt-repository ppa:webupd8team/atom
     # Visual Studio Code
-    curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
+    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
     # Terraform
     curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
@@ -405,6 +405,7 @@ curl -fLo \
   "$HOME/.vim/autoload/plug.vim" \
   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
+vim +PlugInstall +qall
 
 ################################################################################
 # GPG config
