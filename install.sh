@@ -139,8 +139,9 @@ case "$(uname)" in
     ############################################################################
     # Hack Nerd Font
     ############################################################################
+    mkdir -p ~/.local/share/fonts
     curl -fLo \
-      "$HOME/.config/tilix/schemes/Hack Regular Nerd Font Complete.ttf" \
+      "$HOME/.local/share/fonts/Hack Regular Nerd Font Complete.ttf" \
       --create-dirs https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
     sudo fc-cache -fv
 
