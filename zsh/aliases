@@ -89,7 +89,7 @@ case "$(uname)" in
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v "$PWD:/rootfs/$PWD" \
         -w="/rootfs/$PWD" \
-        docker/compose:1.22.0'
+        docker/compose:1.23.2'
 
     # Lock the screen (when going AFK)
     alias afk="gnome-screensaver-command --lock"
