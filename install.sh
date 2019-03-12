@@ -11,28 +11,40 @@ case "$(uname)" in
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
     # Node.js
     curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
     # Yarn
     curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
     # Spotify
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+
     # Chrome
     curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+
     # VirtualBox
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+
     # DBeaver
     sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
+
+    # Vim
+    sudo add-apt-repository ppa:jonathonf/vim
+
     # Atom
     sudo add-apt-repository ppa:webupd8team/atom
+
     # Visual Studio Code
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+
     # Terraform
     curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
     echo "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
@@ -319,6 +331,7 @@ apm install \
 # Node.js packages
 ################################################################################
 sudo yarn global add \
+  create-react-app \
   eslint \
   fkill-cli \
   gulp \
