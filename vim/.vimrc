@@ -175,12 +175,12 @@ if has('gui_running')
     " Fix for tender coorscheme
     let g:macvim_skip_colorscheme=1
     " Font
-    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h14
+    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h12
     " Meta key
     set macmeta
   elseif s:uname ==# 'Linux'
     " Font
-    set guifont=Hack\ 14
+    set guifont=Hack\ 12
   endif
 
   " Remove menu
