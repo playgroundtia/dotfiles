@@ -83,7 +83,6 @@ case "$(uname)" in
       cmake \
       code \
       code-insiders \
-      corebird \
       curl \
       dbeaver-ce \
       dirmngr \
@@ -144,9 +143,9 @@ case "$(uname)" in
     # Robo 3T
     ############################################################################
     wget https://download.robomongo.org/1.2.1/linux/robo3t-1.2.1-linux-x86_64-3e50a65.tar.gz -O /tmp/robo3t.tar.gz
-    sudo mkdir /opt/robo3t
-    tar -zxvf /tmp/robo3t.tar.gz -C /opt/robo3t
-    sudo chmod +x /opt/robo3t/robo3t
+    sudo tar -zxvf /tmp/robo3t.tar.gz -C /opt
+    sudo mv robo3t-1.2.1-linux-x86_64-3e50a65 robo3t
+    sudo chmod +x /opt/robo3t/bin/robo3t
 
     ############################################################################
     # Hack Nerd Font
@@ -273,10 +272,15 @@ case "$(uname)" in
     ############################################################################
     # Amphetamine
     mas install 937984704
+
     # Valentina Studio
     mas install 604825918
+
     # Clean My Drive 2
     mas install 523620159
+
+    # Todoist
+    mas install 585829637
 
     ############################################################################
     # Hostname
@@ -290,8 +294,10 @@ case "$(uname)" in
     ############################################################################
     # Disable hibernation (speeds up entering sleep mode)
     sudo pmset -a hibernatemode 0
+
     # Remove the sleep image file to save disk space
     sudo rm /private/var/vm/sleepimage
+
     # Create a zero-byte file instead and make sure it can't be rewritten
     sudo touch /private/var/vm/sleepimage
     sudo chflags uchg /private/var/vm/sleepimage
@@ -302,14 +308,19 @@ case "$(uname)" in
     # Require password immediately after sleep or screen saver begins
     defaults write com.apple.screensaver askForPassword -int 1
     defaults write com.apple.screensaver askForPasswordDelay -int 0
+
     # Save screenshots to the desktop
     defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
     # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
     defaults write com.apple.screencapture type -string "png"
+
     # Disable shadow in screenshots
     defaults write com.apple.screencapture disable-shadow -bool true
+
     # Enable subpixel font rendering on non-Apple LCDs
     defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
     # Enable HiDPI display modes
     sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
