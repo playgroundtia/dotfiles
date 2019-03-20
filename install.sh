@@ -369,6 +369,7 @@ sudo yarn global add \
   gulp \
   gulp-cli \
   jest \
+  ngrok \
   nodemon \
   prettier \
   tern \
