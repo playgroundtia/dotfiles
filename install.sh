@@ -8,6 +8,9 @@ case "$(uname)" in
     ############################################################################
     # Repositories
     ############################################################################
+    # Universe
+    sudo add-apt-repository universe
+
     # Docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -60,18 +63,19 @@ case "$(uname)" in
     ############################################################################
     sudo apt purge -y \
       apport \
+      chromium-* \
+      cmdtest \
       docker \
       docker-engine \
       docker.io \
-      cmdtest \
       nodejs \
-      chromium-* \
+      ubuntu-web-launchers \
       virtualbox
 
     ############################################################################
     # Install packages
     ############################################################################
-    sudo apt install -y \
+    DEBIAN_FRONTEND=noninteractive sudo apt install -y \
       apt-transport-https \
       asciinema \
       atom \
@@ -83,6 +87,7 @@ case "$(uname)" in
       cmake \
       code \
       code-insiders \
+      conky-all \
       curl \
       dbeaver-ce \
       dirmngr \
@@ -97,6 +102,8 @@ case "$(uname)" in
       gcc \
       git \
       gnome-screensaver \
+      gnome-shell-extensions \
+      gnome-tweak-tool \
       gnupg-agent \
       google-chrome-stable \
       gpg \
@@ -127,6 +134,7 @@ case "$(uname)" in
       tilix \
       tmux \
       transmission \
+      ubuntu-restricted-extras \
       unixodbc-dev \
       urlview \
       vagrant \
@@ -167,6 +175,19 @@ case "$(uname)" in
     # Docker
     ############################################################################
     sudo usermod -a -G docker "$USER"
+
+    ############################################################################
+    # Conky
+    ############################################################################
+    if [ -f ~/.conkyrc ] || [ -h ~/.conkyrc ]; then
+      mv ~/.conkyrc /tmp/conkyrc-old
+    fi
+    ln -s ~/.dotfiles/.conkyrc ~/.conkyrc
+
+    ############################################################################
+    # Disable sleep with closed lid
+    ############################################################################
+    sudo sed -i -- 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf
 
     ;;
   Darwin)
