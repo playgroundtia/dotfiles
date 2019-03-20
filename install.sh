@@ -366,8 +366,6 @@ sudo yarn global add \
   create-react-app \
   eslint \
   fkill-cli \
-  gulp \
-  gulp-cli \
   jest \
   ngrok \
   nodemon \
