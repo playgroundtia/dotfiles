@@ -12,3 +12,10 @@ Host *
 Host personal-router
   HostName 192.168.1.1
   User root
+
+################################################################################
+# Kitsune Solutions
+################################################################################
+Host kitsune-heisenberg
+  HostName 45.79.8.253
+  User root
