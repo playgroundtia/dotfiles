@@ -120,6 +120,8 @@ case "$(uname)" in
       nautilus-dropbox \
       neomutt \
       nodejs \
+      p7zip-full \
+      p7zip-rar \
       preload \
       python-dev \
       python3-dev \
