@@ -90,14 +90,12 @@ case "$(uname)" in
       conky-all \
       curl \
       dbeaver-ce \
-      dirmngr \
       dkms \
       docker-ce \
       exfat-fuse \
       exfat-utils \
       file \
       filezilla \
-      fonts-hack-ttf \
       g++ \
       gcc \
       git \
@@ -108,23 +106,12 @@ case "$(uname)" in
       google-chrome-stable \
       gpg \
       htop \
-      libffi-dev \
-      libncurses-dev \
-      libreadline-dev \
-      libssl-dev \
-      libtool \
-      libxslt-dev \
-      libyaml-dev \
-      lynx \
       make \
       nautilus-dropbox \
-      neomutt \
       nodejs \
       p7zip-full \
       p7zip-rar \
       preload \
-      python-dev \
-      python3-dev \
       python3-pip \
       python3.7 \
       ruby-full \
@@ -137,8 +124,6 @@ case "$(uname)" in
       tmux \
       transmission \
       ubuntu-restricted-extras \
-      unixodbc-dev \
-      urlview \
       vagrant \
       vim \
       vim-gnome \
@@ -236,7 +221,6 @@ case "$(uname)" in
       mas \
       mc \
       moreutils \
-      neomutt/homebrew-neomutt/neomutt \
       nodejs \
       openssl \
       python3 \
@@ -484,22 +468,6 @@ if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
-
-################################################################################
-# NeoMutt config
-################################################################################
-if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
-  mv ~/.muttrc /tmp/muttrc-old
-fi
-ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
-if [ -d ~/.mutt ] || [ -h ~/.mutt ]; then
-  mv ~/.mutt /tmp/mutt-old
-fi
-ln -s ~/.dotfiles/mutt ~/.mutt
-if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
-  mv ~/.mailcap /tmp/mailcap-old
-fi
-ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
 ################################################################################
 # Tmux config
