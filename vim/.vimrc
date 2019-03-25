@@ -21,16 +21,15 @@ call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-sensible'
 Plug 'rstacruz/vim-opinion'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
+if !has('gui_running')
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'tmux-plugins/vim-tmux'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'jacoborus/tender.vim'
-Plug 'morhetz/gruvbox'
-Plug 'kristijanhusak/vim-hybrid-material'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
@@ -39,16 +38,12 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'lilydjwg/colorizer'
-Plug 'inside/vim-search-pulse'
-Plug 'RRethy/vim-illuminate'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'sheerun/vim-polyglot'
-Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -58,8 +53,8 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
@@ -69,18 +64,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Integration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
-Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Workspaces, windows and buffers
+" Windows and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
-Plug 'thaerkh/vim-workspace'
 Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,8 +159,6 @@ let g:airline_theme = 'dracula'
 
 if has('gui_running')
   if s:uname ==# 'Darwin'
-    " Fix for tender coorscheme
-    let g:macvim_skip_colorscheme=1
     " Font
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h12
     " Meta key
@@ -268,8 +253,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|node_modules)$',
   \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
   \ }
-" Don't cache results
-let g:ctrlp_use_caching = 0
 " Show hidden files
 let g:ctrlp_show_hidden = 1
 
@@ -310,14 +293,6 @@ let g:EasyMotion_smartcase = 1
 let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gist
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Publish as private by default
-let g:gist_post_private = 1
-" Detect filetype from the filename
-let g:gist_detect_filetype = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Winresizer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle WinResizerStartResize
@@ -330,18 +305,6 @@ map <leader>r :WinResizerStartResize<CR>
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search pulse
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Duration
-let g:vim_search_pulse_duration = 200
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Workspace
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle workspace
-nnoremap <leader>w :ToggleWorkspace<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WinResizer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle WinResizer
@@ -352,11 +315,6 @@ map <leader>r :WinResizerStartResize<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle ZoomWin
 map <leader>z :ZoomWin<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Illuminate
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-hi link illuminatedWord Visual
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TypeScript
