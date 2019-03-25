@@ -68,6 +68,7 @@ case "$(uname)" in
       docker \
       docker-engine \
       docker.io \
+      firefox \
       nodejs \
       ubuntu-web-launchers \
       virtualbox
@@ -133,14 +134,6 @@ case "$(uname)" in
       xsel \
       yarn \
       zsh
-
-    ############################################################################
-    # Robo 3T
-    ############################################################################
-    wget https://download.robomongo.org/1.2.1/linux/robo3t-1.2.1-linux-x86_64-3e50a65.tar.gz -O /tmp/robo3t.tar.gz
-    sudo tar -zxvf /tmp/robo3t.tar.gz -C /opt
-    sudo mv robo3t-1.2.1-linux-x86_64-3e50a65 robo3t
-    sudo chmod +x /opt/robo3t/bin/robo3t
 
     ############################################################################
     # Hack Nerd Font
