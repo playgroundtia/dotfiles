@@ -97,6 +97,7 @@ case "$(uname)" in
       exfat-utils \
       file \
       filezilla \
+      fonts-hack-ttf \
       g++ \
       gcc \
       git \
