@@ -422,20 +422,23 @@ fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
 ################################################################################
-# Vim config
+# Vim / Neovim config
 ################################################################################
 if [ -d ~/.vim ] || [ -h ~/.vim ]; then
   mv ~/.vim /tmp/vim-old
 fi
 ln -s ~/.dotfiles/vim ~/.vim
+if [ -d ~/.config/nvim ] || [ -h ~/.config/nvim ]; then
+  mv ~/.config/nvim /tmp/nvim-old
+fi
+ln -s ~/.dotfiles/vim ~/.config/nvim
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
   mv ~/.vimrc /tmp/vimrc-old
 fi
 curl -fLo \
   "$HOME/.vim/autoload/plug.vim" \
   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln -s ~/.dotfiles/vim/.vimrc ~/.vimrc
-vim +PlugInstall +qall
+ln -s ~/.dotfiles/vim/init.vim ~/.vimrc
 
 ################################################################################
 # GPG config

@@ -6,12 +6,8 @@ let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-  augroup plug
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
-  augroup END
+if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin()
@@ -21,10 +17,8 @@ call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-sensible'
 Plug 'rstacruz/vim-opinion'
-if !has('gui_running')
-  Plug 'tmux-plugins/vim-tmux-focus-events'
-  Plug 'tmux-plugins/vim-tmux'
-endif
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
@@ -61,7 +55,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and buffers
@@ -90,7 +83,6 @@ Plug 'Shougo/neoyank.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
-Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tmhedberg/matchit'
@@ -109,7 +101,9 @@ set cursorline
 set colorcolumn=80
 " Disable mouse
 set mouse=
-set ttymouse=
+if !has('nvim')
+  set ttymouse=
+endif
 " Set update interval
 set updatetime=100
 " No annoying sounds
@@ -137,9 +131,9 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
 " Use F7 to horizontally split the current window and select a buffer
 nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
-" Reload vimrc
+" Reload settings
 nmap <Leader>s :source $MYVIMRC<CR>
-" Edit vimrc
+" Edit settings
 nmap <Leader>v :e $MYVIMRC<CR>
 " Disable arrow keys
 map <Left> <Nop>
@@ -161,8 +155,6 @@ if has('gui_running')
   if s:uname ==# 'Darwin'
     " Font
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h12
-    " Meta key
-    set macmeta
   elseif s:uname ==# 'Linux'
     " Font
     set guifont=Hack\ 12
@@ -275,22 +267,6 @@ let g:multi_cursor_quit_key = '<Esc>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyMotion
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable default mappings
-let g:EasyMotion_do_mapping = 0
-" Jump to anywhere
-nmap f <Plug>(easymotion-overwin-f)
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Carbon.now.sh
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Query params
-let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Winresizer
