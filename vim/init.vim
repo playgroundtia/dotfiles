@@ -23,7 +23,7 @@ Plug 'tmux-plugins/vim-tmux'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'danilo-augusto/vim-afterglow', { 'as': 'afterglow' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
@@ -148,8 +148,8 @@ nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| r
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme dracula
-let g:airline_theme = 'dracula'
+colorscheme afterglow
+let g:airline_theme = 'afterglow'
 
 if has('gui_running')
   if s:uname ==# 'Darwin'
