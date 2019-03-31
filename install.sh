@@ -199,6 +199,7 @@ case "$(uname)" in
     sudo apt install -y \
       gnome-screensaver \
       gnome-shell-extensions \
+      gnome-sushi \
       gnome-tweak-tool
 
     ############################################################################
