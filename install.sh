@@ -131,6 +131,7 @@ case "$(uname)" in
     sudo apt install -y \
       virtualbox \
       vagrant
+    sudo adduser $USER vboxusers
 
     ############################################################################
     # DBeaver
