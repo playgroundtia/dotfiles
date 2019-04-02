@@ -229,9 +229,9 @@ let g:ale_fixers = {
   \ 'html': ['prettier'],
   \ 'scss': ['prettier'],
   \ 'css': ['prettier'],
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['tslint'],
-  \ 'vue': ['eslint'],
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'typescript': ['prettier', 'tslint'],
+  \ 'vue': ['prettier', 'eslint'],
   \ 'python': ['black'],
   \ }
 " Airline extension
