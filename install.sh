@@ -289,6 +289,24 @@ case "$(uname)" in
     echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
     echo "tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0" | sudo tee -a /etc/fstab
 
+    ############################################################################
+    # Mesa drivers
+    ############################################################################
+    sudo add-apt-repository -y ppa:oibaf/graphics-drivers
+    sudo apt update
+    sudo apt upgrade -y
+    sudo apt install -y \
+      libvulkan1 \
+      mesa-vulkan-drivers \
+      vulkan-utils
+
+    ############################################################################
+    # NVIDIA drivers
+    ############################################################################
+    sudo add-apt-repository -y ppa:graphics-drivers/ppa
+    sudo apt update
+    sudo apt upgrade -y
+
     ;;
   Darwin)
     ############################################################################
