@@ -82,16 +82,10 @@ function f5() {
   ##############################################################################
   # Tmux
   ##############################################################################
-  cd ~/.tmux/plugins/tmux-battery && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-copycat && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-prefix-highlight && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-better-mouse-mode && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-cpu && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-resurrect && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-continuum && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-themepack && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
 
   ##############################################################################
   # Oh-my-zsh
