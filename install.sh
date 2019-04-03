@@ -287,7 +287,7 @@ case "$(uname)" in
     # Move /tmp to RAM
     ############################################################################
     echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0" | sudo tee -a /etc/fstab
+    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Mesa drivers
