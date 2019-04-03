@@ -27,6 +27,7 @@ case "$(uname)" in
       docker-engine \
       docker.io \
       firefox \
+      laptop-mode-tools \
       nodejs \
       ubuntu-web-launchers \
       virtualbox
@@ -46,17 +47,17 @@ case "$(uname)" in
       zsh
 
     ############################################################################
+    # Enable universe repository
+    ############################################################################
+    sudo add-apt-repository universe
+    sudo apt update
+
+    ############################################################################
     # Enable exFat
     ############################################################################
     sudo apt install -y \
       exfat-fuse \
       exfat-utils
-
-    ############################################################################
-    # Enable universe repository
-    ############################################################################
-    sudo add-apt-repository universe
-    sudo apt update
 
     ############################################################################
     # 7Zip
@@ -66,9 +67,15 @@ case "$(uname)" in
       p7zip-rar
 
     ############################################################################
-    # Docker
+    # 7Zip
+    ############################################################################
+    sudo apt install -y \
+      unrar \
+      rar
+
     ############################################################################
     # Docker
+    ############################################################################
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     sudo apt update
@@ -76,7 +83,6 @@ case "$(uname)" in
       docker-ce
     sudo usermod -a -G docker "$USER"
 
-    # Docker Compose
     sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
@@ -129,9 +135,11 @@ case "$(uname)" in
     sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     sudo apt update
     sudo apt install -y \
-      virtualbox \
-      vagrant
+      virtualbox
     sudo adduser "$USER" vboxusers
+
+    sudo apt install -y \
+      vagrant
 
     ############################################################################
     # DBeaver
@@ -284,12 +292,6 @@ case "$(uname)" in
       preload
 
     ############################################################################
-    # Move /tmp to RAM
-    ############################################################################
-    echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
-
-    ############################################################################
     # Mesa drivers
     ############################################################################
     sudo add-apt-repository -y ppa:oibaf/graphics-drivers
@@ -306,6 +308,33 @@ case "$(uname)" in
     sudo add-apt-repository -y ppa:graphics-drivers/ppa
     sudo apt update
     sudo apt upgrade -y
+
+    ############################################################################
+    # Move /tmp to RAM
+    ############################################################################
+    echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
+    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
+
+    ############################################################################
+    # Move /var/tmp to RAM
+    ############################################################################
+    echo "# Move /var/tmp to RAM" | sudo tee -a /etc/fstab
+    echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
+
+    ############################################################################
+    # Run fstrim daily
+    ############################################################################
+    echo "#!/bin/sh" | sudo tee /etc/cron.daily/fstrim
+    echo "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
+    chmod +x /etc/cron.daily/fstrim
+
+    ############################################################################
+    # TLP
+    ############################################################################
+    sudo add-apt-repository -y ppa:linrunner/tlp
+    sudo apt update
+    sudo apt install -y \
+      tlp
 
     ;;
   Darwin)
