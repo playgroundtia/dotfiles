@@ -105,9 +105,11 @@ case "$(uname)" in
     ############################################################################
     # Python / Pip
     ############################################################################
+    sudo add-apt-repository -y ppa:deadsnakes/ppa
+    sudo apt-get update
     sudo apt install -y \
       python3-pip \
-      python3.7
+      python3.8
 
     ############################################################################
     # Spotify
@@ -135,7 +137,7 @@ case "$(uname)" in
     sudo add-apt-repository -y "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     sudo apt update
     sudo apt install -y \
-      virtualbox
+      virtualbox-6.0
     sudo adduser "$USER" vboxusers
 
     sudo apt install -y \
