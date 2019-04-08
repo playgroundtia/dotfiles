@@ -313,13 +313,19 @@ case "$(uname)" in
     # Move /tmp to RAM
     ############################################################################
     echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
+    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0,size=256M" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Move /var/tmp to RAM
     ############################################################################
     echo "# Move /var/tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0" | sudo tee -a /etc/fstab
+    echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0,size=256M" | sudo tee -a /etc/fstab
+
+    ############################################################################
+    # Move /var/log to RAM
+    ############################################################################
+    echo "# Move /var/log to RAM" | sudo tee -a /etc/fstab
+    echo "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=32M" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Run fstrim daily
@@ -607,9 +613,9 @@ if [ -f ~/.inputrc ] || [ -h ~/.inputrc ]; then
 fi
 ln -s ~/.dotfiles/.inputrc ~/.inputrc
 
-############################################################################
+################################################################################
 # Conky config
-############################################################################
+################################################################################
 if [[ "$(uname)" == "Linux" ]]; then
   if [ -f ~/.conkyrc ] || [ -h ~/.conkyrc ]; then
     mv ~/.conkyrc /tmp/conkyrc-old
