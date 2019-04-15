@@ -294,22 +294,19 @@ case "$(uname)" in
       preload
 
     ############################################################################
-    # Mesa drivers
+    # Drivers
     ############################################################################
+    # Mesa
     sudo add-apt-repository -y ppa:oibaf/graphics-drivers
+
+    # nVIDIA
+    sudo add-apt-repository -y ppa:graphics-drivers/ppa
+
     sudo apt update
     sudo apt upgrade -y
     sudo apt install -y \
-      libvulkan1 \
       mesa-vulkan-drivers \
       vulkan-utils
-
-    ############################################################################
-    # NVIDIA drivers
-    ############################################################################
-    sudo add-apt-repository -y ppa:graphics-drivers/ppa
-    sudo apt update
-    sudo apt upgrade -y
 
     ############################################################################
     # Move /tmp to RAM
