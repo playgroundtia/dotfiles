@@ -23,7 +23,7 @@ Plug 'tmux-plugins/vim-tmux'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'danilo-augusto/vim-afterglow', { 'as': 'afterglow' }
+Plug 'morhetz/gruvbox'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
@@ -37,7 +37,6 @@ Plug 'lilydjwg/colorizer'
 " Languages support
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'sheerun/vim-polyglot'
-" Plug 'Quramy/tsuquyomi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linters
@@ -49,6 +48,7 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
@@ -148,16 +148,17 @@ nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| r
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme afterglow
-let g:airline_theme = 'afterglow'
+colorscheme gruvbox
+set background=dark
+let g:airline_theme = 'gruvbox'
 
 if has('gui_running')
   if s:uname ==# 'Darwin'
     " Font
-    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h12
+    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
   elseif s:uname ==# 'Linux'
     " Font
-    set guifont=Hack\ 12
+    set guifont=Hack\ 10
   endif
 
   " Remove menu
@@ -165,6 +166,20 @@ if has('gui_running')
   " Maximize window
   set lines=999 columns=999
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Netrw
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+let g:netrw_localrmdir='rm -r'
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -291,11 +306,6 @@ map <leader>r :WinResizerStartResize<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle ZoomWin
 map <leader>z :ZoomWin<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TypeScript
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:typescript_indent_disable = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe
