@@ -247,9 +247,29 @@ case "$(uname)" in
     ############################################################################
     sudo apt install -y \
       tilix
+
+    # Gruvbox
     curl -fLo \
-      "$HOME/.config/tilix/schemes/Afterglow.json" \
-      --create-dirs https://raw.githubusercontent.com/storm119/Tilix-Themes/master/Themes/afterglow.json
+      "$HOME/.config/tilix/schemes/gruvbox-dark-hard.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-hard.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-dark-medium.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-medium.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-dark-soft.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-soft.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-dark.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-light-hard.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-hard.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-light-medium.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-medium.json
+    curl -fLo \
+      "$HOME/.config/tilix/schemes/gruvbox-light-soft.json" \
+      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-soft.json
 
     ############################################################################
     # Conky
@@ -433,9 +453,9 @@ case "$(uname)" in
     # iTerm 2
     ############################################################################
     curl -fLo \
-      "/tmp/Afterglow.itermcolors" \
-      --create-dirs https://raw.githubusercontent.com/YabataDesign/afterglow-itermcolors/master/Afterglow.itermcolors
-    open "/tmp/Afterglow.itermcolors"
+      "/tmp/gruvbox-dark.itermcolors" \
+      --create-dirs https://github.com/morhetz/gruvbox-contrib/blob/master/iterm2/gruvbox-dark.itermcolors
+    open "/tmp/gruvbox-dark.itermcolors"
 
     ############################################################################
     # App Store
