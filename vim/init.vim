@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Environment
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
@@ -24,13 +24,14 @@ Plug 'tmux-plugins/vim-tmux'
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'lilydjwg/colorizer'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -83,9 +84,12 @@ Plug 'Shougo/neoyank.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'editorconfig/editorconfig-vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'takac/vim-hardtime'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -149,7 +153,6 @@ nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| r
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme gruvbox
 set background=dark
-let g:airline_theme = 'gruvbox'
 
 if has('gui_running')
   if s:uname ==# 'Darwin'
@@ -185,13 +188,11 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
+" Lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use powerline fonts
-let g:airline_powerline_fonts = 1
-" Tabs extension
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox'
+  \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
@@ -234,8 +235,6 @@ let g:ale_fixers = {
   \ 'vue': ['prettier', 'eslint'],
   \ 'python': ['black'],
   \ }
-" Airline extension
-let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
@@ -263,10 +262,10 @@ let g:jsdoc_enable_es6 = 1
 let g:multi_cursor_quit_key = '<Esc>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" JSX
+" Carbon.now.sh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
+" Query params
+let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Winresizer
@@ -299,3 +298,21 @@ if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HardTime
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enabled by default
+let g:hardtime_default_on = 1
+" Timeout allowed between keypresses
+let g:hardtime_timeout = 2000
+" Disable HardTime for some buffers
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sneak
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
