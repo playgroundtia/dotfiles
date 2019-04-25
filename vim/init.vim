@@ -33,6 +33,7 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'lilydjwg/colorizer'
+Plug 'mhinz/vim-startify'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -86,10 +87,11 @@ Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'takac/vim-hardtime'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
-Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'myusuf3/numbers.vim'
 
 call plug#end()
 
@@ -262,6 +264,16 @@ let g:jsdoc_enable_es6 = 1
 let g:multi_cursor_quit_key = '<Esc>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EasyMotion
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+" Jump to anywhere
+nmap f <Plug>(easymotion-overwin-f)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Carbon.now.sh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Query params
@@ -300,19 +312,8 @@ endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" HardTime
+" Incsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enabled by default
-let g:hardtime_default_on = 1
-" Timeout allowed between keypresses
-let g:hardtime_timeout = 2000
-" Disable HardTime for some buffers
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sneak
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
