@@ -193,8 +193,8 @@ let g:NERDTreeShowHidden = 1
 " Lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox'
-  \ }
+  \ 'colorscheme': 'gruvbox',
+\ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
@@ -226,7 +226,7 @@ let g:ale_linters = {
   \ 'typescript': ['tslint'],
   \ 'vue': ['eslint'],
   \ 'vim': ['vint'],
-  \ }
+\ }
 " Compatible fixers
 let g:ale_fixers = {
   \ 'html': ['prettier'],
@@ -236,7 +236,7 @@ let g:ale_fixers = {
   \ 'typescript': ['prettier', 'tslint'],
   \ 'vue': ['prettier', 'eslint'],
   \ 'python': ['black'],
-  \ }
+\ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
@@ -245,7 +245,7 @@ let g:ale_fixers = {
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|node_modules)$',
   \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
-  \ }
+\ }
 " Show hidden files
 let g:ctrlp_show_hidden = 1
 
