@@ -504,15 +504,12 @@ apm install \
 # Node.js packages
 ################################################################################
 sudo yarn global add \
-  create-react-app \
   eslint \
   fkill-cli \
-  jest \
   ngrok \
-  nodemon \
   prettier \
   tern \
-  ts-node \
+  tslint \
   typescript \
   vtop \
   --ignore-optional
