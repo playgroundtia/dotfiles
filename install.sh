@@ -367,6 +367,14 @@ case "$(uname)" in
     sudo apt install -y \
       tlp
 
+    ############################################################################
+    # Touchpad Indicator
+    ############################################################################
+    sudo add-apt-repository -y ppa:atareao/atareao
+    sudo apt-get update
+    sudo apt-get install -y \
+      touchpad-indicator
+
     ;;
   Darwin)
     ############################################################################
