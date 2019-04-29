@@ -187,6 +187,13 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeQuitOnOpen = 1
 " Display hidden files by default
 let g:NERDTreeShowHidden = 1
+" Ignore folders and files
+let g:NERDTreeIgnore = [
+  \ '^\.git$[[dir]]',
+  \ '^node_modules$[[dir]]',
+  \ '^dist$[[dir]]',
+  \ '^build$[[dir]]'
+\ ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -242,7 +249,7 @@ let g:ale_fixers = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore files and folders
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules)$',
+  \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
   \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
 \ }
 " Show hidden files
