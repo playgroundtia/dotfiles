@@ -33,6 +33,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
 Plug 'ryanoasis/vim-devicons'
+Plug 'maximbaz/lightline-ale'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -194,6 +195,11 @@ let g:NERDTreeIgnore = [
   \ '^dist$[[dir]]',
   \ '^build$[[dir]]'
 \ ]
+" Make arrows invisible
+let NERDTreeDirArrowExpandable = "\u00a0"
+let NERDTreeDirArrowCollapsible = "\u00a0"
+" Smiley face
+" let NERDTreeNodeDelimiter = "\u263a"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -201,8 +207,12 @@ let g:NERDTreeIgnore = [
 let g:lightline = {
   \ 'colorscheme': 'gruvbox',
   \ 'active': {
-  \   'left':[ [ 'mode', 'paste' ],
-  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \   ],
+  \   'right': [
+  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
   \   ]
   \ },
 	\ 'component': {
@@ -216,8 +226,26 @@ let g:lightline = {
   \ },
   \ 'subseparator': {
 	\   'left': '', 'right': ''
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_ok': 'lightline#ale#ok'
+  \ },
+  \ 'component_type': {
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'left',
   \ }
 \ }
+
+" Ale icons
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
@@ -265,12 +293,6 @@ let g:ale_fixers = {
 " Fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-p> :Files<CR>
-if has('nvim')
-  aug fzf_setup
-    au!
-    au TermOpen term://*FZF tnoremap <silent> <buffer><nowait> <esc> <c-c>
-  aug END
-end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
