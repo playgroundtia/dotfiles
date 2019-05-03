@@ -73,6 +73,7 @@ Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'sickill/vim-pasta'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
@@ -94,6 +95,7 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'myusuf3/numbers.vim'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -130,12 +132,6 @@ elseif s:uname ==# 'Linux'
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
 endif
-" Use F5 to switch buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
-" Use F6 to vertically split the current window and select a buffer
-nnoremap <F6> :vsplit<CR>:buffers<CR>:buffer<Space>
-" Use F7 to horizontally split the current window and select a buffer
-nnoremap <F7> :split<CR>:buffers<CR>:buffer<Space>
 " Reload settings
 nmap <Leader>s :source $MYVIMRC<CR>
 " Edit settings
@@ -362,3 +358,9 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
