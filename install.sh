@@ -183,6 +183,13 @@ case "$(uname)" in
     sudo apt install \
       ripgrep
 
+    # Tagbar
+    sudo add-apt-repository -y ppa:hnakamur/universal-ctags
+    sudo apt update
+    sudo apt install \
+      universal-ctags
+
+
     ############################################################################
     # Atom
     ############################################################################
@@ -429,6 +436,7 @@ case "$(uname)" in
       shellcheck \
       terraform \
       tmux \
+      universal-ctags \
       urlview \
       vim \
       wget \
