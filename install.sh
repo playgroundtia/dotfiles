@@ -177,6 +177,12 @@ case "$(uname)" in
       cmake \
       python3-dev
 
+    # Fzf
+    sudo add-apt-repository -y ppa:x4121/ripgrep
+    sudo apt update
+    sudo apt install \
+      ripgrep
+
     ############################################################################
     # Atom
     ############################################################################
@@ -419,6 +425,7 @@ case "$(uname)" in
       python3 \
       readline \
       reattach-to-user-namespace \
+      ripgrep \
       shellcheck \
       terraform \
       tmux \

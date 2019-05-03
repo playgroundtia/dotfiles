@@ -47,8 +47,9 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
@@ -100,8 +101,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
-" Enable cursor line highlighting
-set cursorline
 " Enable overlength line highlighting
 set colorcolumn=80
 " Disable mouse
@@ -263,15 +262,15 @@ let g:ale_fixers = {
 \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP
+" Fzf
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ignore files and folders
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
-  \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
-\ }
-" Show hidden files
-let g:ctrlp_show_hidden = 1
+nnoremap <C-p> :Files<CR>
+if has('nvim')
+  aug fzf_setup
+    au!
+    au TermOpen term://*FZF tnoremap <silent> <buffer><nowait> <esc> <c-c>
+  aug END
+end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
