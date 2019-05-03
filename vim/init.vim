@@ -29,10 +29,10 @@ Plug 'shinchu/lightline-gruvbox.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'jszakmeister/vim-togglecursor'
-Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
+Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
+Plug 'ryanoasis/vim-devicons'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -55,6 +55,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and buffers
@@ -200,6 +201,23 @@ let g:NERDTreeIgnore = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
   \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left':[ [ 'mode', 'paste' ],
+  \            [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \   ]
+  \ },
+	\ 'component': {
+	\   'lineinfo': ' %3l:%-2v',
+	\ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head',
+  \ },
+  \ 'separator': {
+	\   'left': '', 'right': ''
+  \ },
+  \ 'subseparator': {
+	\   'left': '', 'right': ''
+  \ }
 \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
