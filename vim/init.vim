@@ -141,16 +141,7 @@ endif
 " Reload settings
 nmap <Leader>s :source $MYVIMRC<CR>
 " Edit settings
-nmap <Leader>v :e $MYVIMRC<CR>
-" Disable arrow keys
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-" Open with Atom
-nnoremap <leader>a :execute "!atom " . expand("%") . ":" . line(".") \| redraw!<CR>
-" Open with Visual Studio Code
-nnoremap <leader>c :execute "!code --goto " . expand("%") . ":" . line(".") \| redraw!<CR>
+nmap <Leader>v :edit $MYVIMRC<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
@@ -296,8 +287,8 @@ let g:ale_fixers = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ignore files and folders
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/](\.git|node_modules|dist)$',
-\ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
+  \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
+  \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
 \ }
 " Skip files inside .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -379,7 +370,6 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
