@@ -168,7 +168,7 @@ endif
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
-map <leader>n :NERDTreeToggle<CR>
+map <F5> :NERDTreeToggle<CR>
 " Close vim if the only window left open is NERDTree
 augroup nerdtree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -188,11 +188,6 @@ let g:NERDTreeIgnore = [
   \ '^dist$[[dir]]',
   \ '^build$[[dir]]'
 \ ]
-" Make arrows invisible
-let g:NERDTreeDirArrowExpandable = "\u00a0"
-let g:NERDTreeDirArrowCollapsible = "\u00a0"
-" Smiley face
-" let NERDTreeNodeDelimiter = "\u263a"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -374,4 +369,4 @@ map g/ <Plug>(incsearch-stay)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <F8> :TagbarToggle<CR>
+nmap <F6> :TagbarToggle<CR>
