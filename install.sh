@@ -177,12 +177,6 @@ case "$(uname)" in
       cmake \
       python3-dev
 
-    # Fzf
-    sudo add-apt-repository -y ppa:x4121/ripgrep
-    sudo apt update
-    sudo apt install \
-      ripgrep
-
     # Tagbar
     sudo add-apt-repository -y ppa:hnakamur/universal-ctags
     sudo apt update
