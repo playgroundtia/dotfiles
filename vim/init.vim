@@ -164,16 +164,6 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Netrw
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-let g:netrw_localrmdir='rm -rf'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
@@ -197,6 +187,16 @@ let g:NERDTreeIgnore = [
   \ '^dist$[[dir]]',
   \ '^build$[[dir]]'
 \ ]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Netrw
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+let g:netrw_localrmdir='rm -rf'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -294,12 +294,24 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
   \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
 \ }
-" Skip files inside .gitignore
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " Show hidden files
 let g:ctrlp_show_hidden = 1
-" Disable per-session caching
-let g:ctrlp_use_caching = 0
+" Ripgrep
+if executable('ag')
+  " Use ripgrep over grep
+  set grepprg=rg\ --color=never
+
+  " Use ripgrep in CtrlP for listing files
+  let g:ctrlp_user_command = 'rg %s --files --hidden --follow --color=never --glob "!.git/*"'
+
+  " Ripgrep is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+else
+  " Skip files inside .gitignore
+  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+endif
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
