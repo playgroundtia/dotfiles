@@ -123,6 +123,10 @@ set noerrorbells visualbell t_vb=
 augroup mute_sounds
   autocmd GUIEnter * set visualbell t_vb=
 augroup END
+" Use ripgrep over grep if avaiable
+if executable('rg')
+  set grepprg=rg\ --color=never
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
@@ -300,17 +304,12 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 0
 " Ripgrep
 if executable('rg')
-  " Use ripgrep over grep
-  set grepprg=rg\ --color=never
-
   " Use ripgrep in CtrlP for listing files
   let g:ctrlp_user_command = 'rg %s --files --hidden --follow --color=never --glob "!.git/*"'
 else
-  " Skip files inside .gitignore
+  " Use grep in CtrlP, but skip files inside .gitignore
   let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 endif
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
