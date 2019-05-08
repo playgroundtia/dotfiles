@@ -296,16 +296,15 @@ let g:ctrlp_custom_ignore = {
 \ }
 " Show hidden files
 let g:ctrlp_show_hidden = 1
+" Disable per-session caching
+let g:ctrlp_use_caching = 0
 " Ripgrep
-if executable('ag')
+if executable('rg')
   " Use ripgrep over grep
   set grepprg=rg\ --color=never
 
   " Use ripgrep in CtrlP for listing files
   let g:ctrlp_user_command = 'rg %s --files --hidden --follow --color=never --glob "!.git/*"'
-
-  " Ripgrep is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 else
   " Skip files inside .gitignore
   let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
