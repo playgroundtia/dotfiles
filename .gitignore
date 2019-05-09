@@ -28,8 +28,7 @@ tmux/plugins/*
 
 # Vim
 .tern-port
+.netrwhist
 .undodir/
-Session.vim
 plug.vim
-vim/.netrwhist
 vim/plugged/
