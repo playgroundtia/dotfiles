@@ -129,6 +129,11 @@ augroup END
 if executable('rg')
   set grepprg=rg\ --color=never
 endif
+" Store the undo files in a seperate place
+if has('persistent_undo')
+  set undodir='~/.dotfiles/vim/undodir'
+  set undofile
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
