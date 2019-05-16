@@ -39,6 +39,9 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
 Plug 'ryanoasis/vim-devicons'
 Plug 'maximbaz/lightline-ale'
+Plug 'RRethy/vim-illuminate'
+Plug 'inside/vim-search-pulse'
+Plug 'vim-scripts/CursorLineCurrentWindow'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -111,6 +114,8 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
+" Enable cursor line highlighting
+set cursorline
 " Enable overlength line highlighting
 set colorcolumn=80
 " Disable mouse
