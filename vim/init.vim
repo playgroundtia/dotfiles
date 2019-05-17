@@ -141,15 +141,13 @@ if has('persistent_undo')
 endif
 " System clipboard
 if has('clipboard')
-  set clipboard=unnamedplus
-else
-  if s:uname ==# 'Darwin'
-    map <leader>y :w !pbcopy<CR>
-    map <leader>p :r !pbpaste<CR>
-  elseif s:uname ==# 'Linux'
-    map <leader>y :w !xsel -i -b<CR>
-    map <leader>p :r !xsel -p<CR>
-  endif
+  set clipboard^=unnamed,unnamedplus
+elseif s:uname ==# 'Darwin'
+  map <leader>y :w !pbcopy<CR>
+  map <leader>p :r !pbpaste<CR>
+elseif s:uname ==# 'Linux'
+  map <leader>y :w !xsel -i -b<CR>
+  map <leader>p :r !xsel -p<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
