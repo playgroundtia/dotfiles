@@ -139,20 +139,24 @@ if has('persistent_undo')
   set undodir='~/.dotfiles/vim/undodir'
   set undofile
 endif
+" System clipboard
+if has('clipboard')
+  set clipboard=unnamedplus
+else
+  if s:uname ==# 'Darwin'
+    map <leader>y :w !pbcopy<CR>
+    map <leader>p :r !pbpaste<CR>
+  elseif s:uname ==# 'Linux'
+    map <leader>y :w !xsel -i -b<CR>
+    map <leader>p :r !xsel -p<CR>
+  endif
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set leader key to ,
 let g:mapleader = ','
-" Copy to / from external clipboard
-if s:uname ==# 'Darwin'
-  map <leader>y :w !pbcopy<CR>
-  map <leader>p :r !pbpaste \| sed 's/^ *//;s/ *$//'<CR>
-elseif s:uname ==# 'Linux'
-  map <leader>y :w !xsel -i -b<CR>
-  map <leader>p :r !xsel -p \| sed 's/^ *//;s/ *$//'<CR>
-endif
 " Reload settings
 nmap <Leader>s :source $MYVIMRC<CR>
 " Edit settings
