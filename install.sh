@@ -234,6 +234,13 @@ case "$(uname)" in
       gnupg-agent
 
     ############################################################################
+    # GPG
+    ############################################################################
+    sudo apt install -y \
+      neomutt \
+      lynx
+
+    ############################################################################
     # Shellcheck
     ############################################################################
     sudo apt install -y \
@@ -427,6 +434,7 @@ case "$(uname)" in
       mc \
       moreutils \
       neofetch \
+      neomutt/homebrew-neomutt/neomutt \
       nodejs \
       openssl \
       python3 \
@@ -622,6 +630,22 @@ if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 chmod 400 ~/.ssh/id_rsa
+
+################################################################################
+# NeoMutt config
+################################################################################
+if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
+  mv ~/.muttrc /tmp/muttrc-old
+fi
+ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
+if [ -d ~/.mutt ] || [ -h ~/.mutt ]; then
+  mv ~/.mutt /tmp/mutt-old
+fi
+ln -s ~/.dotfiles/mutt ~/.mutt
+if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
+  mv ~/.mailcap /tmp/mailcap-old
+fi
+ln -s ~/.dotfiles/mutt/.mailcap ~/.mailcap
 
 ################################################################################
 # Tmux config

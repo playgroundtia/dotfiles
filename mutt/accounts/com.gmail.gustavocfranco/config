@@ -1,0 +1,76 @@
+# -*- muttrc -*-
+
+# Reset
+source "~/.mutt/scripts/reset"
+
+# E-mail config
+set realname = "Gustavo Franco"
+set from = "gustavocfranco@gmail.com"
+
+# IMAP / SMTP
+# set imap_check_subscribed = yes
+set imap_idle = yes
+set imap_keepalive = 60
+set imap_list_subscribed = yes
+set imap_passive = no
+set imap_user = "gustavocfranco@gmail.com"
+set smtp_authenticators = "gssapi:login"
+set smtp_url = "smtps://gustavocfranco@gmail.com@smtp.gmail.com:465/"
+
+# Password
+source "gpg -d ~/.mutt/accounts/com.gmail.gustavocfranco/password.gpg |"
+
+# Security
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set ssl_use_sslv3 = no
+set ssl_use_tlsv1 = no
+set ssl_use_tlsv1_1 = no
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
+
+# Folders
+set folder = "imaps://imap.gmail.com:993/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Rascunhos"
+set trash = "+[Gmail]/Lixeira"
+set record = "+[Gmail]/E-mails enviados"
+mailboxes +INBOX \
+          +Advogado \
+          +Exten \
+          +Financeiro/Banco\ Inter \
+          +Financeiro/Banco\ Itaú \
+          +Financeiro/Condomínio \
+          +Financeiro/Contabilidade \
+          +Financeiro/Digio \
+          +Financeiro/Energia \
+          +Financeiro/Gás \
+          +Financeiro/Imobiliária \
+          +Financeiro/Internet \
+          +Financeiro/MercadoLivre \
+          +Financeiro/Paypal \
+          +GitHub \
+          +GoDaddy \
+          +Linode \
+          +Nintendo \
+          +Tech \
+          +Transporte \
+          +Oportunidades \
+          +[Gmail]/Com\ estrela \
+          +[Gmail]/E-mails\ enviados \
+          +[Gmail]/Importante \
+          +[Gmail]/Lixeira \
+          +[Gmail]/Rascunhos \
+          +[Gmail]/Spam \
+          +[Gmail]/Todos\ os\ e-mails
+
+# Certificates
+set certificate_file = "~/.mutt/accounts/com.gmail.gustavocfranco/certificates"
+
+# Cache
+set header_cache = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/headers"
+set message_cachedir = "~/.mutt/accounts/com.gmail.gustavocfranco/cache/bodies"
+
+# Signature
+set signature = "~/.mutt/signatures/personal"
