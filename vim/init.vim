@@ -56,14 +56,12 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
@@ -80,9 +78,9 @@ Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
 Plug 'mbbill/undotree'
 Plug 'roxma/vim-paste-easy'
-Plug 'scrooloose/nerdcommenter'
 Plug 'sickill/vim-pasta'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,39 +180,16 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle NERDTree
-map <leader>n :NERDTreeToggle<CR>
-" Close vim if the only window left open is NERDTree
-augroup nerdtree
-  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-" Automatically remove a buffer when a file is being deleted via a context menu
-let g:NERDTreeAutoDeleteBuffer = 1
-" Disable display of the 'Bookmarks' label
-let g:NERDTreeMinimalUI = 1
-" Close the tree window after opening a file
-let g:NERDTreeQuitOnOpen = 1
-" Display hidden files by default
-let g:NERDTreeShowHidden = 1
-" Ignore folders and files
-let g:NERDTreeIgnore = [
-  \ '^\.git$[[dir]]',
-  \ '^node_modules$[[dir]]',
-  \ '^dist$[[dir]]',
-  \ '^build$[[dir]]'
-\ ]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Netrw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 20
+let g:netrw_winsize = 25
 let g:netrw_localrmdir='rm -rf'
+" Toggle netrw
+nnoremap <leader>n :Lexplore<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -261,18 +236,6 @@ let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_warnings = "\uf071"
 let g:lightline#ale#indicator_errors = "\uf05e"
 let g:lightline#ale#indicator_ok = "\uf00c"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDCommenter
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDAltDelims_java = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
