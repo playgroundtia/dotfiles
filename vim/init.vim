@@ -108,7 +108,7 @@ Plug 'majutsushi/tagbar'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Settings
+" Generic settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
@@ -137,7 +137,12 @@ if has('persistent_undo')
   set undodir='~/.dotfiles/vim/undodir'
   set undofile
 endif
+" Set leader key to ,
+let g:mapleader = ','
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " System clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
 elseif s:uname ==# 'Darwin'
@@ -149,13 +154,9 @@ elseif s:uname ==# 'Linux'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Aliases
+" Vimrc editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set leader key to ,
-let g:mapleader = ','
-" Reload settings
 nmap <Leader>s :source $MYVIMRC<CR>
-" Edit settings
 nmap <Leader>v :edit $MYVIMRC<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,10 +187,25 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_winsize = 20
 let g:netrw_localrmdir='rm -rf'
-" Toggle netrw
-nnoremap <leader>n :Lexplore<CR>
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+  if g:NetrwIsOpen
+    let i = bufnr("$")
+    while (i >= 1)
+      if (getbufvar(i, "&filetype") == "netrw")
+        silent exe "bwipeout " . i
+      endif
+      let i-=1
+    endwhile
+    let g:NetrwIsOpen=0
+  else
+    let g:NetrwIsOpen=1
+    silent Lexplore
+  endif
+endfunction
+nnoremap <leader>n :call ToggleNetrw()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
