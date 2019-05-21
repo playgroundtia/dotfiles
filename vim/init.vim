@@ -93,7 +93,13 @@ Plug 'Shougo/neoyank.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
@@ -190,14 +196,16 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 20
 let g:netrw_localrmdir='rm -rf'
 let g:NetrwIsOpen=0
+
+" Toggle netrw
 function! ToggleNetrw()
   if g:NetrwIsOpen
-    let i = bufnr("$")
-    while (i >= 1)
-      if (getbufvar(i, "&filetype") == "netrw")
-        silent exe "bwipeout " . i
+    let buffer = bufnr('$')
+    while (buffer >= 1)
+      if (getbufvar(buffer, '&filetype') ==# 'netrw')
+        silent exe 'bwipeout ' . buffer
       endif
-      let i-=1
+      let buffer-=1
     endwhile
     let g:NetrwIsOpen=0
   else
@@ -206,6 +214,9 @@ function! ToggleNetrw()
   endif
 endfunction
 nnoremap <leader>n :call ToggleNetrw()<CR>
+
+" Fix 'buffers of netrw don’t get closed'
+autocmd FileType netrw setl bufhidden=delete
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
@@ -359,12 +370,9 @@ map <leader>r :WinResizerStartResize<CR>
 map <leader>z :ZoomWin<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe
+" Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Incsearch

@@ -171,12 +171,6 @@ case "$(uname)" in
       python3-pip \
       neovim
 
-    # YouCompleteMe
-    sudo apt install -y \
-      build-essential \
-      cmake \
-      python3-dev
-
     # CtrlP
     sudo add-apt-repository -y ppa:x4121/ripgrep
     sudo apt update
