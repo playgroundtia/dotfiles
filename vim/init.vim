@@ -101,6 +101,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
+Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'ntpeters/vim-better-whitespace'
