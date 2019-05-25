@@ -201,12 +201,12 @@ let g:NetrwIsOpen=0
 " Toggle netrw
 function! ToggleNetrw()
   if g:NetrwIsOpen
-    let buffer = bufnr('$')
-    while (buffer >= 1)
-      if (getbufvar(buffer, '&filetype') ==# 'netrw')
-        silent exe 'bwipeout ' . buffer
+    let l:buffer = bufnr('$')
+    while (l:buffer >= 1)
+      if (getbufvar(l:buffer, '&filetype') ==# 'netrw')
+        silent exe 'bwipeout ' . l:buffer
       endif
-      let buffer-=1
+      let l:buffer-=1
     endwhile
     let g:NetrwIsOpen=0
   else
@@ -217,7 +217,9 @@ endfunction
 nnoremap <leader>n :call ToggleNetrw()<CR>
 
 " Fix 'buffers of netrw don’t get closed'
-autocmd FileType netrw setl bufhidden=delete
+augroup netrw
+  autocmd FileType netrw setl bufhidden=delete
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline
