@@ -41,6 +41,7 @@ mailboxes +INBOX \
           +Exten \
           +Financeiro/Banco\ Inter \
           +Financeiro/Banco\ Itaú \
+          +Financeiro/Compras \
           +Financeiro/Condomínio \
           +Financeiro/Contabilidade \
           +Financeiro/Digio \
@@ -48,7 +49,6 @@ mailboxes +INBOX \
           +Financeiro/Gás \
           +Financeiro/Imobiliária \
           +Financeiro/Internet \
-          +Financeiro/MercadoLivre \
           +Financeiro/Paypal \
           +GitHub \
           +GoDaddy \
