@@ -29,16 +29,17 @@ Plug 'tmux-plugins/vim-tmux'
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vim-airline/vim-airline-themes'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'itchyny/lightline.vim'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
 Plug 'ryanoasis/vim-devicons'
-Plug 'maximbaz/lightline-ale'
+Plug 'vim-airline/vim-airline'
 Plug 'RRethy/vim-illuminate'
 Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/CursorLineCurrentWindow'
@@ -73,6 +74,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
+Plug 'vim-scripts/bufexplorer.zip', { 'on': 'BufExplorer' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -117,40 +119,65 @@ Plug 'majutsushi/tagbar'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Generic settings
+" Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unset the LAST SEARCH PATTERN register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
+
 " Enable cursor line highlighting
 set cursorline
+
 " Enable overlength line highlighting
 set colorcolumn=80
+
 " Disable mouse
 set mouse=
 if !has('nvim')
   set ttymouse=
 endif
+
 " Set update interval
 set updatetime=100
-" No annoying sounds
-set noerrorbells visualbell t_vb=
-augroup mute_sounds
-  autocmd GUIEnter * set visualbell t_vb=
-augroup END
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set timeoutlen=500
+if has('gui_macvim')
+  augroup macvim
+    autocmd GUIEnter * set vb t_vb=
+  augroup END
+endif
+
 " Use ripgrep over grep if avaiable
 if executable('rg')
   set grepprg=rg\ --color=never
 endif
+
 " Store the undo files in a seperate place
 if has('persistent_undo')
-  set undodir='~/.dotfiles/vim/undodir'
-  set undofile
+  try
+    set undodir='~/.dotfiles/vim/undodir'
+    set undofile
+  catch
+  endtry
 endif
+
 " Set leader key to ,
 let g:mapleader = ','
 
+" Disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Use Unix as the standard file type
+set fileformats=unix,dos,mac
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" System clipboard
+" Clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
@@ -163,28 +190,58 @@ elseif s:uname ==# 'Linux'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimrc editing
+" Terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if exists('$TMUX')
+  if has('nvim')
+      set termguicolors
+  else
+      set term=screen-256color
+  endif
+endif
+
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM ==# 'gnome-terminal'
+    set t_Co=256
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Aliases
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Source vimrc
 nmap <Leader>s :source $MYVIMRC<CR>
+
+" Edit vimrc
 nmap <Leader>v :edit $MYVIMRC<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" :W sudo saves the file
+command W w !sudo tee % > /dev/null
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
+try
+  colorscheme gruvbox
+  let g:airline_theme='gruvbox'
+catch
+  colorscheme desert
+  let g:airline_theme='desert'
+endtry
 set background=dark
 
 if has('gui_running')
   if s:uname ==# 'Darwin'
-    " Font
     set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
   elseif s:uname ==# 'Linux'
-    " Font
     set guifont=Hack\ 10
   endif
 
   " Remove menu
   set guioptions=
+
   " Maximize window
   set lines=999 columns=999
 endif
@@ -194,18 +251,24 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 map <leader>n :NERDTreeToggle<CR>
+
 " Close vim if the only window left open is NERDTree
 augroup nerdtree
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
+
 " Automatically remove a buffer when a file is being deleted via a context menu
 let g:NERDTreeAutoDeleteBuffer = 1
+
 " Disable display of the 'Bookmarks' label
 let g:NERDTreeMinimalUI = 1
+
 " Close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
+
 " Display hidden files by default
 let g:NERDTreeShowHidden = 1
+
 " Ignore folders and files
 let g:NERDTreeIgnore = [
 \ '^\.git$[[dir]]',
@@ -248,64 +311,32 @@ nnoremap <leader>e :call ToggleNetrw()<CR>
 augroup netrw
   autocmd FileType netrw setl bufhidden=delete
 augroup END
-
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lightline
+" Airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-  \   ],
-  \   'right': [
-  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
-  \   ]
-  \ },
-	\ 'component': {
-	\   'lineinfo': ' %3l:%-2v',
-	\ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head',
-  \ },
-  \ 'separator': {
-	\   'left': '', 'right': ''
-  \ },
-  \ 'subseparator': {
-	\   'left': '', 'right': ''
-  \ },
-  \ 'component_expand': {
-  \   'linter_checking': 'lightline#ale#checking',
-  \   'linter_warnings': 'lightline#ale#warnings',
-  \   'linter_errors': 'lightline#ale#errors',
-  \   'linter_ok': 'lightline#ale#ok'
-  \ },
-  \ 'component_type': {
-  \   'linter_checking': 'left',
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_ok': 'left',
-  \ }
-\ }
+" Use powerline fonts
+let g:airline_powerline_fonts = 1
 
-" Ale icons
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
-let g:lightline#ale#indicator_ok = "\uf00c"
+" Tabs extension
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Never lint on change
 let g:ale_lint_on_text_changed = 'never'
+
 " Lint on save
 let g:ale_lint_on_save = 1
+
 " Fix on save
 let g:ale_fix_on_save = 1
+
 " Lint on enter
 let g:ale_lint_on_enter = 1
+
 " Compatible linters
 let g:ale_linters = {
   \ 'python': ['flake8', 'pylint'],
@@ -314,6 +345,7 @@ let g:ale_linters = {
   \ 'vue': ['eslint'],
   \ 'vim': ['vint'],
 \ }
+
 " Compatible fixers
 let g:ale_fixers = {
   \ 'html': ['prettier'],
@@ -325,6 +357,9 @@ let g:ale_fixers = {
   \ 'python': ['black'],
 \ }
 
+" Airline extension
+let g:airline#extensions#ale#enabled = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -333,10 +368,13 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
   \ 'file': '\v\.(gitkeep|log|gif|jpg|jpeg|png|psd|DS_Store|)$'
 \ }
+
 " Show hidden files
 let g:ctrlp_show_hidden = 1
+
 " Disable per-session caching
 let g:ctrlp_use_caching = 0
+
 " Ripgrep
 if executable('rg')
   " Use ripgrep in CtrlP for listing files
@@ -351,6 +389,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle JsDoc
 map <leader>j :JsDoc<CR>
+
 " Enable ECMASCript 6 support
 let g:jsdoc_enable_es6 = 1
 
@@ -365,8 +404,10 @@ let g:multi_cursor_quit_key = '<Esc>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable default mappings
 let g:EasyMotion_do_mapping = 0
+
 " Jump to anywhere
 nmap f <Plug>(easymotion-overwin-f)
+
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
@@ -421,3 +462,8 @@ nmap <leader>t :TagbarToggle<CR>
 " Undotree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>u :UndotreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BufExplorer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>o :BufExplorer<CR>
