@@ -19,3 +19,10 @@ Host personal-router
 Host kitsune-heisenberg
   HostName 45.79.8.253
   User root
+
+################################################################################
+# Exten
+################################################################################
+Host exten-support
+  HostName 35.198.7.199
+  User gustavo_franco
