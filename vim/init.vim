@@ -57,16 +57,12 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-vinegar'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Git
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and buffers
@@ -107,14 +103,14 @@ endif
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'myusuf3/numbers.vim'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 call plug#end()
 
