@@ -36,6 +36,7 @@ Plug 'RRethy/vim-illuminate'
 Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'junegunn/vim-emoji'
+Plug 'myusuf3/numbers.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
@@ -83,6 +84,7 @@ Plug 'sickill/vim-pasta'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
@@ -92,7 +94,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neoyank.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Helpers
+" Code completion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -101,6 +103,10 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Helpers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'brooth/far.vim', { 'on': ['Far', 'Farundo', 'Farp', 'Farundo'] }
 Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
@@ -110,7 +116,6 @@ Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
-Plug 'myusuf3/numbers.vim'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 call plug#end()
@@ -468,9 +473,7 @@ let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 let g:gitgutter_sign_modified_removed = emoji#for('collision')
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Emoji
+" Supertab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Emoji completion
-set completefunc=emoji#complete
+let g:SuperTabDefaultCompletionType = '<c-n>'
