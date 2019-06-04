@@ -158,6 +158,12 @@ case "$(uname)" in
       vim \
       vim-gnome
 
+    # YouCompleteMe
+    sudo apt install -y \
+      build-essential \
+      cmake \
+      python3-dev
+
     # Neovim
     sudo add-apt-repository -y ppa:neovim-ppa/stable
     sudo apt update

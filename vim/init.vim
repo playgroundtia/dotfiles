@@ -97,13 +97,7 @@ Plug 'Shougo/neoyank.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Code completion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helpers
@@ -439,9 +433,12 @@ map <leader>r :WinResizerStartResize<CR>
 map <leader>z :ZoomWin<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Deoplete
+" YouCompleteMe
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Incsearch
