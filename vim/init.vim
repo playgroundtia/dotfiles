@@ -112,6 +112,24 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'tpope/vim-eunuch', {
+  \ 'on': [
+    \ 'Delete',
+    \ 'Unlink',
+    \ 'Remove',
+    \ 'Move',
+    \ 'Rename',
+    \ 'Chmod',
+    \ 'Mkdir',
+    \ 'Cfind',
+    \ 'Lfind',
+    \ 'Clocate',
+    \ 'Llocate',
+    \ 'SudoEdit',
+    \ 'SudoWrite',
+    \ 'Wall'
+  \ ]
+\ }
 
 call plug#end()
 
@@ -213,9 +231,6 @@ nmap <Leader>v :edit $MYVIMRC<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
-" :W sudo saves the file
-command W w !sudo tee % > /dev/null
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
