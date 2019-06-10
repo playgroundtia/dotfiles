@@ -149,6 +149,12 @@ case "$(uname)" in
       dbeaver-ce
 
     ############################################################################
+    # MySQL Workbench
+    ############################################################################
+    sudo apt install -y \
+      mysql-workbench
+
+    ############################################################################
     # Vim / gVim / Neovim / Plugins dependencies
     ############################################################################
     # Vim / gVim
@@ -471,6 +477,7 @@ case "$(uname)" in
       java \
       keka \
       macvim \
+      mysqlworkbench \
       plex-media-server \
       robo-3t \
       silicon-labs-vcp-driver \
