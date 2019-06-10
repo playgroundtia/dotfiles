@@ -79,6 +79,9 @@ alias mc="mc -S darkfar"
 # Mutt
 alias mutt="neomutt"
 
+# Vim (for large files)
+alias vim-large="vim -u NONE"
+
 ################################################################################
 # System specific aliases
 ################################################################################
