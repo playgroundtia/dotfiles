@@ -213,7 +213,15 @@ case "$(uname)" in
       code-insiders
 
     ############################################################################
-    # Terraform
+    # IntelliJ IDEA
+    ############################################################################
+    sudo add-apt-repository -y ppa:mmk2410/intellij-idea
+    sudo apt update
+    sudo apt install -y \
+      intellij-idea-community
+
+    ############################################################################
+    # terraform
     ############################################################################
     curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
     echo "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
@@ -472,6 +480,7 @@ case "$(uname)" in
       folx \
       font-hack-nerd-font \
       google-chrome \
+      intellij-idea-ce \
       itau \
       iterm2 \
       java \
