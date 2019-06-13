@@ -143,7 +143,7 @@ nnoremap <silent> <CR> :noh<CR><CR>
 set cursorline
 
 " Enable overlength line highlighting
-set colorcolumn=80
+set colorcolumn=100
 
 " Disable mouse
 set mouse=
@@ -190,6 +190,11 @@ noremap <Right> <NOP>
 
 " Use Unix as the standard file type
 set fileformats=unix,dos,mac
+
+" Sane line joins
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
