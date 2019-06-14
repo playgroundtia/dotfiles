@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+################################################################################
+# System specific settings
+################################################################################
+case "$(uname)" in
+  Linux)
+
+  ;;
+  Darwin)
+
+  ;;
+esac
+
+################################################################################
+# Shell
+################################################################################
+# Vi mode
+set -o vi
+
+# Ignore duplicated entries
+export HISTCONTROL=ignoredups
+
+# Ignore some commands
+export HISTIGNORE="cd:ls:[bf]g:clear:exit"
+
+# Set language
+export LANG=pt_BR.UTF-8
+
+################################################################################
+# Editor
+################################################################################
+if command -v nvim 1>/dev/null; then
+  export EDITOR='nvim'
+elif command -v vim 1>/dev/null; then
+  export EDITOR='vim'
+elif command -v vi 1>/dev/null; then
+  export EDITOR='vi'
+elif command -v emacs 1>/dev/null; then
+  export EDITOR='emacs -nw'
+elif command -v nano 1>/dev/null; then
+  export EDITOR='nano'
+fi
+
+################################################################################
+# Manpager
+################################################################################
+case "$EDITOR" in
+  nvim)
+    export MANPAGER="nvim -u NONE -c 'set ft=man'"
+  ;;
+
+  vim)
+    export MANPAGER="vim -u NONE -c 'set ft=man ro nomod nolist'"
+  ;;
+
+  *)
+    export MANPAGER='less'
+  ;;
+esac

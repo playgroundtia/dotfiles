@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+################################################################################
+# System specific paths
+################################################################################
 case "$(uname)" in
   Linux)
 
@@ -11,10 +14,10 @@ case "$(uname)" in
     # findutils
     export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 
-    # curl
+    # cURL
     export PATH="/usr/local/opt/curl/bin:$PATH"
 
-    # openssl
+    # OpenSSL
     export PATH="/usr/local/opt/openssl/bin:$PATH"
 
     # Python
