@@ -127,6 +127,21 @@ case "$(uname)" in
       google-chrome-stable
 
     ############################################################################
+    # Firefox
+    ############################################################################
+    sudo apt install -y \
+      firefox
+
+    ############################################################################
+    # Opera
+    ############################################################################
+    curl -fsSL https://deb.opera.com/archive.key | sudo apt-key add -
+    echo "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera.list
+    sudo apt update
+    sudo apt install -y \
+      opera
+
+    ############################################################################
     # VirtualBox / Vagrant
     ############################################################################
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
@@ -487,6 +502,7 @@ case "$(uname)" in
       keka \
       macvim \
       mysqlworkbench \
+      opera \
       plex-media-server \
       robo-3t \
       silicon-labs-vcp-driver \
