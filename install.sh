@@ -139,7 +139,7 @@ case "$(uname)" in
     echo "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera.list
     sudo apt update
     sudo apt install -y \
-      opera
+      opera-stable
 
     ############################################################################
     # VirtualBox / Vagrant
@@ -245,7 +245,7 @@ case "$(uname)" in
       sublime-text
 
     ############################################################################
-    # terraform
+    # Terraform
     ############################################################################
     curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
     echo "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
