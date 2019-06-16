@@ -136,7 +136,7 @@ case "$(uname)" in
     # Opera
     ############################################################################
     curl -fsSL https://deb.opera.com/archive.key | sudo apt-key add -
-    echo "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera.list
+    echo "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
     sudo apt update
     sudo apt install -y \
       opera-stable
