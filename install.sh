@@ -566,6 +566,19 @@ case "$(uname)" in
 esac
 
 ################################################################################
+# Sublime Text 3 packages
+################################################################################
+if [[ "$(uname)" == "Linux" ]]; then
+  curl -fLo \
+    "$HOME/.config/sublime-text-3/Installed\ Packages\ Package\ Control.sublime-package" \
+    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
+elif [[ "$(uname)" == "Darwin" ]]; then
+  curl -fLo \
+    "$HOME/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages\ Package\ Control.sublime-package" \
+    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
+fi
+
+################################################################################
 # Atom packages
 ################################################################################
 apm install \
