@@ -136,14 +136,14 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Unset the LAST SEARCH PATTERN register by hitting return
-nnoremap <silent> <CR> :noh<CR><CR>
+" Map double-tap Esc to clear search highlights
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " Enable cursor line highlighting
 set cursorline
 
 " Enable overlength line highlighting
-set colorcolumn=100
+set colorcolumn=80
 
 " Disable mouse
 set mouse=
