@@ -26,7 +26,6 @@ case "$(uname)" in
       docker \
       docker-engine \
       docker.io \
-      firefox \
       laptop-mode-tools \
       nodejs \
       ubuntu-web-launchers \
@@ -592,7 +591,6 @@ sudo yarn global add \
   fkill-cli \
   ngrok \
   prettier \
-  tern \
   tslint \
   typescript \
   vtop \
