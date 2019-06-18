@@ -394,26 +394,26 @@ case "$(uname)" in
     # Move /tmp to RAM
     ############################################################################
     echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0,size=256M" | sudo tee -a /etc/fstab
+    echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Move /var/tmp to RAM
     ############################################################################
     echo "# Move /var/tmp to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0,size=256M" | sudo tee -a /etc/fstab
+    echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Move /var/log to RAM
     ############################################################################
     echo "# Move /var/log to RAM" | sudo tee -a /etc/fstab
-    echo "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=32M" | sudo tee -a /etc/fstab
+    echo "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=16M" | sudo tee -a /etc/fstab
 
     ############################################################################
     # Run fstrim daily
     ############################################################################
-    echo "#!/bin/sh" | sudo tee /etc/cron.daily/fstrim
+    echo "#\!/bin/sh" | sudo tee /etc/cron.daily/fstrim
     echo "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
-    chmod +x /etc/cron.daily/fstrim
+    sudo chmod +x /etc/cron.daily/fstrim
 
     ############################################################################
     # TLP
