@@ -22,7 +22,6 @@ call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-sensible'
 Plug 'rstacruz/vim-opinion'
-Plug 'ciaranm/securemodelines'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 
@@ -195,6 +194,17 @@ set fileformats=unix,dos,mac
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
+
+" Always focus on splited window
+nnoremap <C-w>s <C-w>s<C-w>w
+nnoremap <C-w>v <C-w>v<C-w>w
+
+" Auto center on matched string
+noremap n nzz
+noremap N Nzz
+
+" Don't parse modelines
+set nomodeline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
