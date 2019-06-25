@@ -37,6 +37,7 @@ Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/CursorLineCurrentWindow'
 Plug 'junegunn/vim-emoji'
 Plug 'myusuf3/numbers.vim'
+Plug 'mhinz/vim-startify'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
@@ -198,10 +199,6 @@ endif
 " Always focus on splited window
 nnoremap <C-w>s <C-w>s<C-w>w
 nnoremap <C-w>v <C-w>v<C-w>w
-
-" Auto center on matched string
-noremap n nzz
-noremap N Nzz
 
 " Don't parse modelines
 set nomodeline
