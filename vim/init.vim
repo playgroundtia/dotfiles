@@ -12,7 +12,16 @@ let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
 " Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
+  if !executable('curl')
+    echoerr 'You need curl to install vim-plug'
+    execute 'qall!'
+  endif
+
   silent execute '!curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+  augroup plug
+    autocmd VimEnter * PlugInstall
+  augroup END
 endif
 
 call plug#begin()
@@ -35,7 +44,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'RRethy/vim-illuminate'
 Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/CursorLineCurrentWindow'
-Plug 'junegunn/vim-emoji'
 Plug 'myusuf3/numbers.vim'
 Plug 'mhinz/vim-startify'
 
@@ -136,9 +144,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map double-tap Esc to clear search highlights
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-
 " Enable cursor line highlighting
 set cursorline
 
@@ -190,11 +195,6 @@ noremap <Right> <NOP>
 
 " Use Unix as the standard file type
 set fileformats=unix,dos,mac
-
-" Sane line joins
-if v:version > 703 || v:version == 703 && has('patch541')
-  set formatoptions+=j
-endif
 
 " Always focus on splited window
 nnoremap <C-w>s <C-w>s<C-w>w
@@ -488,15 +488,6 @@ nmap <leader>u :UndotreeToggle<CR>
 " BufExplorer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>o :BufExplorer<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gitgutter
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Icons
-let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-let g:gitgutter_sign_modified_removed = emoji#for('collision')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
