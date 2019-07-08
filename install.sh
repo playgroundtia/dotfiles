@@ -108,6 +108,12 @@ case "$(uname)" in
       python3.8
 
     ############################################################################
+    # Ruby
+    ############################################################################
+    sudo apt install -y \
+      ruby-full
+
+    ############################################################################
     # Spotify
     ############################################################################
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
@@ -482,6 +488,7 @@ case "$(uname)" in
       readline \
       reattach-to-user-namespace \
       ripgrep \
+      ruby \
       shellcheck \
       terraform \
       tmux \
@@ -595,6 +602,7 @@ apm install \
 sudo yarn global add \
   eslint \
   fkill-cli \
+  neovim \
   ngrok \
   prettier \
   tslint \
@@ -609,6 +617,24 @@ pip3 install --user \
   pipenv \
   black \
   vim-vint
+
+################################################################################
+# Ruby packages
+################################################################################
+sudo gem install \
+  bundler \
+  neovim \
+  rails
+
+################################################################################
+# Bundler config
+################################################################################
+if [[ "$(uname)" == "Linux" ]]; then
+  cores=$(grep -c processor < /proc/cpuinfo)
+elif [[ "$(uname)" == "Darwin" ]]; then
+  cores=$(sysctl -n hw.ncpu)
+fi
+bundle config --global jobs $((cores - 1))
 
 ################################################################################
 # Clone dotfiles
