@@ -3,11 +3,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Environment
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,10 +187,7 @@ set nomodeline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
-elseif s:uname ==# 'Darwin'
-  map <leader>y :w !pbcopy<CR>
-  map <leader>p :r !pbpaste<CR>
-elseif s:uname ==# 'Linux'
+else
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
@@ -241,11 +233,8 @@ endtry
 set background=dark
 
 if has('gui_running')
-  if s:uname ==# 'Darwin'
-    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
-  elseif s:uname ==# 'Linux'
-    set guifont=Hack\ 10
-  endif
+  " Font
+  set guifont=Hack\ 10
 
   " Remove menu
   set guioptions=

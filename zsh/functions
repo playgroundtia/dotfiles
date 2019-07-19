@@ -1,26 +1,15 @@
 #!/usr/bin/env bash
 
 ################################################################################
-# System specific functions
+# Open the current directory, otherwise open the given location
 ################################################################################
-case "$(uname)" in
-  Linux)
-    ############################################################################
-    # Open the current directory, otherwise open the given location
-    ############################################################################
-    function open() {
-      if [ $# -eq 0 ]; then
-        xdg-open . > /dev/null 2>&1;
-      else
-        xdg-open "$@" > /dev/null 2>&1;
-      fi;
-    }
-
-  ;;
-  Darwin)
-
-  ;;
-esac
+function open() {
+  if [ $# -eq 0 ]; then
+    xdg-open . > /dev/null 2>&1;
+  else
+    xdg-open "$@" > /dev/null 2>&1;
+  fi;
+}
 
 ################################################################################
 # Update and upgrade everything
@@ -31,72 +20,45 @@ function f5() {
   sudo -v
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  ##############################################################################
   # Update and upgrade system packages
-  ##############################################################################
-  if [[ "$(uname)" == "Linux" ]]; then
-    sudo apt update -y
-    sudo apt dist-upgrade -y
-    sudo apt autoremove -y
-    sudo apt clean all -y
-  elif [[ "$(uname)" == "Darwin" ]]; then
-    brew update
-    brew upgrade
-    brew cu --all --yes --cleanup
-    brew cleanup -s
-    mas upgrade
-    sudo softwareupdate -i -a
-  fi
+  sudo apt update -y
+  sudo apt dist-upgrade -y
+  sudo apt autoremove -y
+  sudo apt clean all -y
 
-  ##############################################################################
   # Dotfiles
-  ##############################################################################
   cd ~/.dotfiles || exit 1
   git pull-sub
   git submodule update --recursive --remote
 
-  ##############################################################################
   # Python
-  ##############################################################################
   pip3 list --outdated --format=freeze | \
     grep -v '^\-e' | \
     cut -d = -f 1 | \
     xargs -n1 pip3 install -U --user
 
-  ##############################################################################
   # Ruby
-  ##############################################################################
   sudo gem update --system
 
-  ##############################################################################
   # Node.js
-  ##############################################################################
   yarn global upgrade
 
-  ##############################################################################
   # Vim
-  ##############################################################################
   vim +PlugUpgrade +PlugUpdate +qall
   rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
 
-  ##############################################################################
   # Tmux
-  ##############################################################################
   cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-themepack && git checkout master && git pull
+  cd ~/.tmux/plugins/tmux-gruvbox && git checkout master && git pull
   cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
 
-  ##############################################################################
   # Oh-my-zsh
-  ##############################################################################
   cd ~/.oh-my-zsh || exit 1
   git checkout master
   git pull
 
-  ##############################################################################
   # Reload shell
-  ##############################################################################
   source ~/.zshrc
 
   cd $CURRENT_DIR
