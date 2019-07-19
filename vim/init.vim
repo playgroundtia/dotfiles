@@ -223,13 +223,8 @@ nmap <leader>w :w!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-  colorscheme gruvbox
-  let g:airline_theme='gruvbox'
-catch
-  colorscheme desert
-  let g:airline_theme='desert'
-endtry
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 set background=dark
 
 if has('gui_running')
@@ -240,7 +235,8 @@ if has('gui_running')
   set guioptions=
 
   " Maximize window
-  set lines=999 columns=999
+  set lines=999
+  set columns=999
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -443,8 +439,8 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Incsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
