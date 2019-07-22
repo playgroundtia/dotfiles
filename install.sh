@@ -422,11 +422,23 @@ sudo apt-get install -y \
 ################################################################################
 # Gimp
 ################################################################################
+sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+sudo apt update
 sudo apt install -y \
   gimp \
   gimp-data \
+  gimp-data-extras \
+  gimp-gmic \
   gimp-plugin-registry \
-  gimp-data-extras
+  gmic
+
+################################################################################
+# Inkscape
+################################################################################
+sudo add-apt-repository -y ppa:inkscape.dev/stable
+sudo apt update
+sudo apt install -y \
+  inkscape
 
 ################################################################################
 # My Weather Indicator
