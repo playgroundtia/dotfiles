@@ -441,6 +441,24 @@ sudo apt install -y \
   inkscape
 
 ################################################################################
+# Shotcut
+################################################################################
+sudo add-apt-repository -y ppa:haraldhv/shotcut
+sudo apt update
+sudo apt install -y \
+  shotcut
+
+################################################################################
+# Blender
+################################################################################
+sudo add-apt-repository -y ppa:thomas-schiex/blender
+sudo apt update
+sudo apt install -y \
+  blender \
+  nvidia-modprobe
+sudo adduser "$USER" video
+
+################################################################################
 # My Weather Indicator
 ################################################################################
 sudo add-apt-repository -y ppa:atareao/atareao
