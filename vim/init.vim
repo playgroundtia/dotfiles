@@ -45,10 +45,7 @@ Plug 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'morhetz/gruvbox'
-Plug 'danilo-augusto/vim-afterglow'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline-themes'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -223,8 +220,8 @@ nmap <leader>w :w!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+colorscheme dracula
+let g:airline_theme='dracula'
 set background=dark
 
 if has('gui_running')

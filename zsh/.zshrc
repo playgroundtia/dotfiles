@@ -28,7 +28,7 @@ source ~/.dotfiles/zsh/settings
 # Oh-my-zsh
 ################################################################################
 export ZSH=~/.oh-my-zsh
-ZSH_THEME="agnoster"
+ZSH_THEME="awesomepanda"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(

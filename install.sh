@@ -315,6 +315,40 @@ sudo update-alternatives --config gdm3.css <<EOF
 EOF
 
 ################################################################################
+# Themes and icons
+################################################################################
+# Material design
+sudo apt install -y \
+  materia-gtk-theme
+
+# Emerald icons
+sudo add-apt-repository -y ppa:noobslab/icons
+sudo apt update
+sudo apt install -y \
+  emerald-icon-theme
+
+# Paper icons
+sudo add-apt-repository -y ppa:snwh/ppa
+sudo apt install -y \
+  paper-icon-theme
+
+################################################################################
+# VeraCrypt
+################################################################################
+sudo add-apt-repository -y ppa:unit193/encryption
+sudo apt update
+sudo apt install -y \
+  veracrypt
+
+################################################################################
+# GnuCash
+################################################################################
+sudo add-apt-repository -y ppa:sicklylife/gnucash
+sudo apt update
+sudo apt install -y \
+  gnucash
+
+################################################################################
 # GPG
 ################################################################################
 sudo apt install -y \
@@ -362,10 +396,9 @@ sudo fc-cache -fv
 sudo apt install -y \
   tilix
 
-# Gruvbox
 curl -fLo \
-  "$HOME/.config/tilix/schemes/gruvbox-dark-medium.json" \
-  --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-medium.json
+  "$HOME/.config/tilix/schemes/Dracula.json" \
+  --create-dirs https://raw.githubusercontent.com/krzysztofzuraw/dracula-tilix/master/Dracula.json
 
 ################################################################################
 # Conky

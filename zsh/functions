@@ -47,12 +47,6 @@ function f5() {
   vim +PlugUpgrade +PlugUpdate +qall
   rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
 
-  # Tmux
-  cd ~/.tmux/plugins/tmux-pain-control && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-sensible && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-gruvbox && git checkout master && git pull
-  cd ~/.tmux/plugins/tmux-yank && git checkout master && git pull
-
   # Oh-my-zsh
   cd ~/.oh-my-zsh || exit 1
   git checkout master
