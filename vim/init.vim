@@ -73,7 +73,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'artnez/vim-wipeout', { 'on': 'Wipeout' }
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 Plug 'vim-scripts/ZoomWin', { 'on': 'ZoomWin' }
-Plug 'vim-scripts/bufexplorer.zip', { 'on': 'BufExplorer' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -169,9 +168,7 @@ nnoremap <C-w>v <C-w>v<C-w>w
 " Don't parse modelines
 set nomodeline
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
 else
@@ -179,9 +176,7 @@ else
   map <leader>p :r !xsel -p<CR>
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('$TMUX')
   if has('nvim')
       set termguicolors
@@ -434,11 +429,6 @@ map g/ <Plug>(incsearch-stay)
 " Tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :TagbarToggle<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" BufExplorer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>o :BufExplorer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
