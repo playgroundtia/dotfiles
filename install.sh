@@ -297,22 +297,10 @@ sudo apt install -y \
 # Gnome
 ################################################################################
 sudo apt install -y \
-  adwaita-icon-theme-full \
-  gnome-documents \
-  gnome-maps \
-  gnome-music \
-  gnome-photos \
   gnome-screensaver \
-  gnome-session \
   gnome-shell-extensions \
   gnome-sushi \
-  gnome-tweak-tool \
-  gnome-weather \
-  polari
-
-sudo update-alternatives --config gdm3.css <<EOF
-1
-EOF
+  gnome-tweak-tool
 
 ################################################################################
 # Themes and icons
