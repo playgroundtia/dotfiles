@@ -303,24 +303,6 @@ sudo apt install -y \
   gnome-tweak-tool
 
 ################################################################################
-# Themes and icons
-################################################################################
-# Material design
-sudo apt install -y \
-  materia-gtk-theme
-
-# Emerald icons
-sudo add-apt-repository -y ppa:noobslab/icons
-sudo apt update
-sudo apt install -y \
-  emerald-icon-theme
-
-# Paper icons
-sudo add-apt-repository -y ppa:snwh/ppa
-sudo apt install -y \
-  paper-icon-theme
-
-################################################################################
 # VeraCrypt
 ################################################################################
 sudo add-apt-repository -y ppa:unit193/encryption
