@@ -79,7 +79,6 @@ Plug 'vim-scripts/bufexplorer.zip', { 'on': 'BufExplorer' }
 " Editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'heavenshell/vim-jsdoc', { 'on': 'JsDoc' }
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'roxma/vim-paste-easy'
 Plug 'sickill/vim-pasta'
 Plug 'terryma/vim-multiple-cursors'
@@ -149,15 +148,6 @@ endif
 " Use ripgrep over grep if avaiable
 if executable('rg')
   set grepprg=rg\ --color=never
-endif
-
-" Store the undo files in a seperate place
-if has('persistent_undo')
-  try
-    set undodir='~/.dotfiles/vim/undodir'
-    set undofile
-  catch
-  endtry
 endif
 
 " Set leader key to ,
@@ -444,11 +434,6 @@ map g/ <Plug>(incsearch-stay)
 " Tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>t :TagbarToggle<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Undotree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>u :UndotreeToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BufExplorer
