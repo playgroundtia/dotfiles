@@ -27,14 +27,14 @@ source ~/.dotfiles/zsh/settings
 ################################################################################
 # Oh-my-zsh
 ################################################################################
+if ! [ -d ~/.oh-my-zsh ]; then
+  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
-plugins=(
-  gpg-agent
-  ssh-agent
-  tmux
-  vi-mode
-)
+plugins=(gpg-agent ssh-agent tmux vi-mode)
+
 source $ZSH/oh-my-zsh.sh
