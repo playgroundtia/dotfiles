@@ -25,37 +25,32 @@ alias mkdir="mkdir --parents --verbose"
 # Stop after sending 5 packets
 alias ping="ping -c 5"
 
-# URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
-# Pretty print a JSON
-alias jsonpp='python -m json.tool'
-
 # Recursively delete `node_modules` folders
 alias cleanup-node='find . -type d -name "node_modules" -exec rm -rf "{}" +'
+
+# Recursively delete `.git` folders
+alias cleanup-git='find . -type d -name ".git" -exec rm -rf "{}" +'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-# Intuitive map function
-# For example, to list all directories that contain a certain file:
-# find . -name .gitattributes | map dirname
-alias map="xargs -n1"
-
 # Shred file
 alias shred="shred -zvu -n 10"
 
-# Midnight Commander
-alias mc="mc -S darkfar"
+# Use neomutt when available
+if [ -x "$(command -v neomutt)" ]; then
+  alias mutt="neomutt"
+fi
 
-# Mutt
-alias mutt="neomutt"
-
-# Docker-compose as container
-alias docker-compose='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:/rootfs/$PWD" -w="/rootfs/$PWD" docker/compose:1.24.0'
+# Use docker-compose as container when binary isn't available
+if ! [ -x "$(command -v docker-compose)" ]; then
+  alias docker-compose='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:/rootfs/$PWD" -w="/rootfs/$PWD" docker/compose:1.24.0'
+fi
 
 # Lock the screen (when going AFK)
 alias afk="gnome-screensaver-command --lock"
 
-# Browsers
-alias chrome="/opt/google/chrome/google-chrome"
+# Use nvim when available
+if [ -x "$(command -v nvim)" ]; then
+  alias vim="nvim"
+fi
