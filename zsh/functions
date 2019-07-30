@@ -33,7 +33,7 @@ function f5() {
 
   # Python
   pip3 list --outdated --format=freeze | \
-    grep -v '^\-e' | \
+    grep -v "^\-e" | \
     cut -d = -f 1 | \
     xargs -n1 pip3 install -U --user
 
@@ -44,8 +44,7 @@ function f5() {
   yarn global upgrade
 
   # Vim
-  vim +PlugUpgrade +PlugUpdate +qall
-  rm ~/.vim/autoload/plug.vim.old > /dev/null 2>&1
+  vim +PlugUpdate +qall
 
   # Oh-my-zsh
   cd ~/.oh-my-zsh || exit 1
@@ -56,28 +55,6 @@ function f5() {
   source ~/.zshrc
 
   cd $CURRENT_DIR
-}
-
-################################################################################
-# Create SSH keys
-################################################################################
-function genSSHKey() {
-  if [ $# -eq 0 ]; then
-    echo -e "No arguments specified.";
-    return 1;
-  fi
-
-  ssh-keygen -t rsa -b 4096 -C "$1"
-}
-
-################################################################################
-# Start an HTTP server from a directory, optionally specifying the port
-################################################################################
-function server() {
-  local port="${1:-8000}";
-  sleep 1 && open "http://localhost:${port}/" &
-
-  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
 
 ################################################################################
@@ -182,62 +159,36 @@ function postgresql-terminal() {
 }
 
 ################################################################################
-# Upload file to transfer.sh and copy url to clipboard
-################################################################################
-function transfer() {
-  if [ $# -eq 0 ]; then
-    echo -e "No arguments specified.";
-    return 1;
-  fi
-
-  tmpfile=$( mktemp -t transferXXX );
-
-  if tty -s; then
-    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" | awk '{$1=$1};1' >> "$tmpfile";
-  else
-    curl --progress-bar --upload-file "-" "https://transfer.sh/$1" | awk '{$1=$1};1' >> "$tmpfile";
-  fi;
-
-  cat "$tmpfile";
-  case "$(uname)" in
-    Linux)
-      xsel -b < "$tmpfile"
-      ;;
-    Darwin)
-      pbcopy < "$tmpfile"
-      ;;
-  esac
-  rm -f "$tmpfile"
-}
-
-################################################################################
 # Upload hex files to Arduboy
 ################################################################################
 function arduboy-upload() {
   if [ $# -eq 0 ]; then
-    echo -e "No arguments specified.";
+    echo -e "No arguments specified";
     return 1;
   fi
 
-  if ! [ -f /etc/udev/rules.d/99-arduboy.rules ]; then
-    echo "Adding Arduboy rules to /etc/udev/rules.d/99-arduboy.rules"
-
-    echo 'ACTION=="add", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0036", SYMLINK+="arduboy-boot", MODE="0666"' | sudo tee /etc/udev/rules.d/99-arduboy.rules
-    echo 'ACTION=="add", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="8036", SYMLINK+="arduboy", MODE="0666"' | sudo tee -a /etc/udev/rules.d/99-arduboy.rules
+  if ! [ -x "$(command -v avrdude)" ]; then
+    echo -e "You must install avrdude first"
   fi
 
-  if [ $(id -Gn "$USER" | grep -c "dialout") -eq 0 ]; then
-    echo "Adding ${USER} to dialout group"
+  if ! [ -f /etc/udev/rules.d/99-arduboy.rules ]; then
+    echo -e "Adding Arduboy rules to /etc/udev/rules.d/99-arduboy.rules"
+
+    echo -e "ACTION==\"add\", ATTRS{idVendor}==\"2341\", ATTRS{idProduct}==\"0036\", SYMLINK+=\"arduboy-boot\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/99-arduboy.rules
+    echo -e "ACTION==\"add\", ATTRS{idVendor}==\"2341\", ATTRS{idProduct}==\"8036\", SYMLINK+=\"arduboy\", MODE=\"0666\"" | sudo tee -a /etc/udev/rules.d/99-arduboy.rules
+  fi
+
+  if [ "$(id -Gn "$USER" | grep -c "dialout")" -eq 0 ]; then
+    echo -e "Adding ${USER} to dialout group"
 
     sudo usermod -a -G dialout "$USER"
   fi
 
-  echo -e 'Searching for Arduboy...'
+  echo -e "Searching for Arduboy..."
 
   while [ ! -e /dev/arduboy-boot ]; do
     if [ -e /dev/arduboy ]; then
-      echo -e 'Arduboy found. Trying to reset.'
+      echo -e "Arduboy found. Trying to reset."
 
       stty -F /dev/arduboy ispeed 1200 ospeed 1200
 

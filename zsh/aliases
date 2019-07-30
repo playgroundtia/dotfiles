@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
 
-# Colors
-colorflag="--color"
-export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-
 # Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias ls="command ls --color"
 
 # List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+alias la="ls -lAF --color"
 
 # List only directories
-alias ld="ls -lF ${colorflag} | grep --color=never '^d'"
+alias ld="ls -lF --color | grep --color=never \"^d\""
 
 # Always enable colored `grep` output
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias zgrep='zgrep --color=auto'
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias zgrep="zgrep --color=auto"
 
 # Always create parent folders if needed
 alias mkdir="mkdir --parents --verbose"
@@ -25,14 +21,12 @@ alias mkdir="mkdir --parents --verbose"
 # Stop after sending 5 packets
 alias ping="ping -c 5"
 
-# Recursively delete `node_modules` folders
-alias cleanup-node='find . -type d -name "node_modules" -exec rm -rf "{}" +'
-
-# Recursively delete `.git` folders
-alias cleanup-git='find . -type d -name ".git" -exec rm -rf "{}" +'
+# Recursively delete clean up folders
+alias cleanup-node="find . -type d -name \"node_modules\" -exec rm -rf \"{}\" +"
+alias cleanup-git="find . -type d -name \".git\" -exec rm -rf \"{}\" +"
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
 
 # Shred file
 alias shred="shred -zvu -n 10"
@@ -44,13 +38,8 @@ fi
 
 # Use docker-compose as container when binary isn't available
 if ! [ -x "$(command -v docker-compose)" ]; then
-  alias docker-compose='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:/rootfs/$PWD" -w="/rootfs/$PWD" docker/compose:1.24.0'
+  alias docker-compose="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v \"$PWD:/rootfs/$PWD\" -w=\"/rootfs/$PWD\" docker/compose:1.24.0"
 fi
 
 # Lock the screen (when going AFK)
 alias afk="gnome-screensaver-command --lock"
-
-# Use nvim when available
-if [ -x "$(command -v nvim)" ]; then
-  alias vim="nvim"
-fi

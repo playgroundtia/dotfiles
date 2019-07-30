@@ -16,33 +16,10 @@ export HISTIGNORE="cd:ls:[bf]g:clear:exit"
 export LANG=pt_BR.UTF-8
 
 ################################################################################
-# Editor
+# Oh-my-zsh
 ################################################################################
-if command -v nvim 1>/dev/null; then
-  export EDITOR='nvim'
-elif command -v vim 1>/dev/null; then
-  export EDITOR='vim'
-elif command -v vi 1>/dev/null; then
-  export EDITOR='vi'
-elif command -v emacs 1>/dev/null; then
-  export EDITOR='emacs -nw'
-elif command -v nano 1>/dev/null; then
-  export EDITOR='nano'
-fi
-
-################################################################################
-# Manpager
-################################################################################
-case "$EDITOR" in
-  nvim)
-    export MANPAGER="nvim -u NONE -c 'set ft=man'"
-  ;;
-
-  vim)
-    export MANPAGER="vim -u NONE -c 'set ft=man ro nomod nolist'"
-  ;;
-
-  *)
-    export MANPAGER='less'
-  ;;
-esac
+export ZSH=~/.oh-my-zsh
+ZSH_THEME="awesomepanda"
+DISABLE_AUTO_UPDATE="true"
+HIST_STAMPS="dd/mm/yyyy"
+plugins=(gpg-agent ssh-agent tmux vi-mode)
