@@ -21,7 +21,6 @@ gnupg/openpgp-revocs.d/
 gnupg/sshcontrol
 
 # Tmux
-tmux/resurrect/
 tmux/plugins/*
 !tmux/plugins/tpm
 
@@ -29,6 +28,4 @@ tmux/plugins/*
 .tern-port
 .netrwhist
 plug.vim
-vim/undodir/
-!vim/undodir/.gitkeep
 vim/plugged/
