@@ -98,7 +98,7 @@ sudo apt install -y \
 
 # Yarn
 curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+echo -e "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
 sudo apt install -y \
   yarn
@@ -130,7 +130,7 @@ pip3 install --user \
   vim-vint
 
 ################################################################################
-# Ruby
+# Ruby / Packages
 ################################################################################
 sudo apt install -y \
   ruby-full
@@ -146,7 +146,7 @@ bundle config --global jobs $(($(grep -c processor < /proc/cpuinfo) - 1))
 # Spotify
 ################################################################################
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+echo -e "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update
 sudo apt install -y \
   spotify-client
@@ -155,7 +155,7 @@ sudo apt install -y \
 # Chrome
 ################################################################################
 curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+echo -e "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
 sudo apt update
 sudo apt install -y \
   google-chrome-stable
@@ -170,7 +170,7 @@ sudo apt install -y \
 # Opera
 ################################################################################
 curl -fsSL https://deb.opera.com/archive.key | sudo apt-key add -
-echo "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
+echo -e "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
 sudo apt update
 sudo apt install -y \
   opera-stable
@@ -242,10 +242,10 @@ sudo apt install \
   universal-ctags
 
 ################################################################################
-# Atom / packages
+# Atom / Packages
 ################################################################################
 curl -fsSL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee /etc/apt/sources.list.d/atom.list
+echo -e "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee /etc/apt/sources.list.d/atom.list
 sudo apt update
 sudo apt install -y \
   atom
@@ -257,7 +257,7 @@ apm install \
 # Visual Studio Code
 ################################################################################
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+echo -e "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
 sudo apt update
 sudo apt install -y \
   code \
@@ -275,7 +275,7 @@ sudo apt install -y \
 # Sublime Text 3 / packages
 ################################################################################
 curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+echo -e "deb [arch=amd64] https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
 sudo apt-get install -y \
   sublime-text
@@ -288,7 +288,7 @@ curl -fLo \
 # Terraform
 ################################################################################
 curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
-echo "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
+echo -e "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
 sudo apt update
 sudo apt install -y \
   terraform
@@ -562,21 +562,29 @@ sudo apt install -y \
 # Settings
 ################################################################################
 # Move /tmp to RAM
-echo "# Move /tmp to RAM" | sudo tee -a /etc/fstab
-echo "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
+echo -e "# Move /tmp to RAM" | sudo tee -a /etc/fstab
+echo -e "tmpfs /tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
 
 # Move /var/tmp to RAM
-echo "# Move /var/tmp to RAM" | sudo tee -a /etc/fstab
-echo "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
+echo -e "# Move /var/tmp to RAM" | sudo tee -a /etc/fstab
+echo -e "tmpfs /var/tmp tmpfs defaults,exec,nosuid 0 0,size=128M" | sudo tee -a /etc/fstab
 
 # Move /var/log to RAM
-echo "# Move /var/log to RAM" | sudo tee -a /etc/fstab
-echo "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=16M" | sudo tee -a /etc/fstab
+echo -e "# Move /var/log to RAM" | sudo tee -a /etc/fstab
+echo -e "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=16M" | sudo tee -a /etc/fstab
 
 # Run fstrim daily
-echo "#\!/bin/sh" | sudo tee /etc/cron.daily/fstrim
-echo "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
+echo -e "#\!/bin/sh" | sudo tee /etc/cron.daily/fstrim
+echo -e "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
 sudo chmod +x /etc/cron.daily/fstrim
+
+# Update and upgrade hourly
+echo -e "#\!/bin/sh" | sudo tee /etc/cron.hourly/apt
+echo -e "apt update" | sudo tee -a /etc/cron.hourly/apt
+echo -e "apt dist-upgrade -y" | sudo tee -a /etc/cron.hourly/apt
+echo -e "apt autoremove -y" | sudo tee -a /etc/cron.hourly/apt
+echo -e "apt clean all -y" | sudo tee -a /etc/cron.hourly/apt
+sudo chmod +x /etc/cron.hourly/apt
 
 # Install dotfiles
 if [ -d ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
