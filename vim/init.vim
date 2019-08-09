@@ -108,7 +108,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'takac/vim-hardtime'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/LargeFile'
@@ -434,12 +433,3 @@ nmap <leader>t :TagbarToggle<CR>
 " Supertab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:SuperTabDefaultCompletionType = '<c-n>'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Hardtime
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run in every buffer
-let g:hardtime_default_on = 1
-
-" Ignore certain buffer patterns set
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
