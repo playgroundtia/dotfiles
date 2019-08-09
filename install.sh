@@ -21,13 +21,8 @@ sudo apt purge -y \
   apport \
   chromium-* \
   cmdtest \
-  docker \
-  docker-engine \
-  docker.io \
   laptop-mode-tools \
-  nodejs \
-  ubuntu-web-launchers \
-  virtualbox
+  ubuntu-web-launchers
 
 ################################################################################
 # Basic packages
@@ -544,6 +539,14 @@ sudo apt install -y \
   peek
 
 ################################################################################
+# Diodon
+################################################################################
+sudo add-apt-repository -y ppa:diodon-team/stable
+sudo apt update
+sudo apt install -y \
+  diodon
+
+################################################################################
 # Drivers
 ################################################################################
 # Mesa
@@ -574,12 +577,12 @@ echo -e "# Move /var/log to RAM" | sudo tee -a /etc/fstab
 echo -e "tmpfs /var/log tmpfs defaults,noexec,nosuid 0 0,size=16M" | sudo tee -a /etc/fstab
 
 # Run fstrim daily
-echo -e "#\!/bin/sh" | sudo tee /etc/cron.daily/fstrim
+echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.daily/fstrim
 echo -e "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
 sudo chmod +x /etc/cron.daily/fstrim
 
 # Update and upgrade hourly
-echo -e "#\!/bin/sh" | sudo tee /etc/cron.hourly/apt
+echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.hourly/apt
 echo -e "apt update" | sudo tee -a /etc/cron.hourly/apt
 echo -e "apt dist-upgrade -y" | sudo tee -a /etc/cron.hourly/apt
 echo -e "apt autoremove -y" | sudo tee -a /etc/cron.hourly/apt
