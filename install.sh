@@ -568,7 +568,9 @@ sudo apt install -y \
   ppsspp \
   reicast \
   reicast-joyconfig \
+  residualvm \
   retroarch \
+  scummvm \
   snes9x
 
 ################################################################################
