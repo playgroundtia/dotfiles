@@ -547,6 +547,19 @@ sudo apt install -y \
   diodon
 
 ################################################################################
+# Retro games and emulators
+################################################################################
+sudo add-apt-repository -y ppa:samoilov-lex/retrogames
+sudo apt update
+sudo apt install -y \
+  citra \
+  ioquake3 \
+  mgba-sdl \
+  ppsspp \
+  retroarch \
+  snes9x
+
+################################################################################
 # Drivers
 ################################################################################
 # Mesa
