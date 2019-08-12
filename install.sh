@@ -566,6 +566,8 @@ sudo apt install -y \
   ioquake3 \
   mgba-sdl \
   ppsspp \
+  reicast \
+  reicast-joyconfig \
   retroarch \
   snes9x
 
