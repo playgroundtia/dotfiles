@@ -457,6 +457,7 @@ sudo apt update
 sudo apt install -y \
   krita \
   krita-l10n
+  krita-nautilus-thumbnailer
 
 ################################################################################
 # Shotcut
