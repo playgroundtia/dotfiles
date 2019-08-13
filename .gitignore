@@ -12,13 +12,14 @@ mutt/accounts/*/cache/bodies/*
 
 # GPG
 gnupg/crls.d/
+gnupg/gpg-agent.conf
+gnupg/openpgp-revocs.d/
 gnupg/private-keys-v1.d/
 gnupg/pubring.kbx
 gnupg/random_seed
+gnupg/sshcontrol
 gnupg/tofu.db
 gnupg/trustdb.gpg
-gnupg/openpgp-revocs.d/
-gnupg/sshcontrol
 
 # Tmux
 tmux/plugins/*

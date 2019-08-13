@@ -3,15 +3,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding utf-8
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Environment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:uname = substitute(system('uname'), '[[:cntrl:]]', '', 'g')
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
-  if !executable('curl')
-    echoerr 'You need curl to install vim-plug'
-    execute 'qall!'
-  endif
-
   silent execute '!curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
   augroup plug
@@ -32,20 +32,17 @@ Plug 'tmux-plugins/vim-tmux'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'jszakmeister/vim-togglecursor'
-Plug 'lilydjwg/colorizer'
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
 Plug 'RRethy/vim-illuminate'
 Plug 'inside/vim-search-pulse'
-Plug 'vim-scripts/CursorLineCurrentWindow'
-Plug 'myusuf3/numbers.vim'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'lilydjwg/colorizer'
 Plug 'mhinz/vim-startify'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Themes
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+Plug 'myusuf3/numbers.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/CursorLineCurrentWindow'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -65,7 +62,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and buffers
@@ -170,7 +166,10 @@ set nomodeline
 " Clipboard
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
-else
+elseif s:uname ==# 'Darwin'
+  map <leader>y :w !pbcopy<CR>
+  map <leader>p :r !pbpaste<CR>
+elseif s:uname ==# 'Linux'
   map <leader>y :w !xsel -i -b<CR>
   map <leader>p :r !xsel -p<CR>
 endif
@@ -204,13 +203,16 @@ nmap <leader>w :w!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme dracula
-let g:airline_theme='dracula'
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 set background=dark
 
 if has('gui_running')
-  " Font
-  set guifont=Hack\ 10
+  if s:uname ==# 'Darwin'
+    set guifont=Hack\ Regular\ Nerd\ Font\ Complete:h10
+  elseif s:uname ==# 'Linux'
+    set guifont=Hack\ 10
+  endif
 
   " Remove menu
   set guioptions=
@@ -251,41 +253,6 @@ let g:NERDTreeIgnore = [
 \ '^build$[[dir]]'
 \ ]
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Netrw
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-let g:netrw_localrmdir='rm -rf'
-let g:netrw_list_hide = &wildignore
-
-" Toggle netrw
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-  if g:NetrwIsOpen
-    let l:buffer = bufnr('$')
-    while (l:buffer >= 1)
-      if (getbufvar(l:buffer, '&filetype') ==# 'netrw')
-        silent exe 'bwipeout ' . l:buffer
-      endif
-      let l:buffer-=1
-    endwhile
-    let g:NetrwIsOpen=0
-  else
-    let g:NetrwIsOpen=1
-    silent Lexplore
-  endif
-endfunction
-nnoremap <leader>e :call ToggleNetrw()<CR>
-
-" Fix 'buffers of netrw don’t get closed'
-augroup netrw
-  autocmd FileType netrw setl bufhidden=delete
-augroup END
-"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

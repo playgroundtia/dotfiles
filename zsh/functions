@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 
 ################################################################################
-# Open the current directory, otherwise open the given location
+# System specific functions
 ################################################################################
-function open() {
-  if [ $# -eq 0 ]; then
-    xdg-open . > /dev/null 2>&1;
-  else
-    xdg-open "$@" > /dev/null 2>&1;
-  fi;
-}
+case "$(uname)" in
+  Linux)
+    ############################################################################
+    # Open the current directory, otherwise open the given location
+    ############################################################################
+    function open() {
+      if [ $# -eq 0 ]; then
+        xdg-open . > /dev/null 2>&1;
+      else
+        xdg-open "$@" > /dev/null 2>&1;
+      fi;
+    }
+
+  ;;
+  Darwin)
+
+  ;;
+esac
 
 ################################################################################
 # Update and upgrade everything
@@ -21,10 +32,19 @@ function f5() {
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
   # Update and upgrade system packages
-  sudo apt update -y
-  sudo apt dist-upgrade -y
-  sudo apt autoremove -y
-  sudo apt clean all -y
+  if [[ "$(uname)" == "Linux" ]]; then
+    sudo apt update -y
+    sudo apt dist-upgrade -y
+    sudo apt autoremove -y
+    sudo apt clean all -y
+  elif [[ "$(uname)" == "Darwin" ]]; then
+    brew update
+    brew upgrade
+    brew cu --all --yes --cleanup
+    brew cleanup -s
+    mas upgrade
+    sudo softwareupdate -i -a
+  fi
 
   # Dotfiles
   cd ~/.dotfiles || exit 1
@@ -44,7 +64,7 @@ function f5() {
   yarn global upgrade
 
   # Vim
-  vim +PlugUpdate +qall
+  vim +PlugUpgrade +PlugUpdate +qall
 
   # Oh-my-zsh
   cd ~/.oh-my-zsh || exit 1
@@ -156,49 +176,4 @@ function postgresql-purge() {
 
 function postgresql-terminal() {
   docker exec -it postgresql /bin/bash
-}
-
-################################################################################
-# Upload hex files to Arduboy
-################################################################################
-function arduboy-upload() {
-  if [ $# -eq 0 ]; then
-    echo -e "No arguments specified";
-    return 1;
-  fi
-
-  if ! [ -x "$(command -v avrdude)" ]; then
-    echo -e "You must install avrdude first"
-  fi
-
-  if ! [ -f /etc/udev/rules.d/99-arduboy.rules ]; then
-    echo -e "Adding Arduboy rules to /etc/udev/rules.d/99-arduboy.rules"
-
-    echo -e "ACTION==\"add\", ATTRS{idVendor}==\"2341\", ATTRS{idProduct}==\"0036\", SYMLINK+=\"arduboy-boot\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/99-arduboy.rules
-    echo -e "ACTION==\"add\", ATTRS{idVendor}==\"2341\", ATTRS{idProduct}==\"8036\", SYMLINK+=\"arduboy\", MODE=\"0666\"" | sudo tee -a /etc/udev/rules.d/99-arduboy.rules
-  fi
-
-  if [ "$(id -Gn "$USER" | grep -c "dialout")" -eq 0 ]; then
-    echo -e "Adding ${USER} to dialout group"
-
-    sudo usermod -a -G dialout "$USER"
-  fi
-
-  echo -e "Searching for Arduboy..."
-
-  while [ ! -e /dev/arduboy-boot ]; do
-    if [ -e /dev/arduboy ]; then
-      echo -e "Arduboy found. Trying to reset."
-
-      stty -F /dev/arduboy ispeed 1200 ospeed 1200
-
-      while [ -e /dev/arduboy ]; do
-        sleep 0.1
-      done;
-    fi
-
-    sleep 0.1
-  done
-
-  avrdude -v -patmega32u4 -cavr109 -P/dev/arduboy-boot -b57600 -D -Uflash:w:"$1":i
 }
