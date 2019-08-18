@@ -1,0 +1,11 @@
+# https://guides.rubygems.org/command-reference/#gem-environment
+---
+gem: --no-document --suggestions
+benchmark: false
+verbose: false
+update_sources: true
+sources:
+- http://gems.rubyforge.org/
+- http://rubygems.org/
+backtrace: true
+bulk_threshold: 1000
