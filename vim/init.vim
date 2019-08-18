@@ -156,10 +156,6 @@ noremap <Right> <NOP>
 " Use Unix as the standard file type
 set fileformats=unix,dos,mac
 
-" Always focus on splited window
-nnoremap <C-w>s <C-w>s<C-w>w
-nnoremap <C-w>v <C-w>v<C-w>w
-
 " Don't parse modelines
 set nomodeline
 
