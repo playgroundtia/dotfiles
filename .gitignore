@@ -28,5 +28,5 @@ tmux/plugins/*
 # Vim
 .tern-port
 .netrwhist
-plug.vim
+plug.vim*
 vim/plugged/
