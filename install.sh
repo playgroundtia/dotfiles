@@ -88,7 +88,7 @@ case "$(uname)" in
     # Node.js / Yarn
     ############################################################################
     # Node.js
-    curl -fsSL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt update
     sudo apt install -y \
       nodejs
@@ -699,46 +699,6 @@ case "$(uname)" in
 esac
 
 ################################################################################
-# Node.js packages
-################################################################################
-sudo yarn global add \
-  eslint \
-  fkill-cli \
-  neovim \
-  ngrok \
-  prettier \
-  tslint \
-  typescript \
-  vtop \
-  --ignore-optional
-
-################################################################################
-# Python packages
-################################################################################
-pip3 install --user \
-  pipenv \
-  black \
-  vim-vint
-
-################################################################################
-# Ruby packages
-################################################################################
-sudo gem install \
-  bundler \
-  neovim \
-  rails
-
-################################################################################
-# Bundler config
-################################################################################
-if [[ "$(uname)" == "Linux" ]]; then
-  cores=$(grep -c processor < /proc/cpuinfo)
-elif [[ "$(uname)" == "Darwin" ]]; then
-  cores=$(sysctl -n hw.ncpu)
-fi
-bundle config --global jobs $((cores - 1))
-
-################################################################################
 # Install dotfiles
 ################################################################################
 if [ -d ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
@@ -749,13 +709,58 @@ cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 ################################################################################
+# Node.js config / packages
+################################################################################
+sudo yarn global add \
+  eslint \
+  fkill-cli \
+  neovim \
+  ngrok \
+  prettier @prettier/plugin-php @prettier/plugin-ruby \
+  typescript \
+  vtop \
+  --ignore-optional
+
+################################################################################
+# Python config / packages
+################################################################################
+pip3 install --user \
+  pipenv \
+  black \
+  vim-vint
+
+################################################################################
+# Ruby config / packages
+################################################################################
+# Gem
+if [ -f ~/.gemrc ] || [ -h ~/.gemrc ]; then
+  mv ~/.gemrc /tmp/gemrc-old
+fi
+ln -s ~/.dotfiles/ruby/.gemrc ~/.gemrc
+
+# Packages
+sudo gem install \
+  bundler \
+  neovim \
+  rails
+
+# Bundler
+if [[ "$(uname)" == "Linux" ]]; then
+  bundle config --global jobs $(($(grep -c processor < /proc/cpuinfo) - 1))
+elif [[ "$(uname)" == "Darwin" ]]; then
+  bundle config --global jobs $(($(sysctl -n hw.ncpu) - 1))
+fi
+
+################################################################################
 # Zsh config
 ################################################################################
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
   mv ~/.zshrc /tmp/zshrc-old
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
 command -v zsh | sudo tee -a /etc/shells
 if [[ "$(uname)" == "Linux" ]]; then
   sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
@@ -771,14 +776,6 @@ if [ -f ~/.gitconfig ] || [ -h ~/.gitconfig ]; then
   mv ~/.gitconfig /tmp/gitconfig-old
 fi
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
-
-################################################################################
-# Gem config
-################################################################################
-if [ -f ~/.gemrc ] || [ -h ~/.gemrc ]; then
-  mv ~/.gemrc /tmp/gemrc-old
-fi
-ln -s ~/.dotfiles/ruby/.gemrc ~/.gemrc
 
 ################################################################################
 # Vim / Neovim config
@@ -805,11 +802,13 @@ if [ -d ~/.gnupg ] || [ -h ~/.gnupg ]; then
   mv ~/.gnupg /tmp/gnupg-old
 fi
 ln -s ~/.dotfiles/gnupg ~/.gnupg
+
 if [[ "$(uname)" == "Linux" ]]; then
   echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
 elif [[ "$(uname)" == "Darwin" ]]; then
   echo "pinentry-program /usr/local/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
 fi
+
 chmod 700 ~/.gnupg
 chmod 400 ~/.gnupg/keys/*
 # gpg --import ~/.gnupg/keys/personal.public
@@ -822,6 +821,7 @@ if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
   mv ~/.ssh /tmp/ssh-old
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
+
 chmod 400 ~/.ssh/id_rsa
 
 ################################################################################
@@ -831,10 +831,12 @@ if [ -f ~/.muttrc ] || [ -h ~/.muttrc ]; then
   mv ~/.muttrc /tmp/muttrc-old
 fi
 ln -s ~/.dotfiles/mutt/.muttrc ~/.muttrc
+
 if [ -d ~/.mutt ] || [ -h ~/.mutt ]; then
   mv ~/.mutt /tmp/mutt-old
 fi
 ln -s ~/.dotfiles/mutt ~/.mutt
+
 if [ -f ~/.mailcap ] || [ -h ~/.mailcap ]; then
   mv ~/.mailcap /tmp/mailcap-old
 fi
@@ -847,6 +849,7 @@ if [ -f ~/.tmux.conf ] || [ -h ~/.tmux.conf ]; then
   mv ~/.tmux.conf /tmp/tmux.conf-old
 fi
 ln -s ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
 if [ -d ~/.tmux ] || [ -h ~/.tmux ]; then
   mv ~/.tmux /tmp/tmux-old
 fi

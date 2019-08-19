@@ -276,22 +276,22 @@ let g:ale_lint_on_enter = 1
 
 " Compatible linters
 let g:ale_linters = {
-  \ 'python': ['flake8', 'pylint'],
   \ 'javascript': ['eslint'],
+  \ 'python': ['flake8', 'pylint'],
   \ 'typescript': ['tslint'],
-  \ 'vue': ['eslint'],
   \ 'vim': ['vint'],
 \ }
 
 " Compatible fixers
 let g:ale_fixers = {
-  \ 'html': ['prettier'],
-  \ 'scss': ['prettier'],
   \ 'css': ['prettier'],
+  \ 'html': ['prettier'],
   \ 'javascript': ['prettier', 'eslint'],
-  \ 'typescript': ['prettier', 'tslint'],
-  \ 'vue': ['prettier', 'eslint'],
+  \ 'php': ['prettier'],
   \ 'python': ['black'],
+  \ 'ruby': ['prettier'],
+  \ 'scss': ['prettier'],
+  \ 'typescript': ['prettier', 'tslint'],
 \ }
 
 " Airline extension
