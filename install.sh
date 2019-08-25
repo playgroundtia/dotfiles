@@ -324,10 +324,12 @@ case "$(uname)" in
       vlc
 
     ############################################################################
-    # Transmission
+    # Deluge
     ############################################################################
+    sudo add-apt-repository -y ppa:deluge-team/stable
+    sudo apt update
     sudo apt install -y \
-      transmission
+      deluge
 
     ############################################################################
     # Steam
