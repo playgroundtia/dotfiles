@@ -523,6 +523,15 @@ case "$(uname)" in
       snes9x
 
     ############################################################################
+    # QCMA
+    ############################################################################
+    curl -fsSL https://download.opensuse.org/repositories/home:codestation/xUbuntu_18.04/Release.key | sudo apt-key add -
+    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/codestation/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/qcma.list
+    sudo apt update
+    sudo apt install -y \
+      qcma
+
+    ############################################################################
     # Drivers
     ############################################################################
     # Mesa
