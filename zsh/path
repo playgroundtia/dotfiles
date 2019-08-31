@@ -22,5 +22,8 @@ case "$(uname)" in
 
     # Python
     export PATH="$HOME/Library/Python/3.7/bin:$PATH"
+
+    # Ruby
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
   ;;
 esac

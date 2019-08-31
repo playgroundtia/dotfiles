@@ -338,12 +338,6 @@ case "$(uname)" in
       steam
 
     ############################################################################
-    # Filezilla
-    ############################################################################
-    sudo apt install -y \
-      filezilla
-
-    ############################################################################
     # Asciinema
     ############################################################################
     sudo apt install -y \
@@ -591,10 +585,12 @@ case "$(uname)" in
     ############################################################################
     # Taps
     ############################################################################
-    brew tap caskroom/cask
     brew tap buo/cask-upgrade
+    brew tap caskroom/cask
     brew tap caskroom/drivers
     brew tap caskroom/fonts
+    brew tap neomutt/homebrew-neomutt
+    brew tap universal-ctags/universal-ctags
 
     ############################################################################
     # Bottles
@@ -610,10 +606,9 @@ case "$(uname)" in
       htop \
       lynx \
       mas \
-      mc \
       moreutils \
       neofetch \
-      neomutt/homebrew-neomutt/neomutt \
+      neovim \
       nodejs \
       openssl \
       python3 \
@@ -624,7 +619,6 @@ case "$(uname)" in
       shellcheck \
       terraform \
       tmux \
-      universal-ctags \
       urlview \
       vim \
       wget \
@@ -632,23 +626,23 @@ case "$(uname)" in
       zlib \
       zsh
 
+    brew install --HEAD universal-ctags
+
     ############################################################################
     # Casks
     ############################################################################
     brew cask install \
-      atom \
       authy \
       coconutbattery \
       dbeaver-community \
+      deluge \
       docker \
       dropbox \
-      filezilla \
       firefox \
       flixtools \
       folx \
       font-hack-nerd-font \
       google-chrome \
-      intellij-idea-ce \
       itau \
       iterm2 \
       java \
@@ -658,25 +652,20 @@ case "$(uname)" in
       opera \
       plex-media-server \
       robo-3t \
-      silicon-labs-vcp-driver \
       sizeup \
       soda-player \
       spotify \
       steam \
-      sublime-text \
-      transmission \
       vagrant \
       virtualbox \
-      visual-studio-code \
-      vlc \
-      wch-ch34x-usb-serial-driver
+      vlc
 
     ############################################################################
     # iTerm 2
     ############################################################################
     curl -fLo \
       "/tmp/gruvbox-dark.itermcolors" \
-      --create-dirs https://github.com/morhetz/gruvbox-contrib/blob/master/iterm2/gruvbox-dark.itermcolors
+      --create-dirs https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/iterm2/gruvbox-dark.itermcolors
     open "/tmp/gruvbox-dark.itermcolors"
 
     ############################################################################
@@ -684,9 +673,6 @@ case "$(uname)" in
     ############################################################################
     # Amphetamine
     mas install 937984704
-
-    # Valentina Studio
-    mas install 604825918
 
     # Clean My Drive 2
     mas install 523620159
