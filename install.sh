@@ -633,6 +633,7 @@ case "$(uname)" in
     ############################################################################
     brew cask install \
       authy \
+      bartender \
       coconutbattery \
       dbeaver-community \
       deluge \
@@ -643,6 +644,7 @@ case "$(uname)" in
       folx \
       font-hack-nerd-font \
       google-chrome \
+      istat-menus \
       itau \
       iterm2 \
       java \
