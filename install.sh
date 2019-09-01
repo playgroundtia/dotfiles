@@ -644,6 +644,7 @@ case "$(uname)" in
       folx \
       font-hack-nerd-font \
       google-chrome \
+      intel-power-gadget \
       istat-menus \
       itau \
       iterm2 \
@@ -787,6 +788,7 @@ ln -s ~/.dotfiles/vim ~/.vim
 if [ -d ~/.config/nvim ] || [ -h ~/.config/nvim ]; then
   mv ~/.config/nvim /tmp/nvim-old
 fi
+mkdir ~/.config
 ln -s ~/.dotfiles/vim ~/.config/nvim
 
 if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
