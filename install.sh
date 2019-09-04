@@ -652,6 +652,7 @@ case "$(uname)" in
       keka \
       macvim \
       mysqlworkbench \
+      openoffice \
       opera \
       plex-media-server \
       robo-3t \
