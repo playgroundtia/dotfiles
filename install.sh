@@ -661,6 +661,7 @@ case "$(uname)" in
       steam \
       vagrant \
       virtualbox \
+      virtualbox-extension-pack \
       vlc
 
     ############################################################################
