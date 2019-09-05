@@ -634,11 +634,14 @@ case "$(uname)" in
     brew cask install \
       authy \
       bartender \
+      cheatsheet \
+      cloudapp \
       coconutbattery \
       dbeaver-community \
       deluge \
       docker \
       dropbox \
+      evernote \
       firefox \
       flixtools \
       folx \
@@ -650,6 +653,8 @@ case "$(uname)" in
       iterm2 \
       java \
       keka \
+      lastpass \
+      mactracker \
       macvim \
       mysqlworkbench \
       openoffice \
@@ -657,13 +662,16 @@ case "$(uname)" in
       plex-media-server \
       robo-3t \
       sizeup \
+      slack \
       soda-player \
       spotify \
       steam \
+      telegram-desktop \
       vagrant \
       virtualbox \
       virtualbox-extension-pack \
-      vlc
+      vlc \
+      whatsapp
 
     ############################################################################
     # iTerm 2
@@ -684,6 +692,9 @@ case "$(uname)" in
 
     # Todoist
     mas install 585829637
+
+    # Twitter
+    mas install 409789998
 
     ############################################################################
     # Hostname
