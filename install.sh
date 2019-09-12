@@ -532,6 +532,15 @@ case "$(uname)" in
       qcma
 
     ############################################################################
+    # Keybase
+    ############################################################################
+    curl -fLo \
+      "/tmp/keybase.deb" \
+      --create-dirs https://prerelease.keybase.io/keybase_amd64.deb
+    sudo apt install -y \
+      /tmp/keybase.deb
+
+    ############################################################################
     # Drivers
     ############################################################################
     # Mesa
@@ -659,6 +668,7 @@ case "$(uname)" in
       iterm2 \
       java \
       keka \
+      keybase \
       lastpass \
       mactracker \
       macvim \
