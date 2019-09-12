@@ -220,6 +220,15 @@ case "$(uname)" in
     sudo apt install \
       universal-ctags
 
+    ################################################################################
+    # Visual Studio Code
+    ################################################################################
+    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    echo -e "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+    sudo apt update
+    sudo apt install -y \
+      code
+
     ############################################################################
     # Terraform
     ############################################################################
@@ -686,6 +695,7 @@ case "$(uname)" in
       vagrant \
       virtualbox \
       virtualbox-extension-pack \
+      visual-studio-code \
       vlc \
       whatsapp
 
