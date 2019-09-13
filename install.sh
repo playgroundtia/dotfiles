@@ -557,6 +557,15 @@ case "$(uname)" in
     sudo mv /tmp/eksctl /usr/local/bin
 
     ############################################################################
+    # Kubectl
+    ############################################################################
+    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    echo -e "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+    sudo apt update
+    sudo apt install -y \
+      kubectl
+
+    ############################################################################
     # Drivers
     ############################################################################
     # Mesa
@@ -637,6 +646,7 @@ case "$(uname)" in
       git \
       gpg \
       htop \
+      kubernetes-cli \
       lynx \
       mas \
       moreutils \
