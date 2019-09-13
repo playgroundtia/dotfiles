@@ -550,6 +550,13 @@ case "$(uname)" in
       /tmp/keybase.deb
 
     ############################################################################
+    # Eksctl
+    ############################################################################
+    curl --silent --location \
+      "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+    sudo mv /tmp/eksctl /usr/local/bin
+
+    ############################################################################
     # Drivers
     ############################################################################
     # Mesa
@@ -615,6 +622,7 @@ case "$(uname)" in
     brew tap caskroom/fonts
     brew tap neomutt/homebrew-neomutt
     brew tap universal-ctags/universal-ctags
+    brew tap weaveworks/tap
 
     ############################################################################
     # Bottles
@@ -624,6 +632,7 @@ case "$(uname)" in
       cmake \
       coreutils \
       curl \
+      eksctl \
       findutils \
       git \
       gpg \
@@ -763,9 +772,10 @@ sudo yarn global add \
 ################################################################################
 # Python config / packages
 ################################################################################
-pip3 install --user \
-  pipenv \
+pip3 install --upgrade --user \
+  awscli \
   black \
+  pipenv \
   vim-vint
 
 ################################################################################
