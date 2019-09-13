@@ -560,10 +560,24 @@ case "$(uname)" in
     # Kubectl
     ############################################################################
     curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    echo -e "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+    echo -e "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
     sudo apt update
     sudo apt install -y \
       kubectl
+
+    ############################################################################
+    # Helm
+    ############################################################################
+    sudo snap install helm --classic
+
+    ############################################################################
+    # Albert
+    ############################################################################
+    curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key | sudo apt-key add -
+    echo -e "deb  [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+    sudo apt update
+    sudo apt install -y \
+      albert
 
     ############################################################################
     # Drivers
@@ -647,6 +661,7 @@ case "$(uname)" in
       gpg \
       htop \
       kubernetes-cli \
+      kubernetes-helm \
       lynx \
       mas \
       moreutils \
