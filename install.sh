@@ -577,6 +577,14 @@ case "$(uname)" in
     sudo snap install helm --classic
 
     ############################################################################
+    # Minikube
+    ############################################################################
+    sudo curl -fLo \
+      "/usr/local/bin/minikube" \
+      --create-dirs https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    sudo chmod +x /usr/local/bin/minikube
+
+    ############################################################################
     # Albert
     ############################################################################
     curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key | sudo apt-key add -
@@ -721,6 +729,7 @@ case "$(uname)" in
       lastpass \
       mactracker \
       macvim \
+      minikube \
       mysqlworkbench \
       openoffice \
       opera \
