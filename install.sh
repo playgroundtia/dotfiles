@@ -155,7 +155,7 @@ case "$(uname)" in
       mailspring
 
     ############################################################################
-    # VirtualBox / Vagrant
+    # VirtualBox
     ############################################################################
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
@@ -165,6 +165,12 @@ case "$(uname)" in
       virtualbox-6.0
     sudo adduser "$USER" vboxusers
 
+    ############################################################################
+    # Vagrant
+    ############################################################################
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key AD319E0F7CFFA38B4D9F6E55CE3F3DE92099F7A4
+    echo -e "deb [arch=amd64] https://vagrant-deb.linestarve.com/ any main" | sudo tee /etc/apt/sources.list.d/vagrant.list
+    sudo apt update
     sudo apt install -y \
       vagrant
 
