@@ -161,27 +161,18 @@ set nomodeline
 " Clipboard
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
-elseif s:uname ==# 'Darwin'
-  map <leader>y :w !pbcopy<CR>
-  map <leader>p :r !pbpaste<CR>
-elseif s:uname ==# 'Linux'
-  map <leader>y :w !xsel -i -b<CR>
-  map <leader>p :r !xsel -p<CR>
 endif
 
-" Terminal
-if exists('$TMUX')
-  if has('nvim')
-      set termguicolors
-  else
-      set term=screen-256color
-  endif
-endif
+" Improves redrawing for newer computers
+set ttyfast
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM ==# 'gnome-terminal'
-    set t_Co=256
-endif
+" Make Vim faster
+set lazyredraw
+set regexpengine=1
+
+"
+" Use (much) stronger blowfish2 encryption
+set cryptmethod=blowfish2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
@@ -215,6 +206,18 @@ if has('gui_running')
   " Maximize window
   set lines=999
   set columns=999
+else
+  if exists('$TMUX')
+    if has('nvim')
+        set termguicolors
+    else
+        set term=screen-256color
+    endif
+  endif
+
+  if $COLORTERM ==# 'gnome-terminal'
+      set t_Co=256
+  endif
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
