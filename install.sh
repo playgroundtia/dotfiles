@@ -33,6 +33,7 @@ case "$(uname)" in
       apt-transport-https \
       curl \
       git \
+      snapd \
       software-properties-common \
       tmux \
       ubuntu-restricted-extras \
