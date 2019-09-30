@@ -122,6 +122,16 @@ case "$(uname)" in
       ruby-full
 
     ############################################################################
+    # Erlang / Elixir
+    ############################################################################
+    curl -fsSL https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -
+    sudo add-apt-repository -y "deb [arch=amd64] https://packages.erlang-solutions.com/ubuntu $(lsb_release -cs) contrib"
+    sudo apt update
+    sudo apt install -y \
+      elixir \
+      erlang
+
+    ############################################################################
     # Spotify
     ############################################################################
     curl -fsSL https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
@@ -664,6 +674,8 @@ case "$(uname)" in
       coreutils \
       curl \
       eksctl \
+      elixir \
+      erlang \
       findutils \
       git \
       gpg \
