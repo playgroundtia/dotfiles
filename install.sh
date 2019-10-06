@@ -541,10 +541,12 @@ case "$(uname)" in
     ############################################################################
     # Retro games and emulators
     ############################################################################
+    sudo add-apt-repository ppa:samoilov-lex/gamemode
     sudo add-apt-repository -y ppa:samoilov-lex/retrogames
     sudo apt update
     sudo apt install -y \
       citra \
+      gamemode \
       ioquake3 \
       mgba-sdl \
       ppsspp \
@@ -553,7 +555,7 @@ case "$(uname)" in
       residualvm \
       retroarch \
       scummvm \
-      snes9x
+      snes9x \
 
     ############################################################################
     # QCMA
