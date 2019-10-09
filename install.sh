@@ -274,7 +274,8 @@ case "$(uname)" in
       gnome-screensaver \
       gnome-shell-extensions \
       gnome-sushi \
-      gnome-tweak-tool
+      gnome-tweak-tool \
+      network-manager-openvpn
 
     ############################################################################
     # VeraCrypt
