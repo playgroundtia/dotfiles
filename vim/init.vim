@@ -104,7 +104,6 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/LargeFile'
 
 call plug#end()
 
@@ -161,17 +160,6 @@ set nomodeline
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
 endif
-
-" Improves redrawing for newer computers
-set ttyfast
-
-" Make Vim faster
-set lazyredraw
-set regexpengine=1
-
-"
-" Use (much) stronger blowfish2 encryption
-set cryptmethod=blowfish2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
