@@ -244,6 +244,15 @@ case "$(uname)" in
     sudo apt install \
       universal-ctags
 
+    ############################################################################
+    # Sublime Text 3
+    ############################################################################
+    curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    echo "deb [arch=amd64] https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    sudo apt-get update
+    sudo apt-get install -y \
+      sublime-text
+
     ################################################################################
     # Visual Studio Code
     ################################################################################
@@ -750,6 +759,7 @@ case "$(uname)" in
       soda-player \
       spotify \
       steam \
+      sublime-text \
       telegram-desktop \
       vagrant \
       virtualbox \
@@ -805,6 +815,19 @@ fi
 git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
 cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
+
+################################################################################
+# Sublime Text 3 packages
+################################################################################
+if [[ "$(uname)" == "Linux" ]]; then
+  curl -fLo \
+    "$HOME/.config/sublime-text-3/Installed\ Packages\ Package\ Control.sublime-package" \
+    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
+elif [[ "$(uname)" == "Darwin" ]]; then
+  curl -fLo \
+    "$HOME/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages\ Package\ Control.sublime-package" \
+    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
+fi
 
 ################################################################################
 # Node.js config / packages
