@@ -153,12 +153,23 @@ noremap <Right> <NOP>
 " Use Unix as the standard file type
 set fileformats=unix,dos,mac
 
-" Don't parse modelines
-set nomodeline
-
 " Clipboard
 if has('clipboard')
   set clipboard^=unnamed,unnamedplus
+endif
+
+" Disable modelines
+set nomodeline
+
+" Disable backups
+set nobackup
+
+" Disable swap files
+set noswapfile
+
+" Disable noundo
+if !has('nvim')
+  set noundo
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
