@@ -167,10 +167,8 @@ set nobackup
 " Disable swap files
 set noswapfile
 
-" Disable noundo
-if !has('nvim')
-  set noundo
-endif
+" Disable persistent undo
+set noundofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Aliases
