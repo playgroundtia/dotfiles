@@ -207,16 +207,17 @@ case "$(uname)" in
       mysql-workbench
 
     ############################################################################
-    # Vim / gVim / Neovim / Plugins dependencies
-    ############################################################################
     # Vim / gVim
+    ############################################################################
     sudo add-apt-repository -y ppa:jonathonf/vim
     sudo apt update
     sudo apt install -y \
       vim \
       vim-gnome
 
+    ############################################################################
     # Neovim
+    ############################################################################
     sudo add-apt-repository -y ppa:neovim-ppa/stable
     sudo apt update
     sudo apt install -y \
@@ -226,19 +227,25 @@ case "$(uname)" in
       python3-pip \
       neovim
 
+    ############################################################################
     # YouCompleteMe
+    ############################################################################
     sudo apt install -y \
       build-essential \
       cmake \
       python3-dev
 
-    # CtrlP
+    ############################################################################
+    # Ripgrep
+    ############################################################################
     sudo add-apt-repository -y ppa:x4121/ripgrep
     sudo apt update
     sudo apt install \
       ripgrep
 
-    # Tagbar
+    ############################################################################
+    # Universal ctags
+    ############################################################################
     sudo add-apt-repository -y ppa:hnakamur/universal-ctags
     sudo apt update
     sudo apt install \
