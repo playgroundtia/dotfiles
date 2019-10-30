@@ -34,13 +34,14 @@ Plug 'tmux-plugins/vim-tmux'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'RRethy/vim-illuminate'
 Plug 'inside/vim-search-pulse'
+Plug 'itchyny/lightline.vim'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
+Plug 'maximbaz/lightline-ale'
 Plug 'morhetz/gruvbox'
 Plug 'myusuf3/numbers.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'vim-scripts/CursorLineCurrentWindow'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,7 +187,6 @@ nmap <leader>w :w!<cr>
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme gruvbox
-let g:airline_theme='gruvbox'
 set background=dark
 
 if has('gui_running')
@@ -202,18 +202,9 @@ if has('gui_running')
   " Maximize window
   set lines=999
   set columns=999
-else
-  if exists('$TMUX')
-    if has('nvim')
-        set termguicolors
-    else
-        set term=screen-256color
-    endif
-  endif
-
-  if $COLORTERM ==# 'gnome-terminal'
-      set t_Co=256
-  endif
+elseif has('nvim') || has('termguicolors')
+  " Enable true colors
+  set termguicolors
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -248,14 +239,50 @@ let g:NERDTreeIgnore = [
 \ ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
+" Lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use powerline fonts
-let g:airline_powerline_fonts = 1
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \   ],
+  \   'right': [
+  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
+  \   ]
+  \ },
+	\ 'component': {
+	\   'lineinfo': ' %3l:%-2v',
+	\ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head',
+  \ },
+  \ 'separator': {
+	\   'left': '', 'right': ''
+  \ },
+  \ 'subseparator': {
+	\   'left': '', 'right': ''
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_ok': 'lightline#ale#ok'
+  \ },
+  \ 'component_type': {
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'left',
+  \ }
+\ }
 
-" Tabs extension
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+" Ale icons
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale
@@ -291,9 +318,6 @@ let g:ale_fixers = {
   \ 'scss': ['prettier'],
   \ 'typescript': ['prettier', 'tslint'],
 \ }
-
-" Airline extension
-let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
