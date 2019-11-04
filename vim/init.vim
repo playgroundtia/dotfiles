@@ -202,7 +202,7 @@ if has('gui_running')
   " Maximize window
   set lines=999
   set columns=999
-elseif has('nvim') || has('termguicolors')
+elseif has('nvim')
   " Enable true colors
   set termguicolors
 endif
