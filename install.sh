@@ -711,6 +711,7 @@ case "$(uname)" in
       git \
       gpg \
       htop \
+      keychain \
       kubernetes-cli \
       kubernetes-helm \
       lynx \
