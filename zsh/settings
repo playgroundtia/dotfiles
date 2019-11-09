@@ -34,4 +34,42 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="dd/mm/yyyy"
-plugins=(gpg-agent ssh-agent tmux vi-mode)
+plugins=(
+  docker
+  docker-compose
+  docker-machine
+  dotenv
+  gem
+  git
+  github
+  gpg-agent
+  gulp
+  helm
+  heroku
+  iterm2
+  keychain
+  kubectl
+  minikube
+  node
+  npm
+  npx
+  osx
+  pip
+  pipenv
+  postgres
+  python
+  redis-cli
+  ripgrep
+  rsync
+  ssh-agent
+  sublime
+  sudo
+  terraform
+  tmux
+  ubuntu
+  vagrant
+  vi-mode
+  vscode
+  xcode
+  yarn
+)
