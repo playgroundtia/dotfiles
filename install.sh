@@ -396,12 +396,10 @@ case "$(uname)" in
       vlc
 
     ############################################################################
-    # Deluge
+    # Transmission
     ############################################################################
-    sudo add-apt-repository -y ppa:deluge-team/stable
-    sudo apt update
     sudo apt install -y \
-      deluge
+      transmission
 
     ############################################################################
     # Steam
@@ -852,7 +850,9 @@ fi
 # Node.js config / packages
 ################################################################################
 sudo yarn global add \
+  create-react-app \
   eslint \
+  tslint \
   fkill-cli \
   neovim \
   ngrok \
