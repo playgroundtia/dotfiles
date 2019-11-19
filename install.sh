@@ -633,10 +633,19 @@ case "$(uname)" in
     # Albert
     ############################################################################
     curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key | sudo apt-key add -
-    echo -e "deb  [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
     sudo apt update
     sudo apt install -y \
       albert
+
+    ############################################################################
+    # Etcher
+    ############################################################################
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key 379CE192D401AB61
+    echo -e "deb [arch=amd64] https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
+    sudo apt update
+    sudo apt install -y \
+      balena-etcher-electron
 
     ############################################################################
     # Drivers
@@ -741,6 +750,7 @@ case "$(uname)" in
     ############################################################################
     brew cask install \
       authy \
+      balenaetcher \
       bartender \
       cheatsheet \
       cloudapp \
