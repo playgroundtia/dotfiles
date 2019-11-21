@@ -83,12 +83,6 @@ case "$(uname)" in
       zip
 
     ############################################################################
-    # Keychain
-    ############################################################################
-    sudo apt install -y \
-      keychain
-
-    ############################################################################
     # Docker
     ############################################################################
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -713,10 +707,9 @@ case "$(uname)" in
       findutils \
       git \
       gpg \
+      helm \
       htop \
-      keychain \
       kubernetes-cli \
-      kubernetes-helm \
       lynx \
       mas \
       moreutils \
