@@ -158,15 +158,6 @@ case "$(uname)" in
       firefox
 
     ############################################################################
-    # Opera
-    ############################################################################
-    curl -fsSL https://deb.opera.com/archive.key | sudo apt-key add -
-    echo -e "deb [arch=amd64] https://deb.opera.com/opera-stable/ stable non-free" | sudo tee /etc/apt/sources.list.d/opera-stable.list
-    sudo apt update
-    sudo apt install -y \
-      opera-stable
-
-    ############################################################################
     # Thunderbird
     ############################################################################
     sudo apt install -y \
@@ -428,14 +419,6 @@ case "$(uname)" in
       tlp
 
     ############################################################################
-    # Touchpad Indicator
-    ############################################################################
-    sudo add-apt-repository -y ppa:atareao/atareao
-    sudo apt-get update
-    sudo apt-get install -y \
-      touchpad-indicator
-
-    ############################################################################
     # Gimp
     ############################################################################
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
@@ -595,44 +578,6 @@ case "$(uname)" in
       /tmp/keybase.deb
 
     ############################################################################
-    # Eksctl
-    ############################################################################
-    curl --silent --location \
-      "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-    sudo mv /tmp/eksctl /usr/local/bin
-
-    ############################################################################
-    # Kubectl
-    ############################################################################
-    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    echo -e "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-    sudo apt update
-    sudo apt install -y \
-      kubectl
-
-    ############################################################################
-    # Helm
-    ############################################################################
-    sudo snap install helm --classic
-
-    ############################################################################
-    # Minikube
-    ############################################################################
-    sudo curl -fLo \
-      "/usr/local/bin/minikube" \
-      --create-dirs https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    sudo chmod +x /usr/local/bin/minikube
-
-    ############################################################################
-    # Albert
-    ############################################################################
-    curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key | sudo apt-key add -
-    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
-    sudo apt update
-    sudo apt install -y \
-      albert
-
-    ############################################################################
     # Etcher
     ############################################################################
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key 379CE192D401AB61
@@ -701,13 +646,11 @@ case "$(uname)" in
       cmake \
       coreutils \
       curl \
-      eksctl \
       elixir \
       erlang \
       findutils \
       git \
       gpg \
-      helm \
       htop \
       kubernetes-cli \
       lynx \
@@ -764,10 +707,8 @@ case "$(uname)" in
       lastpass \
       mactracker \
       macvim \
-      minikube \
       mysqlworkbench \
       openoffice \
-      opera \
       plex-media-server \
       robo-3t \
       sizeup \
