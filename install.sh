@@ -164,6 +164,11 @@ case "$(uname)" in
       thunderbird
 
     ############################################################################
+    # Skype
+    ############################################################################
+    sudo snap install skype --classic
+
+    ############################################################################
     # VirtualBox
     ############################################################################
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
@@ -688,7 +693,6 @@ case "$(uname)" in
       cloudapp \
       coconutbattery \
       dbeaver-community \
-      deluge \
       docker \
       dropbox \
       evernote \
@@ -712,12 +716,14 @@ case "$(uname)" in
       plex-media-server \
       robo-3t \
       sizeup \
+      skype \
       slack \
       soda-player \
       spotify \
       steam \
       sublime-text \
       telegram-desktop \
+      transmission \
       vagrant \
       virtualbox \
       virtualbox-extension-pack \

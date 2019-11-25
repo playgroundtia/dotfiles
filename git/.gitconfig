@@ -147,3 +147,7 @@
 
   # Typo
   typo = commit -m "Fix typo"
+
+[credential]
+  # Cache credentials for 2 hours
+  helper = cache --timeout 7200
