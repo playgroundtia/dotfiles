@@ -11,6 +11,10 @@
   # GPG key ID
   signingkey = F0D1290BDE08BBF6
 
+[credential]
+  # Cache credentials for 2 hours
+  helper = cache --timeout 7200
+
 [core]
   # Global ignore
   excludesfile = ~/.dotfiles/git/.gitignore_global
@@ -148,6 +152,8 @@
   # Typo
   typo = commit -m "Fix typo"
 
-[credential]
-  # Cache credentials for 2 hours
-  helper = cache --timeout 7200
+  # Resolve conflict using ours
+  resolve-ours = !(grep -lr '<<<<<<<' . | xargs git checkout --ours)
+
+  # Resolve conflict using theirs
+  resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
