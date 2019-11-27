@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -ex
-
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -93,15 +92,16 @@ case "$(uname)" in
     sudo usermod -a -G docker "$USER"
 
     ############################################################################
-    # Node.js / Yarn
-    ############################################################################
     # Node.js
+    ############################################################################
     curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     sudo apt update
     sudo apt install -y \
       nodejs
 
+    ############################################################################
     # Yarn
+    ############################################################################
     curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo -e "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo apt update
@@ -197,44 +197,27 @@ case "$(uname)" in
       dbeaver-ce
 
     ############################################################################
-    # MySQL Workbench
-    ############################################################################
-    sudo apt install -y \
-      mysql-workbench
-
-    ############################################################################
     # Robo 3T
     ############################################################################
     sudo snap install robo3t-snap
 
     ############################################################################
-    # Vim / gVim
+    # Vim, gVim and nVim
     ############################################################################
     sudo add-apt-repository -y ppa:jonathonf/vim
-    sudo apt update
-    sudo apt install -y \
-      vim \
-      vim-gnome
-
-    ############################################################################
-    # Neovim
-    ############################################################################
     sudo add-apt-repository -y ppa:neovim-ppa/stable
     sudo apt update
     sudo apt install -y \
+      build-essential \
+      cmake \
+      neovim \
       python-dev \
       python-pip \
       python3-dev \
+      python3-dev \
       python3-pip \
-      neovim
-
-    ############################################################################
-    # YouCompleteMe
-    ############################################################################
-    sudo apt install -y \
-      build-essential \
-      cmake \
-      python3-dev
+      vim \
+      vim-gnome
 
     ############################################################################
     # Ripgrep
@@ -269,15 +252,6 @@ case "$(uname)" in
     sudo apt update
     sudo apt install -y \
       code
-
-    ############################################################################
-    # Terraform
-    ############################################################################
-    curl -fsSL https://tjend.github.io/repo_terraform/repo_terraform.key | sudo apt-key add -
-    echo -e "deb [arch=amd64] https://tjend.github.io/repo_terraform stable main" | sudo tee /etc/apt/sources.list.d/terraform.list
-    sudo apt update
-    sudo apt install -y \
-      terraform
 
     ############################################################################
     # Postman
@@ -350,28 +324,9 @@ case "$(uname)" in
     sudo apt install -y \
       tilix
 
-    # Gruvbox
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-dark-hard.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-hard.json
     curl -fLo \
       "$HOME/.config/tilix/schemes/gruvbox-dark-medium.json" \
       --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-medium.json
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-dark-soft.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-soft.json
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-dark.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark.json
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-light-hard.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-hard.json
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-light-medium.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-medium.json
-    curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-light-soft.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-light-soft.json
 
     ############################################################################
     # Conky
@@ -390,12 +345,6 @@ case "$(uname)" in
     ############################################################################
     sudo apt install -y \
       transmission
-
-    ############################################################################
-    # Steam
-    ############################################################################
-    sudo apt install -y \
-      steam
 
     ############################################################################
     # Asciinema
@@ -445,34 +394,6 @@ case "$(uname)" in
       inkscape
 
     ############################################################################
-    # Krita
-    ############################################################################
-    sudo add-apt-repository -y ppa:kritalime/ppa
-    sudo apt update
-    sudo apt install -y \
-      krita \
-      krita-l10n \
-      krita-nautilus-thumbnailer
-
-    ############################################################################
-    # Shotcut
-    ############################################################################
-    sudo add-apt-repository -y ppa:haraldhv/shotcut
-    sudo apt update
-    sudo apt install -y \
-      shotcut
-
-    ############################################################################
-    # Blender
-    ############################################################################
-    sudo add-apt-repository -y ppa:thomas-schiex/blender
-    sudo apt update
-    sudo apt install -y \
-      blender \
-      nvidia-modprobe
-    sudo adduser "$USER" video
-
-    ############################################################################
     # My Weather Indicator
     ############################################################################
     sudo add-apt-repository -y ppa:atareao/atareao
@@ -487,67 +408,10 @@ case "$(uname)" in
       caffeine
 
     ############################################################################
-    # Stacer
+    # Games
     ############################################################################
-    sudo add-apt-repository -y ppa:oguzhaninan/stacer
-    sudo apt update
-    sudo apt install -y \
-      stacer
-
-    ############################################################################
-    # Handbrake
-    ############################################################################
-    sudo add-apt-repository -y ppa:stebbins/handbrake-releases
-    sudo apt update
-    sudo apt install -y \
-      handbrake-cli \
-      handbrake-gtk
-
-    ############################################################################
-    # Brasero
-    ############################################################################
-    sudo apt install -y \
-      brasero
-
-    ############################################################################
-    # Okular
-    ############################################################################
-    sudo apt install -y \
-      okular
-
-    ############################################################################
-    # uGet
-    ############################################################################
-    sudo add-apt-repository -y ppa:plushuang-tw/uget-stable
-    sudo apt update
-    sudo apt install -y \
-      uget
-
-    ############################################################################
-    # Shutter
-    ############################################################################
-    sudo apt install -y \
-      shutter
-
-    ############################################################################
-    # Peek
-    ############################################################################
-    sudo add-apt-repository -y ppa:peek-developers/stable
-    sudo apt update
-    sudo apt install -y \
-      peek
-
-    ############################################################################
-    # Diodon
-    ############################################################################
-    sudo add-apt-repository -y ppa:diodon-team/stable
-    sudo apt update
-    sudo apt install -y \
-      diodon
-
-    ############################################################################
-    # Retro games and emulators
-    ############################################################################
+    curl -fsSL https://download.opensuse.org/repositories/home:codestation/xUbuntu_18.04/Release.key | sudo apt-key add -
+    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/codestation/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/qcma.list
     sudo add-apt-repository -y ppa:samoilov-lex/gamemode
     sudo add-apt-repository -y ppa:samoilov-lex/retrogames
     sudo apt update
@@ -557,21 +421,14 @@ case "$(uname)" in
       ioquake3 \
       mgba-sdl \
       ppsspp \
+      qcma \
       reicast \
       reicast-joyconfig \
       residualvm \
       retroarch \
       scummvm \
-      snes9x
-
-    ############################################################################
-    # QCMA
-    ############################################################################
-    curl -fsSL https://download.opensuse.org/repositories/home:codestation/xUbuntu_18.04/Release.key | sudo apt-key add -
-    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/codestation/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/qcma.list
-    sudo apt update
-    sudo apt install -y \
-      qcma
+      snes9x \
+      steam
 
     ############################################################################
     # Keybase
@@ -606,8 +463,8 @@ case "$(uname)" in
     # Routines
     ############################################################################
     # fstrim
-    echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.daily/fstrim
-    echo -e "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.daily/fstrim
+    echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.hourly/fstrim
+    echo -e "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.hourly/fstrim
     sudo chmod +x /etc/cron.daily/fstrim
 
     # apt
@@ -623,9 +480,9 @@ case "$(uname)" in
     ############################################################################
     # xCode
     ############################################################################
-    xcode-select -p || exit 1
-    sudo xcodebuild -license accept
-    sudo xcode-select --install
+    # xcode-select -p || exit 1
+    # sudo xcodebuild -license accept
+    # sudo xcode-select --install
 
     ############################################################################
     # Homebrew
@@ -671,7 +528,6 @@ case "$(uname)" in
       ripgrep \
       ruby \
       shellcheck \
-      terraform \
       tmux \
       urlview \
       vim \
@@ -711,7 +567,6 @@ case "$(uname)" in
       lastpass \
       mactracker \
       macvim \
-      mysqlworkbench \
       openoffice \
       plex-media-server \
       robo-3t \
