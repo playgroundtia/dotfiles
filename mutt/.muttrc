@@ -1,25 +1,16 @@
 # -*- muttrc -*-
 
-# Folder hooks
-folder-hook "account.com.gmail.gustavocfranco" "~/.mutt/accounts/com.gmail.gustavocfranco/config"
-folder-hook "account.com.icloud.gufranco" "source ~/.mutt/accounts/com.icloud.gufranco/config"
-folder-hook "account.com.live.gufranco" "source ~/.mutt/accounts/com.live.gufranco/config"
+# Account
+folder-hook "account.com.gmail.gustavocfranco" "~/.mutt/account/config"
+source ~/.mutt/account/config
 
-# Default account
-source ~/.mutt/accounts/com.gmail.gustavocfranco/config
-
-# Macros for switching accounts
-macro index <f2> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.gmail.gustavocfranco/config<enter><change-folder>!<enter>"
-macro index <f3> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.live.gufranco/config<enter><change-folder>!<enter>"
-macro index <f4> "<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/com.icloud.gufranco/config<enter><change-folder>!<enter>"
-
-# Editor config
+# Editor
 set charset = "utf-8"
 set editor = "vim -u NONE -c 'set nocompatible tw=72 ft=mail noautoindent fo=aw cursorline number'"
 
 # Status bar
 set status_chars  = " *%A"
-set status_format = "───[ Pasta: %f ]───[%r%m mensagens%?n? (%n novas)?%?d? (%d para deletar)?%?t? (%t marcadas)? ]───%>─%?p?( %p adiadas )?───"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
 # Sidebar
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
