@@ -134,6 +134,16 @@ case "$(uname)" in
       erlang
 
     ############################################################################
+    # Golang
+    ############################################################################
+    sudo add-apt-repository -y ppa:longsleep/golang-backports
+    sudo add-apt-repository -y ppa:gophers/archive
+    sudo apt update
+    sudo apt install -y \
+      golang-go \
+      godep
+
+    ############################################################################
     # Spotify
     ############################################################################
     curl -fsSL https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
