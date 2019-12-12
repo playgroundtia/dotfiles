@@ -464,7 +464,6 @@ case "$(uname)" in
     sudo add-apt-repository -y ppa:oibaf/graphics-drivers
     sudo add-apt-repository -y ppa:graphics-drivers/ppa
     sudo apt update
-    sudo apt upgrade -y
     sudo apt install -y \
       mesa-vulkan-drivers \
       vulkan-utils
