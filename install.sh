@@ -335,8 +335,8 @@ case "$(uname)" in
       tilix
 
     curl -fLo \
-      "$HOME/.config/tilix/schemes/gruvbox-dark-medium.json" \
-      --create-dirs https://raw.githubusercontent.com/MichaelThessel/tilix-gruvbox/master/gruvbox-dark-medium.json
+      "$HOME/.config/tilix/schemes/Dracula.json" \
+      --create-dirs https://raw.githubusercontent.com/dracula/tilix/master/Dracula.json
 
     ############################################################################
     # Conky
@@ -599,9 +599,9 @@ case "$(uname)" in
     # iTerm 2
     ############################################################################
     curl -fLo \
-      "/tmp/gruvbox-dark.itermcolors" \
-      --create-dirs https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/iterm2/gruvbox-dark.itermcolors
-    open "/tmp/gruvbox-dark.itermcolors"
+      "/tmp/Dracula.itermcolors" \
+      --create-dirs https://raw.githubusercontent.com/dracula/iterm/master/Dracula.itermcolors
+    open "/tmp/Dracula.itermcolors"
 
     ############################################################################
     # App Store

@@ -38,10 +38,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'lilydjwg/colorizer'
 Plug 'maximbaz/lightline-ale'
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'myusuf3/numbers.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'vim-scripts/CursorLineCurrentWindow'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,7 +185,7 @@ nmap <leader>w :w!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
+colorscheme dracula
 set background=dark
 
 if has('gui_running')
@@ -242,7 +241,7 @@ let g:NERDTreeIgnore = [
 " Lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'dracula',
   \ 'active': {
   \   'left': [
   \     [ 'mode', 'paste' ],

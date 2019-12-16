@@ -92,8 +92,7 @@ set mail_check = 60
 set mail_check_stats = yes
 
 # Theme
-source ~/.mutt/themes/gruvbox.muttrc
-source ~/.mutt/themes/gruvbox-extended.muttrc
+source ~/.mutt/themes/dracula.muttrc
 
 # Display version on startup
 push <show-version>
