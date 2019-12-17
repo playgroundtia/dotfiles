@@ -711,6 +711,8 @@ fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/themes/spaceship-prompt
+ln -s ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
 
 command -v zsh | sudo tee -a /etc/shells
 if [[ "$(uname)" == "Linux" ]]; then
