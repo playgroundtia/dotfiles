@@ -185,7 +185,11 @@ nmap <leader>w :w!<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme / GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme dracula
+try
+  colorscheme dracula
+catch
+  colorscheme desert
+endtry
 set background=dark
 
 if has('gui_running')
