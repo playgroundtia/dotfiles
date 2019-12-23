@@ -160,7 +160,7 @@ function postgresql-start() {
     -v "$HOME/Docker/Databases/PostgreSQL/Data:/var/lib/postgresql/data" \
     -v "$HOME/Docker/Databases/PostgreSQL/Dump:/dump" \
     --publish 5432:5432 \
-    postgres:11
+    postgres:12
 }
 
 function postgresql-stop() {
@@ -176,4 +176,39 @@ function postgresql-purge() {
 
 function postgresql-terminal() {
   docker exec -it postgresql /bin/bash
+}
+
+################################################################################
+# Couchbase
+################################################################################
+function couchbase-start() {
+  mkdir -p ~/Docker/Databases/Couchbase/Data
+  mkdir -p ~/Docker/Databases/Couchbase/Dump
+
+  docker run \
+    --detach \
+    --name couchbase \
+    --restart unless-stopped \
+    --env "POSTGRES_USER=root" \
+    --env "POSTGRES_PASSWORD=root" \
+    -v "$HOME/Docker/Databases/Couchbase/Data:/opt/couchbase/var" \
+    -v "$HOME/Docker/Databases/Couchbase/Dump:/dump" \
+    --publish 8091-8094:8091-8094 \
+    --publish 11210:11210 \
+    couchbase:community-6.0.0
+}
+
+function couchbase-stop() {
+  docker stop couchbase
+}
+
+function couchbase-purge() {
+  couchbase-stop
+  docker rm couchbase
+
+  sudo rm -rf ~/Docker/Databases/Couchbase/Data
+}
+
+function couchbase-terminal() {
+  docker exec -it couchbase /bin/bash
 }
