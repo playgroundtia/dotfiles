@@ -42,6 +42,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'myusuf3/numbers.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/CursorLineCurrentWindow'
+Plug 'wellle/context.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
@@ -349,52 +350,39 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JsDoc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle JsDoc
 map <leader>j :JsDoc<CR>
-
-" Enable ECMASCript 6 support
 let g:jsdoc_enable_es6 = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Multiple Cursors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quit from multicursor mode
 let g:multi_cursor_quit_key = '<Esc>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable default mappings
 let g:EasyMotion_do_mapping = 0
-
-" Jump to anywhere
 nmap f <Plug>(easymotion-overwin-f)
-
-" Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Carbon.now.sh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Query params
 let g:carbon_now_sh_options = 't=dracula&ln=true&fm=Hack'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Easyclip
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Place the cursor at the end
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WinResizer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle WinResizer
 map <leader>r :WinResizerStartResize<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ZoomWin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle ZoomWin
 map <leader>z :ZoomWin<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -414,3 +402,8 @@ nmap <leader>t :TagbarToggle<CR>
 " Supertab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:SuperTabDefaultCompletionType = '<c-n>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Context
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:context_enabled = 1
