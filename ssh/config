@@ -5,7 +5,6 @@ Host *
   ServerAliveInterval 120
   StrictHostKeyChecking ask
   Compression yes
-  ForwardX11 yes
   TCPKeepAlive yes
 
 ################################################################################
