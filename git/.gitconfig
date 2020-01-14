@@ -83,10 +83,7 @@
   # Commit shortcut
   ci = commit
 
-  # Signed commit shortcut
-  cis = commit -S
-
-  # Commit shortcut
+  # Checkout shortcut
   co = checkout
 
   # Less verbose status
@@ -102,13 +99,13 @@
   cd = checkout development
 
   # Push master
-  pm = push -u origin master
+  pm = !(git stash && git pull && git push -u origin master && git stash apply)
 
   # Push staging
-  ps = push -u origin staging
+  ps = !(git stash && git pull && git push -u origin staging && git stash apply)
 
   # Push development
-  pd = push -u origin development
+  pd = !(git stash && git pull && git push -u origin development && git stash apply)
 
   # Syncronize local branchs with remote
   fe = fetch origin
@@ -146,11 +143,8 @@
   # Branchs hier
   hier = log --all --graph --decorate --oneline --simplify-by-decoration
 
-  # Create a package <3
-  package = !tar --exclude=".git" --exclude="node_modules" -cvzf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tgz *
-
-  # Typo
-  typo = commit -m "Fix typo"
+  # Create a package
+  package = !(GZIP=-9 tar --exclude="./.git/" -zcvf ../$(basename "$PWD")_$(date +"%Y-%m-%d_%H-%M-%S").tar.gz *)
 
   # Resolve conflict using ours
   resolve-ours = !(grep -lr '<<<<<<<' . | xargs git checkout --ours)
