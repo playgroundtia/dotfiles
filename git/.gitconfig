@@ -80,12 +80,6 @@
   # Who am I? IT'S A ME, MARIO! :)
   me = config user.name
 
-  # Commit shortcut
-  ci = commit
-
-  # Checkout shortcut
-  co = checkout
-
   # Less verbose status
   st = status -sb
 
