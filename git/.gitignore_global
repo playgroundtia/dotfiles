@@ -39,6 +39,19 @@ $RECYCLE.BIN/
 
 # Vim
 .netrwhist
-.tern-port
-.undodir/
-Session.vim
+
+# Logs
+log/
+logs/
+*.log
+
+# Packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tgz
+*.zip
