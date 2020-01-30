@@ -42,7 +42,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'myusuf3/numbers.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/CursorLineCurrentWindow'
-Plug 'wellle/context.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages support
