@@ -6,7 +6,7 @@ source ~/.mutt/account/config
 
 # Editor
 set charset = "utf-8"
-set editor = "vim -u NONE -c 'set nocompatible tw=72 ft=mail noautoindent fo=aw cursorline number'"
+set editor = "vim -u NONE -c 'set nocompatible tw=72 ft=mail noautoindent fo=aw cursorline number colorcolumn=72'"
 
 # Status bar
 set status_chars  = " *%A"
