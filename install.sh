@@ -82,6 +82,12 @@ case "$(uname)" in
       zip
 
     ############################################################################
+    # HTTPie
+    ############################################################################
+    sudo apt install -y \
+      httpie
+
+    ############################################################################
     # Docker
     ############################################################################
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -523,6 +529,7 @@ case "$(uname)" in
       git \
       gpg \
       htop \
+      httpie \
       kubernetes-cli \
       lynx \
       mas \
@@ -586,7 +593,6 @@ case "$(uname)" in
       spotify \
       steam \
       sublime-text \
-      telegram-desktop \
       transmission \
       vagrant \
       virtualbox \
@@ -660,11 +666,8 @@ fi
 # Node.js config / packages
 ################################################################################
 sudo yarn global add \
-  create-react-app \
   eslint \
   tslint \
-  fkill-cli \
-  neovim \
   ngrok \
   prettier @prettier/plugin-php @prettier/plugin-ruby \
   typescript \
