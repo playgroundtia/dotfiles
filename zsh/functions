@@ -16,8 +16,23 @@ case "$(uname)" in
       fi;
     }
 
+    function systemupgrade() {
+      sudo apt update -y
+      sudo apt dist-upgrade -y
+      sudo apt autoremove -y
+      sudo apt clean all -y
+    }
+
   ;;
   Darwin)
+    function systemupgrade() {
+      brew update
+      brew upgrade
+      brew cu --all --yes --cleanup
+      brew cleanup -s
+      mas upgrade
+      sudo softwareupdate -i -a
+    }
 
   ;;
 esac
@@ -31,20 +46,8 @@ function f5() {
   sudo -v
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  # Update and upgrade system packages
-  if [[ "$(uname)" == "Linux" ]]; then
-    sudo apt update -y
-    sudo apt dist-upgrade -y
-    sudo apt autoremove -y
-    sudo apt clean all -y
-  elif [[ "$(uname)" == "Darwin" ]]; then
-    brew update
-    brew upgrade
-    brew cu --all --yes --cleanup
-    brew cleanup -s
-    mas upgrade
-    sudo softwareupdate -i -a
-  fi
+  # Update and upgrade system
+  systemupgrade
 
   # Dotfiles
   cd ~/.dotfiles || exit 1
@@ -80,7 +83,7 @@ function f5() {
 ################################################################################
 # MongoDB
 ################################################################################
-function mongodb-start() {
+function mongodb-init() {
   mkdir -p ~/Docker/Databases/MongoDB/Data
   mkdir -p ~/Docker/Databases/MongoDB/Dump
 
@@ -94,6 +97,10 @@ function mongodb-start() {
     -v "$HOME/Docker/Databases/MongoDB/Dump:/dump" \
     --publish 27017:27017 \
     mongo:4
+}
+
+function mongodb-start() {
+  docker run mongodb
 }
 
 function mongodb-stop() {
@@ -114,7 +121,7 @@ function mongodb-terminal() {
 ################################################################################
 # MySQL
 ################################################################################
-function mysql-start() {
+function mysql-init() {
   mkdir -p ~/Docker/Databases/MySQL/Data
   mkdir -p ~/Docker/Databases/MySQL/Dump
 
@@ -127,6 +134,10 @@ function mysql-start() {
     -v "$HOME/Docker/Databases/MySQL/Dump:/dump" \
     --publish 3306:3306 \
     mysql:5
+}
+
+function mysql-start() {
+  docker run mysql
 }
 
 function mysql-stop() {
@@ -147,7 +158,7 @@ function mysql-terminal() {
 ################################################################################
 # PostgreSQL
 ################################################################################
-function postgresql-start() {
+function postgresql-init() {
   mkdir -p ~/Docker/Databases/PostgreSQL/Data
   mkdir -p ~/Docker/Databases/PostgreSQL/Dump
 
@@ -161,6 +172,10 @@ function postgresql-start() {
     -v "$HOME/Docker/Databases/PostgreSQL/Dump:/dump" \
     --publish 5432:5432 \
     postgres:12
+}
+
+function postgresql-start() {
+  docker run postgresql
 }
 
 function postgresql-stop() {
@@ -181,7 +196,7 @@ function postgresql-terminal() {
 ################################################################################
 # Couchbase
 ################################################################################
-function couchbase-start() {
+function couchbase-init() {
   mkdir -p ~/Docker/Databases/Couchbase/Data
   mkdir -p ~/Docker/Databases/Couchbase/Dump
 
@@ -196,6 +211,10 @@ function couchbase-start() {
     --publish 8091-8094:8091-8094 \
     --publish 11210:11210 \
     couchbase:community-6.0.0
+}
+
+function couchbase-start() {
+  docker run couchbase
 }
 
 function couchbase-stop() {
