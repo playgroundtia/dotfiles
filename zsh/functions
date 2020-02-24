@@ -68,9 +68,15 @@ function f5() {
 
   # Vim
   vim +PlugUpgrade +PlugUpdate +qall
+  rm ~/.vim/autoload/*.old
 
   # Oh-my-zsh
   cd ~/.oh-my-zsh || exit 1
+  git checkout master
+  git pull
+
+  # Spaceship theme
+  cd ~/.oh-my-zsh/custom/themes/spaceship-prompt || exit 1
   git checkout master
   git pull
 
