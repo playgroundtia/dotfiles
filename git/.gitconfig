@@ -142,3 +142,6 @@
 
   # Resolve conflict using theirs
   resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
+
+  # List committers
+  committers = !(git log | grep Author | sort | uniq -c | sort -n -r)
