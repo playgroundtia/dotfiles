@@ -321,7 +321,8 @@ case "$(uname)" in
     # Dropbox
     ############################################################################
     sudo apt install -y \
-      nautilus-dropbox
+      nautilus-dropbox \
+      python-gpg
 
     ############################################################################
     # Hack Nerd Font
