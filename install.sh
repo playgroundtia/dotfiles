@@ -346,12 +346,6 @@ case "$(uname)" in
       --create-dirs https://raw.githubusercontent.com/dracula/tilix/master/Dracula.json
 
     ############################################################################
-    # Conky
-    ############################################################################
-    sudo apt install -y \
-      conky-all
-
-    ############################################################################
     # VLC
     ############################################################################
     sudo apt install -y \
@@ -714,9 +708,12 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
+# Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+# Spaceship theme
 git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
-ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
+ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
 command -v zsh | sudo tee -a /etc/shells
 if [[ "$(uname)" == "Linux" ]]; then
@@ -836,16 +833,6 @@ if [ -f ~/.inputrc ] || [ -h ~/.inputrc ]; then
   mv ~/.inputrc /tmp/inputrc-old
 fi
 ln -s ~/.dotfiles/.inputrc ~/.inputrc
-
-################################################################################
-# Conky config
-################################################################################
-if [[ "$(uname)" == "Linux" ]]; then
-  if [ -f ~/.conkyrc ] || [ -h ~/.conkyrc ]; then
-    mv ~/.conkyrc /tmp/conkyrc-old
-  fi
-  ln -s ~/.dotfiles/.conkyrc ~/.conkyrc
-fi
 
 ################################################################################
 # Finish
