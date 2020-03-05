@@ -503,7 +503,6 @@ case "$(uname)" in
     # Taps
     ############################################################################
     brew tap buo/cask-upgrade
-    brew tap caskroom/cask
     brew tap caskroom/drivers
     brew tap caskroom/fonts
     brew tap neomutt/homebrew-neomutt
@@ -640,7 +639,7 @@ esac
 if [ -d ~/.dotfiles ] || [ -h ~/.dotfiles ]; then
   mv ~/.dotfiles /tmp/dotfiles-old
 fi
-git clone --recursive https://github.com/gufranco/dotfiles.git ~/.dotfiles --depth=1
+git clone --recursive  --depth=1 https://github.com/gufranco/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
