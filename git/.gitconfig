@@ -41,6 +41,9 @@
 [github]
   user = gufranco
 
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
 [color]
   ui = auto
 
