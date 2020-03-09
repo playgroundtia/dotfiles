@@ -59,6 +59,19 @@ if [ -x "$(command -v neomutt)" ]; then
   alias mutt="neomutt"
 fi
 
+# Use npq when available
+if [ -x "$(command -v npq-hero)" ]; then
+  # npm
+  if [ -x "$(command -v npm)" ]; then
+    alias npm="npq-hero"
+  fi
+
+  # Yarn
+  if [ -x "$(command -v yarn)" ]; then
+    alias yarn="NPQ_PKG_MGR=yarn npq-hero"
+  fi
+fi
+
 ################################################################################
 # System specific aliases
 ################################################################################
