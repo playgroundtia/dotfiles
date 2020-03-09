@@ -27,3 +27,6 @@ case "$(uname)" in
     export PATH="/usr/local/opt/ruby/bin:$PATH"
   ;;
 esac
+
+# Node.js
+export PATH="$HOME/.global-modules/bin:$PATH"

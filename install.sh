@@ -106,15 +106,6 @@ case "$(uname)" in
       nodejs
 
     ############################################################################
-    # Yarn
-    ############################################################################
-    curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo -e "deb [arch=amd64] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update
-    sudo apt install -y \
-      yarn
-
-    ############################################################################
     # Python / Pip
     ############################################################################
     sudo add-apt-repository -y ppa:deadsnakes/ppa
@@ -514,6 +505,7 @@ case "$(uname)" in
     ############################################################################
     brew install \
       asciinema \
+      bash \
       cmake \
       coreutils \
       curl \
@@ -542,7 +534,6 @@ case "$(uname)" in
       urlview \
       vim \
       wget \
-      yarn \
       zlib \
       zsh
 
@@ -555,13 +546,11 @@ case "$(uname)" in
       authy \
       balenaetcher \
       bartender \
-      cheatsheet \
       cloudapp \
       coconutbattery \
       dbeaver-community \
       docker \
       dropbox \
-      evernote \
       firefox \
       flixtools \
       folx \
@@ -575,15 +564,12 @@ case "$(uname)" in
       keka \
       keybase \
       lastpass \
-      mactracker \
       macvim \
-      openoffice \
       plex-media-server \
       robo-3t \
       sizeup \
       skype \
       slack \
-      soda-player \
       spotify \
       steam \
       sublime-text \
@@ -592,8 +578,7 @@ case "$(uname)" in
       virtualbox \
       virtualbox-extension-pack \
       visual-studio-code \
-      vlc \
-      whatsapp
+      vlc
 
     ############################################################################
     # iTerm 2
@@ -659,14 +644,26 @@ fi
 ################################################################################
 # Node.js config / packages
 ################################################################################
-sudo yarn global add \
+# Npm
+if [ -f ~/.npmrc ] || [ -h ~/.npmrc ]; then
+  mv ~/.npmrc /tmp/npmrc-old
+fi
+ln -s ~/.dotfiles/nodejs/.npmrc ~/.npmrc
+
+# Packages folder
+mkdir ~/.global-modules
+
+# Packages
+export PATH="$HOME/.global-modules/bin:$PATH"
+npm install -g \
   eslint \
-  tslint \
   ngrok \
-  prettier @prettier/plugin-php @prettier/plugin-ruby \
+  npq \
+  prettier @prettier/plugin-ruby \
+  snyk \
   typescript \
   vtop \
-  --ignore-optional
+  --no-optional
 
 ################################################################################
 # Python config / packages
@@ -714,12 +711,13 @@ git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
 ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
-command -v zsh | sudo tee -a /etc/shells
 if [[ "$(uname)" == "Linux" ]]; then
+  command -v zsh | sudo tee -a /etc/shells
   sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
   sudo chsh "$USER" -s "$(command -v zsh)"
 elif [[ "$(uname)" == "Darwin" ]]; then
-  chsh -s "$(command -v zsh)"
+  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+  chsh -s "/usr/local/bin/zsh"
 fi
 
 ################################################################################

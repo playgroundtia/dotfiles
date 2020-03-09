@@ -29,11 +29,4 @@ source ~/.dotfiles/zsh/path
 ################################################################################
 source ~/.dotfiles/zsh/settings
 
-################################################################################
-# Oh-my-zsh
-################################################################################
-if ! [ -d ~/.oh-my-zsh ]; then
-  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
-
 source $ZSH/oh-my-zsh.sh
