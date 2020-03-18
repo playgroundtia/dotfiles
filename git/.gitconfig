@@ -96,13 +96,13 @@
   cd = checkout development
 
   # Push master
-  pm = !(git stash && git pull && git push -u origin master && git stash apply)
+  pm = !(git push -u origin master)
 
   # Push staging
-  ps = !(git stash && git pull && git push -u origin staging && git stash apply)
+  ps = !(git push -u origin staging)
 
   # Push development
-  pd = !(git stash && git pull && git push -u origin development && git stash apply)
+  pd = !(git push -u origin development)
 
   # Syncronize local branchs with remote
   fe = fetch origin
