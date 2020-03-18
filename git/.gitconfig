@@ -86,6 +86,9 @@
   # Less verbose status
   st = status -sb
 
+  # Checkout
+  co = checkout
+
   # Checkout master
   cm = checkout master
 
