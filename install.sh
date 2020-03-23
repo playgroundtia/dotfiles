@@ -261,9 +261,13 @@ case "$(uname)" in
       code
 
     ############################################################################
-    # Postman
+    # Insomnia
     ############################################################################
-    sudo snap install postman
+    echo "deb [arch=amd64] https://dl.bintray.com/getinsomnia/Insomnia /" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+    curl -fsSL https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+    sudo apt update
+    sudo apt install -y \
+      insomnia
 
     ############################################################################
     # Gnome
@@ -556,6 +560,7 @@ case "$(uname)" in
       folx \
       font-hack-nerd-font \
       google-chrome \
+      insomnia \
       intel-power-gadget \
       istat-menus \
       itau \
