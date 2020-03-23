@@ -1,11 +1,14 @@
 Host *
-  IdentityFile ~/.ssh/id_rsa
+  # IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
+  AddKeysToAgent yes
+  Compression yes
   ForwardAgent yes
   LogLevel INFO
   ServerAliveInterval 120
   StrictHostKeyChecking ask
-  Compression yes
   TCPKeepAlive yes
+  UseKeychain yes
 
 ################################################################################
 # House
