@@ -165,6 +165,14 @@ case "$(uname)" in
       firefox
 
     ############################################################################
+    # Tor Browser
+    ############################################################################
+    sudo add-apt-repository -y ppa:micahflee/ppa
+    sudo apt update
+    sudo apt install -y \
+      torbrowser-launcher
+
+    ############################################################################
     # Thunderbird
     ############################################################################
     sudo apt install -y \
@@ -578,6 +586,7 @@ case "$(uname)" in
       spotify \
       steam \
       sublime-text \
+      tor-browser \
       transmission \
       vagrant \
       virtualbox \
@@ -780,6 +789,7 @@ fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 
 chmod 400 ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_ed25519
 
 ################################################################################
 # Neomutt config
