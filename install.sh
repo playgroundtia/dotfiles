@@ -669,8 +669,7 @@ if [ -d ~/.ssh ] || [ -h ~/.ssh ]; then
 fi
 ln -s ~/.dotfiles/ssh ~/.ssh
 
-chmod 400 ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_ed25519
+chmod 400 ~/.ssh/id_*
 
 ################################################################################
 # Neomutt config
