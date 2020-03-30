@@ -42,6 +42,7 @@ case "$(uname)" in
       snapd \
       software-properties-common \
       tmux \
+      trash-cli \
       ubuntu-restricted-extras \
       wget \
       xsel \
@@ -82,12 +83,6 @@ case "$(uname)" in
       zip
 
     ############################################################################
-    # HTTPie
-    ############################################################################
-    sudo apt install -y \
-      httpie
-
-    ############################################################################
     # Docker
     ############################################################################
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -104,21 +99,6 @@ case "$(uname)" in
     sudo apt update
     sudo apt install -y \
       nodejs
-
-    ############################################################################
-    # Python / Pip
-    ############################################################################
-    sudo add-apt-repository -y ppa:deadsnakes/ppa
-    sudo apt-get update
-    sudo apt install -y \
-      python3-pip \
-      python3.8
-
-    ############################################################################
-    # Ruby
-    ############################################################################
-    sudo apt install -y \
-      ruby-full
 
     ############################################################################
     # Erlang / Elixir
@@ -239,7 +219,7 @@ case "$(uname)" in
     ############################################################################
     sudo add-apt-repository -y ppa:x4121/ripgrep
     sudo apt update
-    sudo apt install \
+    sudo apt install -y \
       ripgrep
 
     ############################################################################
@@ -247,7 +227,7 @@ case "$(uname)" in
     ############################################################################
     sudo add-apt-repository -y ppa:hnakamur/universal-ctags
     sudo apt update
-    sudo apt install \
+    sudo apt install -y \
       universal-ctags
 
     ############################################################################
@@ -387,61 +367,15 @@ case "$(uname)" in
       tlp
 
     ############################################################################
-    # Gimp
-    ############################################################################
-    sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
-    sudo apt update
-    sudo apt install -y \
-      gimp \
-      gimp-data \
-      gimp-data-extras \
-      gimp-gmic \
-      gimp-plugin-registry \
-      gmic
-
-    ############################################################################
-    # Inkscape
-    ############################################################################
-    sudo add-apt-repository -y ppa:inkscape.dev/stable
-    sudo apt update
-    sudo apt install -y \
-      inkscape
-
-    ############################################################################
-    # My Weather Indicator
-    ############################################################################
-    sudo add-apt-repository -y ppa:atareao/atareao
-    sudo apt update
-    sudo apt install -y \
-      my-weather-indicator
-
-    ############################################################################
     # Caffeine
     ############################################################################
     sudo apt install -y \
       caffeine
 
     ############################################################################
-    # Games
+    # Steam
     ############################################################################
-    curl -fsSL https://download.opensuse.org/repositories/home:codestation/xUbuntu_18.04/Release.key | sudo apt-key add -
-    echo -e "deb [arch=amd64] http://download.opensuse.org/repositories/home:/codestation/xUbuntu_18.04/ /" | sudo tee /etc/apt/sources.list.d/qcma.list
-    sudo add-apt-repository -y ppa:samoilov-lex/gamemode
-    sudo add-apt-repository -y ppa:samoilov-lex/retrogames
-    sudo apt update
     sudo apt install -y \
-      citra \
-      gamemode \
-      ioquake3 \
-      mgba-sdl \
-      ppsspp \
-      qcma \
-      reicast \
-      reicast-joyconfig \
-      residualvm \
-      retroarch \
-      scummvm \
-      snes9x \
       steam
 
     ############################################################################
@@ -473,20 +407,11 @@ case "$(uname)" in
       vulkan-utils
 
     ############################################################################
-    # Routines
+    # Fstrim
     ############################################################################
-    # fstrim
     echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.hourly/fstrim
     echo -e "/sbin/fstrim --all || exit 1" | sudo tee -a /etc/cron.hourly/fstrim
     sudo chmod +x /etc/cron.daily/fstrim
-
-    # apt
-    echo -e "#\!/bin/sh\n" | sudo tee /etc/cron.hourly/apt
-    echo -e "apt update" | sudo tee -a /etc/cron.hourly/apt
-    echo -e "apt dist-upgrade -y" | sudo tee -a /etc/cron.hourly/apt
-    echo -e "apt autoremove -y" | sudo tee -a /etc/cron.hourly/apt
-    echo -e "apt clean all -y" | sudo tee -a /etc/cron.hourly/apt
-    sudo chmod +x /etc/cron.hourly/apt
 
     ;;
   Darwin)
@@ -527,8 +452,6 @@ case "$(uname)" in
       git \
       gpg \
       htop \
-      httpie \
-      kubernetes-cli \
       lynx \
       mas \
       moreutils \
@@ -643,71 +566,19 @@ cd ~/.dotfiles || exit 1
 git remote set-url origin git@github.com:gufranco/dotfiles.git
 
 ################################################################################
-# Sublime Text 3 packages
+# Node.js config
 ################################################################################
-if [[ "$(uname)" == "Linux" ]]; then
-  curl -fLo \
-    "$HOME/.config/sublime-text-3/Installed\ Packages\ Package\ Control.sublime-package" \
-    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
-elif [[ "$(uname)" == "Darwin" ]]; then
-  curl -fLo \
-    "$HOME/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages\ Package\ Control.sublime-package" \
-    --create-dirs https://packagecontrol.io/Package%20Control.sublime-package
-fi
-
-################################################################################
-# Node.js config / packages
-################################################################################
-# Npm
 if [ -f ~/.npmrc ] || [ -h ~/.npmrc ]; then
   mv ~/.npmrc /tmp/npmrc-old
 fi
 ln -s ~/.dotfiles/nodejs/.npmrc ~/.npmrc
-
-# Packages folder
 mkdir ~/.global-modules
 
-# Packages
-export PATH="$HOME/.global-modules/bin:$PATH"
-npm install -g \
-  eslint \
-  ngrok \
-  npq \
-  prettier @prettier/plugin-ruby \
-  snyk \
-  typescript \
-  vtop \
-  --no-optional
-
 ################################################################################
-# Python config / packages
+# Bash config
 ################################################################################
-pip3 install --upgrade --user \
-  awscli \
-  black \
-  pipenv \
-  vim-vint
-
-################################################################################
-# Ruby config / packages
-################################################################################
-# Gem
-if [ -f ~/.gemrc ] || [ -h ~/.gemrc ]; then
-  mv ~/.gemrc /tmp/gemrc-old
-fi
-ln -s ~/.dotfiles/ruby/.gemrc ~/.gemrc
-
-# Packages
-sudo gem install \
-  bundler \
-  neovim \
-  rails
-
-# Bundler
-if [[ "$(uname)" == "Linux" ]]; then
-  bundle config --global jobs $(($(grep -c processor < /proc/cpuinfo) - 1))
-elif [[ "$(uname)" == "Darwin" ]]; then
-  bundle config --global jobs $(($(sysctl -n hw.ncpu) - 1))
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
 fi
 
 ################################################################################
@@ -718,13 +589,6 @@ if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
 fi
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
-# Oh-my-zsh
-git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-# Spaceship theme
-git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
-ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
-
 if [[ "$(uname)" == "Linux" ]]; then
   command -v zsh | sudo tee -a /etc/shells
   sudo sed -i -- 's/auth       required   pam_shells.so/# auth       required   pam_shells.so/g' /etc/pam.d/chsh
@@ -733,6 +597,23 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
   chsh -s "/usr/local/bin/zsh"
 fi
+
+################################################################################
+# Oh-my-zsh
+################################################################################
+if [ -f ~/.oh-my-zsh ] || [ -h ~/.oh-my-zsh ]; then
+  mv ~/.oh-my-zsh /tmp/oh-my-zsh-old
+fi
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+################################################################################
+# Spaceship theme
+################################################################################
+if [ -f ~/.oh-my-zsh/custom/themes/spaceship-prompt ] || [ -h ~/.oh-my-zsh/custom/themes/spaceship-prompt ]; then
+  mv ~/.oh-my-zsh/custom/themes/spaceship-prompt /tmp/spaceship-prompt-old
+fi
+git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
+ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
 ################################################################################
 # Git config
@@ -828,7 +709,7 @@ ln -s ~/.dotfiles/tmux ~/.tmux
 if [ -f ~/.curlrc ] || [ -h ~/.curlrc ]; then
   mv ~/.curlrc /tmp/curlrc-old
 fi
-ln -s ~/.dotfiles/.curlrc ~/.curlrc
+ln -s ~/.dotfiles/curl/.curlrc ~/.curlrc
 
 ################################################################################
 # Wget config
@@ -836,7 +717,7 @@ ln -s ~/.dotfiles/.curlrc ~/.curlrc
 if [ -f ~/.wgetrc ] || [ -h ~/.wgetrc ]; then
   mv ~/.wgetrc /tmp/wgetrc-old
 fi
-ln -s ~/.dotfiles/.wgetrc ~/.wgetrc
+ln -s ~/.dotfiles/wget/.wgetrc ~/.wgetrc
 
 ################################################################################
 # Readline config

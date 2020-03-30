@@ -54,12 +54,6 @@ function f5() {
   git pull-sub
   git submodule update --recursive --remote
 
-  # Python
-  pip3 list --outdated --format=freeze | \
-    grep -v "^\-e" | \
-    cut -d = -f 1 | \
-    xargs -n1 pip3 install --upgrade --user
-
   # Ruby
   sudo gem update --system
 
@@ -211,8 +205,6 @@ function couchbase-init() {
     --detach \
     --name couchbase \
     --restart unless-stopped \
-    --env "POSTGRES_USER=root" \
-    --env "POSTGRES_PASSWORD=root" \
     -v "$HOME/Docker/Databases/Couchbase/Data:/opt/couchbase/var" \
     -v "$HOME/Docker/Databases/Couchbase/Dump:/dump" \
     --publish 8091-8094:8091-8094 \
