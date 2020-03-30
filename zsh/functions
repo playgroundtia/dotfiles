@@ -54,16 +54,12 @@ function f5() {
   git pull-sub
   git submodule update --recursive --remote
 
-  # Ruby
-  sudo gem update --system
-
   # Node.js
   npm install -g npm@latest
   npm update -g
 
   # Vim
   vim +PlugUpgrade +PlugUpdate +qall
-  rm ~/.vim/autoload/*.old &> /dev/null
 
   # Oh-my-zsh
   cd ~/.oh-my-zsh || exit 1
