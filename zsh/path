@@ -5,6 +5,8 @@
 ################################################################################
 case "$(uname)" in
   Linux)
+    # Flutter
+    export PATH="$HOME/.flutter-sdk/bin:$PATH"
 
   ;;
   Darwin)
