@@ -58,6 +58,11 @@ function f5() {
   npm install -g npm@latest
   npm update -g
 
+  # Flutter
+  cd ~/.flutter-sdk || exit 1
+  git checkout stable
+  git pull
+
   # Vim
   vim +PlugUpgrade +PlugUpdate +qall
 
