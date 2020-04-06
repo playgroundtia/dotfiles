@@ -121,6 +121,27 @@ case "$(uname)" in
       godep
 
     ############################################################################
+    # Java
+    ############################################################################
+    sudo add-apt-repository -y ppa:linuxuprising/java
+    sudo apt update
+    sudo apt install -y \
+      oracle-java14-installer
+
+    ############################################################################
+    # Android Studio
+    ############################################################################
+    sudo add-apt-repository -y ppa:maarten-fonville/android-studio
+    sudo apt update
+    sudo apt install -y \
+      android-studio
+
+    ############################################################################
+    # Flutter
+    ############################################################################
+    git clone https://github.com/flutter/flutter.git -b stable ~/.flutter-sdk
+
+    ############################################################################
     # Spotify
     ############################################################################
     curl -fsSL https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
