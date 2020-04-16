@@ -136,6 +136,9 @@ if has('gui_macvim')
   augroup END
 endif
 
+" Avoid clear screen at exit
+set t_ti= t_te=
+
 " Use ripgrep over grep if avaiable
 if executable('rg')
   set grepprg=rg\ --color=never
