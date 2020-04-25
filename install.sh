@@ -420,6 +420,22 @@ case "$(uname)" in
       balena-etcher-electron
 
     ############################################################################
+    # WoeUSB
+    ############################################################################
+    sudo add-apt-repository -y ppa:nilarimogard/webupd8
+    sudo apt update
+    sudo apt install -y \
+      woeusb
+
+    ############################################################################
+    # Albert
+    ############################################################################
+    sudo add-apt-repository -y ppa:nilarimogard/webupd8
+    sudo apt update
+    sudo apt install -y \
+      albert
+
+    ############################################################################
     # Drivers
     ############################################################################
     sudo add-apt-repository -y ppa:oibaf/graphics-drivers
@@ -428,6 +444,14 @@ case "$(uname)" in
     sudo apt install -y \
       mesa-vulkan-drivers \
       vulkan-utils
+
+    ############################################################################
+    # Prime Indicator Plus
+    ############################################################################
+    sudo add-apt-repository -y ppa:nilarimogard/webupd8
+    sudo apt update
+    sudo apt install -y \
+      prime-indicator-plus
 
     ############################################################################
     # Fstrim
